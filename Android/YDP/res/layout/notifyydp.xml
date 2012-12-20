@@ -3,32 +3,40 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+      android:background="@drawable/background"
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/callydp"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="MORE ABOUT YDP" />
+        android:layout_alignLeft="@+id/emailydp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="46dp"
+        android:background="#6A8FB0"
+        android:text="CALL YDP"
+        android:textColor="#ffffff" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/aboutydp"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:layout_above="@+id/button3"
+        android:layout_below="@+id/emailydp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:text="EMAILYDP" />
+        android:layout_marginTop="60dp"
+        android:background="#6A8FB0"
+        android:text="MORE ABOUT YDP"
+        android:textColor="#ffffff" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/emailydp"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:layout_above="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_marginBottom="16dp"
-        android:text="CALL YDP" />
+        android:layout_alignLeft="@+id/aboutydp"
+        android:layout_below="@+id/callydp"
+        android:layout_marginTop="59dp"
+        android:background="#6A8FB0"
+        android:text="EMAILYDP"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>

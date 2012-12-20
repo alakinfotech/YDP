@@ -3,38 +3,43 @@ package com.example.ydp;
 
 
 import android.os.Bundle;
+
 import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.view.Menu;
-import android.widget.TabHost;
 
-public class MainActivity extends TabActivity {
+
+public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Resources res = getResources(); // Resource object to get Drawables
-        TabHost tabHost = getTabHost();  // The activity TabHost
-        TabHost.TabSpec spec;  // Resusable TabSpec for each tab 
-        
-        
+		  
+		
+		Thread splashThread = new Thread(){
+		         public void run(){
+		          try {
+		     sleep(5000);
+		    } catch (InterruptedException e) {
+		     // TODO Auto-generated catch block
+		     e.printStackTrace();
+		    }
+		          finally{
+		           finish();
+		           Intent in = new Intent(MainActivity.this,HOMESCREEN.class);
+		            startActivity(in);
+		          // Intent gotohomescreen =  new Intent().setClass(this,HOMESCREEN.class);
+		         //  Intent gotohomescreen = new Intent("android.intent.action.HOMESCREEN");
+		            //  startActivity(gotohomescreen);
+		          }
+		         }
+		        };
+		        splashThread.start();
+		    }    
+		}
 
-        // Initialize a TabSpec for each tab and add it to the TabHost
-        //for Tab1        
-        spec = tabHost.newTabSpec("Tab1").setIndicator("YDP care plan",getResources().getDrawable(R.drawable.all))
-                          .setContent(new Intent(this,Firstscreen.class));
-        tabHost.addTab(spec);
 
-        // for Tab2
-        spec = tabHost.newTabSpec("Tab2").setIndicator("Notify YDP",getResources().getDrawable(R.drawable.faves))
-                          .setContent(new Intent(this,SecondScreen.class));
-        tabHost.addTab(spec);
 
-	}
 
 	
-
-}

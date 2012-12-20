@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 
 
-public class SecondScreen  extends Activity{
+public class NOTIFYYDP  extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);

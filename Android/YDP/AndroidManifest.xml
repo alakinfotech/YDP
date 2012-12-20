@@ -22,8 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Firstscreen"></activity>
-        <activity android:name="SecondScreen"></activity>
+        <activity android:name="HOMESCREEN"></activity>
+        
+        <activity android:name="YDPCAREPLAN"></activity>
+        <activity android:name="NOTIFYYDP"></activity>
     </application>
 
 </manifest>
