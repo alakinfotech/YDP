@@ -1,0 +1,12 @@
+{
+  "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\src": {
+    "location": "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\src\u0027. Skipped."
+  },
+  "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\gen": {
+    "location": "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\gen",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\gen\u0027. Skipped."
+  }
+}

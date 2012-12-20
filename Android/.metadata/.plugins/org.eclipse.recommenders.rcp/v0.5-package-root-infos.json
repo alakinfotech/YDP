@@ -1,0 +1,41 @@
+[
+  {
+    "symbolicName": "android-support-v4",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "48c94ae70fa65718b382098237806a5909bb096e",
+    "jarFileModificationDate": "2012-12-19T09:47:15.477-05:00",
+    "location": "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\libs\\android-support-v4.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "annotations",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "c98f326a55c0be2ecaa914df46fb539db300bc12",
+    "jarFileModificationDate": "2012-12-16T04:24:33.533-05:00",
+    "location": "C:\\Program Files\\Android\\android-sdk\\tools\\support\\annotations.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "android",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "19cd75888d1d75d3ae3cb7a8692153da5d65eb13",
+    "jarFileModificationDate": "2012-12-16T13:32:36.981-05:00",
+    "location": "C:\\Program Files\\Android\\android-sdk\\platforms\\android-7\\android.jar",
+    "javaRuntime": false
+  }
+]

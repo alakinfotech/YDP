@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+      android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/aboutydp"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="MORE ABOUT YDP" />
+
+    <Button
+        android:id="@+id/callydp"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/aboutydp"
+        android:layout_alignLeft="@+id/aboutydp"
+        android:layout_marginBottom="34dp"
+        android:text="CALL YDP" />
+
+    <Button
+        android:id="@+id/emailydp"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/callydp"
+        android:layout_alignLeft="@+id/callydp"
+        android:layout_marginBottom="28dp"
+        android:text="EMAILYDP" />
+
+</RelativeLayout>
