@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/background" />
+
+    <Button
+        android:id="@+id/emailydp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/callydp"
+        android:layout_marginTop="49dp"
+        android:background="#6A8FB0"
+        android:text="EMAIL YDP"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/callydp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:background="#6A8FB0"
+        android:text="CALL YDP"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/moreaboutydp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignParentLeft="true"
+        android:background="#6A8FB0"
+        android:text="MORE ABOUT YDP"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>

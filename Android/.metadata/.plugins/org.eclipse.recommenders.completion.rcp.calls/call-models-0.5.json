@@ -8,5 +8,10 @@
     "location": "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\gen",
     "status": "UNRESOLVED",
     "error": "No class path info available for \u0027D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\gen\u0027. Skipped."
+  },
+  "C:\\Program Files\\Android\\android-sdk\\platforms\\android-16\\android.jar": {
+    "location": "C:\\Program Files\\Android\\android-sdk\\platforms\\android-16\\android.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Program Files\\Android\\android-sdk\\platforms\\android-16\\android.jar\u0027. Neither fingerprint \u0027f2dca2ead97466b417a99823b658e05e0c3c4832\u0027 nor symbolic name \u0027android\u0027 are known."
   }
 }

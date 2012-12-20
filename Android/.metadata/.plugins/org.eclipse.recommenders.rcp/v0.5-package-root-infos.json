@@ -1,18 +1,5 @@
 [
   {
-    "symbolicName": "android-support-v4",
-    "version": {
-      "major": -1,
-      "minor": -1,
-      "micro": -1,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "48c94ae70fa65718b382098237806a5909bb096e",
-    "jarFileModificationDate": "2012-12-19T09:47:15.477-05:00",
-    "location": "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\libs\\android-support-v4.jar",
-    "javaRuntime": false
-  },
-  {
     "symbolicName": "annotations",
     "version": {
       "major": -1,
@@ -26,6 +13,32 @@
     "javaRuntime": false
   },
   {
+    "symbolicName": "android-support-v4",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "48c94ae70fa65718b382098237806a5909bb096e",
+    "jarFileModificationDate": "2012-12-19T09:47:15.477-05:00",
+    "location": "D:\\Alakinfotech\\YDP_Git\\YDP\\Android\\YDP\\libs\\android-support-v4.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "effects",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "bebe249895bd97b12aa914ab04ccf4f670b8104b",
+    "jarFileModificationDate": "2012-11-27T06:35:35.073-05:00",
+    "location": "C:\\Program Files\\Android\\android-sdk\\add-ons\\addon-google_apis-google-16\\libs\\effects.jar",
+    "javaRuntime": false
+  },
+  {
     "symbolicName": "android",
     "version": {
       "major": -1,
@@ -36,6 +49,58 @@
     "jarFileFingerprint": "19cd75888d1d75d3ae3cb7a8692153da5d65eb13",
     "jarFileModificationDate": "2012-12-16T13:32:36.981-05:00",
     "location": "C:\\Program Files\\Android\\android-sdk\\platforms\\android-7\\android.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "maps",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "8db6e10e1d07a37d1f83a819e234589b4f674bba",
+    "jarFileModificationDate": "2012-11-27T06:35:35.102-05:00",
+    "location": "C:\\Program Files\\Android\\android-sdk\\add-ons\\addon-google_apis-google-16\\libs\\maps.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "android-support-v4",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "48c94ae70fa65718b382098237806a5909bb096e",
+    "jarFileModificationDate": "2012-11-26T11:45:20-05:00",
+    "location": "C:\\Users\\Gsri\\Downloads\\LoveIsEveryThing\\libs\\android-support-v4.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "usb",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "db0cf61a86400740b528d935ba7f4bd7bc725f4a",
+    "jarFileModificationDate": "2012-11-27T06:35:35.053-05:00",
+    "location": "C:\\Program Files\\Android\\android-sdk\\add-ons\\addon-google_apis-google-16\\libs\\usb.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "android",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "f2dca2ead97466b417a99823b658e05e0c3c4832",
+    "jarFileModificationDate": "2012-12-16T05:10:11.696-05:00",
+    "location": "C:\\Program Files\\Android\\android-sdk\\platforms\\android-16\\android.jar",
     "javaRuntime": false
   }
 ]

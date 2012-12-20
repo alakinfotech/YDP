@@ -3,6 +3,7 @@ package com.example.ydp;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TabHost;
 
@@ -16,17 +17,23 @@ public class HOMESCREEN  extends TabActivity{
         
         
 
-        // Initialize a TabSpec for each tab and add it to the TabHost
+         // Initialize a TabSpec for each tab and add it to the TabHost
         //for Tab1        
-        spec = tabHost.newTabSpec("Tab1").setIndicator("YDP care plan",getResources().getDrawable(R.drawable.all))
+        spec = tabHost.newTabSpec("Tab1").setIndicator("YDP CARE PLAN",res.getDrawable(R.drawable.all))
                           .setContent(new Intent(this,YDPCAREPLAN.class));
         tabHost.addTab(spec);
+      
 
         // for Tab2
-        spec = tabHost.newTabSpec("Tab2").setIndicator("Notify YDP",getResources().getDrawable(R.drawable.faves))
+        spec = tabHost.newTabSpec("Tab2").setIndicator("NOTIFY YDP",res.getDrawable(R.drawable.faves))
                           .setContent(new Intent(this,NOTIFYYDP.class));
         tabHost.addTab(spec);
 
+	}
+
+	private Drawable getDrawable(int all) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
