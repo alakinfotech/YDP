@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.Window;
 
 public class Splashscreen extends Activity {
 
@@ -15,6 +16,7 @@ public class Splashscreen extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splashscreen);
 
         /* New Handler to start the Menu-Activity 
