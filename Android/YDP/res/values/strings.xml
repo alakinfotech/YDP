@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Your Doctor Program</string>
+     <string name="icon_name">YDP</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
 

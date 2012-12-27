@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebView;
 import android.widget.Button;
 
 
 
 public class NOTIFYYDP  extends Activity{
+	WebView wb;
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -38,12 +40,15 @@ public class NOTIFYYDP  extends Activity{
 			}
 		});
 		about.setOnClickListener(new OnClickListener() {
-			
+			 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent web = new Intent(getApplicationContext(), MOREABOUTYDP.class);
-				startActivity(web);
+Intent browserIntent = 
+        new Intent(Intent.ACTION_VIEW, Uri.parse("https://yourdoctorprogram.com/"));
+			startActivity(browserIntent);
+				
+				
 				
 			}
 		});
@@ -52,8 +57,9 @@ public class NOTIFYYDP  extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent inn = new Intent(getApplicationContext(), EMAILYDP.class);
-				startActivity(inn);
+				Intent web = new Intent(getApplicationContext(),EMAILYDP.class);
+				startActivity(web);
+			
 				
 			}
 		});

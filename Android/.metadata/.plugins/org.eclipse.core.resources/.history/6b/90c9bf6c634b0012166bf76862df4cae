@@ -1,0 +1,24 @@
+package com.example.ydp;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.widget.EditText;
+
+public class YDPCAREPLAN extends Activity{
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.ydpcareplan);
+		EditText username = (EditText) findViewById(R.id.username);
+		EditText password =(EditText) findViewById(R.id.password);
+		
+		// NSString *setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='%@';",self.userName];
+		//WebView wb = (WebView) findViewById(R.id.webView1);
+		//wb.loadUrl("http://www.google.com/");
+		
+	}
+
+}
+

@@ -1,6 +1,7 @@
-2012-12-20 01:20:43,105 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
-2012-12-20 01:20:44,613 [main] ERROR o.e.r.i.r.repo.ModelRepositoryIndex - Failed to open search index.
-org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.apache.lucene.store.SimpleFSDirectory@D:\Alakinfotech\YDP_Git\YDP\Android\.metadata\.plugins\org.eclipse.recommenders.rcp\index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1bf88e2: files: []
+2012-12-20 13:15:31,710 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-20 13:15:33,395 [pool-6-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-20 13:15:34,411 [main] ERROR o.e.r.i.r.repo.ModelRepositoryIndex - Failed to open search index.
+org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.apache.lucene.store.SimpleFSDirectory@D:\Alakinfotech\YDP_Git\YDP\Android\.metadata\.plugins\org.eclipse.recommenders.rcp\index lockFactory=org.apache.lucene.store.NativeFSLockFactory@1f9cfb8: files: []
 	at org.apache.lucene.index.SegmentInfos$FindSegmentsFile.run(SegmentInfos.java:712) ~[org.apache.lucene.core_3.5.0.v20120319-2345.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
 	at org.apache.lucene.index.DirectoryReader.open(DirectoryReader.java:75) ~[org.apache.lucene.core_3.5.0.v20120319-2345.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
 	at org.apache.lucene.index.IndexReader.open(IndexReader.java:462) ~[org.apache.lucene.core_3.5.0.v20120319-2345.jar:3.5.0 1204988 - simon - 2011-11-22 14:46:51]
@@ -46,12 +47,46 @@ org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.a
 	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor$CompletionListener.assistSessionStarted(ContentAssistProcessor.java:119) [org.eclipse.jdt.ui_3.8.1.v20120814-144251.jar:na]
 	at org.eclipse.jface.text.contentassist.ContentAssistant.fireSessionBeginEvent(ContentAssistant.java:2221) [org.eclipse.jface.text_3.8.1.v20120828-155502.jar:na]
 	at org.eclipse.jface.text.contentassist.ContentAssistant.prepareToShowCompletions(ContentAssistant.java:1696) [org.eclipse.jface.text_3.8.1.v20120828-155502.jar:na]
-	at org.eclipse.jface.text.contentassist.ContentAssistant.access$6(ContentAssistant.java:1687) [org.eclipse.jface.text_3.8.1.v20120828-155502.jar:na]
-	at org.eclipse.jface.text.contentassist.ContentAssistant$2.run(ContentAssistant.java:376) [org.eclipse.jface.text_3.8.1.v20120828-155502.jar:na]
-	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
-	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
-	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4144) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3761) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1661) [org.eclipse.jface.text_3.8.1.v20120828-155502.jar:na]
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor$AdaptedSourceViewer.doOperation(CompilationUnitEditor.java:183) [org.eclipse.jdt.ui_3.8.1.v20120814-144251.jar:na]
+	at org.eclipse.ui.texteditor.ContentAssistAction$1.run(ContentAssistAction.java:82) [org.eclipse.ui.workbench.texteditor_3.8.0.v20120523-1310.jar:na]
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.ui.texteditor.ContentAssistAction.run(ContentAssistAction.java:80) [org.eclipse.ui.workbench.texteditor_3.8.0.v20120523-1310.jar:na]
+	at org.eclipse.ui.texteditor.RetargetTextEditorAction.run(RetargetTextEditorAction.java:237) [org.eclipse.ui.workbench.texteditor_3.8.0.v20120523-1310.jar:na]
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498) [org.eclipse.jface_3.8.101.v20120817-083647.jar:na]
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:119) [org.eclipse.jface_3.8.101.v20120817-083647.jar:na]
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:76) [org.eclipse.ui.workbench_3.103.1.v20120906-120042.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_01]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.7.0_01]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.7.0_01]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.7.0_01]
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56) [org.eclipse.e4.core.di_1.1.0.v20120627-124443.jar:na]
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:229) [org.eclipse.e4.core.di_1.1.0.v20120627-124443.jar:na]
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:210) [org.eclipse.e4.core.di_1.1.0.v20120627-124443.jar:na]
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:131) [org.eclipse.e4.core.contexts_1.1.0.v20120828-170404.jar:na]
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:171) [org.eclipse.e4.core.commands_0.10.1.v20120523-1955.jar:na]
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:276) [org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar:na]
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:494) [org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar:na]
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:545) [org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar:na]
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:366) [org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar:na]
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:313) [org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar:na]
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:82) [org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar:na]
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1262) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1052) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1100) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1521) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4640) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:345) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4528) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:341) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4976) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2546) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3756) [org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar:na]
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1029) [org.eclipse.e4.ui.workbench.swt_0.10.2.v20120802-184737.jar:na]
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332) [org.eclipse.core.databinding.observable_1.4.1.v20120521-2329.jar:na]
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:923) [org.eclipse.e4.ui.workbench.swt_0.10.2.v20120802-184737.jar:na]
@@ -73,6 +108,9 @@ org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.a
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629) [org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar:na]
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584) [org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar:na]
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1438) [org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar:na]
-2012-12-20 01:20:44,728 [pool-6-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
-2012-12-20 01:20:48,024 [pool-8-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
-2012-12-20 07:11:54,051 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-20 13:15:37,509 [pool-8-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-21 02:52:12,915 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-21 06:37:52,831 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-26 08:44:42,407 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-26 10:32:11,728 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2012-12-27 08:31:59,484 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
