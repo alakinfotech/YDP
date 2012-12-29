@@ -20,6 +20,8 @@ public class YDPWEBVIEW extends Activity {
 	TextView user,pass;
 	boolean loadingFinished = true;
 	boolean redirect = false;
+	static int i = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -68,19 +70,22 @@ public class YDPWEBVIEW extends Activity {
 	             }
 
 		       if(loadingFinished && !redirect){
+		    	   
+		    	 if(i == 0){
 		    	   progressBar.dismiss();
 		    	   Log.d("page loaded","page");
 		    	  // wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').setAttribute('value',user);");
 		    	  // wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').setAttribute('value',pass);");
 		    	  // wb.loadUrl("javascript:document.getElementsByName('ctl00$ctl00$ContentPlaceHolder$ContentPlaceHolder1$bt_Login')[0].click();");
-		    	   String user =getIntent().getExtras().getString("username");
-		    	   String pass =getIntent().getExtras().getString("username");
+		    	   String user = "adikadapa";//getIntent().getExtras().getString("username");
+		    	   String pass = "Medico!8";//getIntent().getExtras().getString("username");
 		    	   Log.d(user, "username");
 		    	   Log.d(pass, "password");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='"+user+"';");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='"+pass+"';");
-		    	  //wb.loadUrl(" javascript:document.getElementById(\"ContentPlaceHolder_ContentPlaceHolder1_bt_Login\").click();");
-		       
+		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_bt_Login').click();");
+		    	   i = 1;
+		    	 }
 		       } else{
 		          redirect = false; 
 		       }
