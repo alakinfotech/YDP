@@ -77,10 +77,10 @@ public class YDPWEBVIEW extends Activity {
 		    	  // wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').setAttribute('value',user);");
 		    	  // wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').setAttribute('value',pass);");
 		    	  // wb.loadUrl("javascript:document.getElementsByName('ctl00$ctl00$ContentPlaceHolder$ContentPlaceHolder1$bt_Login')[0].click();");
-		    	   String user = "adikadapa";//getIntent().getExtras().getString("username");
-		    	   String pass = "Medico!8";//getIntent().getExtras().getString("username");
-		    	   Log.d(user, "username");
-		    	   Log.d(pass, "password");
+		    	   String user = getIntent().getExtras().getString("username");
+		    	   String pass = getIntent().getExtras().getString("password");
+		    	  // Log.d(user, "username");
+		    	   //Log.d(pass, "password");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='"+user+"';");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='"+pass+"';");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_bt_Login').click();");
