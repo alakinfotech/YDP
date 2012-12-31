@@ -35,6 +35,13 @@
         android:text="Login"
         android:textColor="#ffffff" />
 
-   
+    <FrameLayout
+        android:id="@+id/cameraPreview"
+        android:layout_width="300dp"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" >
+    </FrameLayout>
 
 </RelativeLayout>

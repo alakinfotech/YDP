@@ -30,7 +30,7 @@ public class NOTIFYYDP  extends Activity{
 				// TODO Auto-generated method stub
 				 try {
 				        Intent callIntent = new Intent(Intent.ACTION_CALL);
-				        callIntent.setData(Uri.parse("tel:123456789"));
+				        callIntent.setData(Uri.parse("tel:7139816125"));
 				        startActivity(callIntent);
 				    } catch (ActivityNotFoundException activityException) {
 				         
