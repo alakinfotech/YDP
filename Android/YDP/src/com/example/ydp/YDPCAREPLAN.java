@@ -43,14 +43,13 @@ public class YDPCAREPLAN extends Activity{
     
 	EditText username;
 	EditText password;
+	Button login;
 	public String uname,pword;
  	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ydpcareplan);
-		 username = (EditText) findViewById(R.id.username);
-		 password =(EditText) findViewById(R.id.password);
 		
 		 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		 
@@ -64,11 +63,13 @@ public class YDPCAREPLAN extends Activity{
 
 	        mPreview = new CameraPreview(this, mCamera, previewCb, autoFocusCB);
 	        FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
-//	        preview.addView(mPreview);
+	        preview.addView(mPreview);
 
 	        
-		
-		Button login =(Button) findViewById(R.id.login);
+	        username = (EditText) findViewById(R.id.username);
+			 password =(EditText) findViewById(R.id.password);
+			 
+		login =(Button) findViewById(R.id.login);
 		login.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -143,6 +144,13 @@ public class YDPCAREPLAN extends Activity{
                     }
                     
                     Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
+                   
+//                    mCamera.setPreviewCallback(previewCb);
+//                    mCamera.startPreview();
+//                    previewing = true;
+//                    mCamera.autoFocus(autoFocusCB);
+                    
+                    login.performClick();
                 }
             }
         };
