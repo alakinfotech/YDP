@@ -10,6 +10,7 @@ import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class YDPCAREPLAN extends Activity{
     private boolean barcodeScanned = false;
     private boolean previewing = true;
 
+    int classCreateStatus;
     static {
         System.loadLibrary("iconv");
     } 
@@ -45,11 +47,16 @@ public class YDPCAREPLAN extends Activity{
 	EditText password;
 	Button login;
 	public String uname,pword;
+	
+	
+	
  	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ydpcareplan);
+		
+		Log.d("","<<<<<<<<< This is oncreate method");
 		
 		 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		 
@@ -82,18 +89,53 @@ public class YDPCAREPLAN extends Activity{
 			   innt.putExtra("username",uname);
 			   innt.putExtra("password",pword);
 			   
-				 startActivity(innt);
-			    
-				
+			   classCreateStatus = 10;
+			    	onPause();
+
+			    	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+			    	preview.removeView(mPreview);
+			    	
+			    	startActivity(innt);
+			    				
 			}
 		});
 		
 		
 	}
  	
+
+ 	@Override
+    protected void onResume(){
+ 	
+ 		super.onResume();
+ 		
+ 		Log.d("","This is onResume method <<<<<<<<<");
+ 		if(classCreateStatus == 10)
+ 		{
+ 		autoFocusHandler = new Handler();
+        mCamera = getCameraInstance();
+
+        /* Instance barcode scanner */
+        scanner = new ImageScanner();
+        scanner.setConfig(0, Config.X_DENSITY, 3);
+        scanner.setConfig(0, Config.Y_DENSITY, 3);
+
+        mPreview = new CameraPreview(getApplicationContext(), mCamera, previewCb, autoFocusCB);
+        FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+        preview.addView(mPreview);
+ 		}
+        
+ 	}
+ 
+ 	@Override
+ 	
  	public void onPause() {
         super.onPause();
         releaseCamera();
+        classCreateStatus = 10;
+        FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+    	preview.removeView(mPreview);
+        Log.d("","This is onPause method <<<<<<<<<");
     }
 
     /** A safe way to get an instance of the Camera object. */
