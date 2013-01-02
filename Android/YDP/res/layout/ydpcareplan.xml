@@ -23,27 +23,28 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
+   
+
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignRight="@+id/password"
         android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="42dp"
         android:background="#6A8FB0"
         android:hint="login"
         android:text="Login"
         android:textColor="#ffffff" />
 
-    <FrameLayout
-        android:id="@+id/cameraPreview"
-        android:layout_width="300dp"
-        android:layout_height="140dp"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/username"
-        android:layout_marginBottom="24dp" >
-
-    </FrameLayout>
+     <FrameLayout
+         android:id="@+id/cameraPreview"
+         android:layout_width="250dp"
+         android:layout_height="140dp"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:layout_marginBottom="25dp" >
+     </FrameLayout>
 
 </RelativeLayout>

@@ -28,7 +28,7 @@ public class YDPCAREPLAN extends Activity{
 	
 	private Camera mCamera;
     private CameraPreview mPreview;
-    private Handler autoFocusHandler;
+    private Handler autoFocusHandler;    
 
     String scanText;
     
