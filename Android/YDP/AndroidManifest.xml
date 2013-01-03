@@ -24,7 +24,7 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
-                     android:screenOrientation="portrait"
+                     android:screenOrientation="portrait" 
                      android:noHistory="true"
                      android:configChanges="keyboardHidden|orientation|screenSize" />
 				<category android:name="android.intent.category.LAUNCHER" />

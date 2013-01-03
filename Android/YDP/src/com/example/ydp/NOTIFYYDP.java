@@ -57,10 +57,8 @@ Intent browserIntent =
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//Intent web = new Intent(getApplicationContext(),EMAILYDP.class);
-				//startActivity(web);
 				//http://blog.adamsbros.org/2011/12/31/send-email-in-your-android-application/
-				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:someone@example.com"));
+				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:info@yourdoctorprogram.com"));
 				intent.putExtra("subject", "my subject");
 				intent.putExtra("body", "my message");
 				startActivity(intent);

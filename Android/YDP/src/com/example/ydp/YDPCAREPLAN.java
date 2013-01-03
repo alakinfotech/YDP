@@ -47,6 +47,7 @@ public class YDPCAREPLAN extends Activity{
 	EditText password;
 	Button login;
 	public String uname,pword;
+	//Boolean false,true;
 	
 	
 	
@@ -56,7 +57,7 @@ public class YDPCAREPLAN extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ydpcareplan);
 		
-		Log.d("","<<<<<<<<< This is oncreate method");
+		
 		
 		 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		 
@@ -109,7 +110,7 @@ public class YDPCAREPLAN extends Activity{
  	
  		super.onResume();
  		
- 		Log.d("","This is onResume method <<<<<<<<<");
+ 		
  		if(classCreateStatus == 10)
  		{
  		autoFocusHandler = new Handler();
@@ -135,7 +136,7 @@ public class YDPCAREPLAN extends Activity{
         classCreateStatus = 10;
         FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
     	preview.removeView(mPreview);
-        Log.d("","This is onPause method <<<<<<<<<");
+      
     }
 
     /** A safe way to get an instance of the Camera object. */
