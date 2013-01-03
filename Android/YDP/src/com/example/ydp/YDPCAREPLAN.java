@@ -96,6 +96,20 @@ public class YDPCAREPLAN extends Activity{
 			    	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
 			    	preview.removeView(mPreview);
 			    	
+			    	Cipher cipher = new Cipher("Adi@Revanth");
+			    	String data = "i0LPJ2Qod2/2/YvCn0J57Vkcerd1Xt4/Cbv6WdzwmkpcHyeusFfzYMUC/zve8QTRfCGAjVJOBOhqFE+eQlcyQA7tnTKSfsRbpgvWzhfhcYwDFiRO2cwm9NtDIcIUuhCK";
+			    	byte[] reseltByts = null;
+			    	
+					try {
+						reseltByts = cipher.decrypt(data.getBytes());
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			    	//String resultData = new String(reseltByts);
+			    	
+			    	//Toast.makeText(YDPCAREPLAN.this, resultData, Toast.LENGTH_SHORT).show();
+			    	
 			    	startActivity(innt);
 			    				
 			}
