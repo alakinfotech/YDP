@@ -11,7 +11,7 @@ import org.bouncycastle.crypto.params.KeyParameter;
 import java.io.ByteArrayInputStream;  
 import java.io.ByteArrayOutputStream;  
   
-public class Cipher {  
+public class Cipher  {  
   
     private static final byte[] NULL = null;
 	private final String password;  
