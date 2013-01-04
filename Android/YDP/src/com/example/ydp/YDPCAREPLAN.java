@@ -25,8 +25,12 @@ import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 import net.sourceforge.zbar.Config;
 
+import org.bouncycastle.util.*;
+import org.bouncycastle.util.encoders.Base64;
+
 public class YDPCAREPLAN extends Activity{
 	
+	protected static final byte[] NULL = null;
 	private Camera mCamera;
     private CameraPreview mPreview;
     private Handler autoFocusHandler;    
@@ -97,16 +101,22 @@ public class YDPCAREPLAN extends Activity{
 			    	preview.removeView(mPreview);
 			    	
 			    	Cipher cipher = new Cipher("Adi@Revanth");
-			    	String data = "i0LPJ2Qod2/2/YvCn0J57Vkcerd1Xt4/Cbv6WdzwmkpcHyeusFfzYMUC/zve8QTRfCGAjVJOBOhqFE+eQlcyQA7tnTKSfsRbpgvWzhfhcYwDFiRO2cwm9NtDIcIUuhCK";
+			    	String data = "JHXoYD/uOLLgVNtwGNkXUcrMN27yAqRw6OsgO8xldOQ=";
+			    	data = "Revanth";
+			    	
+			    	byte[] sendData = Base64.decode(data);
+			    	
 			    	byte[] reseltByts = null;
 			    	
 					try {
-						reseltByts = cipher.decrypt(data.getBytes());
+						reseltByts = cipher.decrypt(sendData);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-			    	//String resultData = new String(reseltByts);
+					String resultData = null;
+					if(reseltByts != null)
+						resultData = reseltByts.toString();
 			    	
 			    	//Toast.makeText(YDPCAREPLAN.this, resultData, Toast.LENGTH_SHORT).show();
 			    	
