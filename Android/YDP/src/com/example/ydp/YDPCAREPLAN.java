@@ -102,7 +102,6 @@ public class YDPCAREPLAN extends Activity{
 			    	
 			    	Cipher cipher = new Cipher("Adi@Revanth");
 			    	String data = "JHXoYD/uOLLgVNtwGNkXUcrMN27yAqRw6OsgO8xldOQ=";
-			    	data = "Revanth";
 			    	
 			    	byte[] sendData = Base64.decode(data);
 			    	
@@ -116,7 +115,7 @@ public class YDPCAREPLAN extends Activity{
 					}
 					String resultData = null;
 					if(reseltByts != null)
-						resultData = reseltByts.toString();
+						resultData = Strings.fromUTF8ByteArray(reseltByts);
 			    	
 			    	//Toast.makeText(YDPCAREPLAN.this, resultData, Toast.LENGTH_SHORT).show();
 			    	
