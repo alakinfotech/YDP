@@ -7,6 +7,8 @@ import org.bouncycastle.crypto.engines.AESFastEngine;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;  
 import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;  
 import org.bouncycastle.crypto.params.KeyParameter;  
+
+import android.util.Log;
   
 import java.io.ByteArrayInputStream;  
 import java.io.ByteArrayOutputStream;  
@@ -18,6 +20,10 @@ public class Cipher  {
   
     public Cipher(String password) {  
         this.password = password;  
+        Log.d("password", password); 
+        Log.d("this.pass", this.password);                 
+
+
     }  
   
     public byte[] encrypt(byte[] plainText) throws Exception {  
@@ -45,7 +51,7 @@ public class Cipher  {
         int outputLen;  
   
         byte[] inputBuffer = new byte[1024];  
-        byte[] outputBuffer = NULL;//new byte[cipher.getOutputSize(inputBuffer.length)];  
+        byte[] outputBuffer = new byte[cipher.getOutputSize(inputBuffer.length)];  
   
         while ((inputLen = input.read(inputBuffer)) > -1) {  
             outputLen = cipher.processBytes(inputBuffer, 0, inputLen, outputBuffer, 0);  
@@ -61,4 +67,4 @@ public class Cipher  {
   
         return output.toByteArray();  
     }  
-}  
+}   
