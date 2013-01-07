@@ -78,7 +78,7 @@ String encryptedStringTest;
 inputStr = inputTxtFld.getText().toString();
   Log.d("intputstr", inputStr);                
 
-				Cipher cipher = new Cipher("password0");
+				Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
 		    	
 				
 
@@ -112,7 +112,9 @@ inputStr = inputTxtFld.getText().toString();
 					
 					
 					try {
-						resultData = new String(Base64.encodeBase64(reseltByts), "UTF-8");
+						
+						byte [] reseltBase64Bytes = Base64.encodeBase64(reseltByts);
+						resultData = new String(reseltBase64Bytes, "UTF-8");
 					} catch (UnsupportedEncodingException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -138,13 +140,13 @@ inputStr = inputTxtFld.getText().toString();
 				
 decryptedStr = encryptTxtFld.getText().toString();
 
-			Cipher cipher = new Cipher("password0");
+			Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
 				byte[] encryptinput=null;
 				try {
 					
 		byte[] dect=decryptedStr.getBytes("UTF-8");
 					//String cipherText = new String(Base64.decodeBase64(decryptedStr), "UTF-8");
-				encryptinput = Base64.encodeBase64(dect);
+				encryptinput = Base64.decodeBase64(dect);
 				} catch (UnsupportedEncodingException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

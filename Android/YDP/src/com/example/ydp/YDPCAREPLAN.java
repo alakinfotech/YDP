@@ -1,6 +1,11 @@
 package com.example.ydp;
 
 
+import java.io.UnsupportedEncodingException;
+
+import org.bouncycastle.util.encoders.Base64;
+import org.bouncycastle.util.*;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -25,8 +30,7 @@ import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 import net.sourceforge.zbar.Config;
 
-import org.bouncycastle.util.*;
-import org.bouncycastle.util.encoders.Base64;
+
 
 public class YDPCAREPLAN extends Activity{
 	
@@ -53,6 +57,45 @@ public class YDPCAREPLAN extends Activity{
 	public String uname,pword;
 	//Boolean false,true;
 	
+	private String decriptScanData(String data){
+		Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
+		byte[] encryptinput=null;
+		try {
+			
+			byte[] dect=data.getBytes("UTF-8");
+			//encryptinput = Base64.decodeBase64(dect);
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
+		//	byte[] encryptinput =Base64.decode(encryptedStringTest, RESULT_OK);
+			byte[] reseltByts = null;
+
+		try {
+			reseltByts = cipher.decrypt(encryptinput);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String resultData = null;
+
+
+		if(reseltByts != null){
+
+	
+	
+		try {
+			resultData = new String(reseltByts, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		}
+
+
+		return new String(resultData);
+	}
 	
 	
  	@Override
@@ -99,25 +142,6 @@ public class YDPCAREPLAN extends Activity{
 
 			    	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
 			    	preview.removeView(mPreview);
-			    	
-			    	Cipher cipher = new Cipher("Adi@Revanth");
-			    	String data = "JHXoYD/uOLLgVNtwGNkXUcrMN27yAqRw6OsgO8xldOQ=";
-			    	
-			    	byte[] sendData = Base64.decode(data);
-			    	
-			    	byte[] reseltByts = null;
-			    	
-					try {
-						reseltByts = cipher.decrypt(sendData);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					String resultData = null;
-					if(reseltByts != null)
-						resultData = Strings.fromUTF8ByteArray(reseltByts);
-			    	
-			    	//Toast.makeText(YDPCAREPLAN.this, resultData, Toast.LENGTH_SHORT).show();
 			    	
 			    	startActivity(innt);
 			    				

@@ -45,7 +45,7 @@ public class Cipher {
         int outputLen;  
   
         byte[] inputBuffer = new byte[1024];  
-        byte[] outputBuffer = NULL;//new byte[cipher.getOutputSize(inputBuffer.length)];  
+        byte[] outputBuffer = new byte[cipher.getOutputSize(inputBuffer.length)];  
   
         while ((inputLen = input.read(inputBuffer)) > -1) {  
             outputLen = cipher.processBytes(inputBuffer, 0, inputLen, outputBuffer, 0);  
