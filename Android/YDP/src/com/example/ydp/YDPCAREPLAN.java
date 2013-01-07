@@ -3,8 +3,7 @@ package com.example.ydp;
 
 import java.io.UnsupportedEncodingException;
 
-import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.*;
+import org.apache.commons.codec.binary.Base64;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -57,19 +56,18 @@ public class YDPCAREPLAN extends Activity{
 	public String uname,pword;
 	//Boolean false,true;
 	
-	private String decriptScanData(String data){
+	private String decryptScanData(String data){
 		Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
 		byte[] encryptinput=null;
 		try {
 			
 			byte[] dect=data.getBytes("UTF-8");
-			//encryptinput = Base64.decodeBase64(dect);
+			encryptinput = Base64.decodeBase64(dect);
 		} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	
-		//	byte[] encryptinput =Base64.decode(encryptedStringTest, RESULT_OK);
 			byte[] reseltByts = null;
 
 		try {
