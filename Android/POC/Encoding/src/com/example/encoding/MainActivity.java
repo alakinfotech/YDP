@@ -3,18 +3,20 @@ package com.example.encoding;
 
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.util.Strings;
+
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import android.util.Base64;
+
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.util.*;
 //import org.bouncycastle.util.encoders.Base64;
 
@@ -27,8 +29,9 @@ import javax.crypto.ShortBufferException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 //
-import org.bouncycastle.util.Strings;
+
  
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.InvalidAlgorithmParameterException;
@@ -75,13 +78,21 @@ String encryptedStringTest;
 inputStr = inputTxtFld.getText().toString();
   Log.d("intputstr", inputStr);                
 
-				Cipher cipher = new Cipher("Adi&Revanth");
+				Cipher cipher = new Cipher("password0");
 		    	
 				
 
 				
 //			Toast.makeText(getApplicationContext(), "not entering into on click method",3000).show();
-			byte[] input = inputStr.getBytes();
+			//byte[] input = inputStr.getBytes();
+			byte[] input =null;
+			try {
+				input = inputStr.getBytes("UTF-8");
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
 			
 			byte[] reseltByts = null;
 				  
@@ -99,7 +110,14 @@ inputStr = inputTxtFld.getText().toString();
 				
 				if(reseltByts != null){ 
 					
-					resultData = Base64.encodeToString(reseltByts, RESULT_OK);
+					
+					try {
+						resultData = new String(Base64.encodeBase64(reseltByts), "UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					//resultData = Base64.encodeToString(reseltByts, RESULT_OK);
 					//resultData = new String(reseltByts);
 					encryptedStringTest = resultData; 
 					
@@ -120,12 +138,19 @@ inputStr = inputTxtFld.getText().toString();
 				
 decryptedStr = encryptTxtFld.getText().toString();
 
+			Cipher cipher = new Cipher("password0");
+				byte[] encryptinput=null;
+				try {
+					
+		byte[] dect=decryptedStr.getBytes("UTF-8");
+					//String cipherText = new String(Base64.decodeBase64(decryptedStr), "UTF-8");
+				encryptinput = Base64.encodeBase64(dect);
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			
-
-
-
-				Cipher cipher = new Cipher("Adi&Revanth");
-					byte[] encryptinput =Base64.decode(encryptedStringTest, RESULT_OK);
+				//	byte[] encryptinput =Base64.decode(encryptedStringTest, RESULT_OK);
 					byte[] reseltByts = null;
 
 				try {
@@ -140,7 +165,15 @@ decryptedStr = encryptTxtFld.getText().toString();
 			if(reseltByts != null){
 	
 		//resultData = Strings.fromUTF8ByteArray(reseltByts);	
-			resultData =new String(reseltByts);
+			//resultData =new String(reseltByts);
+			
+			
+			try {
+				resultData = new String(reseltByts, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}
 
 
