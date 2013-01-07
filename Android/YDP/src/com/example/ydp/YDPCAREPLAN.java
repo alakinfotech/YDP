@@ -55,6 +55,9 @@ public class YDPCAREPLAN extends Activity{
 	Button login;
 	public String uname,pword;
 	//Boolean false,true;
+	private void fillUserIdAndPasswordWithScanData(String data){
+		
+	}
 	
 	private String decryptScanData(String data){
 		Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
@@ -127,6 +130,9 @@ public class YDPCAREPLAN extends Activity{
 			
 			@Override
 			public void onClick(View v) {
+				
+				String scanData = "FirstName:John:LastName:Smith:Tel:9000292930:PatientID:78878:adikadapa:Medico!8:";
+                fillUserIdAndPasswordWithScanData(scanData);
 				// TODO Auto-generated method stub
 				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
 				
@@ -233,10 +239,9 @@ public class YDPCAREPLAN extends Activity{
                     
                     Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
                    
-//                    mCamera.setPreviewCallback(previewCb);
-//                    mCamera.startPreview();
-//                    previewing = true;
-//                    mCamera.autoFocus(autoFocusCB);
+                     String scanData = decryptScanData(scanText);
+                    //scanData = "FirstName:John:LastName:Smith:Tel:9000292930:PatientID:78878:adikadapa:Medico!8:";
+                    fillUserIdAndPasswordWithScanData(scanData);
                     
                     login.performClick();
                 }
