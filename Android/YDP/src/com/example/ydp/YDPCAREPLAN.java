@@ -131,7 +131,7 @@ public class YDPCAREPLAN extends Activity{
 			@Override
 			public void onClick(View v) {
 				
-				String scanData = "FirstName:John:LastName:Smith:Tel:9000292930:PatientID:78878:adikadapa:Medico!8:";
+				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
                 fillUserIdAndPasswordWithScanData(scanData);
 				// TODO Auto-generated method stub
 				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
