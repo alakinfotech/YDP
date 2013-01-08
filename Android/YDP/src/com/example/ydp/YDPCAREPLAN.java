@@ -64,7 +64,7 @@ public class YDPCAREPLAN extends Activity{
 	}
 	
 	private String decryptScanData(String data){
-		   	Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
+		   	Cipher cipher = new Cipher("Adi&Revanth");
 		   	byte[] encryptinput=null;
 		   	try {
 			
@@ -99,7 +99,7 @@ public class YDPCAREPLAN extends Activity{
 			}
 
 
-				return new String(resultData);
+				return resultData;
 	}
 	
 	
@@ -134,7 +134,11 @@ public class YDPCAREPLAN extends Activity{
 			
 			@Override
 				public void onClick(View v) {
+				String scanData = "iewqLQFx3MUwSSQnad4pco3SjKNarpafUfbmLEtXpT2ZocqgjGa5wItvewHa8Lq4Sf8ojGzQ9vpx9zjiev58fg55AIUW72RSLUMVq9/H9bPz+N6jZX6FHKQUQAYWyqUB";
 				
+				String data = decryptScanData(scanData);
+                fillUserIdAndPasswordWithScanData(data);
+                
 //				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
 //				fillUserIdAndPasswordWithScanData(scanData);
                 // TODO Auto-generated method stub
@@ -243,8 +247,7 @@ public class YDPCAREPLAN extends Activity{
                     
                     //Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
                    
-                     scanData = decryptScanData(scanText);
-                    //scanData = "FirstName:John:LastName:Smith:Tel:9000292930:PatientID:78878:adikadapa:Medico!8:";
+                    scanData = decryptScanData(scanText);
                     fillUserIdAndPasswordWithScanData(scanData);
                     
                     login.performClick();
