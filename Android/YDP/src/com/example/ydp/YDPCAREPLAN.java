@@ -57,14 +57,9 @@ public class YDPCAREPLAN extends Activity{
 	public String uname,pword;
 	//Boolean false,true;
 	private void fillUserIdAndPasswordWithScanData(String data){
-		
-		
-		String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
-        String[] scan = scanData.split(":");
-	    Toast.makeText(getApplicationContext(), scan[8], 3000).show();
-	    Toast.makeText(getApplicationContext(), scan[9], 3000).show();
-	    username.setText(scan[8]);
-		 password.setText(scan[9]);
+        String[] scan = data.split(":");
+	    username.setText(scan[8].trim());
+		 password.setText(scan[9].trim());
 		
 	}
 	
@@ -141,10 +136,7 @@ public class YDPCAREPLAN extends Activity{
 				public void onClick(View v) {
 				
 //				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
-//                String[] scan = scanData.split(":");
-//        	    Toast.makeText(getApplicationContext(), scan[8], 3000).show();
-//        	    Toast.makeText(getApplicationContext(), scan[9], 3000).show();
-				fillUserIdAndPasswordWithScanData(scanData);
+//				fillUserIdAndPasswordWithScanData(scanData);
                 // TODO Auto-generated method stub
 				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
 				
@@ -249,7 +241,7 @@ public class YDPCAREPLAN extends Activity{
                         barcodeScanned = true;
                     }
                     
-                    Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
                    
                      scanData = decryptScanData(scanText);
                     //scanData = "FirstName:John:LastName:Smith:Tel:9000292930:PatientID:78878:adikadapa:Medico!8:";
