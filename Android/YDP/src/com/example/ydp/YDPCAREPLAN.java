@@ -36,7 +36,8 @@ public class YDPCAREPLAN extends Activity{
 	protected static final byte[] NULL = null;
 	private Camera mCamera;
     private CameraPreview mPreview;
-    private Handler autoFocusHandler;    
+    private Handler autoFocusHandler;
+    String scanData;
 
     String scanText;
     
@@ -57,59 +58,67 @@ public class YDPCAREPLAN extends Activity{
 	//Boolean false,true;
 	private void fillUserIdAndPasswordWithScanData(String data){
 		
+		
+		String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
+        String[] scan = scanData.split(":");
+	    Toast.makeText(getApplicationContext(), scan[8], 3000).show();
+	    Toast.makeText(getApplicationContext(), scan[9], 3000).show();
+	    username.setText(scan[8]);
+		 password.setText(scan[9]);
+		
 	}
 	
 	private String decryptScanData(String data){
-		Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
-		byte[] encryptinput=null;
-		try {
+		   	Cipher cipher = new Cipher("A7Q6DyH0LW9VF7G55TEyFw==");
+		   	byte[] encryptinput=null;
+		   	try {
 			
 			byte[] dect=data.getBytes("UTF-8");
 			encryptinput = Base64.decodeBase64(dect);
-		} catch (UnsupportedEncodingException e1) {
+		   	} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		   	}
 	
 			byte[] reseltByts = null;
 
-		try {
+			try {
 			reseltByts = cipher.decrypt(encryptinput);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String resultData = null;
-
-
-		if(reseltByts != null){
-
-	
-	
-		try {
-			resultData = new String(reseltByts, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
+			} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
-		}
+			String resultData = null;
 
 
-		return new String(resultData);
+			if(reseltByts != null){
+
+	
+	
+				try {
+			resultData = new String(reseltByts, "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			}
+
+
+				return new String(resultData);
 	}
 	
 	
  	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ydpcareplan);
+ 			super.onCreate(savedInstanceState);
+ 			setContentView(R.layout.ydpcareplan);
 		
 		
 		
-		 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+ 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		 
-		 autoFocusHandler = new Handler();
+ 			autoFocusHandler = new Handler();
 	        mCamera = getCameraInstance();
 
 	        /* Instance barcode scanner */
@@ -125,15 +134,18 @@ public class YDPCAREPLAN extends Activity{
 	        username = (EditText) findViewById(R.id.username);
 			 password =(EditText) findViewById(R.id.password);
 			 
-		login =(Button) findViewById(R.id.login);
-		login.setOnClickListener(new OnClickListener() {
+			 login =(Button) findViewById(R.id.login);
+			 login.setOnClickListener(new OnClickListener() {
 			
 			@Override
-			public void onClick(View v) {
+				public void onClick(View v) {
 				
-				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
-                fillUserIdAndPasswordWithScanData(scanData);
-				// TODO Auto-generated method stub
+//				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
+//                String[] scan = scanData.split(":");
+//        	    Toast.makeText(getApplicationContext(), scan[8], 3000).show();
+//        	    Toast.makeText(getApplicationContext(), scan[9], 3000).show();
+				fillUserIdAndPasswordWithScanData(scanData);
+                // TODO Auto-generated method stub
 				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
 				
 				uname = username.getText().toString();
@@ -159,65 +171,65 @@ public class YDPCAREPLAN extends Activity{
  	@Override
     protected void onResume(){
  	
- 		super.onResume();
+ 			super.onResume();
  		
  		
- 		if(classCreateStatus == 10)
- 		{
- 		autoFocusHandler = new Handler();
-        mCamera = getCameraInstance();
+ 			if(classCreateStatus == 10)
+ 			{
+ 				autoFocusHandler = new Handler();
+ 				mCamera = getCameraInstance();
 
-        /* Instance barcode scanner */
-        scanner = new ImageScanner();
-        scanner.setConfig(0, Config.X_DENSITY, 3);
-        scanner.setConfig(0, Config.Y_DENSITY, 3);
+ 				/* Instance barcode scanner */
+ 				scanner = new ImageScanner();
+ 				scanner.setConfig(0, Config.X_DENSITY, 3);
+ 				scanner.setConfig(0, Config.Y_DENSITY, 3);
 
-        mPreview = new CameraPreview(getApplicationContext(), mCamera, previewCb, autoFocusCB);
-        FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
-        preview.addView(mPreview);
- 		}
+ 				mPreview = new CameraPreview(getApplicationContext(), mCamera, previewCb, autoFocusCB);
+ 				FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+ 				preview.addView(mPreview);
+ 			}
         
  	}
  
  	@Override
  	
  	public void onPause() {
-        super.onPause();
-        releaseCamera();
-        classCreateStatus = 10;
-        FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
-    	preview.removeView(mPreview);
+ 			super.onPause();
+ 			releaseCamera();
+ 			classCreateStatus = 10;
+        	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+        	preview.removeView(mPreview);
       
     }
 
     /** A safe way to get an instance of the Camera object. */
     public static Camera getCameraInstance(){
-        Camera c = null;
-        try {
+    		Camera c = null;
+    		try {
             c = Camera.open();
-        } catch (Exception e){
-        }
-        return c;
+    		} catch (Exception e){
+    		}
+    		return c;
     }
 
     private void releaseCamera() {
-        if (mCamera != null) {
+    		if (mCamera != null) {
             previewing = false;
             mCamera.setPreviewCallback(null);
             mCamera.release();
             mCamera = null;
-        }
+    		}
     }
 
     private Runnable doAutoFocus = new Runnable() {
             public void run() {
                 if (previewing)
                     mCamera.autoFocus(autoFocusCB);
-            }
+            	}
         };
 
     PreviewCallback previewCb = new PreviewCallback() {
-            public void onPreviewFrame(byte[] data, Camera camera) {
+    			public void onPreviewFrame(byte[] data, Camera camera) {
                 Camera.Parameters parameters = camera.getParameters();
                 Size size = parameters.getPreviewSize();
 
@@ -239,7 +251,7 @@ public class YDPCAREPLAN extends Activity{
                     
                     Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
                    
-                     String scanData = decryptScanData(scanText);
+                     scanData = decryptScanData(scanText);
                     //scanData = "FirstName:John:LastName:Smith:Tel:9000292930:PatientID:78878:adikadapa:Medico!8:";
                     fillUserIdAndPasswordWithScanData(scanData);
                     
@@ -253,7 +265,7 @@ public class YDPCAREPLAN extends Activity{
             public void onAutoFocus(boolean success, Camera camera) {
                 autoFocusHandler.postDelayed(doAutoFocus, 1000);
             }
-        };
+        	};
 
 }
 
