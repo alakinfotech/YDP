@@ -134,10 +134,10 @@ public class YDPCAREPLAN extends Activity{
 			
 			@Override
 				public void onClick(View v) {
-				String scanData = "iewqLQFx3MUwSSQnad4pco3SjKNarpafUfbmLEtXpT2ZocqgjGa5wItvewHa8Lq4Sf8ojGzQ9vpx9zjiev58fg55AIUW72RSLUMVq9/H9bPz+N6jZX6FHKQUQAYWyqUB";
-				
-				String data = decryptScanData(scanData);
-                fillUserIdAndPasswordWithScanData(data);
+//				String scanData = "iewqLQFx3MUwSSQnad4pco3SjKNarpafUfbmLEtXpT2ZocqgjGa5wItvewHa8Lq4Sf8ojGzQ9vpx9zjiev58fg55AIUW72RSLUMVq9/H9bPz+N6jZX6FHKQUQAYWyqUB";
+//				
+//				String data = decryptScanData(scanData);
+//                fillUserIdAndPasswordWithScanData(data);
                 
 //				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
 //				fillUserIdAndPasswordWithScanData(scanData);
