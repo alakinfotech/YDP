@@ -37,9 +37,9 @@ public class YDPCAREPLAN extends Activity{
 	private Camera mCamera;
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
-    String scanData;
-
-    String scanText;
+//    String scanData;
+//
+//    String scanText;
     
     ImageScanner scanner;
 
@@ -67,7 +67,7 @@ public class YDPCAREPLAN extends Activity{
 		   	Cipher cipher = new Cipher("Adi&Revanth");
 		   	byte[] encryptinput=null;
 		   	try {
-			
+			//scanText.trim();
 			byte[] dect=data.getBytes("UTF-8");
 			encryptinput = Base64.decodeBase64(dect);
 		   	} catch (UnsupportedEncodingException e1) {
@@ -99,7 +99,7 @@ public class YDPCAREPLAN extends Activity{
 			}
 
 
-				return resultData;
+				return new String(resultData);
 	}
 	
 	
@@ -134,14 +134,7 @@ public class YDPCAREPLAN extends Activity{
 			
 			@Override
 				public void onClick(View v) {
-//				String scanData = "iewqLQFx3MUwSSQnad4pco3SjKNarpafUfbmLEtXpT2ZocqgjGa5wItvewHa8Lq4Sf8ojGzQ9vpx9zjiev58fg55AIUW72RSLUMVq9/H9bPz+N6jZX6FHKQUQAYWyqUB";
-//				
-//				String data = decryptScanData(scanData);
-//                fillUserIdAndPasswordWithScanData(data);
-                
-//				String scanData = "FirstName:John:\nLastName:Smith:\nTel:9000292930:\nPatientID:78878:\nadikadapa:Medico!8:";
-//				fillUserIdAndPasswordWithScanData(scanData);
-                // TODO Auto-generated method stub
+
 				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
 				
 				uname = username.getText().toString();
@@ -225,7 +218,9 @@ public class YDPCAREPLAN extends Activity{
         };
 
     PreviewCallback previewCb = new PreviewCallback() {
+    	String scanText;
     			public void onPreviewFrame(byte[] data, Camera camera) {
+    				
                 Camera.Parameters parameters = camera.getParameters();
                 Size size = parameters.getPreviewSize();
 
@@ -241,13 +236,13 @@ public class YDPCAREPLAN extends Activity{
                     
                     SymbolSet syms = scanner.getResults();
                     for (Symbol sym : syms) {
-                        scanText = "barcode result " + sym.getData();
+                        scanText = sym.getData();
                         barcodeScanned = true;
                     }
-                    
-                    //Toast.makeText(YDPCAREPLAN.this, scanText, Toast.LENGTH_SHORT).show();
                    
-                    scanData = decryptScanData(scanText);
+                    
+                    String scanData = decryptScanData(scanText);
+
                     fillUserIdAndPasswordWithScanData(scanData);
                     
                     login.performClick();

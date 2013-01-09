@@ -10,10 +10,12 @@ import java.io.IOException;
 
 import android.util.Log;
 
+import android.view.Display;
 import android.view.View;
 import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
+import android.view.WindowManager;
 
 import android.content.Context;
 
@@ -93,7 +95,31 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         try {
             // Hard code camera surface rotation 90 degs to match Activity view in portrait
-            mCamera.setDisplayOrientation(90);
+             mCamera.setDisplayOrientation(270);
+//        	Parameters parameters = mCamera.getParameters();
+//        	Display display = ((WindowManager)getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+//        	
+//        	if(display.getRotation() == Surface.ROTATION_0)
+//            {
+//                parameters.setPreviewSize(height, width);                           
+//                mCamera.setDisplayOrientation(90);
+//            }
+//
+//            if(display.getRotation() == Surface.ROTATION_90)
+//            {
+//                parameters.setPreviewSize(width, height);                           
+//            }
+//
+//            if(display.getRotation() == Surface.ROTATION_180)
+//            {
+//                parameters.setPreviewSize(height, width);               
+//            }
+//
+//            if(display.getRotation() == Surface.ROTATION_270)
+//            {
+//                parameters.setPreviewSize(width, height);
+//                mCamera.setDisplayOrientation(180);
+//            }
 
             mCamera.setPreviewDisplay(mHolder);
             mCamera.setPreviewCallback(previewCallback);
