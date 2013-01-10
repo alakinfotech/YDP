@@ -22,9 +22,16 @@ public class YDPWEBVIEW extends Activity {
 	boolean redirect = false;
 	static int i = 0;
 	
+	protected void onPause()
+	   {
+	       super.onPause();
+	       System.gc();
+	   }
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+			i = 0;
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.webview);
 			wb = (WebView) findViewById(R.id.webView1);
@@ -88,6 +95,8 @@ public class YDPWEBVIEW extends Activity {
 		       }
 
 		    }
+		   
+		   
 		});
 	
 	 
