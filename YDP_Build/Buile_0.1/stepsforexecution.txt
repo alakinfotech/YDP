@@ -1,0 +1,5 @@
+//Steps for installation of YDP application//
+Step-1:copy the executable file(ydp.apk).
+Step-2:Paste the file in download folder in phone memory.
+Step-3:Click on YDP.apk after pasting it .
+Step-4:Click on install button it will auomatically installed in phone.
