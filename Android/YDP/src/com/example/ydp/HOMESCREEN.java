@@ -19,13 +19,13 @@ public class HOMESCREEN  extends TabActivity{
 
          // Initialize a TabSpec for each tab and add it to the TabHost
         //for Tab1        
-        spec = tabHost.newTabSpec("Tab1").setIndicator("YDP CARE PLAN",res.getDrawable(R.drawable.all))
+        spec = tabHost.newTabSpec("Tab1").setIndicator("YDP Care Plan",res.getDrawable(R.drawable.faves))
                           .setContent(new Intent(this,YDPCAREPLAN.class));
         tabHost.addTab(spec);
       
 
         // for Tab2
-        spec = tabHost.newTabSpec("Tab2").setIndicator("NOTIFY YDP",res.getDrawable(R.drawable.faves))
+        spec = tabHost.newTabSpec("Tab2").setIndicator("Notify YDP",res.getDrawable(R.drawable.all))
                           .setContent(new Intent(this,NOTIFYYDP.class));
         tabHost.addTab(spec);
 
