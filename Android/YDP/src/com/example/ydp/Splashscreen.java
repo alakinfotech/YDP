@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.Window;
 
 public class Splashscreen extends Activity {
@@ -21,7 +20,7 @@ public class Splashscreen extends Activity {
 
         /* New Handler to start the Menu-Activity 
          * and close this Splash-Screen after some seconds.*/
-        new Handler().postDelayed(new Runnable(){
+           new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */

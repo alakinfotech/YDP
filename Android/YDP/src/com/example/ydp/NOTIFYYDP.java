@@ -44,8 +44,7 @@ public class NOTIFYYDP  extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-Intent browserIntent = 
-        new Intent(Intent.ACTION_VIEW, Uri.parse("https://yourdoctorprogram.com/"));
+              Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://yourdoctorprogram.com/"));
 			startActivity(browserIntent);
 				
 				
@@ -56,8 +55,7 @@ Intent browserIntent =
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//http://blog.adamsbros.org/2011/12/31/send-email-in-your-android-application/
+				//send-email-in-your-android-application/
 				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:info@yourdoctorprogram.com"));
 				intent.putExtra("subject", "my subject");
 				intent.putExtra("body", "my message");
