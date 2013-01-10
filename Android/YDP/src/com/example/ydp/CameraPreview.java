@@ -70,7 +70,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         try {
             // Hard code camera surface rotation 270 degs to match Activity view 
-             mCamera.setDisplayOrientation(270);
+             mCamera.setDisplayOrientation(90);
 
 
             mCamera.setPreviewDisplay(mHolder);
