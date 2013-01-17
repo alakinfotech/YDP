@@ -6,6 +6,9 @@ import java.io.UnsupportedEncodingException;
 import org.apache.commons.codec.binary.Base64;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
@@ -20,6 +23,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 
@@ -38,6 +42,7 @@ public class YDPCAREPLAN extends Activity{
 	private Camera mCamera;
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
+    Context context= this;
 //    String scanData;
 //
 //    String scanText;
@@ -58,7 +63,7 @@ public class YDPCAREPLAN extends Activity{
 	public String uname,pword;
 	//Boolean false,true;
 	private void fillUserIdAndPasswordWithScanData(String data){
-        String[] scan = data.split(":");
+	 String[] scan = data.split(":");
 	    username.setText(scan[8].trim());
 		 password.setText(scan[9].trim());
 		
@@ -98,10 +103,15 @@ public class YDPCAREPLAN extends Activity{
 			e.printStackTrace();
 			}
 			}
+			if(resultData != null)
+			{
 
-
-				return new String(resultData);
-	}
+			return new String(resultData);
+			}
+			else 
+				{ return null;
+				}
+				}
 	
 	
  	@Override
@@ -135,6 +145,30 @@ public class YDPCAREPLAN extends Activity{
 			
 			@Override
 				public void onClick(View v) {
+				
+				if(username.length()==0||password.length()==0)
+				{
+					//Toast.makeText(getApplicationContext(), "Enter username and password ", Toast.LENGTH_SHORT).show();
+				
+					AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+					alertDialogBuilder.setTitle("Warning");
+					alertDialogBuilder.setMessage("Enter Username and Password  to login");
+					alertDialogBuilder.setNegativeButton("ok",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							// if this button is clicked, just close
+							// the dialog box and do nothing
+							dialog.cancel();
+						}
+					});
+					// create alert dialog
+					AlertDialog alertDialog = alertDialogBuilder.create();
+	 
+					// show it
+					alertDialog.show();
+				
+				}
+				else
+				{
 
 				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
 				
@@ -150,6 +184,7 @@ public class YDPCAREPLAN extends Activity{
 			    	preview.removeView(mPreview);
 			    	
 			    	startActivity(innt);
+				}
 			    				
 			}
 		});
@@ -219,7 +254,7 @@ public class YDPCAREPLAN extends Activity{
         };
 
     PreviewCallback previewCb = new PreviewCallback() {
-    	String scanText;
+    	String scanText = null;
     			public void onPreviewFrame(byte[] data, Camera camera) {
     				
                 Camera.Parameters parameters = camera.getParameters();
@@ -240,14 +275,25 @@ public class YDPCAREPLAN extends Activity{
                         scanText = sym.getData();
                         barcodeScanned = true;
                     }
-                   
+                  
                     
                     String scanData = decryptScanData(scanText);
-
-                    fillUserIdAndPasswordWithScanData(scanData);
+                    if(scanData != null)
+                    {
+                     fillUserIdAndPasswordWithScanData(scanData);
                     
-                    login.performClick();
-                }
+                     login.performClick();
+                    }
+                    else{
+                    	   if (barcodeScanned) {
+                               barcodeScanned = false;
+                               mCamera.setPreviewCallback(previewCb);
+                               mCamera.startPreview();
+                               previewing = true;
+                               mCamera.autoFocus(autoFocusCB);
+                           }
+                    }
+                }     
             }
         };
 
