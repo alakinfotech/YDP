@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QHR Mobile</string>
+    <string name="Copyright">2012 © </string>
+    <string name="count_label">User Id     </string>
+    <string name="Message"></string>
+    <string name="menu_settings">None</string>
+ 	<string name="login_label">Login</string>
+ 	<string name="password_label">Password</string>
+ 	<string name="password">Medico!8</string>
+ 	<string name="userid">admin</string>
+</resources>
