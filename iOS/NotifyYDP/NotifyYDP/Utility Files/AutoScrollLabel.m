@@ -241,7 +241,7 @@
 	for (int i=0; i<NUM_LABELS; ++i){
 		label[i] = nil;
 	}
-    //[super dealloc];
+    [super dealloc];
 }
 
 

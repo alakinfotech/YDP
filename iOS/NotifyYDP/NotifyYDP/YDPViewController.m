@@ -7,16 +7,13 @@
 //
 
 #import "YDPViewController.h"
-#import "PatientInfoView.h"
-#import "PhysicionInfoView.h"
 #import "YDPDataModel.h"
 #import "PatientModel.h"
 #import "PhysicionModel.h"
 #import "YDPWebViewController.h"
 
 @implementation YDPViewController
-//@synthesize patientInfoView;
-//@synthesize physicionInfoView;
+
 @synthesize avoutViewController;
 - (void)didReceiveMemoryWarning
 {
@@ -66,21 +63,6 @@
 {
     // Return YES for supported orientations
     return NO;//(interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (IBAction)OnPatientInfo:(id)sender {
-
-    PatientInfoView *patientInfoView = [[PatientInfoView alloc]init];
-    patientInfoView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    
-    [self presentModalViewController:patientInfoView animated:YES];
-}
-
-- (IBAction)OnPhysicionInfo:(id)sender {
-
-    PhysicionInfoView *physicionInfoView = [[PhysicionInfoView alloc]init];
-    physicionInfoView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentModalViewController:physicionInfoView animated:YES];
 }
 
 

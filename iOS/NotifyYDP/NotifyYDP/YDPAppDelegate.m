@@ -89,8 +89,8 @@
     
     if (!self.progressHudForWindow) {
         //ProgressHUD presenting to window
+        self.progressHudForWindow = nil;
         self.progressHudForWindow = [[MBProgressHUD alloc] initWithView:self.window];
-        //self.progressHudForWindow = tempLoadingSpinner;
         self.progressHudForWindow.removeFromSuperViewOnHide = YES;
         [self.window addSubview:self.progressHudForWindow];
         self.progressHudForWindow.delegate = self;

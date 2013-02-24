@@ -59,7 +59,6 @@
 - (void)viewDidUnload
 {
     [self setWebView:nil];
-    [self setLogOut:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -113,22 +112,18 @@
         
         if (requestid == 0) {
         
-        NSString *setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='%@';",self.userName]; 
-        NSLog(@"Code is %@",setqrcode);
-        [self.webView stringByEvaluatingJavaScriptFromString:setqrcode];
-        
-        setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='%@';",self.password]; 
-        NSLog(@"Code is %@",setqrcode);
-        [self.webView stringByEvaluatingJavaScriptFromString:setqrcode];
-        
-        //setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_bt_Login').click();"]; 
-        //NSLog(@"Code is %@",setqrcode);
-        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName('ctl00$ctl00$ContentPlaceHolder$ContentPlaceHolder1$bt_Login')[0].click();"];
-            requestid ++;
+            NSString *setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='%@';",self.userName]; 
+            [self.webView stringByEvaluatingJavaScriptFromString:setqrcode];
+            
+                setqrcode = nil;
+                setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='%@';",self.password];
+
+            [self.webView stringByEvaluatingJavaScriptFromString:setqrcode];
+            
+            [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName('ctl00$ctl00$ContentPlaceHolder$ContentPlaceHolder1$bt_Login')[0].click();"];
+                requestid ++;
         }
         else if (requestid == 1) {
-            //[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
-            
             
             requestid ++;
         

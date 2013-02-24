@@ -12,12 +12,8 @@
 @class PatientInfoView;
 @class PhysicionInfoView;
 
-@interface YDPViewController : UIViewController
+@interface YDPViewController : UIViewController<MFMailComposeViewControllerDelegate>
 
-//@property (strong, nonatomic) PatientInfoView *patientInfoView;
-//@property (strong, nonatomic) PhysicionInfoView *physicionInfoView;
-- (IBAction)OnPatientInfo:(id)sender;
-- (IBAction)OnPhysicionInfo:(id)sender;
 -(IBAction)showComposer:(id)sender;
 - (IBAction)OnCallYDP:(id)sender;
 - (IBAction)moreAboutYDP:(UIButton *)sender;

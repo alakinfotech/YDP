@@ -61,6 +61,8 @@
     [self setUserName:nil];
     [self setPassword:nil];
     [super viewDidUnload];
+    self.cameraSim.readerView = nil;
+    self.cameraSim = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

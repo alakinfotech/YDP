@@ -33,10 +33,6 @@
 		9E6303F515D97E8E00E7BC66 /* PatientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63039F15D97E8E00E7BC66 /* PatientModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303F615D97E8E00E7BC66 /* PhysicionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303A115D97E8E00E7BC66 /* PhysicionModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303F715D97E8E00E7BC66 /* YDPDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303A315D97E8E00E7BC66 /* YDPDataModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E6303F915D97E8E00E7BC66 /* PatientInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303A715D97E8E00E7BC66 /* PatientInfoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E6303FA15D97E8E00E7BC66 /* PatientInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E6303A815D97E8E00E7BC66 /* PatientInfoView.xib */; };
-		9E6303FB15D97E8E00E7BC66 /* PhysicionInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303AA15D97E8E00E7BC66 /* PhysicionInfoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E6303FC15D97E8E00E7BC66 /* PhysicionInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E6303AB15D97E8E00E7BC66 /* PhysicionInfoView.xib */; };
 		9E6303FD15D97E8E00E7BC66 /* Cipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303AF15D97E8E00E7BC66 /* Cipher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303FE15D97E8E00E7BC66 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303B115D97E8E00E7BC66 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303FF15D97E8E00E7BC66 /* AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303B315D97E8E00E7BC66 /* AutoScrollLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -101,12 +97,6 @@
 		9E6303A315D97E8E00E7BC66 /* YDPDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPDataModel.m; sourceTree = "<group>"; };
 		9E6303A415D97E8E00E7BC66 /* NotifyYDP-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NotifyYDP-Info.plist"; sourceTree = "<group>"; };
 		9E6303A515D97E8E00E7BC66 /* NotifyYDP-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NotifyYDP-Prefix.pch"; sourceTree = "<group>"; };
-		9E6303A615D97E8E00E7BC66 /* PatientInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientInfoView.h; sourceTree = "<group>"; };
-		9E6303A715D97E8E00E7BC66 /* PatientInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientInfoView.m; sourceTree = "<group>"; };
-		9E6303A815D97E8E00E7BC66 /* PatientInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientInfoView.xib; sourceTree = "<group>"; };
-		9E6303A915D97E8E00E7BC66 /* PhysicionInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicionInfoView.h; sourceTree = "<group>"; };
-		9E6303AA15D97E8E00E7BC66 /* PhysicionInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhysicionInfoView.m; sourceTree = "<group>"; };
-		9E6303AB15D97E8E00E7BC66 /* PhysicionInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysicionInfoView.xib; sourceTree = "<group>"; };
 		9E6303AE15D97E8E00E7BC66 /* Cipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cipher.h; sourceTree = "<group>"; };
 		9E6303AF15D97E8E00E7BC66 /* Cipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cipher.m; sourceTree = "<group>"; };
 		9E6303B015D97E8E00E7BC66 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -205,12 +195,6 @@
 				9E63039D15D97E8E00E7BC66 /* Models */,
 				9E6303A415D97E8E00E7BC66 /* NotifyYDP-Info.plist */,
 				9E6303A515D97E8E00E7BC66 /* NotifyYDP-Prefix.pch */,
-				9E6303A615D97E8E00E7BC66 /* PatientInfoView.h */,
-				9E6303A715D97E8E00E7BC66 /* PatientInfoView.m */,
-				9E6303A815D97E8E00E7BC66 /* PatientInfoView.xib */,
-				9E6303A915D97E8E00E7BC66 /* PhysicionInfoView.h */,
-				9E6303AA15D97E8E00E7BC66 /* PhysicionInfoView.m */,
-				9E6303AB15D97E8E00E7BC66 /* PhysicionInfoView.xib */,
 				9E6303AC15D97E8E00E7BC66 /* Utility Files */,
 				9E6303C215D97E8E00E7BC66 /* YDPAppDelegate.h */,
 				9E6303C315D97E8E00E7BC66 /* YDPAppDelegate.m */,
@@ -480,8 +464,6 @@
 				9E6303F015D97E8E00E7BC66 /* launch_image@2x.png in Resources */,
 				9E6303F115D97E8E00E7BC66 /* tab_icon.png in Resources */,
 				9E6303F215D97E8E00E7BC66 /* tab_icon@2x.png in Resources */,
-				9E6303FA15D97E8E00E7BC66 /* PatientInfoView.xib in Resources */,
-				9E6303FC15D97E8E00E7BC66 /* PhysicionInfoView.xib in Resources */,
 				9E5177151652C620009A339A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,8 +483,6 @@
 				9E6303F515D97E8E00E7BC66 /* PatientModel.m in Sources */,
 				9E6303F615D97E8E00E7BC66 /* PhysicionModel.m in Sources */,
 				9E6303F715D97E8E00E7BC66 /* YDPDataModel.m in Sources */,
-				9E6303F915D97E8E00E7BC66 /* PatientInfoView.m in Sources */,
-				9E6303FB15D97E8E00E7BC66 /* PhysicionInfoView.m in Sources */,
 				9E6303FD15D97E8E00E7BC66 /* Cipher.m in Sources */,
 				9E6303FE15D97E8E00E7BC66 /* NSData+Base64.m in Sources */,
 				9E6303FF15D97E8E00E7BC66 /* AutoScrollLabel.m in Sources */,

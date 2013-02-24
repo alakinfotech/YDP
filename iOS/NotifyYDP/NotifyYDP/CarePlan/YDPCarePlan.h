@@ -24,5 +24,5 @@
 
 
 - (IBAction)Login;
-- (void) Logout;
+
 @end
