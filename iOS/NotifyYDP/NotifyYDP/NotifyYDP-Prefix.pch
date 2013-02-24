@@ -1,0 +1,22 @@
+//
+// Prefix header for all source files of the 'NotifyYDP' target in the 'NotifyYDP' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    # import "ZBarSDK.h"
+    #import "PatientModel.h"
+    #import "PhysicionModel.h"
+
+#define ShowNetworkActivityIndicator()  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES
+#define HideNetworkActivityIndicator()  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO
+#define NetWorkError                    @"You're not connected to the Internet. Please connect and retry."
+
+#endif
