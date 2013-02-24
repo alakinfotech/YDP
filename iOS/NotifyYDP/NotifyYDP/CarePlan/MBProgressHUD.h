@@ -82,29 +82,6 @@ typedef enum {
 
 @property (strong) id targetForExecution;
 @property (strong) id objectForExecution;
-/**
- * Creates a new HUD, adds it to provided view and shows it. The counterpart to this method is hideHUDForView:animated:.
- * 
- * @param view The view that the HUD will be added to
- * @param animated If set to YES the HUD will disappear using the current animationType. If set to NO the HUD will not use
- * animations while disappearing.
- * @return A reference to the created HUD.
- *
- * @see hideHUDForView:animated:
- */
-+ (MBProgressHUD *)showHUDAddedTo:(UIView *)view animated:(BOOL)animated;
-
-/**
- * Finds a HUD sibview and hides it. The counterpart to this method is showHUDAddedTo:animated:.
- *
- * @param view The view that is going to be searched for a HUD subview.
- * @param animated If set to YES the HUD will disappear using the current animationType. If set to NO the HUD will not use
- * animations while disappearing.
- * @return YES if a HUD was found and removed, NO otherwise. 
- *
- * @see hideHUDForView:animated:
- */
-+ (BOOL)hideHUDForView:(UIView *)view animated:(BOOL)animated;
 
 /** 
  * A convenience constructor that initializes the HUD with the window's bounds. Calls the designated constructor with
