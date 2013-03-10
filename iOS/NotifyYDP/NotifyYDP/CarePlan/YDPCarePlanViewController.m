@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "YDPCaarePlanViewController.h"
+#import "YDPCarePlanViewController.h"
 #import "YDPAppDelegate.h"
 
-@implementation YDPCaarePlanViewController
+@implementation YDPCarePlanViewController
 @synthesize webView;
 @synthesize userName;
 @synthesize password;
@@ -42,7 +42,7 @@
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     //[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
-    
+    //self.webView = [[UIWebView alloc]init];
     [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     
     
@@ -74,10 +74,6 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)expandAll {
-    
-    [self.webView stringByEvaluatingJavaScriptFromString:@"TreeView_ToggleNode(ContentPlaceHolder_MainContent_MainContent_TreeView1_Data,0,document.getElementById('ContentPlaceHolder_MainContent_MainContent_TreeView1n0'),' ',document.getElementById('ContentPlaceHolder_MainContent_MainContent_TreeView1n0Nodes'));"];
-}
 
 
 //- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -125,6 +121,17 @@
         }
         else if (requestid == 1) {
             
+            // Load the JavaScript code from the Resources and inject it into the web page
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"YDPWebUtil" ofType:@"js"];
+            NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+            
+            [self.webView stringByEvaluatingJavaScriptFromString:jsCode];
+            //Grabbing the data from the page
+            NSString *jsonResponce = [self.webView stringByEvaluatingJavaScriptFromString:@"getCarePlan()"];
+            
+//            NSString *carePlan = @"document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView')";
+//            carePlan = [self.webView stringByEvaluatingJavaScriptFromString:carePlan];
+            NSLog(@"Care Plan = %@",jsonResponce);
             requestid ++;
         
         }

@@ -8,7 +8,7 @@
 
 #import "YDPLogin.h"
 #import "NSData+Base64.h"
-#import "YDPCaarePlanViewController.h"
+#import "YDPCarePlanViewController.h"
 
 @implementation YDPLogin
 @synthesize userName;
@@ -116,14 +116,12 @@
 - (IBAction)Login {
     
     //[self.view addSubview:self.webView];
-    YDPCaarePlanViewController *webViewController = [[YDPCaarePlanViewController alloc]init];
+    YDPCarePlanViewController *webViewController = [[YDPCarePlanViewController alloc]init];
     webViewController.userName = self.userName.text;
     webViewController.password = self.password.text;
     webViewController.url = @
     "https://yourdoctorprogram.com/qhr/Login.aspx";
     webViewController.isAudination = YES;
-    self.userName.text = @"";
-    self.password.text = @"";
     [self presentModalViewController:webViewController animated:YES];
     
 }

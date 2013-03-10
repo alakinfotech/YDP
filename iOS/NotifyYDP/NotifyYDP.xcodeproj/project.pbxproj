@@ -12,8 +12,8 @@
 		9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038415D97E8E00E7BC66 /* YDPLogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038515D97E8E00E7BC66 /* YDPLogin.xib */; };
-		9E6303E315D97E8E00E7BC66 /* YDPCaarePlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038715D97E8E00E7BC66 /* YDPCaarePlanViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E6303E415D97E8E00E7BC66 /* YDPWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038815D97E8E00E7BC66 /* YDPWebViewController.xib */; };
+		9E6303E315D97E8E00E7BC66 /* YDPCarePlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038715D97E8E00E7BC66 /* YDPCarePlanViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E6303E415D97E8E00E7BC66 /* YDPCarePlanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038815D97E8E00E7BC66 /* YDPCarePlanViewController.xib */; };
 		9E6303E515D97E8E00E7BC66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038915D97E8E00E7BC66 /* InfoPlist.strings */; };
 		9E6303E615D97E8E00E7BC66 /* YDPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038B15D97E8E00E7BC66 /* YDPViewController.xib */; };
 		9E6303E715D97E8E00E7BC66 /* all.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038E15D97E8E00E7BC66 /* all.png */; };
@@ -50,6 +50,8 @@
 		9EA6CDFF1607B61800396518 /* DetailDiagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDFE1607B61800396518 /* DetailDiagnosis.m */; };
 		9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143A616EC453F003F1166 /* YDPHelpViewController.m */; };
 		9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */; };
+		9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
+		9EC143AE16EC9F95003F1166 /* YDPWebUtil.js in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
 		9EE03ADB157E68290000FF3C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03ADA157E68290000FF3C /* CoreLocation.framework */; };
 		9EE03ADE157E68330000FF3C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03ADD157E68330000FF3C /* MapKit.framework */; };
 		9EEF33A2157B38CB00879458 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EEF33A1157B38CB00879458 /* UIKit.framework */; };
@@ -71,9 +73,9 @@
 		9E63038315D97E8E00E7BC66 /* YDPLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPLogin.h; sourceTree = "<group>"; };
 		9E63038415D97E8E00E7BC66 /* YDPLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPLogin.m; sourceTree = "<group>"; };
 		9E63038515D97E8E00E7BC66 /* YDPLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPLogin.xib; sourceTree = "<group>"; };
-		9E63038615D97E8E00E7BC66 /* YDPCaarePlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCaarePlanViewController.h; sourceTree = "<group>"; };
-		9E63038715D97E8E00E7BC66 /* YDPCaarePlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCaarePlanViewController.m; sourceTree = "<group>"; };
-		9E63038815D97E8E00E7BC66 /* YDPWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPWebViewController.xib; sourceTree = "<group>"; };
+		9E63038615D97E8E00E7BC66 /* YDPCarePlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCarePlanViewController.h; sourceTree = "<group>"; };
+		9E63038715D97E8E00E7BC66 /* YDPCarePlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCarePlanViewController.m; sourceTree = "<group>"; };
+		9E63038815D97E8E00E7BC66 /* YDPCarePlanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPCarePlanViewController.xib; sourceTree = "<group>"; };
 		9E63038A15D97E8E00E7BC66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9E63038C15D97E8E00E7BC66 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/YDPViewController.xib; sourceTree = "<group>"; };
 		9E63038E15D97E8E00E7BC66 /* all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all.png; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		9EC143A516EC453F003F1166 /* YDPHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPHelpViewController.h; sourceTree = "<group>"; };
 		9EC143A616EC453F003F1166 /* YDPHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPHelpViewController.m; sourceTree = "<group>"; };
 		9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPHelpViewController.xib; sourceTree = "<group>"; };
+		9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = YDPWebUtil.js; sourceTree = "<group>"; };
 		9EE03ADA157E68290000FF3C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9EE03ADD157E68330000FF3C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9EEF339D157B38CB00879458 /* NotifyYDP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotifyYDP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +194,7 @@
 		9E63037F15D97E8E00E7BC66 /* NotifyYDP */ = {
 			isa = PBXGroup;
 			children = (
+				9EC143AB16EC9AC5003F1166 /* JavaScript */,
 				9EC143AA16EC4648003F1166 /* Notify YDP */,
 				9E63038015D97E8E00E7BC66 /* CarePlan */,
 				9E63038915D97E8E00E7BC66 /* InfoPlist.strings */,
@@ -212,9 +216,9 @@
 				9E63038315D97E8E00E7BC66 /* YDPLogin.h */,
 				9E63038415D97E8E00E7BC66 /* YDPLogin.m */,
 				9E63038515D97E8E00E7BC66 /* YDPLogin.xib */,
-				9E63038615D97E8E00E7BC66 /* YDPCaarePlanViewController.h */,
-				9E63038715D97E8E00E7BC66 /* YDPCaarePlanViewController.m */,
-				9E63038815D97E8E00E7BC66 /* YDPWebViewController.xib */,
+				9E63038615D97E8E00E7BC66 /* YDPCarePlanViewController.h */,
+				9E63038715D97E8E00E7BC66 /* YDPCarePlanViewController.m */,
+				9E63038815D97E8E00E7BC66 /* YDPCarePlanViewController.xib */,
 			);
 			path = CarePlan;
 			sourceTree = "<group>";
@@ -377,6 +381,14 @@
 			name = "Notify YDP";
 			sourceTree = "<group>";
 		};
+		9EC143AB16EC9AC5003F1166 /* JavaScript */ = {
+			isa = PBXGroup;
+			children = (
+				9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */,
+			);
+			path = JavaScript;
+			sourceTree = "<group>";
+		};
 		9EEF3392157B38CB00879458 = {
 			isa = PBXGroup;
 			children = (
@@ -464,8 +476,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EC143AE16EC9F95003F1166 /* YDPWebUtil.js in Resources */,
 				9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */,
-				9E6303E415D97E8E00E7BC66 /* YDPWebViewController.xib in Resources */,
+				9E6303E415D97E8E00E7BC66 /* YDPCarePlanViewController.xib in Resources */,
 				9E6303E515D97E8E00E7BC66 /* InfoPlist.strings in Resources */,
 				9E6303E615D97E8E00E7BC66 /* YDPViewController.xib in Resources */,
 				9E6303E715D97E8E00E7BC66 /* all.png in Resources */,
@@ -494,7 +507,7 @@
 			files = (
 				9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */,
 				9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */,
-				9E6303E315D97E8E00E7BC66 /* YDPCaarePlanViewController.m in Sources */,
+				9E6303E315D97E8E00E7BC66 /* YDPCarePlanViewController.m in Sources */,
 				9E6303F315D97E8E00E7BC66 /* main.m in Sources */,
 				9E6303F415D97E8E00E7BC66 /* MKMapView+ZoomLevel.m in Sources */,
 				9E6303F515D97E8E00E7BC66 /* PatientModel.m in Sources */,
@@ -515,6 +528,7 @@
 				9EA6CDFC1607B52000396518 /* Diagnosis.m in Sources */,
 				9EA6CDFF1607B61800396518 /* DetailDiagnosis.m in Sources */,
 				9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */,
+				9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

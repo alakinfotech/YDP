@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YDPCaarePlanViewController : UIViewController<UIWebViewDelegate>{
+@interface YDPCarePlanViewController : UIViewController<UIWebViewDelegate>{
         int requestid;
 }
 @property (strong, nonatomic) NSString *url;
@@ -20,5 +20,4 @@
 
 
 - (IBAction)Logout:(id)sender;
-- (IBAction)expandAll;
 @end
