@@ -45,8 +45,8 @@
     
     cipherObj=[[Cipher alloc]initWithKey:@"Adi&Revanth"];
 
-//    self.userName.text = @"adikadapa";
-//    self.password.text = @"Medico!8";
+    self.userName.text = @"adikadapa";
+    self.password.text = @"Medico!8";
     
     self.scanView.readerDelegate = self;
     // you can use this to support the simulator
@@ -124,7 +124,9 @@
     webViewController.url = @
     "https://yourdoctorprogram.com/qhr/Login.aspx";
     webViewController.isAudination = YES;
-    [self presentModalViewController:webViewController animated:YES];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    navigationController.navigationBar.hidden = YES;
+    [self presentModalViewController:navigationController animated:YES];
     
 }
 

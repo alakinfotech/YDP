@@ -20,7 +20,7 @@
 
 @property (readwrite) BOOL isAudination;
 @property (strong, nonatomic) IBOutlet UITableView *tabelView;
-
+@property (strong, nonatomic) IBOutlet UIView *loadingView;
 - (IBAction)Logout:(id)sender;
 
 @end

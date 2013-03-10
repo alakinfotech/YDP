@@ -8,6 +8,7 @@
 
 #import "YDPCarePlanViewController.h"
 #import "YDPAppDelegate.h"
+#import "YDPCarePlanDetailViewController.h"
 
 @implementation YDPCarePlanViewController
 @synthesize webView;
@@ -50,6 +51,8 @@
     
     self.tabelView.dataSource = self;
     self.tabelView.delegate = self;
+    
+    self.loadingView.hidden = NO;
     
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
@@ -136,9 +139,9 @@
                         
             NSArray *array = [[NSArray alloc] init];
             array = [responce componentsSeparatedByString:@":$#"];
-    
 
             for (int i =0; i < array.count - 1;i++) {
+                
                 NSArray *carePlanrecord = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],[array objectAtIndex:i+2],[array objectAtIndex:i+3],[array objectAtIndex:i+4],[array objectAtIndex:i+5],[array objectAtIndex:i+6],[array objectAtIndex:i+7],[array objectAtIndex:i+8], nil];
                 if (self.carePlan == nil) {
                     self.carePlan = [NSMutableDictionary dictionary];
@@ -147,8 +150,13 @@
                 [self.carePlanRecoed addObject:array[i+1]];
                 i += 8;
             }
-            
-            [self.tabelView reloadData];
+            if (self.carePlanRecoed.count > 0) {
+                self.loadingView.hidden = YES;
+                [self.tabelView reloadData];
+            }
+            else
+                [self Logout:nil];
+
             requestid ++;
         
         }
@@ -216,6 +224,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    YDPCarePlanDetailViewController *carePlanDetailViewController = [[YDPCarePlanDetailViewController alloc]init];
+    NSString *recordKey = [self.carePlanRecoed objectAtIndex:indexPath.row];
+    NSArray *record = [self.carePlan objectForKey:recordKey];
+    
+    carePlanDetailViewController.detailRecord = record;
+    [self.navigationController pushViewController:carePlanDetailViewController animated:YES];
 }
 
 @end
