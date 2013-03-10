@@ -52,6 +52,8 @@
 		9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */; };
 		9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
 		9EC143AE16EC9F95003F1166 /* YDPWebUtil.js in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
+		9ED250B016ECEDF8000DF2EF /* Active.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED250AE16ECEDF8000DF2EF /* Active.png */; };
+		9ED250B116ECEDF8000DF2EF /* Inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED250AF16ECEDF8000DF2EF /* Inactive.png */; };
 		9EE03ADB157E68290000FF3C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03ADA157E68290000FF3C /* CoreLocation.framework */; };
 		9EE03ADE157E68330000FF3C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03ADD157E68330000FF3C /* MapKit.framework */; };
 		9EEF33A2157B38CB00879458 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EEF33A1157B38CB00879458 /* UIKit.framework */; };
@@ -155,6 +157,8 @@
 		9EC143A616EC453F003F1166 /* YDPHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPHelpViewController.m; sourceTree = "<group>"; };
 		9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPHelpViewController.xib; sourceTree = "<group>"; };
 		9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = YDPWebUtil.js; sourceTree = "<group>"; };
+		9ED250AE16ECEDF8000DF2EF /* Active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Active.png; sourceTree = "<group>"; };
+		9ED250AF16ECEDF8000DF2EF /* Inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inactive.png; sourceTree = "<group>"; };
 		9EE03ADA157E68290000FF3C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9EE03ADD157E68330000FF3C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9EEF339D157B38CB00879458 /* NotifyYDP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotifyYDP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +230,8 @@
 		9E63038D15D97E8E00E7BC66 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9ED250AE16ECEDF8000DF2EF /* Active.png */,
+				9ED250AF16ECEDF8000DF2EF /* Inactive.png */,
 				9E5177111652C03F009A339A /* Default-568h@2x.png */,
 				9E63038E15D97E8E00E7BC66 /* all.png */,
 				9E63038F15D97E8E00E7BC66 /* app_icon.png */,
@@ -495,6 +501,8 @@
 				9E6303F215D97E8E00E7BC66 /* tab_icon@2x.png in Resources */,
 				9E5177151652C620009A339A /* Default-568h@2x.png in Resources */,
 				9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */,
+				9ED250B016ECEDF8000DF2EF /* Active.png in Resources */,
+				9ED250B116ECEDF8000DF2EF /* Inactive.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

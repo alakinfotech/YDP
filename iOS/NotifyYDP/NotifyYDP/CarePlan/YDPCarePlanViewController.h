@@ -8,16 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YDPCarePlanViewController : UIViewController<UIWebViewDelegate>{
+@interface YDPCarePlanViewController : UIViewController<UIWebViewDelegate,UITableViewDataSource,UITableViewDelegate>{
         int requestid;
 }
 @property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSMutableDictionary *carePlan;
+@property (strong, nonatomic) NSMutableArray *carePlanRecoed;
 
 @property (readwrite) BOOL isAudination;
-
+@property (strong, nonatomic) IBOutlet UITableView *tabelView;
 
 - (IBAction)Logout:(id)sender;
+
 @end

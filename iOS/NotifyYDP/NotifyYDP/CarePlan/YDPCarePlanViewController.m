@@ -42,10 +42,14 @@
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     //[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
-    //self.webView = [[UIWebView alloc]init];
+    self.webView = [[UIWebView alloc]init];
     [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     
+    self.carePlan = [NSMutableDictionary dictionary];
+    self.carePlanRecoed = [NSMutableArray array];
     
+    self.tabelView.dataSource = self;
+    self.tabelView.delegate = self;
     
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
@@ -127,16 +131,91 @@
             
             [self.webView stringByEvaluatingJavaScriptFromString:jsCode];
             //Grabbing the data from the page
-            NSString *jsonResponce = [self.webView stringByEvaluatingJavaScriptFromString:@"getCarePlan()"];
+            NSString *responce = [self.webView stringByEvaluatingJavaScriptFromString:@"getCarePlan()"];
             
-//            NSString *carePlan = @"document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView')";
-//            carePlan = [self.webView stringByEvaluatingJavaScriptFromString:carePlan];
-            NSLog(@"Care Plan = %@",jsonResponce);
+                        
+            NSArray *array = [[NSArray alloc] init];
+            array = [responce componentsSeparatedByString:@":$#"];
+    
+
+            for (int i =0; i < array.count - 1;i++) {
+                NSArray *carePlanrecord = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],[array objectAtIndex:i+2],[array objectAtIndex:i+3],[array objectAtIndex:i+4],[array objectAtIndex:i+5],[array objectAtIndex:i+6],[array objectAtIndex:i+7],[array objectAtIndex:i+8], nil];
+                if (self.carePlan == nil) {
+                    self.carePlan = [NSMutableDictionary dictionary];
+                }
+                [self.carePlan setObject:carePlanrecord forKey:array[i+1]];
+                [self.carePlanRecoed addObject:array[i+1]];
+                i += 8;
+            }
+            
+            [self.tabelView reloadData];
             requestid ++;
         
         }
     }
     [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
+}
+
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    //WARNING - Potentially incomplete method implementation.
+    // Return the number of sections.
+    
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"ICD9 Diagnosis";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    //WARNING - Incomplete method implementation.
+    // Return the number of rows in the section.
+    return self.carePlanRecoed.count;
+}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 60;
+//}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *simpleTableIdentifier = @"CarePlan";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+    }
+    NSString *recordKey = [self.carePlanRecoed objectAtIndex:indexPath.row];
+    cell.textLabel.text = recordKey;
+    NSArray *record = [self.carePlan objectForKey:recordKey];
+    NSString *status = [record objectAtIndex:2];
+    status = [status lastPathComponent];
+    cell.detailTextLabel.text = [record objectAtIndex:0];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.imageView.image = [UIImage imageNamed:status];
+    return cell;
+}
+
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 @end

@@ -15,18 +15,19 @@ function getCarePlan()
                 for(var j = 0; j < carePlanRow.length; j++){
                     var childValue = carePlanRow[j].childNodes[1].textContent;
                     if(childValue){
-                        result += ":";
+                        
                         result += childValue;
+                        result += ":$#";
                         console.log(childValue);
                     }
                     else{
-                        result += ":";
+                        
                         result += carePlanRow[j].childNodes[1].src;
+                        result += ":$#";
                         console.log(carePlanRow[j].childNodes[1].src);
                     }
                 }
             }
-            result += ":";
         }
     }
 
