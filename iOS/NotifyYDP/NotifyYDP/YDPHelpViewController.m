@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "YDPWebViewController.h"
+#import "YDPHelpViewController.h"
 #import "YDPAppDelegate.h"
 
-@implementation YDPWebViewController
+@implementation YDPHelpViewController
 @synthesize webView;
 @synthesize userName;
 @synthesize password;

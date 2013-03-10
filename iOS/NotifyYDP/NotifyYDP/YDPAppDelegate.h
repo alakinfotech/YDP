@@ -10,14 +10,14 @@
 #import "MBProgressHUD.h"
 
 @class YDPViewController;
-@class YDPCarePlan;
+@class YDPLogin;
 
 @interface YDPAppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) YDPViewController *viewController;
-@property (strong, nonatomic) YDPCarePlan *carePlanViewController;
+@property (strong, nonatomic) YDPLogin *carePlanViewController;
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @property (strong, nonatomic) MBProgressHUD *progressHudForWindow;
 - (void)startSpinningLoaderWithMessage:(NSString *)message;

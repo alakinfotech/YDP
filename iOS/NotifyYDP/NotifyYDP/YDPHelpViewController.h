@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YDPWebViewController : UIViewController<UIWebViewDelegate>{
+@interface YDPHelpViewController : UIViewController<UIWebViewDelegate>{
         int requestid;
 }
 @property (strong, nonatomic) NSString *url;

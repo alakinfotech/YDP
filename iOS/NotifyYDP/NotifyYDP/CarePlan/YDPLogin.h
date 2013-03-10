@@ -10,7 +10,7 @@
 #import "Cipher.h"
 
 
-@interface YDPCarePlan : UIViewController<ZBarReaderViewDelegate, UITextFieldDelegate>{
+@interface YDPLogin : UIViewController<ZBarReaderViewDelegate, UITextFieldDelegate>{
     ZBarReaderView *scanView;
     ZBarCameraSimulator *cameraSim;
     Cipher *cipherObj;

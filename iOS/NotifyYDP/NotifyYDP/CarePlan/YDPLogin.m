@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "YDPCarePlan.h"
+#import "YDPLogin.h"
 #import "NSData+Base64.h"
-#import "YDPWebViewController.h"
+#import "YDPCaarePlanViewController.h"
 
-@implementation YDPCarePlan
+@implementation YDPLogin
 @synthesize userName;
 @synthesize password;
 @synthesize scanView;
@@ -116,7 +116,7 @@
 - (IBAction)Login {
     
     //[self.view addSubview:self.webView];
-    YDPWebViewController *webViewController = [[YDPWebViewController alloc]init];
+    YDPCaarePlanViewController *webViewController = [[YDPCaarePlanViewController alloc]init];
     webViewController.userName = self.userName.text;
     webViewController.password = self.password.text;
     webViewController.url = @

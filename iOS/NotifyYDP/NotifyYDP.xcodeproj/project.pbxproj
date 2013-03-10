@@ -10,9 +10,9 @@
 		9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2434DE157FD0A700F43B96 /* MessageUI.framework */; };
 		9E5177151652C620009A339A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5177131652C0C6009A339A /* Default-568h@2x.png */; };
 		9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E6303E115D97E8E00E7BC66 /* YDPCarePlan.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038415D97E8E00E7BC66 /* YDPCarePlan.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9E6303E215D97E8E00E7BC66 /* YDPCarePlan.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038515D97E8E00E7BC66 /* YDPCarePlan.xib */; };
-		9E6303E315D97E8E00E7BC66 /* YDPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038715D97E8E00E7BC66 /* YDPWebViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038415D97E8E00E7BC66 /* YDPLogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038515D97E8E00E7BC66 /* YDPLogin.xib */; };
+		9E6303E315D97E8E00E7BC66 /* YDPCaarePlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038715D97E8E00E7BC66 /* YDPCaarePlanViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E415D97E8E00E7BC66 /* YDPWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038815D97E8E00E7BC66 /* YDPWebViewController.xib */; };
 		9E6303E515D97E8E00E7BC66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038915D97E8E00E7BC66 /* InfoPlist.strings */; };
 		9E6303E615D97E8E00E7BC66 /* YDPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038B15D97E8E00E7BC66 /* YDPViewController.xib */; };
@@ -48,6 +48,8 @@
 		9EA6CDF91607B4C900396518 /* CarePlaneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDF81607B4C900396518 /* CarePlaneModel.m */; };
 		9EA6CDFC1607B52000396518 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDFB1607B52000396518 /* Diagnosis.m */; };
 		9EA6CDFF1607B61800396518 /* DetailDiagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDFE1607B61800396518 /* DetailDiagnosis.m */; };
+		9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143A616EC453F003F1166 /* YDPHelpViewController.m */; };
+		9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */; };
 		9EE03ADB157E68290000FF3C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03ADA157E68290000FF3C /* CoreLocation.framework */; };
 		9EE03ADE157E68330000FF3C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03ADD157E68330000FF3C /* MapKit.framework */; };
 		9EEF33A2157B38CB00879458 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EEF33A1157B38CB00879458 /* UIKit.framework */; };
@@ -64,13 +66,13 @@
 		9E2434DE157FD0A700F43B96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9E5177111652C03F009A339A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9E5177131652C0C6009A339A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		9E63038315D97E8E00E7BC66 /* YDPCarePlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCarePlan.h; sourceTree = "<group>"; };
-		9E63038415D97E8E00E7BC66 /* YDPCarePlan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCarePlan.m; sourceTree = "<group>"; };
-		9E63038515D97E8E00E7BC66 /* YDPCarePlan.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPCarePlan.xib; sourceTree = "<group>"; };
-		9E63038615D97E8E00E7BC66 /* YDPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPWebViewController.h; sourceTree = "<group>"; };
-		9E63038715D97E8E00E7BC66 /* YDPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPWebViewController.m; sourceTree = "<group>"; };
+		9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../CarePlan/MBProgressHUD.h; sourceTree = "<group>"; };
+		9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../CarePlan/MBProgressHUD.m; sourceTree = "<group>"; };
+		9E63038315D97E8E00E7BC66 /* YDPLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPLogin.h; sourceTree = "<group>"; };
+		9E63038415D97E8E00E7BC66 /* YDPLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPLogin.m; sourceTree = "<group>"; };
+		9E63038515D97E8E00E7BC66 /* YDPLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPLogin.xib; sourceTree = "<group>"; };
+		9E63038615D97E8E00E7BC66 /* YDPCaarePlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCaarePlanViewController.h; sourceTree = "<group>"; };
+		9E63038715D97E8E00E7BC66 /* YDPCaarePlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCaarePlanViewController.m; sourceTree = "<group>"; };
 		9E63038815D97E8E00E7BC66 /* YDPWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPWebViewController.xib; sourceTree = "<group>"; };
 		9E63038A15D97E8E00E7BC66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9E63038C15D97E8E00E7BC66 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/YDPViewController.xib; sourceTree = "<group>"; };
@@ -147,6 +149,9 @@
 		9EA6CDFB1607B52000396518 /* Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Diagnosis.m; sourceTree = "<group>"; };
 		9EA6CDFD1607B61800396518 /* DetailDiagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDiagnosis.h; sourceTree = "<group>"; };
 		9EA6CDFE1607B61800396518 /* DetailDiagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDiagnosis.m; sourceTree = "<group>"; };
+		9EC143A516EC453F003F1166 /* YDPHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPHelpViewController.h; sourceTree = "<group>"; };
+		9EC143A616EC453F003F1166 /* YDPHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPHelpViewController.m; sourceTree = "<group>"; };
+		9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPHelpViewController.xib; sourceTree = "<group>"; };
 		9EE03ADA157E68290000FF3C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9EE03ADD157E68330000FF3C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9EEF339D157B38CB00879458 /* NotifyYDP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotifyYDP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +191,7 @@
 		9E63037F15D97E8E00E7BC66 /* NotifyYDP */ = {
 			isa = PBXGroup;
 			children = (
+				9EC143AA16EC4648003F1166 /* Notify YDP */,
 				9E63038015D97E8E00E7BC66 /* CarePlan */,
 				9E63038915D97E8E00E7BC66 /* InfoPlist.strings */,
 				9E63038D15D97E8E00E7BC66 /* Images */,
@@ -196,11 +202,6 @@
 				9E6303A415D97E8E00E7BC66 /* NotifyYDP-Info.plist */,
 				9E6303A515D97E8E00E7BC66 /* NotifyYDP-Prefix.pch */,
 				9E6303AC15D97E8E00E7BC66 /* Utility Files */,
-				9E6303C215D97E8E00E7BC66 /* YDPAppDelegate.h */,
-				9E6303C315D97E8E00E7BC66 /* YDPAppDelegate.m */,
-				9E6303C415D97E8E00E7BC66 /* YDPViewController.h */,
-				9E6303C515D97E8E00E7BC66 /* YDPViewController.m */,
-				9E63038B15D97E8E00E7BC66 /* YDPViewController.xib */,
 			);
 			path = NotifyYDP;
 			sourceTree = "<group>";
@@ -208,13 +209,11 @@
 		9E63038015D97E8E00E7BC66 /* CarePlan */ = {
 			isa = PBXGroup;
 			children = (
-				9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */,
-				9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */,
-				9E63038315D97E8E00E7BC66 /* YDPCarePlan.h */,
-				9E63038415D97E8E00E7BC66 /* YDPCarePlan.m */,
-				9E63038515D97E8E00E7BC66 /* YDPCarePlan.xib */,
-				9E63038615D97E8E00E7BC66 /* YDPWebViewController.h */,
-				9E63038715D97E8E00E7BC66 /* YDPWebViewController.m */,
+				9E63038315D97E8E00E7BC66 /* YDPLogin.h */,
+				9E63038415D97E8E00E7BC66 /* YDPLogin.m */,
+				9E63038515D97E8E00E7BC66 /* YDPLogin.xib */,
+				9E63038615D97E8E00E7BC66 /* YDPCaarePlanViewController.h */,
+				9E63038715D97E8E00E7BC66 /* YDPCaarePlanViewController.m */,
 				9E63038815D97E8E00E7BC66 /* YDPWebViewController.xib */,
 			);
 			path = CarePlan;
@@ -262,6 +261,8 @@
 		9E6303AC15D97E8E00E7BC66 /* Utility Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */,
+				9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */,
 				9E6303AD15D97E8E00E7BC66 /* AES256 */,
 				9E6303B215D97E8E00E7BC66 /* AutoScrollLabel.h */,
 				9E6303B315D97E8E00E7BC66 /* AutoScrollLabel.m */,
@@ -361,6 +362,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9EC143AA16EC4648003F1166 /* Notify YDP */ = {
+			isa = PBXGroup;
+			children = (
+				9EC143A516EC453F003F1166 /* YDPHelpViewController.h */,
+				9EC143A616EC453F003F1166 /* YDPHelpViewController.m */,
+				9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */,
+				9E6303C215D97E8E00E7BC66 /* YDPAppDelegate.h */,
+				9E6303C315D97E8E00E7BC66 /* YDPAppDelegate.m */,
+				9E6303C415D97E8E00E7BC66 /* YDPViewController.h */,
+				9E6303C515D97E8E00E7BC66 /* YDPViewController.m */,
+				9E63038B15D97E8E00E7BC66 /* YDPViewController.xib */,
+			);
+			name = "Notify YDP";
+			sourceTree = "<group>";
+		};
 		9EEF3392157B38CB00879458 = {
 			isa = PBXGroup;
 			children = (
@@ -448,7 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E6303E215D97E8E00E7BC66 /* YDPCarePlan.xib in Resources */,
+				9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */,
 				9E6303E415D97E8E00E7BC66 /* YDPWebViewController.xib in Resources */,
 				9E6303E515D97E8E00E7BC66 /* InfoPlist.strings in Resources */,
 				9E6303E615D97E8E00E7BC66 /* YDPViewController.xib in Resources */,
@@ -465,6 +481,7 @@
 				9E6303F115D97E8E00E7BC66 /* tab_icon.png in Resources */,
 				9E6303F215D97E8E00E7BC66 /* tab_icon@2x.png in Resources */,
 				9E5177151652C620009A339A /* Default-568h@2x.png in Resources */,
+				9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,8 +493,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */,
-				9E6303E115D97E8E00E7BC66 /* YDPCarePlan.m in Sources */,
-				9E6303E315D97E8E00E7BC66 /* YDPWebViewController.m in Sources */,
+				9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */,
+				9E6303E315D97E8E00E7BC66 /* YDPCaarePlanViewController.m in Sources */,
 				9E6303F315D97E8E00E7BC66 /* main.m in Sources */,
 				9E6303F415D97E8E00E7BC66 /* MKMapView+ZoomLevel.m in Sources */,
 				9E6303F515D97E8E00E7BC66 /* PatientModel.m in Sources */,
@@ -497,6 +514,7 @@
 				9EA6CDF91607B4C900396518 /* CarePlaneModel.m in Sources */,
 				9EA6CDFC1607B52000396518 /* Diagnosis.m in Sources */,
 				9EA6CDFF1607B61800396518 /* DetailDiagnosis.m in Sources */,
+				9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

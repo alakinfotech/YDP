@@ -9,7 +9,7 @@
 #import "YDPAppDelegate.h"
 
 #import "YDPViewController.h"
-#import "YDPCarePlan.h"
+#import "YDPLogin.h"
 
 @implementation YDPAppDelegate
 
@@ -28,8 +28,8 @@
     self.viewController.title = @"Notify YDP";
     self.viewController.tabBarItem.image = [UIImage imageNamed:@"all.png"];
     
-    self.carePlanViewController = [[YDPCarePlan alloc] initWithNibName:@"YDPCarePlan" bundle:nil];
-    self.carePlanViewController.title = @"YDP Care Plan";
+    self.carePlanViewController = [[YDPLogin alloc] initWithNibName:@"YDPLogin" bundle:nil];
+    self.carePlanViewController.title = @"YDP Login";
     self.carePlanViewController.tabBarItem.image = [UIImage imageNamed:@"faves.png"];    
     //UITabBarItem *item = [[UITabBarItem alloc]initWithTitle:@"YDP Care Plan" image:nil tag:1];
     //carePlanViewController.tabBarItem = item;

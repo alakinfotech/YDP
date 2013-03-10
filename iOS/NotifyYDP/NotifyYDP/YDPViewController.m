@@ -10,7 +10,7 @@
 #import "YDPDataModel.h"
 #import "PatientModel.h"
 #import "PhysicionModel.h"
-#import "YDPWebViewController.h"
+#import "YDPHelpViewController.h"
 
 @implementation YDPViewController
 
@@ -147,26 +147,7 @@
 
 - (IBAction)moreAboutYDP:(UIButton *)sender {
     
-//    self.avoutViewController = [[UIViewController alloc]init];
-//    UIWebView *myWebView = [[UIWebView alloc]init];
-//    self.avoutViewController.view.frame = myWebView.frame = self.view.frame;
-//    [self.avoutViewController.view addSubview:myWebView];
-//    [myWebView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@
-//                                                                  "https://yourdoctorprogram.com"]]];
-//    myWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    
-//    self.avoutViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    UIButton *btn= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    btn.frame = CGRectMake(250, 6, 65, 25);
-//    btn.backgroundColor = [UIColor clearColor];
-//    [btn setTitle:@"Done" forState:UIControlStateNormal];
-//    [btn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
-//    [myWebView addSubview:btn]; 
-//    
-//    [self presentViewController:self.avoutViewController animated:YES completion:nil];
-
-    
-    YDPWebViewController *webViewController = [[YDPWebViewController alloc]init];
+    YDPHelpViewController *webViewController = [[YDPHelpViewController alloc]init];
     webViewController.url = @
     "https://yourdoctorprogram.com";
     webViewController.isAudination = NO;
