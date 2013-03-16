@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone-no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+<title>YDP</title>
+
+<link href="jquery-mobile/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css">
+<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css">
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<!--  <script type="text/javascript">
+$(document).bind("mobileinit", function(){
+  //apply overrides here 
+  $.mobile.ignoreContentEnabled = true;
+});
+</script> -->
+<script src="Controller/login.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div data-role="content">
+  <center><img src="Images/logo.png" width="200" height="96" rel="external" data-transition="slide"></center>
+   <input type="text" name="username" placeholder= "Username">
+   <input type="password" name="password" placeholder="Password">
+   <!-- <a href="View/home.html" id="login" rel="external" onclick="doSomething(); return false" data-role="button" >Login</a> -->
+   <a href="#" id="button_login" data-role="button"  >Login</a>
+</div><!-- /content -->
+</body>
+</html>
