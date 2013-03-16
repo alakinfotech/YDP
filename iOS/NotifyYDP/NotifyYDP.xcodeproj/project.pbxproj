@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2434DE157FD0A700F43B96 /* MessageUI.framework */; };
-		9E5177151652C620009A339A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E5177131652C0C6009A339A /* Default-568h@2x.png */; };
 		9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038415D97E8E00E7BC66 /* YDPLogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038515D97E8E00E7BC66 /* YDPLogin.xib */; };
@@ -71,7 +70,6 @@
 /* Begin PBXFileReference section */
 		9E2434DE157FD0A700F43B96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9E5177111652C03F009A339A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		9E5177131652C0C6009A339A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../CarePlan/MBProgressHUD.h; sourceTree = "<group>"; };
 		9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../CarePlan/MBProgressHUD.m; sourceTree = "<group>"; };
 		9E63038315D97E8E00E7BC66 /* YDPLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPLogin.h; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 		9EEF3392157B38CB00879458 = {
 			isa = PBXGroup;
 			children = (
-				9E5177131652C0C6009A339A /* Default-568h@2x.png */,
 				9E63037F15D97E8E00E7BC66 /* NotifyYDP */,
 				9E6303C615D97E8E00E7BC66 /* ZBarSDK */,
 				9EEF33A0157B38CB00879458 /* Frameworks */,
@@ -507,7 +504,6 @@
 				9E6303F015D97E8E00E7BC66 /* launch_image@2x.png in Resources */,
 				9E6303F115D97E8E00E7BC66 /* tab_icon.png in Resources */,
 				9E6303F215D97E8E00E7BC66 /* tab_icon@2x.png in Resources */,
-				9E5177151652C620009A339A /* Default-568h@2x.png in Resources */,
 				9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */,
 				9ED250B016ECEDF8000DF2EF /* Active.png in Resources */,
 				9ED250B116ECEDF8000DF2EF /* Inactive.png in Resources */,

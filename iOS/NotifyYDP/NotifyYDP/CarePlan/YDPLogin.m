@@ -45,8 +45,8 @@
     
     cipherObj=[[Cipher alloc]initWithKey:@"Adi&Revanth"];
 
-    self.userName.text = @"adikadapa";
-    self.password.text = @"Medico!8";
+//    self.userName.text = @"adikadapa";
+//    self.password.text = @"Medico!8";
     
     self.scanView.readerDelegate = self;
     // you can use this to support the simulator
@@ -95,6 +95,8 @@
 {
     // run the reader when the view is visible
     [self.scanView start];
+    self.userName.text = @"";
+    self.password.text = @"";
 }
 
 - (void) viewWillDisappear: (BOOL) animated
