@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone-no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+<title>YDP</title>
+<link href="../jquery-mobile/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css">
+<link href="../jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css">
+<script src="../jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<!--  <script type="text/javascript">
+$(document).bind("mobileinit", function(){
+  //apply overrides here 
+  $.mobile.ignoreContentEnabled = true;
+});
+</script> -->
+
+<script type="text/javascript">
+	
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+ // some code..
+ $(document).bind("mobileinit", function() { 
+		$.mobile.page.prototype.options.addBackBtn = true;
+	}); 
+}
+</script>
+<script src="../jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<body> 
+<!-- Home Page Start -->
+<div data-role="page" id="page">
+	<div data-role="header" data-position="fixed">
+		<h1>Your Doctor Program</h1>
+        <a href="../index.html" rel="external" class="ui-btn-right" >Logout</a>
+	</div>
+	<div data-role="content">	
+		<ul data-role="listview">
+			<li><a href="#page2">Careplan</a></li>
+            <li><a href="#page3">Tasks</a></li>
+			<li><a href="#page4">Mails</a></li>
+            <li><a href="programs.html" rel="external">Programs</a></li>
+            <li><a href="#page6">Notify</a></li>
+		</ul>		
+	</div>
+     <style>
+.ui-header .ui-title, .ui-footer .ui-title {
+margin-right: 0 !important; margin-left: 0 !important;
+}
+ </style>
+ 
+</div>
+<!-- Home Page End -->
+
+<!-- Careplan Page Start -->
+<div data-role="page" id="page2">
+	<div data-role="header">
+		<h1>Careplan</h1>
+        <a href="../index.html" rel="external" class="ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">		
+	</div>
+</div>
+<!-- Careplan Page End -->
+
+<!-- Tasks Page Start -->
+<div data-role="page" id="page3">
+	<div data-role="header">
+		<h1>Tasks</h1>
+        <a href="../index.html" rel="external" class="ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">	
+	</div>
+</div>
+<!-- Tasks Page End -->
+
+<!-- Mails Page Start -->
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>Mails</h1>
+        <a href="../index.html" rel="external" class="ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">	
+	</div>
+</div>
+<!-- Mails Page End -->
+
+<!-- Programs Page Start -->
+<div data-role="page" id="page5">
+	<div data-role="header">
+		<h1>Programs</h1>
+        <a href="../index.html" rel="external" class="ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">	
+	</div>
+</div>
+<!-- Programs Page End -->
+
+<!-- Notify Page Start -->
+<div data-role="page" id="page6">
+	<div data-role="header">
+		<h1>Notify</h1>
+        <a href="../index.html" rel="external" class="ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">
+	    <button>
+        	<a class="ui-link-inherit" href="tel:15555555555">Call YDP</a>
+        </button>
+	    <button>
+        	<a class="ui-link-inherit" href="mailto:support@yourdoctorprogram.com">Email YDP</a>
+        </button>
+	    <button>
+        	<a class="ui-link-inherit" href="https://yourdoctorprogram.com/ydp/Home.html">More About YDP </a>
+        </button>
+    	
+	</div>
+</div>
+<!-- Notify Page End -->
+</body>
+</html>
