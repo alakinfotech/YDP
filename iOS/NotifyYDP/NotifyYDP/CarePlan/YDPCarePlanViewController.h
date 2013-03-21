@@ -12,7 +12,7 @@
         int requestid;
 }
 @property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSMutableDictionary *carePlan;
@@ -27,5 +27,6 @@
 - (IBAction)Logout:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *userID;
 @property (strong, nonatomic) IBOutlet UILabel *allergiesList;
+- (IBAction)onAllergies;
 
 @end

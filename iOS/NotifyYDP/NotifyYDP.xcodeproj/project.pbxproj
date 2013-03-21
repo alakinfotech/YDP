@@ -57,6 +57,10 @@
 		9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896716FB6FBB00BF2E5D /* back_button.png */; };
 		9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */; };
 		9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896C16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib */; };
+		9EAE897216FB808D00BF2E5D /* AllergiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE897016FB808D00BF2E5D /* AllergiesViewController.m */; };
+		9EAE897316FB808D00BF2E5D /* AllergiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE897116FB808D00BF2E5D /* AllergiesViewController.xib */; };
+		9EAE897616FB835800BF2E5D /* AllergiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE897516FB835800BF2E5D /* AllergiesCell.m */; };
+		9EAE897816FB836E00BF2E5D /* AllergiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE897716FB836E00BF2E5D /* AllergiesCell.xib */; };
 		9EC1344916FA283300B24543 /* YDPWebUtil.js in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
 		9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143A616EC453F003F1166 /* YDPHelpViewController.m */; };
 		9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */; };
@@ -177,6 +181,12 @@
 		9EAE896916FB70CD00BF2E5D /* YDPCarePlanDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCarePlanDetailCell.h; sourceTree = "<group>"; };
 		9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCarePlanDetailCell.m; sourceTree = "<group>"; };
 		9EAE896C16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPCarePlanDetailCell.xib; sourceTree = "<group>"; };
+		9EAE896F16FB808D00BF2E5D /* AllergiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllergiesViewController.h; sourceTree = "<group>"; };
+		9EAE897016FB808D00BF2E5D /* AllergiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllergiesViewController.m; sourceTree = "<group>"; };
+		9EAE897116FB808D00BF2E5D /* AllergiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllergiesViewController.xib; sourceTree = "<group>"; };
+		9EAE897416FB835800BF2E5D /* AllergiesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllergiesCell.h; sourceTree = "<group>"; };
+		9EAE897516FB835800BF2E5D /* AllergiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllergiesCell.m; sourceTree = "<group>"; };
+		9EAE897716FB836E00BF2E5D /* AllergiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllergiesCell.xib; sourceTree = "<group>"; };
 		9EC143A516EC453F003F1166 /* YDPHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPHelpViewController.h; sourceTree = "<group>"; };
 		9EC143A616EC453F003F1166 /* YDPHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPHelpViewController.m; sourceTree = "<group>"; };
 		9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPHelpViewController.xib; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 		9E63038015D97E8E00E7BC66 /* CarePlan */ = {
 			isa = PBXGroup;
 			children = (
+				9EAE896E16FB800B00BF2E5D /* Allergies */,
 				9E63038315D97E8E00E7BC66 /* YDPLogin.h */,
 				9E63038415D97E8E00E7BC66 /* YDPLogin.m */,
 				9E63038515D97E8E00E7BC66 /* YDPLogin.xib */,
@@ -414,6 +425,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9EAE896E16FB800B00BF2E5D /* Allergies */ = {
+			isa = PBXGroup;
+			children = (
+				9EAE896F16FB808D00BF2E5D /* AllergiesViewController.h */,
+				9EAE897016FB808D00BF2E5D /* AllergiesViewController.m */,
+				9EAE897116FB808D00BF2E5D /* AllergiesViewController.xib */,
+				9EAE897416FB835800BF2E5D /* AllergiesCell.h */,
+				9EAE897516FB835800BF2E5D /* AllergiesCell.m */,
+				9EAE897716FB836E00BF2E5D /* AllergiesCell.xib */,
+			);
+			name = Allergies;
+			sourceTree = "<group>";
+		};
 		9EC143AA16EC4648003F1166 /* Notify YDP */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +576,8 @@
 				9EAE896616FB6FA600BF2E5D /* back_button@2x.png in Resources */,
 				9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */,
 				9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */,
+				9EAE897316FB808D00BF2E5D /* AllergiesViewController.xib in Resources */,
+				9EAE897816FB836E00BF2E5D /* AllergiesCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +617,8 @@
 				9EAE895916FB380C00BF2E5D /* YDPCarePlanCell.m in Sources */,
 				9EAE896416FB6E9300BF2E5D /* UIViewController+Additions.m in Sources */,
 				9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */,
+				9EAE897216FB808D00BF2E5D /* AllergiesViewController.m in Sources */,
+				9EAE897616FB835800BF2E5D /* AllergiesCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

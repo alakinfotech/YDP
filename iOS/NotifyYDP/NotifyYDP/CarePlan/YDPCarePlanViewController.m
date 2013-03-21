@@ -10,6 +10,7 @@
 #import "YDPAppDelegate.h"
 #import "YDPCarePlanDetailViewController.h"
 #import "YDPCarePlanCell.h"
+#import "AllergiesViewController.h"
 
 @implementation YDPCarePlanViewController
 @synthesize webView;
@@ -44,7 +45,7 @@
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     //[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
-    //self.webView = [[UIWebView alloc]init];
+    self.webView = [[UIWebView alloc]init];
     [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     
     self.carePlan = [NSMutableDictionary dictionary];
@@ -336,4 +337,13 @@
     [self.navigationController pushViewController:carePlanDetailViewController animated:YES];
 }
 
+- (IBAction)onAllergies {
+    
+    AllergiesViewController *allergiesViewController = [[AllergiesViewController alloc]init];
+    allergiesViewController.title = self.userID.text;
+    allergiesViewController.allergies = self.allergies;
+    allergiesViewController.allergiesRecoed = self.allergiesRecoed;
+    
+    [self.navigationController pushViewController:allergiesViewController animated:YES];
+}
 @end
