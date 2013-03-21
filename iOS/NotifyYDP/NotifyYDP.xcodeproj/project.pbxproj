@@ -61,6 +61,7 @@
 		9EAE897316FB808D00BF2E5D /* AllergiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE897116FB808D00BF2E5D /* AllergiesViewController.xib */; };
 		9EAE897616FB835800BF2E5D /* AllergiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE897516FB835800BF2E5D /* AllergiesCell.m */; };
 		9EAE897816FB836E00BF2E5D /* AllergiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE897716FB836E00BF2E5D /* AllergiesCell.xib */; };
+		9EAE897B16FB940500BF2E5D /* UINavigationController+autorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE897A16FB940500BF2E5D /* UINavigationController+autorotate.m */; };
 		9EC1344916FA283300B24543 /* YDPWebUtil.js in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
 		9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143A616EC453F003F1166 /* YDPHelpViewController.m */; };
 		9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */; };
@@ -187,6 +188,8 @@
 		9EAE897416FB835800BF2E5D /* AllergiesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllergiesCell.h; sourceTree = "<group>"; };
 		9EAE897516FB835800BF2E5D /* AllergiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllergiesCell.m; sourceTree = "<group>"; };
 		9EAE897716FB836E00BF2E5D /* AllergiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllergiesCell.xib; sourceTree = "<group>"; };
+		9EAE897916FB940500BF2E5D /* UINavigationController+autorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+autorotate.h"; sourceTree = "<group>"; };
+		9EAE897A16FB940500BF2E5D /* UINavigationController+autorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+autorotate.m"; sourceTree = "<group>"; };
 		9EC143A516EC453F003F1166 /* YDPHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPHelpViewController.h; sourceTree = "<group>"; };
 		9EC143A616EC453F003F1166 /* YDPHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPHelpViewController.m; sourceTree = "<group>"; };
 		9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPHelpViewController.xib; sourceTree = "<group>"; };
@@ -451,6 +454,8 @@
 				9E63038B15D97E8E00E7BC66 /* YDPViewController.xib */,
 				9E55887B16F76525008396D2 /* UITabBarController+autorotate.h */,
 				9E55887C16F76525008396D2 /* UITabBarController+autorotate.m */,
+				9EAE897916FB940500BF2E5D /* UINavigationController+autorotate.h */,
+				9EAE897A16FB940500BF2E5D /* UINavigationController+autorotate.m */,
 			);
 			name = "Notify YDP";
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */,
 				9EAE897216FB808D00BF2E5D /* AllergiesViewController.m in Sources */,
 				9EAE897616FB835800BF2E5D /* AllergiesCell.m in Sources */,
+				9EAE897B16FB940500BF2E5D /* UINavigationController+autorotate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

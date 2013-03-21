@@ -9,6 +9,7 @@
 #import "YDPLogin.h"
 #import "NSData+Base64.h"
 #import "YDPCarePlanViewController.h"
+#import "UINavigationController+autorotate.h"
 
 @implementation YDPLogin
 @synthesize userName;
