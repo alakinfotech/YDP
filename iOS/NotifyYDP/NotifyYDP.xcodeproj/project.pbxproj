@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2434DE157FD0A700F43B96 /* MessageUI.framework */; };
+		9E55887D16F76525008396D2 /* UITabBarController+autorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55887C16F76525008396D2 /* UITabBarController+autorotate.m */; };
 		9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038415D97E8E00E7BC66 /* YDPLogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E63038515D97E8E00E7BC66 /* YDPLogin.xib */; };
@@ -47,10 +48,19 @@
 		9EA6CDF91607B4C900396518 /* CarePlaneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDF81607B4C900396518 /* CarePlaneModel.m */; };
 		9EA6CDFC1607B52000396518 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDFB1607B52000396518 /* Diagnosis.m */; };
 		9EA6CDFF1607B61800396518 /* DetailDiagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDFE1607B61800396518 /* DetailDiagnosis.m */; };
+		9EAE895916FB380C00BF2E5D /* YDPCarePlanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE895816FB380B00BF2E5D /* YDPCarePlanCell.m */; };
+		9EAE895B16FB382400BF2E5D /* YDPCarePlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895A16FB382400BF2E5D /* YDPCarePlanCell.xib */; };
+		9EAE895E16FB3B7D00BF2E5D /* snippet_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */; };
+		9EAE895F16FB3B7D00BF2E5D /* snippet_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */; };
+		9EAE896416FB6E9300BF2E5D /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE896316FB6E9300BF2E5D /* UIViewController+Additions.m */; };
+		9EAE896616FB6FA600BF2E5D /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896516FB6FA600BF2E5D /* back_button@2x.png */; };
+		9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896716FB6FBB00BF2E5D /* back_button.png */; };
+		9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */; };
+		9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896C16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib */; };
+		9EC1344916FA283300B24543 /* YDPWebUtil.js in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
 		9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143A616EC453F003F1166 /* YDPHelpViewController.m */; };
 		9EC143A916EC453F003F1166 /* YDPHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */; };
 		9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
-		9EC143AE16EC9F95003F1166 /* YDPWebUtil.js in Resources */ = {isa = PBXBuildFile; fileRef = 9EC143AC16EC9AC5003F1166 /* YDPWebUtil.js */; };
 		9ED250B016ECEDF8000DF2EF /* Active.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED250AE16ECEDF8000DF2EF /* Active.png */; };
 		9ED250B116ECEDF8000DF2EF /* Inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED250AF16ECEDF8000DF2EF /* Inactive.png */; };
 		9ED250B516ED1D80000DF2EF /* YDPCarePlanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED250B316ED1D80000DF2EF /* YDPCarePlanDetailViewController.m */; };
@@ -70,6 +80,8 @@
 /* Begin PBXFileReference section */
 		9E2434DE157FD0A700F43B96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9E5177111652C03F009A339A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9E55887B16F76525008396D2 /* UITabBarController+autorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+autorotate.h"; sourceTree = "<group>"; };
+		9E55887C16F76525008396D2 /* UITabBarController+autorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+autorotate.m"; sourceTree = "<group>"; };
 		9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../CarePlan/MBProgressHUD.h; sourceTree = "<group>"; };
 		9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../CarePlan/MBProgressHUD.m; sourceTree = "<group>"; };
 		9E63038315D97E8E00E7BC66 /* YDPLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPLogin.h; sourceTree = "<group>"; };
@@ -153,6 +165,18 @@
 		9EA6CDFB1607B52000396518 /* Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Diagnosis.m; sourceTree = "<group>"; };
 		9EA6CDFD1607B61800396518 /* DetailDiagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDiagnosis.h; sourceTree = "<group>"; };
 		9EA6CDFE1607B61800396518 /* DetailDiagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDiagnosis.m; sourceTree = "<group>"; };
+		9EAE895716FB380B00BF2E5D /* YDPCarePlanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCarePlanCell.h; sourceTree = "<group>"; };
+		9EAE895816FB380B00BF2E5D /* YDPCarePlanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCarePlanCell.m; sourceTree = "<group>"; };
+		9EAE895A16FB382400BF2E5D /* YDPCarePlanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPCarePlanCell.xib; sourceTree = "<group>"; };
+		9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snippet_2.jpg; sourceTree = "<group>"; };
+		9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snippet_3.jpg; sourceTree = "<group>"; };
+		9EAE896216FB6E9300BF2E5D /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
+		9EAE896316FB6E9300BF2E5D /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		9EAE896516FB6FA600BF2E5D /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button@2x.png"; sourceTree = "<group>"; };
+		9EAE896716FB6FBB00BF2E5D /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
+		9EAE896916FB70CD00BF2E5D /* YDPCarePlanDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCarePlanDetailCell.h; sourceTree = "<group>"; };
+		9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCarePlanDetailCell.m; sourceTree = "<group>"; };
+		9EAE896C16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPCarePlanDetailCell.xib; sourceTree = "<group>"; };
 		9EC143A516EC453F003F1166 /* YDPHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPHelpViewController.h; sourceTree = "<group>"; };
 		9EC143A616EC453F003F1166 /* YDPHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPHelpViewController.m; sourceTree = "<group>"; };
 		9EC143A716EC453F003F1166 /* YDPHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDPHelpViewController.xib; sourceTree = "<group>"; };
@@ -229,6 +253,12 @@
 				9ED250B216ED1D80000DF2EF /* YDPCarePlanDetailViewController.h */,
 				9ED250B316ED1D80000DF2EF /* YDPCarePlanDetailViewController.m */,
 				9ED250B416ED1D80000DF2EF /* YDPCarePlanDetailViewController.xib */,
+				9EAE895716FB380B00BF2E5D /* YDPCarePlanCell.h */,
+				9EAE895816FB380B00BF2E5D /* YDPCarePlanCell.m */,
+				9EAE895A16FB382400BF2E5D /* YDPCarePlanCell.xib */,
+				9EAE896916FB70CD00BF2E5D /* YDPCarePlanDetailCell.h */,
+				9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */,
+				9EAE896C16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib */,
 			);
 			path = CarePlan;
 			sourceTree = "<group>";
@@ -236,6 +266,10 @@
 		9E63038D15D97E8E00E7BC66 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9EAE896716FB6FBB00BF2E5D /* back_button.png */,
+				9EAE896516FB6FA600BF2E5D /* back_button@2x.png */,
+				9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */,
+				9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */,
 				9ED250AE16ECEDF8000DF2EF /* Active.png */,
 				9ED250AF16ECEDF8000DF2EF /* Inactive.png */,
 				9E5177111652C03F009A339A /* Default-568h@2x.png */,
@@ -277,6 +311,8 @@
 		9E6303AC15D97E8E00E7BC66 /* Utility Files */ = {
 			isa = PBXGroup;
 			children = (
+				9EAE896216FB6E9300BF2E5D /* UIViewController+Additions.h */,
+				9EAE896316FB6E9300BF2E5D /* UIViewController+Additions.m */,
 				9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */,
 				9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */,
 				9E6303AD15D97E8E00E7BC66 /* AES256 */,
@@ -389,6 +425,8 @@
 				9E6303C415D97E8E00E7BC66 /* YDPViewController.h */,
 				9E6303C515D97E8E00E7BC66 /* YDPViewController.m */,
 				9E63038B15D97E8E00E7BC66 /* YDPViewController.xib */,
+				9E55887B16F76525008396D2 /* UITabBarController+autorotate.h */,
+				9E55887C16F76525008396D2 /* UITabBarController+autorotate.m */,
 			);
 			name = "Notify YDP";
 			sourceTree = "<group>";
@@ -487,7 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC143AE16EC9F95003F1166 /* YDPWebUtil.js in Resources */,
+				9EC1344916FA283300B24543 /* YDPWebUtil.js in Resources */,
 				9E6303E215D97E8E00E7BC66 /* YDPLogin.xib in Resources */,
 				9E6303E415D97E8E00E7BC66 /* YDPCarePlanViewController.xib in Resources */,
 				9E6303E515D97E8E00E7BC66 /* InfoPlist.strings in Resources */,
@@ -508,6 +546,12 @@
 				9ED250B016ECEDF8000DF2EF /* Active.png in Resources */,
 				9ED250B116ECEDF8000DF2EF /* Inactive.png in Resources */,
 				9ED250B616ED1D80000DF2EF /* YDPCarePlanDetailViewController.xib in Resources */,
+				9EAE895B16FB382400BF2E5D /* YDPCarePlanCell.xib in Resources */,
+				9EAE895E16FB3B7D00BF2E5D /* snippet_2.jpg in Resources */,
+				9EAE895F16FB3B7D00BF2E5D /* snippet_3.jpg in Resources */,
+				9EAE896616FB6FA600BF2E5D /* back_button@2x.png in Resources */,
+				9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */,
+				9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +587,10 @@
 				9EC143A816EC453F003F1166 /* YDPHelpViewController.m in Sources */,
 				9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */,
 				9ED250B516ED1D80000DF2EF /* YDPCarePlanDetailViewController.m in Sources */,
+				9E55887D16F76525008396D2 /* UITabBarController+autorotate.m in Sources */,
+				9EAE895916FB380C00BF2E5D /* YDPCarePlanCell.m in Sources */,
+				9EAE896416FB6E9300BF2E5D /* UIViewController+Additions.m in Sources */,
+				9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,8 +667,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NotifyYDP/NotifyYDP-Prefix.pch";
 				INFOPLIST_FILE = "NotifyYDP/NotifyYDP-Info.plist";
@@ -632,8 +680,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5C179D0B-24CD-4791-BF44-EC5DD51FB8C1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C179D0B-24CD-4791-BF44-EC5DD51FB8C1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -643,8 +691,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Adinarayana Kadapa";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adinarayana Kadapa";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NotifyYDP/NotifyYDP-Prefix.pch";
 				INFOPLIST_FILE = "NotifyYDP/NotifyYDP-Info.plist";
@@ -656,8 +704,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4009E75E-2BFC-47F4-B017-68A66602EB0C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4009E75E-2BFC-47F4-B017-68A66602EB0C";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

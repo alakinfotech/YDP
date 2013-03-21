@@ -9,6 +9,7 @@
 #import "YDPCarePlanViewController.h"
 #import "YDPAppDelegate.h"
 #import "YDPCarePlanDetailViewController.h"
+#import "YDPCarePlanCell.h"
 
 @implementation YDPCarePlanViewController
 @synthesize webView;
@@ -43,14 +44,17 @@
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     //[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
-    self.webView = [[UIWebView alloc]init];
+    //self.webView = [[UIWebView alloc]init];
     [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     
     self.carePlan = [NSMutableDictionary dictionary];
     self.carePlanRecoed = [NSMutableArray array];
     
-    self.tabelView.dataSource = self;
-    self.tabelView.delegate = self;
+    self.allergies = [NSMutableDictionary dictionary];
+    self.allergiesRecoed = [NSMutableArray array];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     self.loadingView.hidden = NO;
     
@@ -66,6 +70,8 @@
 - (void)viewDidUnload
 {
     [self setWebView:nil];
+    [self setUserID:nil];
+    [self setAllergiesList:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -128,13 +134,14 @@
         }
         else if (requestid == 1) {
             
+            NSBundle *thisBundle = [NSBundle mainBundle];
             // Load the JavaScript code from the Resources and inject it into the web page
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"YDPWebUtil" ofType:@"js"];
+            NSString *path = [thisBundle  pathForResource:@"YDPWebUtil" ofType:@"js"];
             NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
             
             [self.webView stringByEvaluatingJavaScriptFromString:jsCode];
             //Grabbing the data from the page
-            NSString *responce = [self.webView stringByEvaluatingJavaScriptFromString:@"getCarePlan()"];
+            NSString *responce = [webView stringByEvaluatingJavaScriptFromString:@"getCarePlan()"];
             
                         
             NSArray *array = [[NSArray alloc] init];
@@ -142,7 +149,11 @@
 
             for (int i =0; i < array.count - 1;i++) {
                 
-                NSArray *carePlanrecord = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],[array objectAtIndex:i+2],[array objectAtIndex:i+3],[array objectAtIndex:i+4],[array objectAtIndex:i+5],[array objectAtIndex:i+6],[array objectAtIndex:i+7],[array objectAtIndex:i+8], nil];
+                NSString *status = [array objectAtIndex:i+2];
+                status = [NSString stringWithFormat:@"%@",[[status lastPathComponent] stringByDeletingPathExtension]];
+                
+                NSArray *carePlanrecord = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],status,[array objectAtIndex:i+3],[array objectAtIndex:i+4],[array objectAtIndex:i+5],[array objectAtIndex:i+6],[array objectAtIndex:i+7],[array objectAtIndex:i+8], nil];
+                
                 if (self.carePlan == nil) {
                     self.carePlan = [NSMutableDictionary dictionary];
                 }
@@ -151,20 +162,63 @@
                 i += 8;
             }
             if (self.carePlanRecoed.count > 0) {
-                self.loadingView.hidden = YES;
-                [self.tabelView reloadData];
+                
+                self.userID.text = [webView stringByEvaluatingJavaScriptFromString:@"getYDPUserName()"];
+                
+                NSString *allergiesURL = @"https://yourdoctorprogram.com/qhr/CareDashboard/AllergiesEditorMaster.aspx";
+                [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:allergiesURL]]];
+                
             }
             else
                 [self Logout:nil];
-
+            
             requestid ++;
         
         }
+        else{
+            
+            NSBundle *thisBundle = [NSBundle mainBundle];
+             // Load the JavaScript code from the Resources and inject it into the web page
+             NSString *path = [thisBundle  pathForResource:@"YDPWebUtil" ofType:@"js"];
+             NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+             
+             [self.webView stringByEvaluatingJavaScriptFromString:jsCode];
+             //Grabbing the data from the page
+             NSString *responce = [webView stringByEvaluatingJavaScriptFromString:@"getAllergies()"];
+             
+             if (responce == nil) {
+                 return;
+             }
+             
+             NSArray *array = [[NSArray alloc] init];
+             array = [responce componentsSeparatedByString:@":$#"];
+             
+             for (int i =0; i < array.count - 1;i++) {
+                 
+                 NSArray *allergies = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],[array objectAtIndex:i+2],[array objectAtIndex:i+3], nil];
+                 if (self.allergies == nil) {
+                     self.allergies = [NSMutableDictionary dictionary];
+                 }
+                 [self.allergies setObject:allergies forKey:array[i]];
+                 [self.allergiesRecoed addObject:array[i]];
+                 NSString *allergyString = [allergies objectAtIndex:0];
+                 
+                 allergyString = [NSString stringWithFormat:@"%@ %@,",self.allergiesList.text,allergyString];
+                 self.allergiesList.text = allergyString;
+                 
+                 i += 3;
+             }
+             
+             self.loadingView.hidden = YES;
+             [self.tableView reloadData];
+             
+             
+        }
     }
+    
     [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
+    
 }
-
-
 
 #pragma mark - Table view data source
 
@@ -176,9 +230,23 @@
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"ICD9 Diagnosis";
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+    UIView *sectionHeaderImg = [[UIView alloc]init];
+    sectionHeaderImg.backgroundColor = [UIColor grayColor];
+    UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 72, 22) WithText:@"Condition"];
+    [sectionHeaderImg addSubview:nameHeaderLable];
+    
+    UILabel *typeHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(170, 3, 90, 20) WithText:@"Medications"];
+    [sectionHeaderImg addSubview:typeHeaderLable];
+    
+    UILabel *dateHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(360, 3, 64, 20) WithText:@"Provider"];
+    [sectionHeaderImg addSubview:dateHeaderLable];
+    
+    return sectionHeaderImg;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -187,27 +255,62 @@
     return self.carePlanRecoed.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 60;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *simpleTableIdentifier = @"CarePlan";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    static NSString *MyIdentifier = @"CarePlan";
+	
+	YDPCarePlanCell *cell = (YDPCarePlanCell *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	
+	if(cell == nil)	{
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"YDPCarePlanCell" owner:nil options:nil];
+		
+		for(id currentObject in topLevelObjects) {
+			if([currentObject isKindOfClass:[YDPCarePlanCell class]]) {
+				cell = (YDPCarePlanCell *)currentObject;
+				break;
+			}
+		}
+	}
     
-    if (cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+    // Configure the cell...
+    if (indexPath.row %2 == 0) {
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snippet_3.jpg"]];
+        
+    } else {
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snippet_2.jpg"]];
+        
     }
+    
     NSString *recordKey = [self.carePlanRecoed objectAtIndex:indexPath.row];
-    cell.textLabel.text = recordKey;
     NSArray *record = [self.carePlan objectForKey:recordKey];
-    NSString *status = [record objectAtIndex:2];
-    status = [status lastPathComponent];
-    cell.detailTextLabel.text = [record objectAtIndex:0];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.imageView.image = [UIImage imageNamed:status];
+    
+    NSString *recordValue = record[1];
+    if ([recordValue isEqualToString:@"undefined"]) {
+        recordValue = @"";
+    }
+    cell.condition.text = recordValue;
+    recordValue = record[6];
+    if ([recordValue isEqualToString:@"undefined"]) {
+        recordValue = @"";
+    }
+    
+    cell.medications.text = recordValue;
+    
+    recordValue = record[7];
+    if ([recordValue isEqualToString:@"undefined"]) {
+        recordValue = @"";
+    }
+    
+    cell.provider.text = recordValue;
     return cell;
 }
 
@@ -225,6 +328,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     YDPCarePlanDetailViewController *carePlanDetailViewController = [[YDPCarePlanDetailViewController alloc]init];
+    carePlanDetailViewController.title = self.userID.text;
     NSString *recordKey = [self.carePlanRecoed objectAtIndex:indexPath.row];
     NSArray *record = [self.carePlan objectForKey:recordKey];
     

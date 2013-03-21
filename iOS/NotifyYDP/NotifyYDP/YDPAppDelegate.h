@@ -22,4 +22,6 @@
 @property (strong, nonatomic) MBProgressHUD *progressHudForWindow;
 - (void)startSpinningLoaderWithMessage:(NSString *)message;
 - (void)stopSpinningLoader;
+
+- (UILabel *)getLabelWithFrame:(CGRect)frame WithText:(NSString *)text;
 @end

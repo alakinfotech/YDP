@@ -7,6 +7,7 @@
 //
 
 #import "YDPCarePlanDetailViewController.h"
+#import "YDPCarePlanDetailCell.h"
 
 @interface YDPCarePlanDetailViewController ()
 
@@ -29,6 +30,9 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.userID.text = self.title;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +46,7 @@
 }
 - (void)viewDidUnload {
     [self setTableView:nil];
+    [self setUserID:nil];
     [super viewDidUnload];
 }
 
@@ -63,89 +68,111 @@
     return 8;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+    UIView *sectionHeaderImg = [[UIView alloc]init];
+    sectionHeaderImg.backgroundColor = [UIColor grayColor];
+    UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 72, 22) WithText:@"Condition"];
+    nameHeaderLable.textAlignment = NSTextAlignmentLeft;
+    [sectionHeaderImg addSubview:nameHeaderLable];
+    
+    UILabel *typeHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(172, 3, 299, 20) WithText:self.detailRecord[1]];
+    typeHeaderLable.textAlignment = NSTextAlignmentLeft;
+    [sectionHeaderImg addSubview:typeHeaderLable];
+    
+    
+    return sectionHeaderImg;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    int lines = 1;
-    switch (indexPath.row) {
-        case 0:
-            break;
-        case 1:
-            lines = 2;
-            break;
-        case 2:
-            lines = 1;
-            break;
-        case 3:
-            lines = 1;
-            break;
-        case 4:
-            lines = 4;
-            break;
-        case 5:
-            lines = 3;
-            break;
-        case 6:
-            lines = 2;
-            break;
-        case 7:
-            lines = 1;
-            break;
-        default:
-            break;
-    }
-    return lines * 25;
+    
+    CGSize textSize = { 299, 20000.0f };		// width and height of text area
+    NSString *value = [self.detailRecord objectAtIndex:indexPath.row];
+	CGSize size = [value sizeWithFont:[UIFont fontWithName:@"Courier New" size:14] constrainedToSize:textSize lineBreakMode:UILineBreakModeWordWrap];
+    
+    return size.height + 10 ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *simpleTableIdentifier = @"DetailCarePlan";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    static NSString *MyIdentifier = @"DetailCarePlan";
+	
+	YDPCarePlanDetailCell *cell = (YDPCarePlanDetailCell *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	
+	if(cell == nil)	{
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"YDPCarePlanDetailCell" owner:nil options:nil];
+		
+		for(id currentObject in topLevelObjects) {
+			if([currentObject isKindOfClass:[YDPCarePlanDetailCell class]]) {
+				cell = (YDPCarePlanDetailCell *)currentObject;
+				break;
+			}
+		}
+	}
     
-    if (cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+    // Configure the cell...
+    if (indexPath.row %2 == 0) {
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snippet_3.jpg"]];
+        
+    } else {
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snippet_2.jpg"]];
+        
     }
+    
+    
     NSString *recordKey = [self.detailRecord objectAtIndex:indexPath.row];
     if ([recordKey isEqualToString:@"undefined"]) {
         recordKey = @"";
     }
+    
+    NSString *field = @"";
     int lines = 1;
     switch (indexPath.row) {
         case 0:
-            recordKey = [NSString stringWithFormat:@"Date: %@",recordKey];
+            field = @"Date:";
             break;
         case 1:
-            recordKey = [NSString stringWithFormat:@"ICD9 Diagnosis: %@",recordKey];
+            field = @"ICD9 Diagnosis:";
             lines = 2;
             break;
         case 2:
-            recordKey = [NSString stringWithFormat:@"Status: %@",[[recordKey lastPathComponent] stringByDeletingPathExtension]];
+            field = @"Status:";
             lines = 1;
             break;
         case 3:
-            recordKey = [NSString stringWithFormat:@"Risk Factors: %@",recordKey];
+            field = @"Risk Factors:";
             lines = 1;
             break;
         case 4:
-            recordKey = [NSString stringWithFormat:@"Goals/Instructions: %@",recordKey];
+            field = @"Goals/Instructions:";
             lines = 4;
             break;
         case 5:
-            recordKey = [NSString stringWithFormat:@"Interventions: %@",recordKey];
+            field = @"Interventions:";
             lines = 3;
             break;
         case 6:
-            recordKey = [NSString stringWithFormat:@"Medication: %@",recordKey];
+            field = @"Medication:";
             lines = 2;
             break;
         case 7:
-            recordKey = [NSString stringWithFormat:@"Practitioner: %@",recordKey];
+            field = @"Practitioner:";
             lines = 1;
             break;
         default:
             break;
     }
-    cell.textLabel.numberOfLines = lines;
-    cell.textLabel.text = recordKey;
+    cell.field.text = field;
+    cell.value.numberOfLines = lines;
+    cell.value.text = recordKey;
     return cell;
 }
 
