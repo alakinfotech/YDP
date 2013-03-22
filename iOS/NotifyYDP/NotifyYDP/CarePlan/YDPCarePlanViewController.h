@@ -18,9 +18,15 @@
 @property (strong, nonatomic) NSMutableDictionary *carePlan;
 @property (strong, nonatomic) NSMutableArray *carePlanRecoed;
 
+@property (strong, nonatomic) NSMutableDictionary *allergies;
+@property (strong, nonatomic) NSMutableArray *allergiesRecoed;
+
 @property (readwrite) BOOL isAudination;
-@property (strong, nonatomic) IBOutlet UITableView *tabelView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *loadingView;
 - (IBAction)Logout:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *userID;
+@property (strong, nonatomic) IBOutlet UILabel *allergiesList;
+- (IBAction)onAllergies;
 
 @end

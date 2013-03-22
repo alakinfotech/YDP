@@ -13,4 +13,5 @@
 @property (strong, nonatomic) NSArray *detailRecord;
 - (IBAction)onBack;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UILabel *userID;
 @end

@@ -10,6 +10,7 @@
 
 #import "YDPViewController.h"
 #import "YDPLogin.h"
+#import "UITabBarController+autorotate.h"
 
 @implementation YDPAppDelegate
 
@@ -116,5 +117,21 @@
     }
 }
 
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape;
+}
+
+
+- (UILabel *)getLabelWithFrame:(CGRect)frame WithText:(NSString *)text {
+    
+    UILabel *tempLabel = [[UILabel alloc] initWithFrame:frame];
+    tempLabel.text = text;
+    tempLabel.textAlignment = UITextAlignmentCenter;
+    tempLabel.backgroundColor = [UIColor clearColor];
+    tempLabel.font = [UIFont boldSystemFontOfSize:15];
+    tempLabel.textColor = [UIColor whiteColor];
+    return tempLabel;
+}
 
 @end

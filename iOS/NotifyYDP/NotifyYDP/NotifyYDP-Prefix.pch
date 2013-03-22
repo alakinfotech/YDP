@@ -14,6 +14,9 @@
     # import "ZBarSDK.h"
     #import "PatientModel.h"
     #import "PhysicionModel.h"
+    #import "YDPAppDelegate.h"
+
+#define UIAppDelegate ((YDPAppDelegate *)[UIApplication sharedApplication].delegate)
 
 #define ShowNetworkActivityIndicator()  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES
 #define HideNetworkActivityIndicator()  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO
