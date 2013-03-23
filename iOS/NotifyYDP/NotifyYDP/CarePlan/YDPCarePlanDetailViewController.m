@@ -33,6 +33,8 @@
     
     self.userID.text = self.title;
     
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
 }
 
 - (void)didReceiveMemoryWarning

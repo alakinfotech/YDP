@@ -32,6 +32,8 @@
     self.tableView.delegate = self;
     
     self.userID.text = self.title;
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,16 +68,16 @@
 	
     UIView *sectionHeaderImg = [[UIView alloc]init];
     sectionHeaderImg.backgroundColor = [UIColor grayColor];
-    UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 104, 20) WithText:@"Allergi"];
+    UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 104, 20) WithText:@"Allergen"];
     nameHeaderLable.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:nameHeaderLable];
     
-    UILabel *typeHeaderLable1 = [UIAppDelegate getLabelWithFrame:CGRectMake(135, 3, 124, 20) WithText:@"Reaction"];
+    UILabel *typeHeaderLable1 = [UIAppDelegate getLabelWithFrame:CGRectMake(174, 3, 124, 20) WithText:@"Reaction"];
     typeHeaderLable1.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:typeHeaderLable1];
     
     
-    UILabel *typeHeaderLable2 = [UIAppDelegate getLabelWithFrame:CGRectMake(279, 3, 100, 20) WithText:@"Severity"];
+    UILabel *typeHeaderLable2 = [UIAppDelegate getLabelWithFrame:CGRectMake(293, 3, 100, 20) WithText:@"Severity"];
     typeHeaderLable2.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:typeHeaderLable2];
     

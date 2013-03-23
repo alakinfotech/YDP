@@ -65,6 +65,8 @@
     
     self.webView.delegate = self;
     requestid = 0;
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
 }
 
@@ -164,7 +166,8 @@
             }
             if (self.carePlanRecoed.count > 0) {
                 
-                self.userID.text = [webView stringByEvaluatingJavaScriptFromString:@"getYDPUserName()"];
+                NSString *title = [NSString stringWithFormat:@"%@’s Careplan",[webView stringByEvaluatingJavaScriptFromString:@"getYDPUserName()"]];
+                self.userID.text = title;
                 
                 NSString *allergiesURL = @"https://yourdoctorprogram.com/qhr/CareDashboard/AllergiesEditorMaster.aspx";
                 [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:allergiesURL]]];
@@ -294,17 +297,25 @@
     NSString *recordKey = [self.carePlanRecoed objectAtIndex:indexPath.row];
     NSArray *record = [self.carePlan objectForKey:recordKey];
     
+    NSString *status = record[2];
+    UIColor *textColor = [UIColor blackColor];
+    if ([status isEqualToString:@"Active"]) {
+        textColor = [UIColor lightGrayColor];
+    }
+    
     NSString *recordValue = record[1];
     if ([recordValue isEqualToString:@"undefined"]) {
         recordValue = @"";
     }
     cell.condition.text = recordValue;
+    cell.condition.textColor = textColor;
     recordValue = record[6];
     if ([recordValue isEqualToString:@"undefined"]) {
         recordValue = @"";
     }
     
     cell.medications.text = recordValue;
+    cell.medications.textColor = textColor;
     
     recordValue = record[7];
     if ([recordValue isEqualToString:@"undefined"]) {
@@ -312,6 +323,8 @@
     }
     
     cell.provider.text = recordValue;
+    cell.provider.textColor = textColor;
+    
     return cell;
 }
 
