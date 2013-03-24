@@ -96,8 +96,8 @@
     self.userName.text = @"";
     self.password.text = @"";
     
-    self.userName.text = @"adikadapa";
-    self.password.text = @"Medico!8";
+//    self.userName.text = @"adikadapa";
+//    self.password.text = @"Medico!8";
 }
 
 - (void) viewWillDisappear: (BOOL) animated

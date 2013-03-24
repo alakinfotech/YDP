@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2434DE157FD0A700F43B96 /* MessageUI.framework */; };
+		9E4ED5B516FE761200594C97 /* loading_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4ED5B416FE761200594C97 /* loading_image.png */; };
+		9E4ED5B716FE788900594C97 /* header_bar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E4ED5B616FE788900594C97 /* header_bar.jpg */; };
+		9E4ED5B916FE7B0000594C97 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4ED5B816FE7B0000594C97 /* button.png */; };
 		9E55887D16F76525008396D2 /* UITabBarController+autorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55887C16F76525008396D2 /* UITabBarController+autorotate.m */; };
 		9E6303E015D97E8E00E7BC66 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038215D97E8E00E7BC66 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E6303E115D97E8E00E7BC66 /* YDPLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63038415D97E8E00E7BC66 /* YDPLogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -84,6 +87,9 @@
 
 /* Begin PBXFileReference section */
 		9E2434DE157FD0A700F43B96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9E4ED5B416FE761200594C97 /* loading_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_image.png; sourceTree = "<group>"; };
+		9E4ED5B616FE788900594C97 /* header_bar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = header_bar.jpg; sourceTree = "<group>"; };
+		9E4ED5B816FE7B0000594C97 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		9E5177111652C03F009A339A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9E55887B16F76525008396D2 /* UITabBarController+autorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+autorotate.h"; sourceTree = "<group>"; };
 		9E55887C16F76525008396D2 /* UITabBarController+autorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+autorotate.m"; sourceTree = "<group>"; };
@@ -280,6 +286,9 @@
 		9E63038D15D97E8E00E7BC66 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9E4ED5B816FE7B0000594C97 /* button.png */,
+				9E4ED5B616FE788900594C97 /* header_bar.jpg */,
+				9E4ED5B416FE761200594C97 /* loading_image.png */,
 				9EAE896716FB6FBB00BF2E5D /* back_button.png */,
 				9EAE896516FB6FA600BF2E5D /* back_button@2x.png */,
 				9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */,
@@ -583,6 +592,9 @@
 				9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */,
 				9EAE897316FB808D00BF2E5D /* AllergiesViewController.xib in Resources */,
 				9EAE897816FB836E00BF2E5D /* AllergiesCell.xib in Resources */,
+				9E4ED5B516FE761200594C97 /* loading_image.png in Resources */,
+				9E4ED5B716FE788900594C97 /* header_bar.jpg in Resources */,
+				9E4ED5B916FE7B0000594C97 /* button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

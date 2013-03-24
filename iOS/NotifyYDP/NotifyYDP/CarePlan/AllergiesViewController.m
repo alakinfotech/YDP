@@ -66,8 +66,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	
-    UIView *sectionHeaderImg = [[UIView alloc]init];
-    sectionHeaderImg.backgroundColor = [UIColor grayColor];
+    UIImageView *sectionHeaderImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header_bar.jpg"]];
     UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 104, 20) WithText:@"Allergen"];
     nameHeaderLable.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:nameHeaderLable];

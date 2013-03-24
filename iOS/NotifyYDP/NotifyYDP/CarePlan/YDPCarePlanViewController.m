@@ -237,8 +237,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	
-    UIView *sectionHeaderImg = [[UIView alloc]init];
-    sectionHeaderImg.backgroundColor = [UIColor grayColor];
+   UIImageView *sectionHeaderImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header_bar.jpg"]];
+    
     UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 72, 22) WithText:@"Condition"];
     [sectionHeaderImg addSubview:nameHeaderLable];
     
@@ -264,7 +264,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -298,9 +298,9 @@
     NSArray *record = [self.carePlan objectForKey:recordKey];
     
     NSString *status = record[2];
-    UIColor *textColor = [UIColor blackColor];
+    UIColor *textColor = [UIColor lightGrayColor];
     if ([status isEqualToString:@"Active"]) {
-        textColor = [UIColor lightGrayColor];
+        textColor = [UIColor blackColor];
     }
     
     NSString *recordValue = record[1];
