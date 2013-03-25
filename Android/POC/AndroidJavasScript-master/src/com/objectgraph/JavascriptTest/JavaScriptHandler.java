@@ -25,7 +25,7 @@ public class JavaScriptHandler {
     }
     
     public void setmydata(String mydata){
-    	Log.v("mylog","JavaScriptHandler.setmydata is called : " + mydata);
+    	Log.v("mylog","JavaScriptHandlers.setmydata is called : " + mydata);
     	 this.parentActivity.javascriptCallFinish(mydata);
     }
     public void setResult(int val){
