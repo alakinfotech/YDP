@@ -67,21 +67,21 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	
     UIImageView *sectionHeaderImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header_bar.jpg"]];
-    UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 104, 20) WithText:@"Allergen"];
+    UILabel *nameHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(11, 3, 153, 20) WithText:@"Allergen"];
     nameHeaderLable.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:nameHeaderLable];
     
-    UILabel *typeHeaderLable1 = [UIAppDelegate getLabelWithFrame:CGRectMake(174, 3, 124, 20) WithText:@"Reaction"];
+    UILabel *typeHeaderLable1 = [UIAppDelegate getLabelWithFrame:CGRectMake(167, 3, 100, 20) WithText:@"Reaction"];
     typeHeaderLable1.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:typeHeaderLable1];
     
     
-    UILabel *typeHeaderLable2 = [UIAppDelegate getLabelWithFrame:CGRectMake(293, 3, 100, 20) WithText:@"Severity"];
+    UILabel *typeHeaderLable2 = [UIAppDelegate getLabelWithFrame:CGRectMake(273, 3, 100, 20) WithText:@"Severity"];
     typeHeaderLable2.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:typeHeaderLable2];
     
     
-    UILabel *typeHeaderLable3 = [UIAppDelegate getLabelWithFrame:CGRectMake(401, 3, 74, 20) WithText:@"Status"];
+    UILabel *typeHeaderLable3 = [UIAppDelegate getLabelWithFrame:CGRectMake(379, 3, 100, 20) WithText:@"Status"];
     typeHeaderLable3.textAlignment = NSTextAlignmentLeft;
     [sectionHeaderImg addSubview:typeHeaderLable3];
     
@@ -98,7 +98,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    CGSize textSize = { 104, 20000.0f };		// width and height of text area
+    CGSize textSize = { 153, 20000.0f };		// width and height of text area
     NSString *recordKey = [self.allergiesRecoed objectAtIndex:indexPath.row];
     NSArray *record = [self.allergies objectForKey:recordKey];
     

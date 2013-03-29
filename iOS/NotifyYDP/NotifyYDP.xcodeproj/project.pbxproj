@@ -56,7 +56,6 @@
 		9EAE895E16FB3B7D00BF2E5D /* snippet_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */; };
 		9EAE895F16FB3B7D00BF2E5D /* snippet_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */; };
 		9EAE896416FB6E9300BF2E5D /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE896316FB6E9300BF2E5D /* UIViewController+Additions.m */; };
-		9EAE896616FB6FA600BF2E5D /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896516FB6FA600BF2E5D /* back_button@2x.png */; };
 		9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896716FB6FBB00BF2E5D /* back_button.png */; };
 		9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */; };
 		9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896C16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib */; };
@@ -183,7 +182,6 @@
 		9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snippet_3.jpg; sourceTree = "<group>"; };
 		9EAE896216FB6E9300BF2E5D /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		9EAE896316FB6E9300BF2E5D /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
-		9EAE896516FB6FA600BF2E5D /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button@2x.png"; sourceTree = "<group>"; };
 		9EAE896716FB6FBB00BF2E5D /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		9EAE896916FB70CD00BF2E5D /* YDPCarePlanDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPCarePlanDetailCell.h; sourceTree = "<group>"; };
 		9EAE896A16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPCarePlanDetailCell.m; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 				9E4ED5B616FE788900594C97 /* header_bar.jpg */,
 				9E4ED5B416FE761200594C97 /* loading_image.png */,
 				9EAE896716FB6FBB00BF2E5D /* back_button.png */,
-				9EAE896516FB6FA600BF2E5D /* back_button@2x.png */,
 				9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */,
 				9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */,
 				9ED250AE16ECEDF8000DF2EF /* Active.png */,
@@ -587,7 +584,6 @@
 				9EAE895B16FB382400BF2E5D /* YDPCarePlanCell.xib in Resources */,
 				9EAE895E16FB3B7D00BF2E5D /* snippet_2.jpg in Resources */,
 				9EAE895F16FB3B7D00BF2E5D /* snippet_3.jpg in Resources */,
-				9EAE896616FB6FA600BF2E5D /* back_button@2x.png in Resources */,
 				9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */,
 				9EAE896D16FB70E500BF2E5D /* YDPCarePlanDetailCell.xib in Resources */,
 				9EAE897316FB808D00BF2E5D /* AllergiesViewController.xib in Resources */,

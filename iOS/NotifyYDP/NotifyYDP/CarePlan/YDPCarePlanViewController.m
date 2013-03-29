@@ -112,8 +112,11 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    
-[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
+
+    if (requestid == 0) {
+        [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
+    }
+
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webview
 {
@@ -215,12 +218,14 @@
              
              self.loadingView.hidden = YES;
              [self.tableView reloadData];
+            
+            [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
              
              
         }
     }
     
-    [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
+    
     
 }
 

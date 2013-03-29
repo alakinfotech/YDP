@@ -27,7 +27,7 @@
     [backButton setTintColor:[UIColor whiteColor]];
     backButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
     backButton.frame = CGRectMake(0, 0, 60, 30);
-    [backButton setBackgroundImage:[[UIImage imageNamed:@"back_button"] stretchableImageWithLeftCapWidth:20 topCapHeight:0]forState:UIControlStateNormal];
+    [backButton setBackgroundImage:[[UIImage imageNamed:@"back_button.png"] stretchableImageWithLeftCapWidth:20 topCapHeight:0]forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
