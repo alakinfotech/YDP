@@ -4,26 +4,31 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <Button android:id="@+id/btnSimple"
+    <Button android:id="@+id/button1"
             android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:text="1. [Java->Javascript] Simple example. Do something on the HTML below. (This is Android Button)"
+            android:layout_height="wrap_content"
+            android:text="CALLING FROM HTML"
             android:gravity="left|center_vertical"
             ></Button>
 
-    <Button android:id="@+id/btnCalc"
+    <Button android:id="@+id/button2"
             android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:text="2. [Java->Javascript->Java] Complete cycle example. Calc something and put it back to Java (This is Android Button)"
+            android:layout_height="wrap_content"
+            android:text="CALLING SCRIPT FUNCTION IN HTML FILE"
             android:gravity="left|center_vertical"
             ></Button>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click me to check" />
-
+        android:text="CALLING INLINE SCRIPT FUNCTION" />
+ <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CALLING FUN FROM SEP JS FILE" />
+    
     <TextView android:id="@+id/myResult"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
