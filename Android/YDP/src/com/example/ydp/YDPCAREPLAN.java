@@ -36,8 +36,12 @@ import net.sourceforge.zbar.Config;
 
 
 
+
+
+
+
 public class YDPCAREPLAN extends Activity{
-	
+	public static final boolean YDP_WEBVIEW_LOGIN =true;
 	protected static final byte[] NULL = null;
 	private Camera mCamera;
     private CameraPreview mPreview;
@@ -169,23 +173,29 @@ public class YDPCAREPLAN extends Activity{
 				}
 				else
 				{
-
-				Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
-				
-				uname = username.getText().toString();
-				pword = password.getText().toString();
-			   innt.putExtra("username",uname);
-			   innt.putExtra("password",pword);
-			   
-			   classCreateStatus = 10;
-			    	onPause();
-
-			    	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
-			    	preview.removeView(mPreview);
-			    	
-			    	startActivity(innt);
-				}
-			    				
+						if(YDP_WEBVIEW_LOGIN==true)
+						{
+						Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
+						
+						uname = username.getText().toString();
+						pword = password.getText().toString();
+					   innt.putExtra("username",uname);
+					   innt.putExtra("password",pword);
+					   
+					   classCreateStatus = 10;
+					    	onPause();
+		
+					    	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+					    	preview.removeView(mPreview);
+					    	
+					    	startActivity(innt);
+						}
+						else
+						{
+						Intent careplanaccess = new Intent(getApplicationContext(),UIFORCAREPLAN.class);
+						startActivity(careplanaccess);
+						}
+			}				
 			}
 		});
 		
