@@ -3,11 +3,11 @@ package com.example.ydp;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TabHost;
 
 public class HOMESCREEN  extends TabActivity{
+	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.homescreen);
@@ -31,10 +31,6 @@ public class HOMESCREEN  extends TabActivity{
 
 	}
 
-	private Drawable getDrawable(int all) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

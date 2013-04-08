@@ -33,8 +33,6 @@ public class EMAILYDP extends Activity {
 	 
 				  Intent email = new Intent(Intent.ACTION_SEND);
 				  email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
-				  //email.putExtra(Intent.EXTRA_CC, new String[]{ to});
-				  //email.putExtra(Intent.EXTRA_BCC, new String[]{to});
 				  email.putExtra(Intent.EXTRA_SUBJECT, subject);
 				  email.putExtra(Intent.EXTRA_TEXT, message);
 	 

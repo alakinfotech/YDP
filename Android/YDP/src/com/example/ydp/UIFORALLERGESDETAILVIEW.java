@@ -57,12 +57,7 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		public View getView(int position, View v, ViewGroup parent) {
 			// TODO Auto-generated method stub
 			
-//for adding header to list view
 
-//			ListView lv = getListView();
-//			LayoutInflater inflater = getLayoutInflater();
-//			ViewGroup header = (ViewGroup)inflater.inflate(R.layout.careplan, lv, false);
-//			lv.addHeaderView(header, null, false);
 			
 			
 			

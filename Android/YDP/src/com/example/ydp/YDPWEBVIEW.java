@@ -95,17 +95,15 @@ public class YDPWEBVIEW extends Activity {
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='"+user+"';");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='"+pass+"';");
 		    	   wb.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_bt_Login').click();");
-		    	  // wb.loadUrl("file:///android_asset/javascript.js");
+		    	
 		    	   
 		    	   i = 1;
 		    	   wb.loadUrl("javascript:window.MyHandler.setmydata(document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView_Label11').innerHTML)");
 		    	   if(i==1)
 		    	   {
-					//wb.loadUrl("javascript:( function () { var resultSrc = document.getElementById(\"TitleContent_TitleContent_lblAge\").innerHTML;console.log(resultsrc);alert(\"Hello! I am an alert box!\"); window.HTMLOUT.someCallback(resultSrc); } ) ()");
-
-		    	   wb.loadUrl("javascript:window.MyHandler.setmydata(function getCarePlan(){var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = 'NO'; if(carePlanTable){ result = ''; var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){ var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += ':$#';console.log(childValue);}else{result += carePlanRow[j].childNodes[1].src;result += ':$#';console.log(carePlanRow[j].childNodes[1].src);}}}}}return result;)())");
-		    	  // wb.loadUrl("javascript:(function getCarePlan(){var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = 'NO'; if(carePlanTable){ result = ''; var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){ var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += ':$#';console.log(childValue);}else{result += carePlanRow[j].childNodes[1].src;result += ':$#';console.log(carePlanRow[j].childNodes[1].src);}}}}}return result;)()");
-		    	   //Log.d(result, "get care plan");
+					
+		    		   wb.loadUrl("javascript:window.MyHandler.setmydata(function getCarePlan(){var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = 'NO'; if(carePlanTable){ result = ''; var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){ var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += ':$#';console.log(childValue);}else{result += carePlanRow[j].childNodes[1].src;result += ':$#';console.log(carePlanRow[j].childNodes[1].src);}}}}}return result;)())");
+		    	  
 		    	   }
 		    	   
 		    	   
@@ -131,7 +129,7 @@ public class YDPWEBVIEW extends Activity {
         // therefore, the above parameter "val" must be final
         runOnUiThread(new Runnable() {
             public void run() {
-              //  myResult.setText("Callback got val: " + mydata);
+              
             }
         });
     }

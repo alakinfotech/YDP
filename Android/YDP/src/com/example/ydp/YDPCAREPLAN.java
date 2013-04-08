@@ -23,7 +23,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.Toast;
+
 
 
 
@@ -47,9 +47,7 @@ public class YDPCAREPLAN extends Activity{
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
     Context context= this;
-//    String scanData;
-//
-//    String scanText;
+
     
     ImageScanner scanner;
 
@@ -152,7 +150,7 @@ public class YDPCAREPLAN extends Activity{
 				
 				if(username.length()==0||password.length()==0)
 				{
-					//Toast.makeText(getApplicationContext(), "Enter username and password ", Toast.LENGTH_SHORT).show();
+					
 				
 					AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 					alertDialogBuilder.setTitle("Warning");

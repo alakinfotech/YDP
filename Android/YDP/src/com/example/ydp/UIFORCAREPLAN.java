@@ -13,20 +13,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	
@@ -35,6 +31,13 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	private ProgressDialog progressBar;
 	TextView user,pass;
 	static int loadRequest = 0;
+	
+	
+	protected void onPause()
+	   {
+	       super.onPause();
+	       System.gc();
+	   }
 	
 	String record1[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
 	String record2[] = {"03/15/2013", "493:Asthma", "Active", "family h/o", "decrease symptoms" ,"3/15/2013 12:02:41 PM life style changes, meds", "prednisolone 1 MG Oral Tablet Terbutaline", "Kimberly Dunn, MD"};
@@ -47,14 +50,14 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	String record9[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
 	
 	
-	String  n[]   = { "Gauthamasdgggddss","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
+	String  n[]   = { "record1[]","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
 	  String l[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
 	  String p[] ={ "9981152313","9811313134","9854533319","8982456189","9989124629","9989126565","9989515636"};
 	 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.careplanhome);
-	   	  
+		 loadRequest = 0;
 		String usern = getIntent().getExtras().getString("username");
  	   String passw = getIntent().getExtras().getString("password"); 
  	  final Context myApp = this;
@@ -101,15 +104,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	  /* Register a new JavaScript interface called HTMLOUT */  
  	  wb1.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");  
  	    
- 	  /* WebViewClient must be set BEFORE calling loadUrl! */  
-// 	  wb1.setWebViewClient(new WebViewClient() {  
-// 	      @Override  
-// 	      public void onPageFinished(WebView view, String url)  
-// 	      {  
-// 	          /* This call inject JavaScript into the page which just finished loading. */  
-// 	         // wb1.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");  
-			
+ 	   
+
 	wb1.loadUrl("https://yourdoctorprogram.com/qhr/Login.aspx/");
+	
+	
+	/* WebViewClient must be set BEFORE calling loadUrl! */ 
 	wb1.setWebViewClient(new WebViewClient() {
 
 		   
@@ -119,7 +119,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			   super.onPageFinished(view, url);
 		    	 if(loadRequest == 0){
 		    	 
-		    	   Log.d("page loaded","page");
+		    	   Log.d("page loaded","pageloaded");
 		    	   
 		    	   String user = getIntent().getExtras().getString("username");
 		    	   String pass = getIntent().getExtras().getString("password");
@@ -127,10 +127,10 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		    	   wb1.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='"+user+"';");
 		    	   wb1.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='"+pass+"';");
 		    	   wb1.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_bt_Login').click();");
-		    	  // wb.loadUrl("file:///android_asset/javascript.js");
+
 		    	   
 		    	   loadRequest++;
-		    	   //wb1.loadUrl("javascript:window.MyHandler.setmydata(document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView_Label11').innerHTML)");
+
 		    	   
 		    	   
 		    	 }
@@ -157,18 +157,8 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 
 	
  	    
- 	    
- 	    
- 	    //wb1.loadUrl("https://yourdoctorprogram.com/qhr/Login.aspx/");
- 	  
- 	  
- 	  
- 	  
-		
-		
-		
-		ListView lv = (ListView) findViewById(R.id.cphomelistView);
-		 lv.setAdapter(new Myadapter(this));
+ 	   ListView lv = (ListView) findViewById(R.id.cphomelistView);
+		lv.setAdapter(new Myadapter(this));
         lv.setOnItemClickListener(this);
 		ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
 		img.setOnClickListener(new View.OnClickListener() {
@@ -217,13 +207,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			public View getView(int position, View v, ViewGroup parent) {
 				// TODO Auto-generated method stub
 				
-	//for adding header to list view
-
-//				ListView lv = getListView();
-//				LayoutInflater inflater = getLayoutInflater();
-//				ViewGroup header = (ViewGroup)inflater.inflate(R.layout.careplan, lv, false);
-//				lv.addHeaderView(header, null, false);
-				
+	
 				
 				
 				
@@ -249,7 +233,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				long arg3) {
 			// TODO Auto-generated method stub
 			
-			//Toast.makeText(getApplicationContext(), "selected name is :", 3000).show();
+			
 			
 			Intent i = new Intent(getApplicationContext(),Careplandetailview.class);
 			startActivity(i);
