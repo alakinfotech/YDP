@@ -34,9 +34,17 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	WebView wb1;
 	private ProgressDialog progressBar;
 	TextView user,pass;
-	boolean loadingFinished = false;
-	boolean redirect = false;
-	static int i = 0;
+	static int loadRequest = 0;
+	
+	String record1[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
+	String record2[] = {"03/15/2013", "493:Asthma", "Active", "family h/o", "decrease symptoms" ,"3/15/2013 12:02:41 PM life style changes, meds", "prednisolone 1 MG Oral Tablet Terbutaline", "Kimberly Dunn, MD"};
+	String record3[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+	String record4[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+	String record5[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+	String record6[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+	String record7[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
+	String record8[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+	String record9[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
 	
 	
 	String  n[]   = { "Gauthamasdgggddss","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
@@ -56,14 +64,26 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	     @SuppressWarnings("unused")  
  	     public void showHTML(String html)  
  	     {  
- 	         new AlertDialog.Builder(myApp)  
- 	             .setTitle("HTML")  
- 	             .setMessage(html)  
- 	             .setPositiveButton(android.R.string.ok, null)  
- 	         .setCancelable(false)  
- 	         .create()  
- 	         .show();  
- 	     }  
+ 	    	new AlertDialog.Builder(myApp)  
+            .setTitle("HTML")  
+            .setMessage(html)  
+            .setPositiveButton(android.R.string.ok, null)  
+        .setCancelable(false)  
+        .create()  
+        .show(); 
+ 	     }
+ 	     
+// 	    public void setCareplan(String html)  
+//	     {  
+//	         new AlertDialog.Builder(myApp)  
+//	             .setTitle("HTML")  
+//	             .setMessage(html)  
+//	             .setPositiveButton(android.R.string.ok, null)  
+//	         .setCancelable(false)  
+//	         .create()  
+//	         .show();  
+//	     }
+ 	    
  	 }  
  	   
  	     wb1 = (WebView)findViewById(R.id.webView1);
@@ -88,39 +108,16 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 // 	      {  
 // 	          /* This call inject JavaScript into the page which just finished loading. */  
 // 	         // wb1.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");  
- 	 		i = 0;
 			
 	wb1.loadUrl("https://yourdoctorprogram.com/qhr/Login.aspx/");
 	wb1.setWebViewClient(new WebViewClient() {
 
-		 @Override
-		   public boolean shouldOverrideUrlLoading(WebView view, String urlNewString) {
-		       if (!loadingFinished) {
-		          redirect = true;
-		       }
-
-		   loadingFinished = false;
-		   wb1.loadUrl(urlNewString);
-		   return true;
-		   }
-		   
-		   public void onPageStarted(WebView view, String url) {
-		        loadingFinished = false;
-		        
-		    }
 		   
 		   @Override
 		   public void onPageFinished(WebView view, String url) {
 			   Log.d("page loaded","page not loaded");
-			   //if(!redirect)
-			   {
-				   
-	             loadingFinished = true;
-	             }
-
-		      // if(loadingFinished && !redirect){
-		    	   
-		    	 if(i == 0){
+			   super.onPageFinished(view, url);
+		    	 if(loadRequest == 0){
 		    	 
 		    	   Log.d("page loaded","page");
 		    	   
@@ -132,24 +129,27 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		    	   wb1.loadUrl("javascript:document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_bt_Login').click();");
 		    	  // wb.loadUrl("file:///android_asset/javascript.js");
 		    	   
-		    	   i++;
+		    	   loadRequest++;
 		    	   //wb1.loadUrl("javascript:window.MyHandler.setmydata(document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView_Label11').innerHTML)");
 		    	   
 		    	   
-		    	   
 		    	 }
-		    	 else if(i==1)
+		    	 else if(loadRequest == 1)
 		    	   {
 					
 		    	     progressBar.dismiss();
-		    	     i++;
-		    	  
+		    	     loadRequest++;
+		    	     
+		    	     //wb1.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementsByTagName('html')[0].innerHTML;);"); 
+		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementById('TitleContent_TitleContent_lblProviderName').childNodes[0].textContent);");
+		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setCareplan(function getCarePlan(){var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = 'NO'; if(carePlanTable){ result = ''; var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){ var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += ':$#';console.log(childValue);}else{result += carePlanRow[j].childNodes[1].src;result += ':$#';console.log(carePlanRow[j].childNodes[1].src);}}}}}return result;}getCarePlan();");
+		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setCareplan(document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView')[0].innerHTML");
 		    	   }
-//		       } else{
-//		          redirect = false; 
-//		       }
-		   
+		    	 
 		    }
+		   
+		   
 		   
 		   
 		});
