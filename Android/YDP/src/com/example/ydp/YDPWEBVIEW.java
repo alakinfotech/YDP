@@ -53,10 +53,7 @@ public class YDPWEBVIEW extends Activity {
 			
 
 			
-			
-			
-			wb.addJavascriptInterface(new Jscripthandler(this), "MyHandler");
-			wb.loadUrl("https://yourdoctorprogram.com/qhr/Login.aspx/");
+	wb.loadUrl("https://yourdoctorprogram.com/qhr/Login.aspx/");
 
 
 	 wb.setWebViewClient(new WebViewClient() {

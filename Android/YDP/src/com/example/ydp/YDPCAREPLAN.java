@@ -193,6 +193,11 @@ public class YDPCAREPLAN extends Activity{
 						else
 						{
 						Intent careplanaccess = new Intent(getApplicationContext(),UIFORCAREPLAN.class);
+						uname = username.getText().toString();
+						pword = password.getText().toString();
+					   careplanaccess.putExtra("username",uname);
+					   
+					   careplanaccess.putExtra("password",pword);
 						startActivity(careplanaccess);
 						}
 			}				
