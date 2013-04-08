@@ -35,6 +35,10 @@
         <activity android:name="NOTIFYYDP" android:screenOrientation="portrait"></activity>
         <activity android:name="YDPWEBVIEW" android:screenOrientation="portrait"></activity>
         <activity android:name="EMAILYDP"></activity>
+        <activity android:name="UIFORALLERGESDETAILVIEW"   android:screenOrientation="landscape"></activity>
+        <activity android:name="UIFORCAREPLAN" android:screenOrientation="landscape"></activity>
+        <activity android:name="Careplandetailview" android:screenOrientation="landscape"></activity>
+        
     </application>
 
 </manifest>

@@ -41,7 +41,7 @@ import net.sourceforge.zbar.Config;
 
 
 public class YDPCAREPLAN extends Activity{
-	public static final boolean YDP_WEBVIEW_LOGIN =true;
+	public static final boolean YDP_WEBVIEW_LOGIN =false;
 	protected static final byte[] NULL = null;
 	private Camera mCamera;
     private CameraPreview mPreview;
