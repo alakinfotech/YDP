@@ -4,6 +4,12 @@ package com.example.ydp;
 
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.apache.commons.lang.ArrayUtils;
+
+import android.R.array;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -22,6 +28,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
@@ -50,17 +57,46 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	String record9[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
 	
 	
-	String  n[]   = { "record1[]","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
-	  String l[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
-	  String p[] ={ "9981152313","9811313134","9854533319","8982456189","9989124629","9989126565","9989515636"};
+	
 	 
-	protected void onCreate(Bundle savedInstanceState) {
+	 
+	  ArrayList<String[]> careplanRecords;
+
+	 
+	  
+	  
+
+	  
+	  
+	  protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.careplanhome);
 		 loadRequest = 0;
 		String usern = getIntent().getExtras().getString("username");
  	   String passw = getIntent().getExtras().getString("password"); 
  	  final Context myApp = this;
+ 	  
+ 	  
+ 	
+ 	
+ 	  
+
+
+         careplanRecords = new ArrayList<String[]>();
+         careplanRecords.add( record1);
+         careplanRecords.add( record2);
+         careplanRecords.add( record3);
+         careplanRecords.add( record4);
+         careplanRecords.add( record5);
+         careplanRecords.add( record6);
+         careplanRecords.add( record7);
+         careplanRecords.add( record8);
+         careplanRecords.add( record9);
+        
+        	  
+ 	  
+ 	  
+ 	  
  	  
  	  class MyJavaScriptInterface   
  	 {  
@@ -89,8 +125,8 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	    
  	 }  
  	   
- 	     wb1 = (WebView)findViewById(R.id.webView1);
- 	   wb1.getSettings().setJavaScriptEnabled(true); 
+ 	   	wb1 = (WebView)findViewById(R.id.webView1);
+ 	   	wb1.getSettings().setJavaScriptEnabled(true); 
  	   	wb1.getSettings().setBuiltInZoomControls(true);
 		wb1.setInitialScale(1);
 		wb1.getSettings().setLoadWithOverviewMode(true);
@@ -187,7 +223,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		 	
 			public int getCount() {
 				// TODO Auto-generated method stub
-				return n.length;
+				return careplanRecords.size();
 				
 			}
 
@@ -217,9 +253,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				 TextView t2 = (TextView)v.findViewById(R.id.cpdatatextView2);
 				 TextView t3 = (TextView)v.findViewById(R.id.cpdatatextView3);
 				 
-				 t1.setText(n[position]);
-				 t2.setText(l[position]);
-				 t3.setText(p[position]);
+				 
+				 String[] careplan = careplanRecords.get(position);
+				 
+				 t1.setText(careplan[1]);
+				 t2.setText(careplan[6]);
+				 t3.setText(careplan[7]);
 				 return v;
 			}
 			
@@ -229,14 +268,17 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		}
 
 		@Override
-		public void onItemClick(AdapterView<?> arg0, View v, int arg2,
+		public void onItemClick(AdapterView<?> arg0, View v, int position,
 				long arg3) {
 			// TODO Auto-generated method stub
 			
 			
 			
-			Intent i = new Intent(getApplicationContext(),Careplandetailview.class);
-			startActivity(i);
+			Intent careplandetailactivity = new Intent(getApplicationContext(),Careplandetailview.class);
+			//Toast.makeText(getApplicationContext(), position, 3000).show();
+			String[] careplan = careplanRecords.get(position);
+			careplandetailactivity.putExtra("careplanrecord",careplan);
+			startActivity(careplandetailactivity);
 			
 			
 		}
