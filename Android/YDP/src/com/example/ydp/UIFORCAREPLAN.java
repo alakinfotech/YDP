@@ -61,10 +61,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	 
 	 
 	  ArrayList<String[]> careplanRecords;
-	  String careplane = "";
-	   String allergies = "";
-	  String userName = "";
+	  ArrayList<String[]> allergyRecords;
+	 
 	  
+	  String userName = "";
+	  ListView lv;
+	  TextView allallergy;
 	  
 
 	  
@@ -84,17 +86,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 
 
          careplanRecords = new ArrayList<String[]>();
-         careplanRecords.add( record1);
-         careplanRecords.add( record2);
-         careplanRecords.add( record3);
-         careplanRecords.add( record4);
-         careplanRecords.add( record5);
-         careplanRecords.add( record6);
-         careplanRecords.add( record7);
-         careplanRecords.add( record8);
-         careplanRecords.add( record9);
+         allergyRecords = new ArrayList<String[]>();
         
-        	  
+         
  	  
  	  
  	  
@@ -110,26 +104,52 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	     
  	    public void showCareplaneHTML(String html) 
  	     { 
- 	    	 careplane =html ;
- 	    	new AlertDialog.Builder(myApp)  
-            .setTitle("HTML")  
-            .setMessage(html)  
-            .setPositiveButton(android.R.string.ok, null)  
-        .setCancelable(false)  
-        .create()  
-        .show(); 
+ 	    	
+ 	    	 String[] careplandata = html.split("[$#]+");
+ 	    	 for( int i=0;i<careplandata.length;i+=9)
+ 	    	 {
+ 	    		 String[] record = {careplandata[i],careplandata[i+1],careplandata[i+2],careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7]};
+ 	    	    careplanRecords.add( record);
+ 	    	    
+ 	    	 }
+ 	    	 
+ 	    //	lv.refreshDrawableState();
+// 	    	new AlertDialog.Builder(myApp)  
+//            .setTitle("HTML")  
+//            .setMessage(html)  
+//            .setPositiveButton(android.R.string.ok, null)  
+//        .setCancelable(false)  
+//        .create()  
+//        .show(); 
  	     }
  	     
  	    public void showAllergiesHTML(String html)  
  	      {  
- 	       allergies = html;
- 	      new AlertDialog.Builder(myApp)  
- 	           .setTitle("HTML")  
- 	           .setMessage(html)  
- 	           .setPositiveButton(android.R.string.ok, null)  
- 	       .setCancelable(false)  
- 	       .create()  
- 	       .show(); 
+ 	       
+ 	    	String[] allergydata = html.split("[$#]+");
+ 	    	String allergyvar  = ""; 
+	    	 for( int i=0;i<allergydata.length;i+=4)
+	    	 {
+	    		 if(i!=0)
+	    		 {
+	    			 allergyvar += ", "; 
+	    		 }
+	    		 String[] record = {allergydata[i],allergydata[i+1],allergydata[i+2],allergydata[i+3]};
+	    		 
+	    		 allergyvar += allergydata[i];
+	    		 
+	    	    allergyRecords.add( record);
+	    	    
+	    	 }
+	    	  allallergy.setText(allergyvar);
+	    	 
+// 	      new AlertDialog.Builder(myApp)  
+// 	           .setTitle("HTML")  
+// 	           .setMessage(html)  
+// 	           .setPositiveButton(android.R.string.ok, null)  
+// 	       .setCancelable(false)  
+// 	       .create()  
+// 	       .show(); 
  	      }
  	    
  	 }  
@@ -218,9 +238,10 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 
 	
  	    
- 	   ListView lv = (ListView) findViewById(R.id.cphomelistView);
+ 	    lv = (ListView) findViewById(R.id.cphomelistView);
 		lv.setAdapter(new Myadapter(this));
         lv.setOnItemClickListener(this);
+        allallergy = (TextView)findViewById(R.id.cpdatatextView1);
 		ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
 		img.setOnClickListener(new View.OnClickListener() {
 			
