@@ -61,7 +61,8 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	 
 	 
 	  ArrayList<String[]> careplanRecords;
-
+	  String careplane = "";
+	   String allergies = "";
 	 
 	  
 	  
@@ -101,8 +102,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	  class MyJavaScriptInterface   
  	 {  
  	     @SuppressWarnings("unused")  
- 	     public void showHTML(String html)  
- 	     {  
+ 	    public void showCareplaneHTML(String html) 
+ 	     { 
+ 	    	 careplane =html ;
  	    	new AlertDialog.Builder(myApp)  
             .setTitle("HTML")  
             .setMessage(html)  
@@ -112,16 +114,17 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
         .show(); 
  	     }
  	     
-// 	    public void setCareplan(String html)  
-//	     {  
-//	         new AlertDialog.Builder(myApp)  
-//	             .setTitle("HTML")  
-//	             .setMessage(html)  
-//	             .setPositiveButton(android.R.string.ok, null)  
-//	         .setCancelable(false)  
-//	         .create()  
-//	         .show();  
-//	     }
+ 	    public void showAllergiesHTML(String html)  
+ 	      {  
+ 	       allergies = html;
+ 	      new AlertDialog.Builder(myApp)  
+ 	           .setTitle("HTML")  
+ 	           .setMessage(html)  
+ 	           .setPositiveButton(android.R.string.ok, null)  
+ 	       .setCancelable(false)  
+ 	       .create()  
+ 	       .show(); 
+ 	      }
  	    
  	 }  
  	   
@@ -173,20 +176,26 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		    	 else if(loadRequest == 1)
 		    	   {
 					
-		    	     progressBar.dismiss();
-		    	     loadRequest++;
-		    	     
+		    	    loadRequest++;
+		    	    wb1.loadUrl("javascript:window.HTMLOUT.showCareplaneHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementsByTagName('html')[0].innerHTML;);"); 
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementById('TitleContent_TitleContent_lblProviderName').childNodes[0].textContent);");
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setCareplan(function getCarePlan(){var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = 'NO'; if(carePlanTable){ result = ''; var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){ var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += ':$#';console.log(childValue);}else{result += carePlanRow[j].childNodes[1].src;result += ':$#';console.log(carePlanRow[j].childNodes[1].src);}}}}}return result;}getCarePlan();");
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setCareplan(document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView')[0].innerHTML");
-		    	   }
+		    	    wb1.loadUrl("https://yourdoctorprogram.com/qhr/CareDashboard/AllergiesEditorMaster.aspx");
+		            
+		           }
+		         else if(loadRequest == 2){
+		          
+		          wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+		          progressBar.dismiss();
+		          loadRequest++;
 		    	 
-		    }
+		         	}
 		   
 		   
-		   
+		   }
 		   
 		});
 	
