@@ -38,6 +38,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	private ProgressDialog progressBar;
 	TextView user,pass;
 	static int loadRequest = 0;
+	Myadapter adapter;
 	
 	
 	protected void onPause()
@@ -46,15 +47,15 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	       System.gc();
 	   }
 	
-	String record1[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
-	String record2[] = {"03/15/2013", "493:Asthma", "Active", "family h/o", "decrease symptoms" ,"3/15/2013 12:02:41 PM life style changes, meds", "prednisolone 1 MG Oral Tablet Terbutaline", "Kimberly Dunn, MD"};
-	String record3[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-	String record4[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-	String record5[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-	String record6[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-	String record7[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
-	String record8[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-	String record9[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+//	String record1[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
+//	String record2[] = {"03/15/2013", "493:Asthma", "Active", "family h/o", "decrease symptoms" ,"3/15/2013 12:02:41 PM life style changes, meds", "prednisolone 1 MG Oral Tablet Terbutaline", "Kimberly Dunn, MD"};
+//	String record3[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+//	String record4[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+//	String record5[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+//	String record6[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+//	String record7[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
+//	String record8[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
+//	String record9[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
 	
 	
 	
@@ -109,10 +110,11 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	    	 for( int i=0;i<careplandata.length;i+=9)
  	    	 {
  	    		 String[] record = {careplandata[i],careplandata[i+1],careplandata[i+2],careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7]};
- 	    	    careplanRecords.add( record);
- 	    	    
+ 	    		
+ 	    		 careplanRecords.add( record);
+ 	    	   
  	    	 }
- 	    	 
+// 	    	 adapter.notifyDataSetChanged();
  	    //	lv.refreshDrawableState();
 // 	    	new AlertDialog.Builder(myApp)  
 //            .setTitle("HTML")  
@@ -141,7 +143,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	    	    allergyRecords.add( record);
 	    	    
 	    	 }
-	    	  allallergy.setText(allergyvar);
+	    	//  allallergy.setText(allergyvar);
 	    	 
 // 	      new AlertDialog.Builder(myApp)  
 // 	           .setTitle("HTML")  
@@ -227,10 +229,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		          
 		          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \":$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 		          loadRequest++;
-		    	 
+		          
+		          adapter.notifyDataSetChanged();
+		         
 		         	}
 		   
-		   
+		  
 		   }
 		   
 		});
@@ -239,7 +243,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	
  	    
  	    lv = (ListView) findViewById(R.id.cphomelistView);
-		lv.setAdapter(new Myadapter(this));
+		
+		adapter = new Myadapter(this);
+		lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
         allallergy = (TextView)findViewById(R.id.cpdatatextView1);
 		ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
@@ -298,11 +304,11 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				 TextView t1 = (TextView)v.findViewById(R.id.cpdatatextView1);
 				 TextView t2 = (TextView)v.findViewById(R.id.cpdatatextView2);
 				 TextView t3 = (TextView)v.findViewById(R.id.cpdatatextView3);
-				 
+			
 				 
 				 String[] careplan = careplanRecords.get(position);
 				 
-				 t1.setText(careplan[1]);
+				t1.setText(careplan[1]);
 				 t2.setText(careplan[6]);
 				 t3.setText(careplan[7]);
 				 return v;
