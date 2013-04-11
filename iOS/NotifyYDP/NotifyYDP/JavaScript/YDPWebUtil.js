@@ -1,7 +1,7 @@
 
 function getYDPUserName()
 {
-    var userName = document.getElementById('TitleContent_TitleContent_lbtnPatientName');
+    var userName = document.getElementById('TitleContent_TitleContent_lblProviderName');
     return userName.childNodes[0].textContent;
     
 }

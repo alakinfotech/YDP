@@ -135,14 +135,26 @@
         
     }
     
+    
+    
     NSString *recordKey = [self.allergiesRecoed objectAtIndex:indexPath.row];
     NSArray *record = [self.allergies objectForKey:recordKey];
     
-    cell.allergi.text = record[0];
-    cell.reaction.text = record[1];
-    cell.severity.text = record[2];
-    cell.status.text = record[3];
+    NSString *status = record[3];
+    UIColor *textColor = [UIColor lightGrayColor];
+    if ([status isEqualToString:@"Active"]) {
+        textColor = [UIColor blackColor];
+    }
     
+    cell.allergi.text = record[0];
+    cell.allergi.textColor = textColor;
+    cell.reaction.text = record[1];
+    cell.reaction.textColor = textColor;
+    cell.severity.text = record[2];
+    cell.severity.textColor = textColor;
+    cell.status.text = record[3];
+    cell.status.textColor = textColor;
+
     return cell;
 }
 
