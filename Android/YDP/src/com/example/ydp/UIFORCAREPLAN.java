@@ -47,15 +47,6 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	       System.gc();
 	   }
 	
-//	String record1[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
-//	String record2[] = {"03/15/2013", "493:Asthma", "Active", "family h/o", "decrease symptoms" ,"3/15/2013 12:02:41 PM life style changes, meds", "prednisolone 1 MG Oral Tablet Terbutaline", "Kimberly Dunn, MD"};
-//	String record3[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-//	String record4[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-//	String record5[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-//	String record6[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-//	String record7[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" ,"3/15/2013 12:05:51 PM life style change", "", "Adi Kadapa, MD"};
-//	String record8[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
-//	String record9[] = {"03/15/2013", "401.1:Benign hypertension", "Active", "age, stress", "less salt, less water consumption" , "3/15/2013 12:05:51 PM life style change","", "Adi Kadapa, MD"};
 	
 	
 	
@@ -64,11 +55,11 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	  ArrayList<String[]> careplanRecords;
 	  ArrayList<String[]> allergyRecords;
 	 
-	  
+	  String allergyvar  = "";
 	  String userName = "";
 	  ListView lv;
 	  TextView allallergy;
-	  String allergyvar  = "";
+	 
 	  
 	  
 	  protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +91,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	    public void setUserName(String html)  
 	      {  
  	    	userName = html; 
+ 	    	
 	      }
  	      
  	    public void showCareplaneHTML(String html) 
@@ -133,7 +125,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	      {  
  	       
  	    	String[] allergydata = html.split("[$#]+");
- //	 	  String allergyvar  = "";
+// 	  String allergyvar  = "";
 
 	    	 for( int i=0;i<allergydata.length;i+=4)
 	    	 {
@@ -238,10 +230,15 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \":$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 		          loadRequest++;
 		          
-//		          adapter.notifyDataSetChanged();
 		          adapter.notifyDataSetChanged();
-		    	   allallergy.setText(allergyvar); 
-		         	}
+		          setTitle(userName + "'s careplan");  
+		          allallergy.setText(allergyvar); 
+		            	}
+		    	 
+		    	 
+//		    	 adapter.notifyDataSetChanged();
+//		    	   allallergy.setText(allergyvar); 
+
 		    		    	  
 		   }
 		   
@@ -256,7 +253,6 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
         allallergy = (TextView)findViewById(R.id.cphometextView2);
-      //  allallergy.setText("sri");
 		ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
 		img.setOnClickListener(new View.OnClickListener() {
 			
@@ -266,7 +262,8 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			
 				Intent allergiesintent = new Intent(getApplicationContext(),UIFORALLERGESDETAILVIEW.class);
 				ArrayList<String[]> allergystring = allergyRecords;
-//				UIFORALLERGESDETAILVIEW.putExtra("allergyRecords",allergystring);
+				allergiesintent.putExtra("allergyrecord", allergystring);
+				allergiesintent.putExtra("userid", userName);
 				startActivity(allergiesintent);
 				
 			}
@@ -318,7 +315,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			
 				 
 				 String[] careplan = careplanRecords.get(position);
-				 
+				
 				t1.setText(careplan[1]);
 				 t2.setText(careplan[6]);
 				 t3.setText(careplan[7]);
@@ -341,6 +338,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			//Toast.makeText(getApplicationContext(), position, 3000).show();
 			String[] careplan = careplanRecords.get(position);
 			careplandetailactivity.putExtra("careplanrecord",careplan);
+			careplandetailactivity.putExtra("userid", userName);
 			startActivity(careplandetailactivity);
 			
 			

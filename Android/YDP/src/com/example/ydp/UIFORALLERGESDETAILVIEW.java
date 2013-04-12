@@ -14,14 +14,16 @@ import android.widget.TextView;
 
 public class UIFORALLERGESDETAILVIEW  extends Activity{
 	
-	
-	
+	String[] allergydetail;
+	String allergydetailhname;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.allargiesdetailview);
 		ListView lv = (ListView) findViewById(R.id.alglistView1);
-
-
+		allergydetailhname =getIntent().getExtras().getString("userid");
+		
+		  setTitle(allergydetailhname + "'s careplan");  
+		allergydetail = getIntent().getExtras().getStringArray("allergyrecord");
         lv.setAdapter(new Algadapter(this));
 	}
 
@@ -39,7 +41,7 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return names.length;
+			return allergydetail.length;
 			
 		}
 
@@ -69,15 +71,15 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 			 TextView t3 = (TextView)v.findViewById(R.id.alddata3);
 			 TextView t4 = (TextView)v.findViewById(R.id.alddata4);
 			 
-			 t1.setText(names[position]);
-			 t2.setText(location[position]);
-			 t3.setText(phoneno[position]);
-			 t4.setText(pic[position]);
+			 t1.setText(allergydetail[0]);
+			 t2.setText(allergydetail[1]);
+			 t3.setText(allergydetail[2]);
+			 t4.setText(allergydetail[3]);
 			 return v;
 		}
-		String  names[]   = { "Gauthamasdgggddss","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
-		  String location[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
-		  String phoneno[] ={ "9981152313","9811313134","9854533319","8982456189","9989124629","9989126565","9989515636"};
-		  String pic[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
+//		String  names[]   = { "Gauthamasdgggddss","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
+//		  String location[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
+//		  String phoneno[] ={ "9981152313","9811313134","9854533319","8982456189","9989124629","9989126565","9989515636"};
+//		  String pic[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
 	}
 }

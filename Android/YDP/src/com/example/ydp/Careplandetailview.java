@@ -15,17 +15,23 @@ import android.widget.TextView;
 
 
 public class Careplandetailview extends Activity {
-	
+	String careplandetilhname;
 	String[] careplandetail ;
 	String[] names = {"Date","ICD9 Diagnosis","Status","Risk Factors","Goals/Instructions","Interventions","Medication","Pracitioner"};
-	 
+	TextView cp; 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.careplandeatailview);
 	    ListView lv = (ListView) findViewById(R.id.carepalndetaillistView);
 	     lv.setAdapter(new Careplanadapter(this));
 	     careplandetail = getIntent().getExtras().getStringArray("careplanrecord");
-	  
+	     careplandetilhname =getIntent().getExtras().getString("userid");
+			
+		  setTitle(careplandetilhname + "'s careplan");  
+	     
+	     
+	     cp =(TextView)findViewById(R.id.cpdetailtextView2);
+	     cp.setText(careplandetail[1]);
 	     
 	  }  
 	
@@ -71,6 +77,7 @@ public class Careplandetailview extends Activity {
 			 
 			 t1.setText(names[position]);
 			 t2.setText(careplandetail[position]);
+			 
 					 return v;
 		}
 		
