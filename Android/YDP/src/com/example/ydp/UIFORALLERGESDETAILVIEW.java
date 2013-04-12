@@ -29,7 +29,7 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 	
 	class Algadapter extends BaseAdapter
 	{
-
+ 
 		
 		 Context context;
 		   public Algadapter(Context c) {
