@@ -16,6 +16,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -141,7 +142,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	    	    
 	    	 }
 	
-//	    	 allallergy.setText(allergyvar);    	 
+	    	 allallergy.setText(allergyvar);    	 
 // 	      new AlertDialog.Builder(myApp)  
 // 	           .setTitle("HTML")  
 // 	           .setMessage(html)  
@@ -261,9 +262,18 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				// TODO Auto-generated method stub
 			
 				Intent allergiesintent = new Intent(getApplicationContext(),UIFORALLERGESDETAILVIEW.class);
+				
+				  Bundle b = new Bundle();
+				
+				
 				ArrayList<String[]> allergystring = allergyRecords;
-				allergiesintent.putExtra("allergyrecord", allergystring);
+//				 b.putStringArrayList("allergyrecord", allergyRecords);
+//				allergiesintent.putStringArrayListExtra("allergyrecord", allergystring);
+//				allergiesintent.putExtra("allergyrecord", allergystring);
+				
+//				allergiesintent.putParcelableArrayListExtra("allergyrecord", allergystring);
 				allergiesintent.putExtra("userid", userName);
+				allergiesintent.putExtras(b);
 				startActivity(allergiesintent);
 				
 			}

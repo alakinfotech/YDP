@@ -38,6 +38,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
+        android:weightSum="3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -47,7 +48,7 @@
 
         <TextView
             android:id="@+id/cphomeheader1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/cphomeheader2"
             android:layout_alignBottom="@+id/cphomeheader2"
@@ -58,7 +59,7 @@
 
         <TextView
             android:id="@+id/cphomeheader2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageButton1"
             android:layout_centerHorizontal="true"
@@ -68,7 +69,7 @@
 
         <TextView
             android:id="@+id/cphomeheader3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/imageButton1"

@@ -7,11 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="4"
         android:background="#6A8FB0" >
 
         <TextView
             android:id="@+id/algheader1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Allergen"
@@ -19,7 +20,7 @@
 
         <TextView
             android:id="@+id/algheader2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Reaction"
@@ -27,7 +28,7 @@
 
         <TextView
             android:id="@+id/algheader3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Severity"
@@ -35,7 +36,7 @@
 
         <TextView
             android:id="@+id/algheader4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Status"

@@ -7,13 +7,14 @@
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:weightSum="4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp" >
 
         <TextView
             android:id="@+id/alddata1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Medium Text"
@@ -21,7 +22,7 @@
 
         <TextView
             android:id="@+id/alddata2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Medium Text"
@@ -29,7 +30,7 @@
 
         <TextView
             android:id="@+id/alddata3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Medium Text"
@@ -37,7 +38,7 @@
 
         <TextView
             android:id="@+id/alddata4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Medium Text"

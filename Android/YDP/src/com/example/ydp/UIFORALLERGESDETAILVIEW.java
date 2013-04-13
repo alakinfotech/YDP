@@ -24,7 +24,8 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		
 		  setTitle(allergydetailhname + "'s careplan");  
 		allergydetail = getIntent().getExtras().getStringArray("allergyrecord");
-        lv.setAdapter(new Algadapter(this));
+		//allergydetail = getIntent().getExtras().getSerializable("allergyrecord");
+		lv.setAdapter(new Algadapter(this));
 	}
 
 	
