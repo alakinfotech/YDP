@@ -268,17 +268,19 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			
 				Intent allergiesintent = new Intent(getApplicationContext(),UIFORALLERGESDETAILVIEW.class);
 				
-				  Bundle b = new Bundle();
+				  //Bundle b = new Bundle();
+			
 				
-				
-				ArrayList<String[]> allergystring = allergyRecords;
+				//ArrayList<String[]> allergystring = allergyRecords;
 //				 b.putStringArrayList("allergyrecord", allergyRecords);
 //				allergiesintent.putStringArrayListExtra("allergyrecord", allergystring);
-//				allergiesintent.putExtra("allergyrecord", allergystring);
-		
-//				allergiesintent.putParcelableArrayListExtra("allergyrecord", allergystring);
+				//allergiesintent.putExtra("allergyrecord", allergyRecords);
+				
+			Arraydatasample obj = new Arraydatasample();
+				obj.arrayobj = allergyRecords;
+				allergiesintent.putExtra("sampleObject", obj);				
 				allergiesintent.putExtra("userid", userName);
-				allergiesintent.putExtras(b);
+				//allergiesintent.putExtras(b);
 				startActivity(allergiesintent);
 				
 			}

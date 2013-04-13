@@ -2,8 +2,11 @@ package com.example.ydp;
 
 
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +17,7 @@ import android.widget.TextView;
 
 public class UIFORALLERGESDETAILVIEW  extends Activity{
 	
-	String[] allergydetail;
+	ArrayList<String[]> allergydetail;
 	String allergydetailhname;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,8 +26,10 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		allergydetailhname =getIntent().getExtras().getString("userid");
 		
 		  setTitle(allergydetailhname + "'s careplan");  
-		allergydetail = getIntent().getExtras().getStringArray("allergyrecord");
-		//allergydetail = getIntent().getExtras().getSerializable("allergyrecord");
+		//allergydetail = getIntent().getExtras().getStringArray("allergyrecord");
+		Intent i = getIntent();
+		Arraydatasample obj = (Arraydatasample)i.getSerializableExtra("sampleObject");
+		allergydetail = obj.arrayobj ;
 		lv.setAdapter(new Algadapter(this));
 	}
 
@@ -42,7 +47,7 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return allergydetail.length;
+			return allergydetail.size();
 			
 		}
 
@@ -72,10 +77,12 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 			 TextView t3 = (TextView)v.findViewById(R.id.alddata3);
 			 TextView t4 = (TextView)v.findViewById(R.id.alddata4);
 			 
-			 t1.setText(allergydetail[0]);
-			 t2.setText(allergydetail[1]);
-			 t3.setText(allergydetail[2]);
-			 t4.setText(allergydetail[3]);
+			 String[] allergydata = allergydetail.get(position);
+			 
+			 t1.setText(allergydata[0]);
+			 t2.setText(allergydata[1]);
+			 t3.setText(allergydata[2]);
+			 t4.setText(allergydata[3]);
 			 return v;
 		}
 //		String  names[]   = { "Gauthamasdgggddss","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
