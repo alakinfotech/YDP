@@ -93,7 +93,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	      {  
  	    	userName = html; 
  	    	
-	      }
+	      } 
  	      
  	    public void showCareplaneHTML(String html) 
  	     { 
@@ -142,7 +142,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	    	    
 	    	 }
 	
-	    	 allallergy.setText(allergyvar);    	 
+	    	  	 
 // 	      new AlertDialog.Builder(myApp)  
 // 	           .setTitle("HTML")  
 // 	           .setMessage(html)  
@@ -231,14 +231,17 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \":$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 		          loadRequest++;
 		          
+		          
+		          
+//	          allallergy.setText(allergyvar);
 		          adapter.notifyDataSetChanged();
 		          setTitle(userName + "'s careplan");  
-		          allallergy.setText(allergyvar); 
+		          
 		            	}
 		    	 
 		    	 
 //		    	 adapter.notifyDataSetChanged();
-//		    	   allallergy.setText(allergyvar); 
+		    	   allallergy.setText(allergyvar); 
 
 		    		    	  
 		   }
@@ -254,7 +257,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
         allallergy = (TextView)findViewById(R.id.cphometextView2);
-		ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
+
+        allallergy.setText("this is my text");
+        ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
 		img.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -270,7 +275,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 //				 b.putStringArrayList("allergyrecord", allergyRecords);
 //				allergiesintent.putStringArrayListExtra("allergyrecord", allergystring);
 //				allergiesintent.putExtra("allergyrecord", allergystring);
-				
+		
 //				allergiesintent.putParcelableArrayListExtra("allergyrecord", allergystring);
 				allergiesintent.putExtra("userid", userName);
 				allergiesintent.putExtras(b);

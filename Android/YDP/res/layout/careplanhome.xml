@@ -12,20 +12,21 @@
         android:text="Allergies:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:paddingLeft="5dp"
-        android:textColor="#ff0000" />
-
+       android:textColor="#ff0000" />
     
-      <TextView
+
+    <TextView
         android:id="@+id/cphometextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton1"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
+        android:layout_toLeftOf="@+id/imageButton1"
         android:layout_toRightOf="@+id/cphometextView1"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ff0000" />
-      
+    
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
@@ -94,4 +95,5 @@
         android:layout_alignParentTop="true" 
       android:visibility="gone"  />
 
+ 
 </RelativeLayout>
