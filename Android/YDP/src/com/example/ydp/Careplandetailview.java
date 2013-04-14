@@ -5,12 +5,15 @@ package com.example.ydp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,12 +23,27 @@ public class Careplandetailview extends Activity {
 	String[] careplandetail ;
 	String[] names = {"Date","ICD9 Diagnosis","Status","Risk Factors","Goals/Instructions","Interventions","Medication","Pracitioner"};
 	TextView cp,titletext; 
+	Button backlogout;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.careplandeatailview);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlewithbackbutton);
 		titletext = (TextView) findViewById(R.id.backtitletextview);
+		
+		 backlogout = (Button) findViewById(R.id.backlogoutbutton);
+		 backlogout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), YDPCAREPLAN.class);
+			       // intent.putExtra("finish", true);
+			        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+			        startActivity(intent);
+			       finish();
+			}
+		});
 		
 		ListView lv = (ListView) findViewById(R.id.carepalndetaillistView);
 	     lv.setAdapter(new Careplanadapter(this));
@@ -79,6 +97,10 @@ public class Careplandetailview extends Activity {
 			 TextView t1 = (TextView)v.findViewById(R.id.cpdetaildatatextView1);
 			 TextView t2 = (TextView)v.findViewById(R.id.cpdetaildatatextView2);
 			 
+			 if (position % 2 == 0) {
+				 
+				  v.setBackgroundColor(0x30EAE7E7);
+				}
 			 
 			 t1.setText(names[position]);
 			 t2.setText(careplandetail[position]);

@@ -12,16 +12,19 @@ import org.apache.commons.lang.ArrayUtils;
 
 
 import android.R.array;
+import android.R.color;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.webkit.WebView;
@@ -29,6 +32,7 @@ import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -43,6 +47,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	TextView user,pass;
 	 int loadRequest = 0;
 	Myadapter adapter;
+	Button logout;
 	 
 	
 	protected void onPause()
@@ -74,7 +79,19 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		setContentView(R.layout.careplanhome);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
 		 titletext = (TextView) findViewById(R.id.titletextview);
-	  
+		 logout = (Button) findViewById(R.id.logoutbutton);
+		 logout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), YDPCAREPLAN.class);
+		       // intent.putExtra("finish", true);
+		        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+		        startActivity(intent);
+		       finish();
+			}
+		});
 		  
 		  
 		 loadRequest = 0;
@@ -302,7 +319,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		class Myadapter extends BaseAdapter 
 		{
 
-			
+
 			 Context context;
 			   public Myadapter(Context c) {
 			// TODO Auto-generated constructor stub
@@ -340,11 +357,18 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				 TextView t1 = (TextView)v.findViewById(R.id.cpdatatextView1);
 				 TextView t2 = (TextView)v.findViewById(R.id.cpdatatextView2);
 				 TextView t3 = (TextView)v.findViewById(R.id.cpdatatextView3);
-			
+				 
+				 
+				
 				 
 				 String[] careplan = careplanRecords.get(position);
 				
-				t1.setText(careplan[1]);
+				 if (position % 2 == 0) {
+					 
+						  v.setBackgroundColor(0x30EAE7E7);
+						}
+
+				 t1.setText(careplan[1]);
 				 t2.setText(careplan[6]);
 				 t3.setText(careplan[7]);
 				 return v;
