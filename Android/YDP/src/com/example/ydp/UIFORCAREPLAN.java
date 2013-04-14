@@ -9,6 +9,8 @@ import java.util.Arrays;
 
 import org.apache.commons.lang.ArrayUtils;
 
+
+
 import android.R.array;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
@@ -59,13 +62,21 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	  String allergyvar  = "";
 	  String userName = "";
 	  ListView lv;
-	  TextView allallergy;
+	  TextView allallergy,titletext;
 	 
 	  
 	  
 	  protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE); 
 		setContentView(R.layout.careplanhome);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		 titletext = (TextView) findViewById(R.id.titletextview);
+	  
+		  
+		  
 		 loadRequest = 0;
 		String usern = getIntent().getExtras().getString("username");
  	   String passw = getIntent().getExtras().getString("password"); 
@@ -233,15 +244,15 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		          
 		          
 		          
-//	          allallergy.setText(allergyvar);
+
 		          adapter.notifyDataSetChanged();
-		          setTitle(userName + "'s careplan");  
-		          
+		         titletext.setText(userName + "'s careplan");  
+		          allallergy.setText(allergyvar);		          
 		            	}
 		    	 
 		    	 
 //		    	 adapter.notifyDataSetChanged();
-		    	   allallergy.setText(allergyvar); 
+//		    	   allallergy.setText(allergyvar); 
 
 		    		    	  
 		   }

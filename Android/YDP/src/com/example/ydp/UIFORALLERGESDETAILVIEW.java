@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,13 +20,22 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 	
 	ArrayList<String[]> allergydetail;
 	String allergydetailhname;
+	TextView  backtitletext;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.allargiesdetailview);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlewithbackbutton);
+		 backtitletext = (TextView) findViewById(R.id.backtitletextview);
+		
+		
+		
+		
 		ListView lv = (ListView) findViewById(R.id.alglistView1);
 		allergydetailhname =getIntent().getExtras().getString("userid");
 		
-		  setTitle(allergydetailhname + "'s careplan");  
+		 backtitletext.setText(allergydetailhname + "'s careplan");  
 		//allergydetail = getIntent().getExtras().getStringArray("allergyrecord");
 		Intent i = getIntent();
 		Arraydatasample obj = (Arraydatasample)i.getSerializableExtra("sampleObject");

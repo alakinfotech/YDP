@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,16 +19,20 @@ public class Careplandetailview extends Activity {
 	String careplandetilhname;
 	String[] careplandetail ;
 	String[] names = {"Date","ICD9 Diagnosis","Status","Risk Factors","Goals/Instructions","Interventions","Medication","Pracitioner"};
-	TextView cp; 
+	TextView cp,titletext; 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.careplandeatailview);
-	    ListView lv = (ListView) findViewById(R.id.carepalndetaillistView);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlewithbackbutton);
+		titletext = (TextView) findViewById(R.id.backtitletextview);
+		
+		ListView lv = (ListView) findViewById(R.id.carepalndetaillistView);
 	     lv.setAdapter(new Careplanadapter(this));
 	     careplandetail = getIntent().getExtras().getStringArray("careplanrecord");
 	     careplandetilhname =getIntent().getExtras().getString("userid");
 			
-		  setTitle(careplandetilhname + "'s careplan");  
+	     titletext.setText(careplandetilhname + "'s careplan");  
 	     
 	     
 	     cp =(TextView)findViewById(R.id.cpdetailtextView2);
