@@ -110,7 +110,11 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 				 
 				  v.setBackgroundColor(0x30EAE7E7);
 				}
-			 
+//			 if(allergydata[3].equals("Inactive"))
+//			 {
+//				 
+//			 }
+
 			 t1.setText(allergydata[0]);
 			 t2.setText(allergydata[1]);
 			 t3.setText(allergydata[2]);

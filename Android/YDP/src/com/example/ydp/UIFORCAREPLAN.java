@@ -235,7 +235,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		    	    //wb1.loadUrl("javascript:window.HTMLOUT.showCareplaneHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 		    	    
 		    	    //wb1.loadUrl("javascript:window.HTMLOUT.showCareplaneHTML('<head>'+document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView').innerHTML+'</head>');");
-		    	    wb1.loadUrl("javascript:( function () {var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = \"NO\";if(carePlanTable){result = \"\";var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += \":$#\";}else{result += carePlanRow[j].childNodes[1].src;result += \":$#\";}}}}}window.HTMLOUT.showCareplaneHTML( result);}) ()");
+		    	    wb1.loadUrl("javascript:( function () {var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = \"NO\";if(carePlanTable){result = \"\";var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += \"$#\";}else{result += carePlanRow[j].childNodes[1].src;result += \"$#\";}}}}}window.HTMLOUT.showCareplaneHTML( result);}) ()");
 		    	    
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementsByTagName('html')[0].innerHTML;);"); 
@@ -256,7 +256,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 //		          
 		          progressBar.dismiss();
 		          
-	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \":$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
+	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \"$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 		          loadRequest++;
 		          
 		          
@@ -367,10 +367,40 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 					 
 						  v.setBackgroundColor(0x30EAE7E7);
 						}
-
+				 
+				 if(careplan[1].equals("undefined"))
+				 {
+					 careplan[1] = " ";
+				 }
+				 if(careplan[2].equals("undefined"))
+				 {
+					 careplan[2] = " ";
+				 }
+				 if(careplan[3].equals("undefined"))
+				 {
+					 careplan[3] = " ";
+				 }
+				 if(careplan[4].equals("undefined"))
+				 {
+					 careplan[4] = " ";
+				 }
+				 if(careplan[5].equals("undefined"))
+				 {
+					 careplan[5] = " ";
+				 }
+				 if(careplan[6].equals("undefined"))
+				 {
+					 careplan[6] = " ";
+				 }
+				 if(careplan[7].equals("undefined"))
+				 {
+					 careplan[7] = " ";
+				 }
 				 t1.setText(careplan[1]);
+				
 				 t2.setText(careplan[6]);
 				 t3.setText(careplan[7]);
+				 Log.d("Data", careplan[6]);
 				 return v;
 			}
 			
