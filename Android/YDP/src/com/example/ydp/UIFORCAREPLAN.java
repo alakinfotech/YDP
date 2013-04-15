@@ -39,6 +39,75 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+ class MyJavaScriptInterface   
+{  
+	 
+	 String allergyvar  = "";
+	  String userName = "";
+	 ArrayList<String[]> careplanRecords;
+	  ArrayList<String[]> allergyRecords;
+	  UIFORCAREPLAN uiforcareplan;
+    @SuppressWarnings("unused")  
+    
+   public void setUserName(String html)  
+    {  
+   	userName = html; 
+   	
+    } 
+     
+   public void showCareplaneHTML(String html) 
+    { 
+   	
+   	 String[] careplandata = html.split("[$#]+");
+   	 
+   	// int lenght = careplandata.length;
+   	// Toast.makeText(getApplicationContext(), lenght, 3000).show();
+   	  
+   	 for( int i=0;(i+9)<=careplandata.length;i+=9)    
+   	 {
+   		 String url = careplandata[i+2].toString();
+			 Log.v("url",url);
+			 String  status = url.substring(url.lastIndexOf('/')+1, url.lastIndexOf('.'));
+			 
+			 Log.v("filename",status);
+			 
+			 
+			 
+   		 String[] record = {careplandata[i],careplandata[i+1],status,careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8]};
+   		 careplanRecords.add( record);
+   		 Log.v("in for loop", "data executing");
+   	   
+   	 }
+   	
+    }
+    
+   public void showAllergiesHTML(String html)  
+     {  
+      
+   	String[] allergydata = html.split("[$#]+");
+// String allergyvar  = "";
+
+  	 for( int i=0;i<allergydata.length;i+=4)
+  	 {
+  		 if(i!=0)
+  		 {
+  			 allergyvar += ", "; 
+  		 }
+  		 String[] record = {allergydata[i],allergydata[i+1],allergydata[i+2],allergydata[i+3]};
+  		 
+  		 allergyvar += allergydata[i];
+  		 
+  	    allergyRecords.add( record);
+  	    
+  	 }
+
+  	//uiforcareplan.showAllallergy();
+     }
+   
+}
+ 
+ 
+ 
 public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	
 	 
@@ -48,27 +117,120 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	 int loadRequest = 0;
 	Myadapter adapter;
 	Button logout;
+	MyJavaScriptInterface javeScritpInterfacee;
+	ListView lv;
+	public static TextView allallergy,titletext;
 	 
+	  
+	class Myadapter extends BaseAdapter 
+	{
+
+
+		 Context context;
+		   public Myadapter(Context c) {
+		// TODO Auto-generated constructor stub
+			  this.context =c;
+	        }
+	 	
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return javeScritpInterfacee.careplanRecords.size();
+			
+		}
+
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+
+
+		@Override
+		public View getView(int position, View v, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			
+
+			
+			
+			
+			LayoutInflater li = getLayoutInflater();
+			v = li.inflate(R.layout.careplandataview, null);
+			 TextView t1 = (TextView)v.findViewById(R.id.cpdatatextView1);
+			 TextView t2 = (TextView)v.findViewById(R.id.cpdatatextView2);
+			 TextView t3 = (TextView)v.findViewById(R.id.cpdatatextView3);
+			 
+			 
+			
+			 
+			 String[] careplan = javeScritpInterfacee.careplanRecords.get(position);
+			
+			 if (position % 2 == 0) {
+				 
+					  v.setBackgroundColor(0x30EAE7E7);
+					}
+			 
+			 if(careplan[1].equals("undefined"))
+			 {
+				 careplan[1] = " ";
+			 }
+			 if(careplan[2].equals("undefined"))
+			 {
+				 careplan[2] = " ";
+			 }
+			 if(careplan[3].equals("undefined"))
+			 {
+				 careplan[3] = " ";
+			 }
+			 if(careplan[4].equals("undefined"))
+			 {
+				 careplan[4] = " ";
+			 }
+			 if(careplan[5].equals("undefined"))
+			 {
+				 careplan[5] = " ";
+			 }
+			 if(careplan[6].equals("undefined"))
+			 {
+				 careplan[6] = " ";
+			 }
+			 if(careplan[7].equals("undefined"))
+			 {
+				 careplan[7] = " ";
+			 }
+			 
+			 
+			 if(careplan[2].equals("Inactive"))
+			 {
+				 t1.setTextColor(0x30141823);
+				 t2.setTextColor(0x30141823);
+				 t3.setTextColor(0x30141823);
+				 
+				 
+			 }
+			 
+			 
+			 t1.setText(careplan[1]);
+			 t2.setText(careplan[6]);
+			 t3.setText(careplan[7]);
+			 Log.d("Data", careplan[6]);
+			 return v;
+		}
+		
+		
+		
+
+	}
 	
 	protected void onPause()
 	   {
 	       super.onPause();
 	       System.gc();
 	   }
-	
-	
-	
-	
-	 
-	 
-	  ArrayList<String[]> careplanRecords;
-	  ArrayList<String[]> allergyRecords;
-	 
-	  String allergyvar  = "";
-	  String userName = "";
-	  ListView lv;
-	  TextView allallergy,titletext;
-	 
 	  
 	  
 	  protected void onCreate(Bundle savedInstanceState) {
@@ -99,96 +261,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	   String passw = getIntent().getExtras().getString("password"); 
  	  final Context myApp = this;
  	  
- 	  
- 	
- 	
- 	  
-
-
-         careplanRecords = new ArrayList<String[]>();
-         allergyRecords = new ArrayList<String[]>();
-        
-         
- 	  
- 	  
- 	  
- 	  
- 	  class MyJavaScriptInterface   
- 	 {  
- 	     @SuppressWarnings("unused")  
- 	     
- 	    public void setUserName(String html)  
-	      {  
- 	    	userName = html; 
- 	    	
-	      } 
- 	      
- 	    public void showCareplaneHTML(String html) 
- 	     { 
- 	    	
- 	    	 String[] careplandata = html.split("[$#]+");
- 	    	 
- 	    	// int lenght = careplandata.length;
- 	    	// Toast.makeText(getApplicationContext(), lenght, 3000).show();
- 	    	  
- 	    	 for( int i=0;(i+9)<=careplandata.length;i+=9)    
- 	    	 {
- 	    		 String url = careplandata[i+2].toString();
- 				 Log.v("url",url);
- 				 String  status = url.substring(url.lastIndexOf('/')+1, url.lastIndexOf('.'));
- 				 
- 				 Log.v("filename",status);
- 				 
- 				 
- 				 
- 	    		 String[] record = {careplandata[i],careplandata[i+1],status,careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8]};
- 	    		 careplanRecords.add( record);
- 	    		 Log.v("in for loop", "data executing");
- 	    	   
- 	    	 }
-
-// 	    	 adapter.notifyDataSetChanged();
- 	    //	lv.refreshDrawableState();
-// 	    	new AlertDialog.Builder(myApp)  
-//            .setTitle("HTML")  
-//            .setMessage(html)  
-//            .setPositiveButton(android.R.string.ok, null)  
-//        .setCancelable(false)  
-//        .create()  
-//        .show(); 
- 	     }
- 	     
- 	    public void showAllergiesHTML(String html)  
- 	      {  
- 	       
- 	    	String[] allergydata = html.split("[$#]+");
-// 	  String allergyvar  = "";
-
-	    	 for( int i=0;i<allergydata.length;i+=4)
-	    	 {
-	    		 if(i!=0)
-	    		 {
-	    			 allergyvar += ", "; 
-	    		 }
-	    		 String[] record = {allergydata[i],allergydata[i+1],allergydata[i+2],allergydata[i+3]};
-	    		 
-	    		 allergyvar += allergydata[i];
-	    		 
-	    	    allergyRecords.add( record);
-	    	    
-	    	 }
-	
-	    	  	 
-// 	      new AlertDialog.Builder(myApp)  
-// 	           .setTitle("HTML")  
-// 	           .setMessage(html)  
-// 	           .setPositiveButton(android.R.string.ok, null)  
-// 	       .setCancelable(false)  
-// 	       .create()  
-// 	       .show(); 
- 	      }
- 	    
- 	 }  
+ 	 
  	   
  	   	wb1 = (WebView)findViewById(R.id.webView1);
  	   	wb1.getSettings().setJavaScriptEnabled(true); 
@@ -203,7 +276,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 
  	  
  	  /* Register a new JavaScript interface called HTMLOUT */  
- 	  wb1.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");  
+		javeScritpInterfacee = new MyJavaScriptInterface();
+		javeScritpInterfacee.careplanRecords = new ArrayList<String[]>();
+	 	javeScritpInterfacee.allergyRecords = new ArrayList<String[]>();  
+	 	
+		javeScritpInterfacee.uiforcareplan = UIFORCAREPLAN.this;
+ 	  wb1.addJavascriptInterface(javeScritpInterfacee, "HTMLOUT");  
  	    
  	   
 
@@ -267,12 +345,10 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \"$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 		          loadRequest++;
 		          
-		          
-		          
-
+		          		     
 		          adapter.notifyDataSetChanged();
-		         titletext.setText(userName + "'s careplan");  
-		          allallergy.setText(allergyvar);		          
+			         titletext.setText(javeScritpInterfacee.userName + "'s careplan");  
+			         showAllallergy();
 		            	}
 		    	 
 		    	 
@@ -313,9 +389,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				//allergiesintent.putExtra("allergyrecord", allergyRecords);
 				
 			Arraydatasample obj = new Arraydatasample();
-				obj.arrayobj = allergyRecords;
+				obj.arrayobj = javeScritpInterfacee.allergyRecords;
 				allergiesintent.putExtra("sampleObject", obj);				
-				allergiesintent.putExtra("userid", userName);
+				allergiesintent.putExtra("userid", javeScritpInterfacee.userName);
 				//allergiesintent.putExtras(b);
 				startActivity(allergiesintent);
 				
@@ -324,109 +400,22 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		
 	}
 		
-		class Myadapter extends BaseAdapter 
-		{
+	 public void showAllallergy(){
 
-
-			 Context context;
-			   public Myadapter(Context c) {
-			// TODO Auto-generated constructor stub
-				  this.context =c;
-		        }
-		 	
-			public int getCount() {
-				// TODO Auto-generated method stub
-				return careplanRecords.size();
-				
+			  try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
-			public Object getItem(int position) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			public long getItemId(int position) {
-				// TODO Auto-generated method stub
-				return 0;
-			}
-			
-
-
-			@Override
-			public View getView(int position, View v, ViewGroup parent) {
-				// TODO Auto-generated method stub
-				
-	
-				
-				
-				
-				LayoutInflater li = getLayoutInflater();
-				v = li.inflate(R.layout.careplandataview, null);
-				 TextView t1 = (TextView)v.findViewById(R.id.cpdatatextView1);
-				 TextView t2 = (TextView)v.findViewById(R.id.cpdatatextView2);
-				 TextView t3 = (TextView)v.findViewById(R.id.cpdatatextView3);
-				 
-				 
-				
-				 
-				 String[] careplan = careplanRecords.get(position);
-				
-				 if (position % 2 == 0) {
-					 
-						  v.setBackgroundColor(0x30EAE7E7);
-						}
-				 
-				 if(careplan[1].equals("undefined"))
-				 {
-					 careplan[1] = " ";
-				 }
-				 if(careplan[2].equals("undefined"))
-				 {
-					 careplan[2] = " ";
-				 }
-				 if(careplan[3].equals("undefined"))
-				 {
-					 careplan[3] = " ";
-				 }
-				 if(careplan[4].equals("undefined"))
-				 {
-					 careplan[4] = " ";
-				 }
-				 if(careplan[5].equals("undefined"))
-				 {
-					 careplan[5] = " ";
-				 }
-				 if(careplan[6].equals("undefined"))
-				 {
-					 careplan[6] = " ";
-				 }
-				 if(careplan[7].equals("undefined"))
-				 {
-					 careplan[7] = " ";
-				 }
-				 
-				 
-				 if(careplan[2].equals("Inactive"))
-				 {
-					 t1.setTextColor(0x30141823);
-					 t2.setTextColor(0x30141823);
-					 t3.setTextColor(0x30141823);
-					 
-					 
-				 }
-				 
-				 
-				 t1.setText(careplan[1]);
-				 t2.setText(careplan[6]);
-				 t3.setText(careplan[7]);
-				 Log.d("Data", careplan[6]);
-				 return v;
-			}
-			
-			
-			
-	
-		}
+	      allallergy.setText(javeScritpInterfacee.allergyvar);
+	  }
+	  
+	  void showCareplane(){
+		  
+	  }
+		
 
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View v, int position,
@@ -437,9 +426,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			
 			Intent careplandetailactivity = new Intent(getApplicationContext(),Careplandetailview.class);
 			//Toast.makeText(getApplicationContext(), position, 3000).show();
-			String[] careplan = careplanRecords.get(position);
+			String[] careplan = javeScritpInterfacee.careplanRecords.get(position);
 			careplandetailactivity.putExtra("careplanrecord",careplan);
-			careplandetailactivity.putExtra("userid", userName);
+			careplandetailactivity.putExtra("userid", javeScritpInterfacee.userName);
 			startActivity(careplandetailactivity);
 			
 			
