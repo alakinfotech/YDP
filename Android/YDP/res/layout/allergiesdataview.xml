@@ -16,7 +16,7 @@
             android:id="@+id/alddata1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2.4"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -24,7 +24,7 @@
             android:id="@+id/alddata2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -32,7 +32,7 @@
             android:id="@+id/alddata3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -40,7 +40,7 @@
             android:id="@+id/alddata4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

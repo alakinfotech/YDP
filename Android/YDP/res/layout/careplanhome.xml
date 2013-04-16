@@ -54,7 +54,7 @@
             android:layout_alignBaseline="@+id/cphomeheader2"
             android:layout_alignBottom="@+id/cphomeheader2"
             android:layout_alignParentLeft="true"
-            android:layout_weight="1"
+            android:layout_weight="1.02"
             android:text="Condition"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

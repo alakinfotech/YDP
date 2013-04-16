@@ -30,7 +30,8 @@
         android:id="@+id/titletextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="4"
+        android:layout_weight="4.3"
+        android:gravity="center"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
@@ -43,11 +44,10 @@
          android:id="@+id/logoutbutton"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_weight="0.65"
+         android:layout_weight="0.70"
          android:background="#ffffff"
          android:text="logout"
          android:textColor="#ff0000" />
-    
            
     </LinearLayout>
   

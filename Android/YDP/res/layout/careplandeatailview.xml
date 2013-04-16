@@ -3,22 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+   
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#6A8FB0" >
+        android:background="#6A8FB0"
+        android:weightSum="2" >
 
         <TextView
             android:id="@+id/cpdetailtextView1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="5dp"
-            android:text="Condition:"
+            android:text="Condition"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -29,13 +30,11 @@
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
-
-    <ListView
+ <ListView
         android:id="@+id/carepalndetaillistView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1" >
     </ListView>
-
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,21 +24,22 @@ public class Careplandetailview extends Activity {
 	String[] careplandetail ;
 	String[] names = {"Date","ICD9 Diagnosis","Status","Risk Factors","Goals/Instructions","Interventions","Medication","Pracitioner"};
 	TextView cp,titletext; 
-	Button backlogout;
+	Button logout;
+	 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.careplandeatailview);
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlewithbackbutton);
-		titletext = (TextView) findViewById(R.id.backtitletextview);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		titletext = (TextView) findViewById(R.id.titletextview);
 		
-		 backlogout = (Button) findViewById(R.id.backlogoutbutton);
-		 backlogout.setOnClickListener(new OnClickListener() {
+		 logout = (Button) findViewById(R.id.logoutbutton);
+		 logout.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), YDPCAREPLAN.class);
+				Intent intent = new Intent(getApplicationContext(), HOMESCREEN.class);
 			       // intent.putExtra("finish", true);
 			        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
 			        startActivity(intent);
@@ -101,7 +103,11 @@ public class Careplandetailview extends Activity {
 				 
 				  v.setBackgroundColor(0x30EAE7E7);
 				}
+			
+			
+			
 			 
+			 Log.v("careplan[2]", careplandetail[2]);
 			 t1.setText(names[position]);
 			 t2.setText(careplandetail[position]);
 			 

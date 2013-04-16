@@ -196,7 +196,14 @@ public class YDPCAREPLAN extends Activity{
 					   careplanaccess.putExtra("username",uname);
 					   
 					   careplanaccess.putExtra("password",pword);
-						startActivity(careplanaccess);
+					   startActivity(careplanaccess);
+					  // finis
+						try {
+							finalize();
+						} catch (Throwable e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						}
 			}				
 			}

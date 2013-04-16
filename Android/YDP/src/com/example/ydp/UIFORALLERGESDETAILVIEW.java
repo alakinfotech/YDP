@@ -4,6 +4,7 @@ package com.example.ydp;
 
 import java.util.ArrayList;
 
+import android.R.color;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,17 +23,17 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 	
 	ArrayList<String[]> allergydetail;
 	String allergydetailhname;
-	TextView  backtitletext;
-	Button backlogout;
+	TextView  titletext;
+	Button logout;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.allargiesdetailview);
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlewithbackbutton);
-		 backtitletext = (TextView) findViewById(R.id.backtitletextview);
-		 backlogout = (Button) findViewById(R.id.backlogoutbutton);
-		 backlogout.setOnClickListener(new OnClickListener() {
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		titletext = (TextView) findViewById(R.id.titletextview);
+		 logout = (Button) findViewById(R.id.logoutbutton);
+		 logout.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -51,12 +52,11 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		ListView lv = (ListView) findViewById(R.id.alglistView1);
 		allergydetailhname =getIntent().getExtras().getString("userid");
 		
-		 backtitletext.setText(allergydetailhname + "'s careplan");  
-		//allergydetail = getIntent().getExtras().getStringArray("allergyrecord");
-		Intent i = getIntent();
-		Arraydatasample obj = (Arraydatasample)i.getSerializableExtra("sampleObject");
-		allergydetail = obj.arrayobj ;
-		lv.setAdapter(new Algadapter(this));
+		 titletext.setText(allergydetailhname + "'s careplan");  
+		 Intent i = getIntent();
+		 Arraydatasample obj = (Arraydatasample)i.getSerializableExtra("sampleObject");
+		 allergydetail = obj.arrayobj ;
+		 lv.setAdapter(new Algadapter(this));
 	}
 
 	
@@ -110,20 +110,22 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 				 
 				  v.setBackgroundColor(0x30EAE7E7);
 				}
-//			 if(allergydata[3].equals("Inactive"))
-//			 {
-//				 
-//			 }
+			 if(allergydata[3].equals("Inactive"))
+			 {
+				 t1.setTextColor(0x30141823);
+				 t2.setTextColor(0x30141823);
+				 t3.setTextColor(0x3029272A);
+				 t4.setTextColor(0x3029272A);
+				 
+			 }
 
 			 t1.setText(allergydata[0]);
 			 t2.setText(allergydata[1]);
 			 t3.setText(allergydata[2]);
 			 t4.setText(allergydata[3]);
+			 
 			 return v;
 		}
-//		String  names[]   = { "Gauthamasdgggddss","Gauthamasad","Gauthamas","Gauthamas" ,"Gauthamas","Gauthamas","Gauthamas"   };
-//		  String location[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
-//		  String phoneno[] ={ "9981152313","9811313134","9854533319","8982456189","9989124629","9989126565","9989515636"};
-//		  String pic[]={ "Utterpkjkgfradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh","Utterpradesh"};
+
 	}
 }

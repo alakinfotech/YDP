@@ -85,7 +85,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), YDPCAREPLAN.class);
+				Intent intent = new Intent(getApplicationContext(), HOMESCREEN.class);
 		       // intent.putExtra("finish", true);
 		        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
 		        startActivity(intent);
@@ -133,7 +133,15 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
  	    	  
  	    	 for( int i=0;(i+9)<=careplandata.length;i+=9)    
  	    	 {
- 	    		 String[] record = {careplandata[i],careplandata[i+1],careplandata[i+2],careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8]};
+ 	    		 String url = careplandata[i+2].toString();
+ 				 Log.v("url",url);
+ 				 String  status = url.substring(url.lastIndexOf('/')+1, url.lastIndexOf('.'));
+ 				 
+ 				 Log.v("filename",status);
+ 				 
+ 				 
+ 				 
+ 	    		 String[] record = {careplandata[i],careplandata[i+1],status,careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8]};
  	    		 careplanRecords.add( record);
  	    		 Log.v("in for loop", "data executing");
  	    	   
@@ -396,8 +404,19 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				 {
 					 careplan[7] = " ";
 				 }
+				 
+				 
+				 if(careplan[2].equals("Inactive"))
+				 {
+					 t1.setTextColor(0x30141823);
+					 t2.setTextColor(0x30141823);
+					 t3.setTextColor(0x30141823);
+					 
+					 
+				 }
+				 
+				 
 				 t1.setText(careplan[1]);
-				
 				 t2.setText(careplan[6]);
 				 t3.setText(careplan[7]);
 				 Log.d("Data", careplan[6]);
