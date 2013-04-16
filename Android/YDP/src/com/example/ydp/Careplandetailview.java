@@ -52,7 +52,7 @@ public class Careplandetailview extends Activity {
 	     careplandetail = getIntent().getExtras().getStringArray("careplanrecord");
 	     careplandetilhname =getIntent().getExtras().getString("userid");
 			
-	     titletext.setText(careplandetilhname + "'s careplan");  
+	     titletext.setText(careplandetilhname + "'s Careplan");  
 	     
 	     
 	     cp =(TextView)findViewById(R.id.cpdetailtextView2);
@@ -101,7 +101,7 @@ public class Careplandetailview extends Activity {
 			 
 			 if (position % 2 == 0) {
 				 
-				  v.setBackgroundColor(0x30EAE7E7);
+				  v.setBackgroundColor(0x30E6EEF8);
 				}
 			
 			

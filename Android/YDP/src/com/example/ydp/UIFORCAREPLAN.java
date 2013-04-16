@@ -171,7 +171,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			
 			 if (position % 2 == 0) {
 				 
-					  v.setBackgroundColor(0x30EAE7E7);
+					  v.setBackgroundColor(0x30E6EEF8);
 					}
 			 
 			 if(careplan[1].equals("undefined"))
@@ -347,7 +347,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		          
 		          		     
 		          adapter.notifyDataSetChanged();
-			         titletext.setText(javeScritpInterfacee.userName + "'s careplan");  
+			         titletext.setText(javeScritpInterfacee.userName + "'s Careplan");  
 			         showAllallergy();
 		            	}
 		    	 

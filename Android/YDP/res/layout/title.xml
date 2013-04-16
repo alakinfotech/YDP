@@ -5,50 +5,50 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
 
-
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:weightSum="6"
-       android:background="#2B3856" >
-        
-    <ImageView
-        android:id="@+id/ydplogo"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/tab_icon" />
-        
-        
-     <TextView
-        android:id="@+id/titletextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="4.3"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@+id/button1"
-        android:text="Your Doctor Program"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ffffff" />
+        android:background="#233869"
+        android:weightSum="6" >
 
-     <Button
-         android:id="@+id/logoutbutton"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_weight="0.70"
-         android:background="#ffffff"
-         android:text="logout"
-         android:textColor="#ff0000" />
-           
+        <ImageView
+            android:id="@+id/ydplogo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:src="@drawable/tab_icon" />
+
+        <TextView
+            android:id="@+id/titletextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/button1"
+            android:layout_weight="4.3"
+            android:gravity="center"
+            android:text="Your Doctor Program"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/logoutbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_gap"
+            android:layout_weight="0.70"
+            android:background="#C8D8ED"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="@dimen/default_gap"
+            android:text="Logout"
+            android:textColor="#566890" />
+
     </LinearLayout>
   
 </RelativeLayout>

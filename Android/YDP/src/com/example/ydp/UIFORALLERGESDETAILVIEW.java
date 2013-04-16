@@ -52,7 +52,7 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 		ListView lv = (ListView) findViewById(R.id.alglistView1);
 		allergydetailhname =getIntent().getExtras().getString("userid");
 		
-		 titletext.setText(allergydetailhname + "'s careplan");  
+		 titletext.setText(allergydetailhname + "'s Careplan");  
 		 Intent i = getIntent();
 		 Arraydatasample obj = (Arraydatasample)i.getSerializableExtra("sampleObject");
 		 allergydetail = obj.arrayobj ;
@@ -108,7 +108,7 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 			 
 			 if (position % 2 == 0) {
 				 
-				  v.setBackgroundColor(0x30EAE7E7);
+				  v.setBackgroundColor(0x30E6EEF8);
 				}
 			 if(allergydata[3].equals("Inactive"))
 			 {
