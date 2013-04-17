@@ -14,7 +14,7 @@
          <Button
              android:id="@+id/callydp"
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"
+             android:layout_height="50dp"
              android:layout_alignLeft="@+id/emailydp"
              android:layout_alignParentTop="true"
              android:layout_alignRight="@+id/imageView1"
@@ -26,7 +26,7 @@
          <Button
              android:id="@+id/emailydp"
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"
+             android:layout_height="50dp"
              android:layout_alignLeft="@+id/imageView1"
              android:layout_alignRight="@+id/imageView1"
              android:layout_below="@+id/callydp"
@@ -38,7 +38,7 @@
          <Button
              android:id="@+id/moreaboutydp"
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"
+             android:layout_height="50dp"
              android:layout_alignLeft="@+id/imageView1"
              android:layout_alignRight="@+id/imageView1"
              android:layout_below="@+id/emailydp"
