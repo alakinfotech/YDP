@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:id="@+id/cprelativelayout"
+     android:visibility="gone">
 
     <TextView
         android:id="@+id/cphometextView1"
@@ -14,7 +16,8 @@
         android:paddingTop="5dp"
         android:text="Allergies:"
         android:textAppearance="?android:attr/textAppearanceMedium"
-       	android:textColor="#C12A33" />
+       	android:textColor="#C12A33"
+       	android:visibility="gone" />
     
     <TextView
         android:id="@+id/cphometextView2"
@@ -93,7 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1" >
+        android:layout_below="@+id/linearLayout1"
+        >
     </ListView>
 
     <WebView

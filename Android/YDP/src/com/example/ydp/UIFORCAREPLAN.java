@@ -34,7 +34,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -120,6 +122,8 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	MyJavaScriptInterface javeScritpInterfacee;
 	ListView lv;
 	public static TextView allallergy,titletext;
+	ImageView image;
+	 RelativeLayout rlayout,titlerlayout;
 	 
 	  
 	class Myadapter extends BaseAdapter 
@@ -240,6 +244,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE); 
 		setContentView(R.layout.careplanhome);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		titlerlayout =(RelativeLayout) findViewById(R.id.RelativeLayout1);
 		 titletext = (TextView) findViewById(R.id.titletextview);
 		 logout = (Button) findViewById(R.id.logoutbutton);
 		 logout.setOnClickListener(new OnClickListener() {
@@ -339,8 +344,10 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 //		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'+document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1').innerHTML+'</head>');");
 //		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'"+jScript+"'</head>');");
 //		          //wb1.loadUrl("javascript:("+jScript +")()");
-//		          
+	         
 		          progressBar.dismiss();
+		          titlerlayout.setVisibility(RelativeLayout.VISIBLE);
+		         rlayout.setVisibility(RelativeLayout.VISIBLE);
 		          
 	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \"$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 		          loadRequest++;
@@ -364,12 +371,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	
  	    
  	    lv = (ListView) findViewById(R.id.cphomelistView);
-		
+
 		adapter = new Myadapter(this);
 		lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
         allallergy = (TextView)findViewById(R.id.cphometextView2);
-
+        rlayout = (RelativeLayout) findViewById(R.id.cprelativelayout);
         allallergy.setText("this is my text");
         ImageButton img = (ImageButton) findViewById(R.id.imageButton1);
 		img.setOnClickListener(new View.OnClickListener() {
@@ -380,13 +387,9 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			
 				Intent allergiesintent = new Intent(getApplicationContext(),UIFORALLERGESDETAILVIEW.class);
 				
-				  //Bundle b = new Bundle();
+//			image =(ImageView) findViewById(R.id.imageView1);
+//			image.setImageBitmap(null);
 			
-				
-				//ArrayList<String[]> allergystring = allergyRecords;
-//				 b.putStringArrayList("allergyrecord", allergyRecords);
-//				allergiesintent.putStringArrayListExtra("allergyrecord", allergystring);
-				//allergiesintent.putExtra("allergyrecord", allergyRecords);
 				
 			Arraydatasample obj = new Arraydatasample();
 				obj.arrayobj = javeScritpInterfacee.allergyRecords;
