@@ -18,7 +18,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:background="@color/white" >
+         >
         <activity
             android:name="com.example.ydp.Splashscreen"
             android:label="@string/icon_name"
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name="HOMESCREEN" 	android:screenOrientation="portrait"></activity>
-        <activity android:name="YDPCAREPLAN"	android:screenOrientation="portrait"></activity>
+        <activity android:name="YDPCAREPLAN"   	android:screenOrientation="portrait"></activity>
         <activity android:name="NOTIFYYDP" 		android:screenOrientation="portrait"></activity>
         <activity android:name="YDPWEBVIEW" 	android:screenOrientation="portrait"></activity>
         <activity android:name="EMAILYDP"		android:screenOrientation="portrait"></activity>

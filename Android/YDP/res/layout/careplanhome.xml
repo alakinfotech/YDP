@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:id="@+id/cprelativelayout"
-     android:visibility="gone">
+    android:visibility="gone" >
 
     <TextView
         android:id="@+id/cphometextView1"
@@ -31,19 +31,19 @@
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:text="Medium Text"
-       	android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#C12A33" />
     
     <ImageButton
         android:id="@+id/imageButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/cphometextView2"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="#2C74DA"
-        android:src="@android:drawable/ic_media_play" />
-
+        android:src="@drawable/arrow"
+        android:background="@null" />
+    
+    
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:weightSum="3"
@@ -108,5 +108,4 @@
         android:layout_alignParentTop="true" 
       android:visibility="gone"  />
 
- 
 </RelativeLayout>
