@@ -40,8 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/arrow"
-        android:background="@null" />
+        android:src="@drawable/arrow72px"
+        android:background="@null" 
+        android:scaleType="fitCenter"/>
     
     
     <LinearLayout

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:id="@+id/cprelativelayout"
-    android:visibility="gone">
+   android:visibility="gone" >
 
     <TextView
         android:id="@+id/cphometextView1"
@@ -38,11 +38,12 @@
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/cphometextView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/arrow"
-        android:background="@null" />
-    
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/arrow36px" />
     
     <LinearLayout
         android:id="@+id/linearLayout1"
