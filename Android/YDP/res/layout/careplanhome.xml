@@ -17,7 +17,7 @@
         android:text="Allergies:"
         android:textAppearance="?android:attr/textAppearanceMedium"
        	android:textColor="#C12A33"
-       	android:visibility="gone" />
+       	 />
     
     <TextView
         android:id="@+id/cphometextView2"

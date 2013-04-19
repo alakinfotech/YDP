@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class UIFORALLERGESDETAILVIEW  extends Activity{
@@ -25,12 +26,15 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 	String allergydetailhname;
 	TextView  titletext;
 	Button logout;
+	RelativeLayout titlerlayout2;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.allargiesdetailview);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		titlerlayout2 =(RelativeLayout) findViewById(R.id.RelativeLayout1);
+		titlerlayout2.setVisibility(RelativeLayout.VISIBLE);
 		titletext = (TextView) findViewById(R.id.titletextview);
 		 logout = (Button) findViewById(R.id.logoutbutton);
 		 logout.setOnClickListener(new OnClickListener() {

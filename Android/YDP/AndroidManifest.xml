@@ -17,7 +17,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:background="@color/white" >
         <activity
             android:name="com.example.ydp.Splashscreen"
             android:label="@string/icon_name"
@@ -30,14 +31,14 @@
 				<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="HOMESCREEN" android:screenOrientation="portrait"></activity>
-        <activity android:name="YDPCAREPLAN" android:screenOrientation="portrait"></activity>
-        <activity android:name="NOTIFYYDP" android:screenOrientation="portrait"></activity>
-        <activity android:name="YDPWEBVIEW" android:screenOrientation="portrait"></activity>
-        <activity android:name="EMAILYDP"></activity>
-        <activity android:name="UIFORALLERGESDETAILVIEW"   android:screenOrientation="landscape"></activity>
-        <activity android:name="UIFORCAREPLAN" android:screenOrientation="landscape"></activity>
-        <activity android:name="Careplandetailview" android:screenOrientation="landscape"></activity>
+        <activity android:name="HOMESCREEN" 	android:screenOrientation="portrait"></activity>
+        <activity android:name="YDPCAREPLAN"	android:screenOrientation="portrait"></activity>
+        <activity android:name="NOTIFYYDP" 		android:screenOrientation="portrait"></activity>
+        <activity android:name="YDPWEBVIEW" 	android:screenOrientation="portrait"></activity>
+        <activity android:name="EMAILYDP"		android:screenOrientation="portrait"></activity>
+        <activity android:name="UIFORALLERGESDETAILVIEW" android:theme="@style/CustomTheme" 	android:screenOrientation="landscape"></activity>
+        <activity android:name="UIFORCAREPLAN"  		 android:theme="@style/CustomTheme" 	android:screenOrientation="landscape"></activity>
+        <activity android:name="Careplandetailview" 	 android:theme="@style/CustomTheme"  	android:screenOrientation="landscape"></activity>
         
     </application>
 

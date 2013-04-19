@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -25,12 +26,15 @@ public class Careplandetailview extends Activity {
 	String[] names = {"Date","ICD9 Diagnosis","Status","Risk Factors","Goals/Instructions","Interventions","Medication","Pracitioner"};
 	TextView cp,titletext; 
 	Button logout;
+	RelativeLayout titlerlayout3;
 	 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.careplandeatailview);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		titlerlayout3 =(RelativeLayout) findViewById(R.id.RelativeLayout1);
+		titlerlayout3.setVisibility(RelativeLayout.VISIBLE);
 		titletext = (TextView) findViewById(R.id.titletextview);
 		
 		 logout = (Button) findViewById(R.id.logoutbutton);

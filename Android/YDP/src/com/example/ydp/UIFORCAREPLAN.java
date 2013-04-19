@@ -123,7 +123,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	ListView lv;
 	public static TextView allallergy,titletext;
 	ImageView image;
-	 RelativeLayout rlayout,titlerlayout;
+	 RelativeLayout rlayout,titlerlayout1;
 	 
 	  
 	class Myadapter extends BaseAdapter 
@@ -216,7 +216,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 				 
 				 
 			 }
-			 
+			
 			 
 			 t1.setText(careplan[1]);
 			 t2.setText(careplan[6]);
@@ -244,7 +244,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE); 
 		setContentView(R.layout.careplanhome);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
-		titlerlayout =(RelativeLayout) findViewById(R.id.RelativeLayout1);
+		titlerlayout1 =(RelativeLayout) findViewById(R.id.RelativeLayout1);
 		 titletext = (TextView) findViewById(R.id.titletextview);
 		 logout = (Button) findViewById(R.id.logoutbutton);
 		 logout.setOnClickListener(new OnClickListener() {
@@ -346,7 +346,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 //		          //wb1.loadUrl("javascript:("+jScript +")()");
 	         
 		          progressBar.dismiss();
-		          titlerlayout.setVisibility(RelativeLayout.VISIBLE);
+		          titlerlayout1.setVisibility(RelativeLayout.VISIBLE);
 		         rlayout.setVisibility(RelativeLayout.VISIBLE);
 		          
 	          wb1.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \"$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");

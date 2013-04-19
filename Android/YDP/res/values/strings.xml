@@ -5,6 +5,6 @@
  	 <string name="icon_name">YDP</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-
+	<color name="white">#FFFFFF</color>
 
 </resources>
