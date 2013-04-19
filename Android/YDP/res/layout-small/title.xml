@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:visibility="gone">
+
+    <RelativeLayout
+        android:id="@+id/Relativelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" 
+        android:background="#233869"
+        android:weightSum="6"> 
+        
+        <ImageView
+            android:id="@+id/ydplogo"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="18dp"
+            android:layout_weight="1.5"
+            android:src="@drawable/tab_icon" />
+
+        <TextView
+            android:id="@+id/titletextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="75dp"
+            android:layout_toRightOf="@+id/ydplogo"
+            android:layout_weight="4.3"
+            android:gravity="center"
+            android:text="Your Doctor Program"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/logoutbutton"
+            android:layout_width="90dp"
+            android:layout_height="33dp"
+            android:layout_alignBaseline="@+id/titletextview"
+            android:layout_alignBottom="@+id/titletextview"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:background="#C8D8ED"
+            android:text="Logout"
+            android:textColor="#566890" />
+
+    </RelativeLayout>
+  
+</RelativeLayout>

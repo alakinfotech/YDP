@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A4A4A4"
+        android:weightSum="6" >
+
+        <TextView
+            android:id="@+id/algheader1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.40"
+            android:paddingLeft="10dp"
+            android:text="Allergen"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/algheader2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.19"
+            android:paddingLeft="10dp"
+            android:text="Reaction"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/algheader3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.19"
+            android:paddingLeft="10dp"
+            android:text="Severity"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/algheader4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.20"
+            android:paddingLeft="10dp"
+            android:text="Status"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/alglistView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>
