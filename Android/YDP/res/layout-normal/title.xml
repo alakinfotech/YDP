@@ -25,19 +25,6 @@
             android:layout_weight="1.5"
             android:src="@drawable/tab_icon" />
 
-        <TextView
-            android:id="@+id/titletextview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="75dp"
-            android:layout_toRightOf="@+id/ydplogo"
-            android:layout_weight="4.3"
-            android:gravity="center"
-            android:text="Your Doctor Program"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ffffff" />
-
         <Button
             android:id="@+id/logoutbutton"
             android:layout_width="90dp"
@@ -49,6 +36,19 @@
             android:background="#C8D8ED"
             android:text="Logout"
             android:textColor="#566890" />
+
+        <TextView
+            android:id="@+id/titletextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="76dp"
+            android:layout_toRightOf="@+id/ydplogo"
+            android:layout_weight="4.3"
+            android:gravity="center"
+            android:text="Your Doctor Program"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
 
     </RelativeLayout>
   
