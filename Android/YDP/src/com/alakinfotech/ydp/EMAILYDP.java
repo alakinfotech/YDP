@@ -1,4 +1,4 @@
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import com.alakinfotech.ydp.R;
 
 public class EMAILYDP extends Activity {
 	Button buttonSend;

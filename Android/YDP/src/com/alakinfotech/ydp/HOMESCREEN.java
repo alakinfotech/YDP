@@ -1,10 +1,11 @@
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
+import com.alakinfotech.ydp.R;
 
 public class HOMESCREEN  extends TabActivity{
 	@SuppressWarnings("deprecation")

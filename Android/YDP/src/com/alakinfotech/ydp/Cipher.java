@@ -1,4 +1,4 @@
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 import org.apache.commons.codec.digest.DigestUtils;  
 import org.bouncycastle.crypto.BlockCipher;
@@ -7,6 +7,7 @@ import org.bouncycastle.crypto.engines.AESFastEngine;
 import org.bouncycastle.crypto.modes.CBCBlockCipher;  
 import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;  
 import org.bouncycastle.crypto.params.KeyParameter;  
+import com.alakinfotech.ydp.R;
 import java.io.ByteArrayInputStream;  
 import java.io.ByteArrayOutputStream;  
   

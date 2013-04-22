@@ -1,4 +1,4 @@
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
+import com.alakinfotech.ydp.R;
 
 
 

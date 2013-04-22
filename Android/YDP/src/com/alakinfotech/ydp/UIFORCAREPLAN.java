@@ -1,4 +1,4 @@
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 
 
@@ -39,6 +39,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.alakinfotech.ydp.R;
 
 
  class MyJavaScriptInterface   

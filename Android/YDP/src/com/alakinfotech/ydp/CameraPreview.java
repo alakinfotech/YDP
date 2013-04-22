@@ -1,7 +1,7 @@
 /*
  * Bar code  implementation of displaying camera preview.
  */
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 import java.io.IOException;
 import android.util.Log;
@@ -11,6 +11,7 @@ import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.AutoFocusCallback;
+import com.alakinfotech.ydp.R;
 
 
 /** A basic Camera preview class */

@@ -1,4 +1,4 @@
-package com.example.ydp;
+package com.alakinfotech.ydp;
 
 
 
@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.alakinfotech.ydp.R;
 
 
 public class Careplandetailview extends Activity {

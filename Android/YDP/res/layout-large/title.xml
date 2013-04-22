@@ -4,6 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
+    android:visibility="gone"
+    
     >
 
 
@@ -39,17 +41,17 @@
              android:textAppearance="?android:attr/textAppearanceMedium"
              android:textColor="#ffffff" />
 
-        <Button
-            android:id="@+id/logoutbutton"
-            android:layout_width="80dp"
-            android:layout_height="33dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:background="#C8D8ED"
-            android:text="Logout"
-            android:textColor="#566890" />
+         <Button
+             android:id="@+id/logoutbutton"
+             android:layout_width="80dp"
+             android:layout_height="25dp"
+             android:layout_marginBottom="8dp"
+             android:layout_marginRight="5dp"
+             android:layout_marginTop="0dp"
+             android:layout_weight="1"
+             android:background="#C8D8ED"
+             android:text="Logout"
+             android:textColor="#566890" />
 
     </LinearLayout>
   

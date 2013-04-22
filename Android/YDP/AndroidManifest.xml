@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ydp"
+    package="com.alakinfotech.ydp"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme"
          >
         <activity
-            android:name="com.example.ydp.Splashscreen"
+            android:name="com.alakinfotech.ydp.Splashscreen"
             android:label="@string/icon_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -31,14 +31,14 @@
 				<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="HOMESCREEN" 	android:screenOrientation="portrait"></activity>
-        <activity android:name="YDPCAREPLAN"   	android:screenOrientation="portrait"></activity>
-        <activity android:name="NOTIFYYDP" 		android:screenOrientation="portrait"></activity>
-        <activity android:name="YDPWEBVIEW" 	android:screenOrientation="portrait"></activity>
-        <activity android:name="EMAILYDP"		android:screenOrientation="portrait"></activity>
-        <activity android:name="UIFORALLERGESDETAILVIEW" android:theme="@style/CustomTheme" 	android:screenOrientation="landscape"></activity>
-        <activity android:name="UIFORCAREPLAN"  		 android:theme="@style/CustomTheme" 	android:screenOrientation="landscape"></activity>
-        <activity android:name="Careplandetailview" 	 android:theme="@style/CustomTheme"  	android:screenOrientation="landscape"></activity>
+        <activity android:name="com.alakinfotech.ydp.HOMESCREEN" 	android:screenOrientation="portrait"></activity>
+        <activity android:name="com.alakinfotech.ydp.YDPCAREPLAN"   	android:screenOrientation="portrait"></activity>
+        <activity android:name="com.alakinfotech.ydp.NOTIFYYDP" 		android:screenOrientation="portrait"></activity>
+        <activity android:name="com.alakinfotech.ydp.YDPWEBVIEW" 	android:screenOrientation="portrait"></activity>
+        <activity android:name="com.alakinfotech.ydp.EMAILYDP"		android:screenOrientation="portrait"></activity>
+        <activity android:name="com.alakinfotech.ydp.UIFORALLERGESDETAILVIEW" android:theme="@style/CustomTheme" 	android:screenOrientation="landscape"></activity>
+        <activity android:name="com.alakinfotech.ydp.UIFORCAREPLAN"  		 android:theme="@style/CustomTheme" 	android:screenOrientation="landscape"></activity>
+        <activity android:name="com.alakinfotech.ydp.Careplandetailview" 	 android:theme="@style/CustomTheme"  	android:screenOrientation="landscape"></activity>
         
     </application>
 
