@@ -1,58 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+   >
 
-     <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentTop="true"
-         android:layout_centerHorizontal="true"
-         android:orientation="vertical"
-         android:weightSum="7" >
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:orientation="vertical"
+        android:weightSum="7" >
 
-         <Button
-             android:id="@+id/callydp"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:layout_alignLeft="@+id/emailydp"
-             android:layout_alignParentTop="true"
-             android:layout_alignRight="@+id/imageView1"
-             android:layout_marginTop="41dp"
-             android:background="#6A8FB0"
-             android:text="Call YDP"
-             android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/callydp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/emailydp"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/imageView1"
+            android:layout_marginTop="20dp"
+            android:background="#6A8FB0"
+            android:text="Call YDP"
+            android:textColor="#ffffff" />
 
-         <Button
-             android:id="@+id/emailydp"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:layout_alignLeft="@+id/imageView1"
-             android:layout_alignRight="@+id/imageView1"
-             android:layout_below="@+id/callydp"
-             android:layout_marginTop="48dp"
-             android:background="#6A8FB0"
-             android:text="Email YDP"
-             android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/emailydp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="#6A8FB0"
+            android:text="Email YDP"
+            android:textColor="#ffffff" />
 
-         <Button
-             android:id="@+id/moreaboutydp"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:layout_alignLeft="@+id/imageView1"
-             android:layout_alignRight="@+id/imageView1"
-             android:layout_below="@+id/emailydp"
-             android:layout_marginTop="50dp"
-             android:background="#6A8FB0"
-             android:text="More About YDP"
-             android:textColor="#ffffff" />
-
-         <ImageView
-             android:id="@+id/imageView1"
-             android:layout_width="249dp"
-             android:layout_height="234dp"
-             android:layout_weight="1"
-             android:src="@drawable/logo" />
-     </LinearLayout>
+        <Button
+            android:id="@+id/moreaboutydp"
+            android:layout_width="197dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/imageView1"
+            android:layout_alignRight="@+id/imageView1"
+            android:layout_below="@+id/emailydp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="0.07"
+            android:background="#6A8FB0"
+            android:text="More About YDP"
+            android:textColor="#ffffff" />
+    </LinearLayout>
 
 </RelativeLayout>
