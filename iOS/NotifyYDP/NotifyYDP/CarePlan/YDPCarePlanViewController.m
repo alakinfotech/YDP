@@ -87,6 +87,7 @@
 }
 
 - (IBAction)Logout:(id)sender {
+    [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -120,12 +120,18 @@
 
 - (IBAction)Login {
     
+    [self.userName resignFirstResponder];
+    [self.password resignFirstResponder];
     //[self.view addSubview:self.webView];
+    if ([self.userName.text isEqualToString:@""] || [self.password.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please check the Username and Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     YDPCarePlanViewController *webViewController = [[YDPCarePlanViewController alloc]init];
     webViewController.userName = self.userName.text;
     webViewController.password = self.password.text;
-    webViewController.url = @
-    "https://yourdoctorprogram.com/qhr/Login.aspx";
+    webViewController.url = @"https://yourdoctorprogram.com/qhr/Login.aspx";
     webViewController.isAudination = YES;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     navigationController.navigationBar.hidden = YES;
