@@ -49,7 +49,7 @@ public class Reading {
 
   public static void main(String[] args) throws IOException {
     Reading test = new Reading();
-    test.setInputFile("D:/lars.xls");
+    test.setInputFile("D:/sample.xls");
     test.read();
   }
 
