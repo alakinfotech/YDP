@@ -8,10 +8,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -40,9 +47,6 @@ public class YDPCardEncoder extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
-		
-		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -101,6 +105,23 @@ public class YDPCardEncoder extends JFrame {
 		inputbtn.setBackground(new Color(51, 102, 153));
 		inputbtn.setBounds(538, 94, 97, 25);
 		contentPane.add(inputbtn);
+		inputbtn.addActionListener(new ActionListener() {
+			// Action for browse button
+            public void actionPerformed(ActionEvent event) {
+                JFileChooser fileopen = new JFileChooser();
+                FileFilter filter = new FileNameExtensionFilter("xls files", "xls");
+                fileopen.addChoosableFileFilter(filter);
+
+               int ret = fileopen.showDialog(contentPane, "Open file");
+
+                if (ret == JFileChooser.APPROVE_OPTION) {
+                	inputtxtfld.setText(fileopen.getSelectedFile().getAbsolutePath());
+                    inputtxtfld.setEditable(false);
+                }
+
+            }
+        });
+		
 		
 		JLabel outputlbl = new JLabel("WorkBook Output File:");
 		outputlbl.setBounds(23, 186, 129, 16);
@@ -123,4 +144,9 @@ public class YDPCardEncoder extends JFrame {
 		encodebtn.setBounds(258, 285, 186, 43);
 		contentPane.add(encodebtn);
 	}
+	
+		
+	
+	
+
 }
