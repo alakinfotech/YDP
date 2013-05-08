@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.channels.UnsupportedAddressTypeException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -30,6 +32,19 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
+
+import org.apache.commons.codec.binary.Base64;
+
+
+
+
+
+import jxl.Cell;
+import jxl.CellType;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import jxl.write.WritableCellFormat;
 
 /** copy rights to Alakinfotech
  * Date:03/05/2013 
@@ -47,18 +62,25 @@ public class YDPCardEncoder extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField inputtxtfld ,outputtxtfld;
+	private String inputFile;
+	private String outputFile;
+	private WritableCellFormat timesBoldUnderline;
+	private WritableCellFormat times;
 	JButton inputbtn,outputbtn,encodebtn;
 	JLabel inputtxtlbl,outputtxtlbl;
 	JFileChooser chooser;
 	JProgressBar progressBar;
-	String defaultFileName = "del.txt";
 	boolean isEncodingProgress;
+
+	  String resultStr = "" ; 
+	  byte[] encryptedBytesTest;
+	  String encryptedStringTest;
 
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -86,8 +108,9 @@ public class YDPCardEncoder extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("deprecation")
+	
 	public YDPCardEncoder() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 729, 452);
 		contentPane = new JPanel();
@@ -185,6 +208,7 @@ public class YDPCardEncoder extends JFrame {
 		progressBar.setVisible(false);
 		encodebtn.addActionListener(new ActionListener() {
 
+		
 			public void actionPerformed(ActionEvent event) {
 
 				
@@ -202,7 +226,17 @@ public class YDPCardEncoder extends JFrame {
 					
 					encodebtn.setText("Stop Encoding");
 					progressBar.setVisible(true);
-				}
+					Reading test = new Reading();
+					String inputfilepath = inputtxtfld.getText();
+					test.setInputFile(inputtxtfld.getText());
+					try {
+						test.read();
+					} catch (IOException | UnsupportedAudioFileException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				} 
 				else
 				{
 					encodebtn.setText("Start Encoding");
@@ -217,6 +251,9 @@ public class YDPCardEncoder extends JFrame {
 			});
 		
 			}
+	
+	
+	
 }
 		
 	
