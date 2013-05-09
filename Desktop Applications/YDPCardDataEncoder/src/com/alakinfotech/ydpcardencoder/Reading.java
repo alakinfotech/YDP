@@ -2,6 +2,7 @@ package com.alakinfotech.ydpcardencoder;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.channels.UnsupportedAddressTypeException;
 import java.util.Locale;
 
@@ -39,7 +40,7 @@ public class Reading {
   String resultStr = "" ; 
   byte[] encryptedBytesTest;
   String encryptedStringTest;
-
+  String[] resultarray = new String[10];
 
   public void setInputFile(String inputFile) {
     this.inputFile = inputFile;
@@ -57,12 +58,20 @@ public class Reading {
       Sheet sheet = w.getSheet(0);
       // Loop over first 10 column and lines
       
-
-      for (int j = 0; j < sheet.getRows(); j++) {
+      for (int j = 1; j < sheet.getRows(); j++) {
+    	resultStr="";
     	  for (int i = 0; i < sheet.getColumns(); i++) {
           Cell cell = sheet.getCell(i, j);
+          Cell headercell=sheet.getCell(i, 0);
           CellType type = cell.getType();
-          resultStr =resultStr+ " " + cell.getContents();
+          if(cell.getContents()!=null&&cell.getContents().length()>0){
+        	 
+                  if(headercell.getContents().compareToIgnoreCase("UserName")!=0&&headercell.getContents().compareToIgnoreCase("Password")!=0)
+                  resultStr =resultStr+headercell.getContents()+":";
+                 
+                  resultStr =resultStr+cell.getContents()+":";  
+          }
+          
      
           if (type == CellType.LABEL) {
         	// System.out.println("I got a label "
@@ -78,100 +87,138 @@ public class Reading {
               //        + cell.getContents());
         	  
           }
-        
-        }
-  
-      }
-      resultStr =resultStr+ "\n";
+         
+      	  
 
-	  System.out.println("Input  data "+"\n" + resultStr );
+        }
+    	  resultStr = resultStr + "\n";
+    	  System.out.println("Input  data "+"\n" + resultStr );
+    	  encryptScanData(resultStr);
+    	  
+          //resultarray[j-1]=resultStr;
+    	  
+    	  
+    	 
+    	 }
+
+	  
+	 // encryptScanData(resultStr);
+	  decryptScanData(encryptedStringTest);
+
     } catch (BiffException e) {
       e.printStackTrace();
     }
-// cipher for encoding
-	
-    		Cipher cipher = new Cipher("Adi&Revanth");
-    		String inputStr = resultStr.toString();
-			byte[] input =null;
+
+ }
+  
+  private String readingdata(String data){
+	  
+	  
+	return data;
+	  
+  }
+  private String encryptScanData(String data){
+
+		Cipher cipher = new Cipher("Adi&Revanth");
+		String inputStr = data.toString();
+		byte[] input =null;
+		
 			try {
 				input = inputStr.getBytes("UTF-8");
-			} catch (UnsupportedAddressTypeException e1) {
+			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
+		
+		
+		
+		byte[] reseltByts = null;
+			  
+			try {
+				encryptedBytesTest =  reseltByts = cipher.encrypt(input);
+			 	
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			             
+			}
+		String resultData = null;
 			
 			
-			byte[] reseltByts = null;
-				  
-				try {
-					encryptedBytesTest =  reseltByts = cipher.encrypt(input);
-				 	
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				             
-				}
-			String resultData = null;
+			if(reseltByts != null){ 
 				
-				
-				if(reseltByts != null){ 
-					
-					
+				byte [] reseltBase64Bytes = Base64.encodeBase64(reseltByts);
 					try {
-						
-						byte [] reseltBase64Bytes = Base64.encodeBase64(reseltByts);
 						resultData = new String(reseltBase64Bytes, "UTF-8");
-					} catch (UnsupportedAddressTypeException e) {
+					} catch (UnsupportedEncodingException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-					encryptedStringTest = resultData; 
-					
-					
-				}
-			
-				//System.out.println("Resultant string" + resultData);
-				System.out.println("Encoded data : "+ " \n " + new String(resultData));
-				//end of cipher
 				
-				Cipher cipher1 = new Cipher("Adi&Revanth");
-				byte[] encryptinput=null;
-				try {
-					
-		byte[] dect=resultData.getBytes("UTF-8");
-					//String cipherText = new String(Base64.decodeBase64(decryptedStr), "UTF-8");
-				encryptinput = Base64.decodeBase64(dect);
-				} catch (UnsupportedAddressTypeException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			
-				//	byte[] encryptinput =Base64.decode(encryptedStringTest, RESULT_OK);
-					byte[] reseltByts1 = null;
-
-				try {
-					reseltByts1 = cipher.decrypt(encryptinput);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		String resultData1 = null;
-
-
-			if(reseltByts1 != null){
-	
-		//resultData = Strings.fromUTF8ByteArray(reseltByts);	
-			//resultData =new String(reseltByts);
-			
-			
-			resultData1 = new String(reseltByts1, "UTF-8");
+				
+				encryptedStringTest = resultData; 
+				System.out.println("Encoded data : "+ " \n " + new String(resultData));
 			}
+				if(resultData != null)
+				{
+
+				return new String(resultData);
+				}
+				else 
+					{ return null;
+					}
+				
+		}
+	
+		
+		
+						
+  
+  
+  private String decryptScanData(String resultStr){
+	   	Cipher cipher = new Cipher("Adi&Revanth");
+	   	byte[] encryptinput=null;
+	   	try {
+		//scanText.trim();
+		byte[] dect=resultStr.getBytes("UTF-8");
+		encryptinput = Base64.decodeBase64(dect);
+	   	} catch (UnsupportedEncodingException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	   	}
+
+		byte[] reseltByts = null;
+
+		try {
+		reseltByts = cipher.decrypt(encryptinput);
+		} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		String resultData = null;
 
 
-			System.out.println("Decoded data : "+ " \n " + new String(resultData1));
-  }
+		if(reseltByts != null){
 
+
+
+			try {
+		resultData = new String(reseltByts, "UTF-8");
+		System.out.println("Decoded data : "+ " \n " + new String(resultData));
+			} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		}
+		if(resultData != null)
+		{
+
+		return new String(resultData);
+		}
+		else 
+			{ return null;
+			}
+	}
 //  public void write() throws IOException {
 //	  File file = new File(outputFile);
 //	    WorkbookSettings wbSettings = new WorkbookSettings();
