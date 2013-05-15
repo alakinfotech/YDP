@@ -137,10 +137,10 @@ public class YDPCardEncoder extends JFrame {
 		inputtxtfld.setEditable(false);
 		inputtxtfld.setColumns(10);
 		
-		inputbtn = new JButton("Browse..");
+		inputbtn = new JButton("Open");
 		inputbtn.setForeground(Color.WHITE);
 		inputbtn.setBackground(new Color(51, 102, 153));
-		inputbtn.setBounds(582, 101, 97, 25);
+		inputbtn.setBounds(582, 101, 97, 22);
 		contentPane.add(inputbtn);
 		inputbtn.addActionListener(new ActionListener() {
 			// Action for browse button
@@ -154,7 +154,13 @@ public class YDPCardEncoder extends JFrame {
 
                 if (ret == JFileChooser.APPROVE_OPTION) {
                 	inputtxtfld.setText(fileopen.getSelectedFile().getAbsolutePath());
-                    
+                	String inputpath = inputtxtfld.getText();
+                	String fileName = new File(inputpath).getName();
+                	String outputfile = "Sample_Output.xls";
+                	String newpath1=inputpath.replace(fileName, outputfile);
+                	outputtxtfld.setText(newpath1);
+                	
+                	
                 }
 
             }
@@ -166,15 +172,15 @@ public class YDPCardEncoder extends JFrame {
 		contentPane.add(outputtxtlbl);
 		
 		outputtxtfld = new JTextField();
-		outputtxtfld.setBounds(168, 192, 402, 22);
+		outputtxtfld.setBounds(168, 192, 406, 22);
 		contentPane.add(outputtxtfld);
 		outputtxtfld.setColumns(10);
 		outputtxtfld.setEditable(false);
 		
-		outputbtn = new JButton("Browse..");
+		outputbtn = new JButton("Save");
 		outputbtn.setForeground(Color.WHITE);
 		outputbtn.setBackground(new Color(51, 102, 153));
-		outputbtn.setBounds(582, 191, 97, 25);
+		outputbtn.setBounds(582, 191, 97, 22);
 		contentPane.add(outputbtn);
 		outputbtn.addActionListener(new ActionListener() {
 			// Action for browse button
@@ -197,7 +203,7 @@ public class YDPCardEncoder extends JFrame {
 		encodebtn = new JButton("Start Encoding");
 		encodebtn.setForeground(Color.WHITE);
 		encodebtn.setBackground(new Color(51, 102, 153));
-		encodebtn.setBounds(262, 285, 186, 43);
+		encodebtn.setBounds(293, 285, 124, 22);
 		contentPane.add(encodebtn);
 		
 		

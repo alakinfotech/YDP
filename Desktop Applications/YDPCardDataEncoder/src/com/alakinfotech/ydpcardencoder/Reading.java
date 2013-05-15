@@ -71,35 +71,11 @@ public class Reading {
                  
                   resultStr =resultStr+cell.getContents()+":";  
           }
-          
-     
-          if (type == CellType.LABEL) {
-        	// System.out.println("I got a label "
-              //  + cell.getContents() );
           }
-         // System.out.println("Count " + i);
-//          if (type == CellType.DATE) {
-//            System.out.println("I got a data"
-//                + cell.getContents());
-//          }
-          if(type==CellType.NUMBER){
-        	//  System.out.println("I got a phone No"
-              //        + cell.getContents());
-        	  
-          }
-         
-      	  
-
-        }
     	  resultStr = resultStr + "\n";
     	  System.out.println("Input  data "+"\n" + resultStr );
     	  encryptScanData(resultStr);
-    	  
-          //resultarray[j-1]=resultStr;
-    	  
-    	  
-    	 
-    	 }
+    	  }
 
 	  
 	 // encryptScanData(resultStr);
