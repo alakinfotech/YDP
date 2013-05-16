@@ -5,6 +5,7 @@ public class ReadingData {
 	String FirstName;
 	String LastName;
 	String PhoneNumber;
+	String PatientId;
 	String UserName;
 	String Password;
 	String EncodeData;

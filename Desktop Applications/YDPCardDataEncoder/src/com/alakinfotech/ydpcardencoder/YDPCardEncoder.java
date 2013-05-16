@@ -60,7 +60,7 @@ public class YDPCardEncoder extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	JPanel contentPane;
 	private JTextField inputtxtfld ,outputtxtfld;
 	private String inputFile;
 	private String outputFile;
@@ -161,6 +161,7 @@ public class YDPCardEncoder extends JFrame {
                 	outputtxtfld.setText(newpath1);
                 	
                 	
+                	
                 }
 
             }
@@ -195,6 +196,7 @@ public class YDPCardEncoder extends JFrame {
 
 	                if (ret == JFileChooser.APPROVE_OPTION) {
 	                	outputtxtfld.setText(fileopen.getSelectedFile().getAbsolutePath());
+	                	
 	                    
 	                }
 
@@ -218,7 +220,7 @@ public class YDPCardEncoder extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 
 				
-
+				
 				
 				inputtxtfld.setEnabled(isEncodingProgress);
 				outputtxtfld.setEnabled(isEncodingProgress);
@@ -229,19 +231,44 @@ public class YDPCardEncoder extends JFrame {
 				
 				if(isEncodingProgress==false)
 				{
+					String inputpath,outpath;
 					
-					encodebtn.setText("Stop Encoding");
-					progressBar.setVisible(true);
 					Reading test = new Reading();
-					String inputfilepath = inputtxtfld.getText();
+					inputpath = inputtxtfld.getText();
+					System.out.println(inputpath);
 					test.setInputFile(inputtxtfld.getText());
-					try {
-						test.read();
-					} catch (IOException | UnsupportedAudioFileException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					outpath = outputtxtfld.getText();
+					System.out.println(outpath);
+					test.setOutputFile(outputtxtfld.getText());
+					if(inputpath.isEmpty()&& outpath.isEmpty())
+					{
+						JOptionPane.showMessageDialog(contentPane," Input and Output file path should not empty", " Warning",JOptionPane.WARNING_MESSAGE);
+						isEncodingProgress=true;
+						inputtxtfld.setEnabled(isEncodingProgress);
+						outputtxtfld.setEnabled(isEncodingProgress);
+						inputtxtlbl.setEnabled(isEncodingProgress);
+						outputtxtlbl.setEnabled(isEncodingProgress);
+						inputbtn.setEnabled(isEncodingProgress);
+						outputbtn.setEnabled(isEncodingProgress);
+							
 					}
-					
+					else{
+						encodebtn.setText("Stop Encoding");
+						
+						for(int i=10;i<=100;i++)
+						{
+							progressBar.setVisible(true);
+						progressBar.setValue(i);
+							try {
+								test.read();
+							} catch (IOException | UnsupportedAudioFileException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+							}
+						 JOptionPane.showMessageDialog(contentPane,"Check output in destination folder");
+					}
 				} 
 				else
 				{
