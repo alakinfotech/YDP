@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDPCardEncoder is used to encode user data into encode format
+ */
+
+
 package com.alakinfotech.ydpcardencoder;
 
 import org.apache.commons.codec.digest.DigestUtils;  
@@ -12,27 +19,31 @@ import org.bouncycastle.crypto.params.KeyParameter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;  
-  
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 03 May 2013
+ *
+ */
+ 
 public class Cipher  {  
   
-    private static final byte[] NULL = null;
+    @SuppressWarnings("unused")
+	private static final byte[] NULL = null;
 	private final String password;  
-  
+  /* Constructor to store key */
     public Cipher(String password) {  
         this.password = password;
-                       
-
-
-    }  
-  
+      }  
+  /*Encrypt function to encrypt the user data */
     public byte[] encrypt(byte[] plainText) throws Exception {  
         return transform(true, plainText);  
     }  
-  
+    /* Decrypt function to decrypt the user data */
     public byte[] decrypt(byte[] cipherText) throws Exception {  
         return transform(false, cipherText);  
     }  
-  
+    
     private byte[] transform(boolean encrypt, byte[] inputBytes) throws Exception {  
         byte[] key = DigestUtils.md5(password.getBytes("UTF-8"));  
   
