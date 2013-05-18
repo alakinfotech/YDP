@@ -113,7 +113,8 @@ public class Reading {
 				 // write(encryptedStringTest);
 		    	  }
 	
-		      
+		      YDPCardEncoder cardencode = new YDPCardEncoder();
+		      cardencode.progressBar.setValue(50);
 		    write(temp);
 			 
 		    } catch (BiffException e) {
