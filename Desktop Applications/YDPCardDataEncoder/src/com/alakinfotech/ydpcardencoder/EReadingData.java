@@ -12,18 +12,20 @@ package com.alakinfotech.ydpcardencoder;
  * @version 1.0 03 May 2013
  *
  */
+interface IYDPCardEncoder{
+	void progressupdate(int progress);
+}
 
-public class ReadingData {
+public class EReadingData {
 	
-	String FirstName;
-	String LastName;
-	String PhoneNumber;
-	String PatientId;
-	String UserName;
-	String Password;
-	String EncodeData;
-	String	Time;
-	String  Date;
+	String firstName;
+	String lastName;
+	String phoneNumber;
+	String patientId;
+	String userName;
+	String password;
+	String encodeData;
+	String  date;
 	
 
 }

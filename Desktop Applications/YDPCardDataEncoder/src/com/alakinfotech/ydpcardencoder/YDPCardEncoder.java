@@ -33,6 +33,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 
+import org.apache.commons.io.FilenameUtils;
+
 
 /**
  * 
@@ -42,26 +44,25 @@ import javax.swing.JProgressBar;
  */
 
 
-public class YDPCardEncoder extends JFrame {
+public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 	/* YDPCardEncoder Class is used to create frame and user interface elements are implemented */
 	
 	
-	private static final long serialVersionUID = 1L;
-	private JTextField inputtxtfld, outputtxtfld;
-	JPanel contentPane;
-	JButton inputbtn, outputbtn, encodebtn;
-	JLabel inputtxtlbl, outputtxtlbl;
-	JFileChooser chooser;
-	JProgressBar progressBar;
+	private static final long serialVersionUID = 1L;//Program generated
 	
-	boolean isEncodingProgress,fname;
-	File f,f1;
-
-	String resultStr = "";
-	byte[] encryptedBytesTest;
-	String encryptedStringTest;
-
+	private JTextField inputTxtFld;//input text field
+	private JTextField outputTxtFld;//output text field
+	private JPanel contentPane;//Jpanel for adding ui elements
+	private JButton inputBtn;//open file dialog button
+	private JButton outputBtn;//save dialog button
+	private JButton encodeBtn;//button for encoding
+	static JProgressBar progressBar;// progress bar declaration
+	private ExcelFileReading excelfilereadingobj;
+	
+	boolean isEncodingProgress;// for enabling/disabling UI elements
+	private File newFile;//For crating new file
+	static IYDPCardEncoder callback;
 	/**
 	 * Launch the application.
 	 */
@@ -71,21 +72,24 @@ public class YDPCardEncoder extends JFrame {
 			public void run() {
 				try {
 					YDPCardEncoder frame = new YDPCardEncoder();
-					frame.setTitle("YDPCardDataEncoder"); // Sets title of frame
+					callback = frame;
+					frame.setTitle("YDP Card Data Encoder"); // Sets title of frame
 					// changing default icon of jframe to custoum image
 					BufferedImage image = null;// Setting image icon
 					try {
 						File imageFile = new File(
-								"D:/AIT_PROJECTS/YDP_MOBILE/Desktop Applications/YDPCardDataEncoder/app_icon.png");// Image icon path
+								"app_icon.png");// Image icon path
 						image = ImageIO.read(imageFile);// Reading Image icon
 					} catch (IOException e) {
 						e.printStackTrace();
+						System.out.println("Image not Found"+ e);
 					}
 					frame.setIconImage(image);// Attaching image icon to frame
 					frame.setResizable(false);// resizing frame is disabled
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 			}
 		});
@@ -104,34 +108,40 @@ public class YDPCardEncoder extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		//Title label
-		JLabel titlelbl = new JLabel("YDP Card Data Encoder");
-		titlelbl.setForeground(new Color(51, 102, 153));
-		titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		titlelbl.setIcon(new ImageIcon(
-				"D:\\AIT_PROJECTS\\YDP_MOBILE\\Desktop Applications\\YDPCardDataEncoder\\app_icon.png"));//title icon
-		titlelbl.setBackground(new Color(51, 102, 153));
-		titlelbl.setBounds(12, 13, 652, 38);
-		contentPane.add(titlelbl);
-		//Input text label
-		inputtxtlbl = new JLabel("WorkBook Input File:");
-		inputtxtlbl.setBounds(23, 105, 129, 16);
-		contentPane.add(inputtxtlbl);
-		//Input text field
-		inputtxtfld = new JTextField();
-		inputtxtfld.setBounds(164, 102, 406, 22);
-		contentPane.add(inputtxtfld);
-		inputtxtfld.setEditable(false);
-		inputtxtfld.setColumns(10);
-		//Input button
-		inputbtn = new JButton("Open");
-		inputbtn.setForeground(Color.WHITE);
-		inputbtn.setBackground(new Color(51, 102, 153));
-		inputbtn.setBounds(582, 101, 97, 22);
-		contentPane.add(inputbtn);
-		inputbtn.addActionListener(new ActionListener() {
-			// Action for browse button
+		
+		//Title label implementation
+		JLabel titleLbl = new JLabel("YDP Card Data Encoder");
+		titleLbl.setForeground(new Color(51, 102, 153));
+		titleLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		titleLbl.setIcon(new ImageIcon(
+				"app_icon.png"));//title icon
+		titleLbl.setBackground(new Color(51, 102, 153));
+		titleLbl.setBounds(12, 13, 652, 38);
+		contentPane.add(titleLbl);
+		
+		//Input text label implementation
+		JLabel inputTxtLbl = new JLabel("WorkBook Input File:");
+		inputTxtLbl.setBounds(23, 105, 129, 16);
+		contentPane.add(inputTxtLbl);
+		
+		//Input text field implementation
+		inputTxtFld = new JTextField();
+		inputTxtFld.setBounds(164, 102, 406, 22);
+		inputTxtFld.setEditable(false);
+		inputTxtFld.setColumns(10);
+		contentPane.add(inputTxtFld);
+
+		//Input button implementation
+		inputBtn = new JButton("Open");
+		inputBtn.setForeground(Color.WHITE);
+		inputBtn.setBackground(new Color(51, 102, 153));
+		inputBtn.setBounds(582, 101, 97, 22);
+		contentPane.add(inputBtn);
+		
+		//Action for input (open dialog box) button
+		inputBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				
 				JFileChooser fileopen = new JFileChooser();
 				FileFilter filter = new FileNameExtensionFilter("xls files","xls");
 				fileopen.setAcceptAllFileFilterUsed(false);
@@ -140,11 +150,12 @@ public class YDPCardEncoder extends JFrame {
 				int ret = fileopen.showDialog(contentPane, "Open file");
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					inputtxtfld.setText(fileopen.getSelectedFile()
+					inputTxtFld.setText(fileopen.getSelectedFile()
 							.getAbsolutePath());
-					String inputpath = inputtxtfld.getText();
+					String inputpath = inputTxtFld.getText();
 					String fileName = new File(inputpath).getName();//getting input filename
-					String outputfile = "Sample_Output";//sets output filename
+					String fileNameWithOutExt = FilenameUtils.removeExtension(fileName);//remove extension for file name
+					String outputfile = fileNameWithOutExt + "_Output";//sets output filename
 					String temp = "";	
 					int k=0;// k variable for representing filename with number
 					
@@ -152,11 +163,11 @@ public class YDPCardEncoder extends JFrame {
 					for(;;){
 						temp = k!=0?outputfile+"("+k+")":outputfile;
 						String newpath1 = inputpath.replace(fileName, temp+".xls");
-						f = new File(newpath1);
-						if(f.exists()){
+						newFile = new File(newpath1);
+						if(newFile.exists()){
 							k++;
 						}else{
-							outputtxtfld.setText(newpath1);
+							outputTxtFld.setText(newpath1);
 							break;
 						}
 					}
@@ -166,24 +177,27 @@ public class YDPCardEncoder extends JFrame {
 			}
 
 		});
-		//Output text label
-		outputtxtlbl = new JLabel("WorkBook Output File:");
-		outputtxtlbl.setBounds(23, 195, 129, 16);
-		contentPane.add(outputtxtlbl);
-		//Output text field
-		outputtxtfld = new JTextField();
-		outputtxtfld.setBounds(168, 192, 406, 22);
-		contentPane.add(outputtxtfld);
-		outputtxtfld.setColumns(10);
-		outputtxtfld.setEditable(false);
-		//Output browse button
-		outputbtn = new JButton("Save");
-		outputbtn.setForeground(Color.WHITE);
-		outputbtn.setBackground(new Color(51, 102, 153));
-		outputbtn.setBounds(582, 191, 97, 22);
-		contentPane.add(outputbtn);
-		outputbtn.addActionListener(new ActionListener() {
-			// Action for browse button
+		//Output text label implementation
+		JLabel outputTxtLbl = new JLabel("WorkBook Output File:");
+		outputTxtLbl.setBounds(23, 195, 129, 16);
+		contentPane.add(outputTxtLbl);
+		
+		//Output text field implementation
+		outputTxtFld = new JTextField();
+		outputTxtFld.setBounds(168, 192, 406, 22);
+		outputTxtFld.setColumns(10);
+		outputTxtFld.setEditable(false);
+		contentPane.add(outputTxtFld);
+
+		//Output browse button implementation
+		outputBtn = new JButton("Save");
+		outputBtn.setForeground(Color.WHITE);
+		outputBtn.setBackground(new Color(51, 102, 153));
+		outputBtn.setBounds(582, 191, 97, 22);
+		contentPane.add(outputBtn);
+		
+		//Action for save file box 
+		outputBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileopen = new JFileChooser();
 				FileFilter filter = new FileNameExtensionFilter("xls files",
@@ -194,72 +208,88 @@ public class YDPCardEncoder extends JFrame {
 				int ret = fileopen.showDialog(contentPane, "Save file");
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					outputtxtfld.setText(fileopen.getSelectedFile()
+					outputTxtFld.setText(fileopen.getSelectedFile()
 							.getAbsolutePath());
 
 				}
 
 			}
 		});
-		//Encoding button to encode excel data
-		encodebtn = new JButton("Start Encoding");
-		encodebtn.setForeground(Color.WHITE);
-		encodebtn.setBackground(new Color(51, 102, 153));
-		encodebtn.setBounds(293, 285, 124, 22);
-		contentPane.add(encodebtn);
-		//Progress bar declaration 
+		
+		//Progress bar implementation
 		progressBar = new JProgressBar();
 		progressBar.setStringPainted(true);
 		progressBar.setBounds(20, 361, 663, 25);
-		contentPane.add(progressBar);
 		progressBar.setVisible(false);
-		encodebtn.addActionListener(new ActionListener() {
-			// Encode button implementation
+		contentPane.add(progressBar);
+		
+		
+		
+		//Encoding button  implementation to encode excel data
+		encodeBtn = new JButton("Start Encoding");
+		encodeBtn.setForeground(Color.WHITE);
+		encodeBtn.setBackground(new Color(51, 102, 153));
+		encodeBtn.setBounds(293, 285, 124, 22);
+		contentPane.add(encodeBtn);
+		
+		// Encode button implementation
+		encodeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
 				// Disabling  all user interface elements 
-				inputtxtfld.setEnabled(isEncodingProgress);
-				outputtxtfld.setEnabled(isEncodingProgress);
-				inputtxtlbl.setEnabled(isEncodingProgress);
-				outputtxtlbl.setEnabled(isEncodingProgress);
-				inputbtn.setEnabled(isEncodingProgress);
-				outputbtn.setEnabled(isEncodingProgress);
+				inputTxtFld.setEnabled(isEncodingProgress);
+				outputTxtFld.setEnabled(isEncodingProgress);
+				inputBtn.setEnabled(isEncodingProgress);
+				outputBtn.setEnabled(isEncodingProgress);
 
 				if (isEncodingProgress == false) {
 					String inputpath, outpath;
 					/* creating object for reading class to read input and to encode */
-					Reading test = new Reading();
-					inputpath = inputtxtfld.getText();
-					test.setInputFile(inputtxtfld.getText());
-					outpath = outputtxtfld.getText();
-					test.setOutputFile(outputtxtfld.getText());
-					if (inputpath.isEmpty() && outpath.isEmpty()) {
+					 excelfilereadingobj = new ExcelFileReading();
+					 excelfilereadingobj.callback = callback;
+					 
+					 //passing secret key to ExcelFileReading class
+					 excelfilereadingobj.setKeyForEncoding("Adi&Revanth");
+					 
+					 //passing input file to ExcelFileReading class
+					 inputpath = inputTxtFld.getText();
+					 excelfilereadingobj.setInputFile(inputTxtFld.getText());
+					
+					 //passing output file to ExcelFileReading class
+					 outpath = outputTxtFld.getText();
+					excelfilereadingobj.setOutputFile(outputTxtFld.getText());
+					// checking input and output text fields
+					if (inputpath.isEmpty() || outpath.isEmpty()) {
 						// Message to user to fill input and output path
 						JOptionPane.showMessageDialog(contentPane,
 								" Input and Output file path should not empty",
 								" Warning", JOptionPane.WARNING_MESSAGE);
-						enableAll();
+						enableAll();//calling enable all function to enable UI elements
 					} else {
-						encodebtn.setText("Stop Encoding");
+						encodeBtn.setText("Stop Encoding");
 
 						try {
-							progressBar.setVisible(true);
-							test.read();	
-							progressBar.setValue(100);
 
+							excelfilereadingobj.read();	
+
+							
+						
 						} catch (IOException | UnsupportedAudioFileException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+							System.out.println("IOEXCEPTION"+e);
+							JOptionPane.showMessageDialog(contentPane,
+									"IO EXCEPTION OCCUR"+ e);
 						}
-						//Message to user that encoding process is completed
-						JOptionPane.showMessageDialog(contentPane,
-								"Check output in destination folder");
+						
+						
 						enableAll();
-						inputtxtfld.setText("");
-						outputtxtfld.setText("");
+						inputTxtFld.setText("");
+						outputTxtFld.setText("");
+
 					}
 				} else {
-					encodebtn.setText("Start Encoding");
+					encodeBtn.setText("Start Encoding");
 					progressBar.setVisible(false);
 				}
 				isEncodingProgress = !isEncodingProgress;
@@ -273,16 +303,19 @@ public class YDPCardEncoder extends JFrame {
 	
 	/* This method to enable user interface elements */
 	public void enableAll(){
-		encodebtn.setText("Start Encoding");
+		encodeBtn.setText("Start Encoding");
 
 		isEncodingProgress = true;
-		inputtxtfld.setEnabled(isEncodingProgress);
-		outputtxtfld.setEnabled(isEncodingProgress);
-		inputtxtlbl.setEnabled(isEncodingProgress);
-		outputtxtlbl.setEnabled(isEncodingProgress);
-		inputbtn.setEnabled(isEncodingProgress);
-		outputbtn.setEnabled(isEncodingProgress);
+		inputTxtFld.setEnabled(isEncodingProgress);
+		outputTxtFld.setEnabled(isEncodingProgress);
+		inputBtn.setEnabled(isEncodingProgress);
+		outputBtn.setEnabled(isEncodingProgress);
 		progressBar.setVisible(false);
+	}
+	/*For updating progress bar value*/
+	public  void progressupdate(int progress){
+	    progressBar.setVisible(true);
+	     progressBar.setValue(progress);
 	}
 
 }
