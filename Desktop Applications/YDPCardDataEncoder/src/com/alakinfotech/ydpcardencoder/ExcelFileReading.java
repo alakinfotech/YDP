@@ -82,11 +82,13 @@ public class ExcelFileReading {
 		      // Creating array to store elements of excel sheet
 		      ArrayList<EReadingData> temp = new ArrayList<EReadingData>();
 		      //Loop to access row data
-		      for (int j = 1; j < sheet.getRows(); j++) {
+		      int rows = sheet.getRows();
+		      for (int j = 1; j < rows; j++) {
 			    	// creating object for Reading data class			
 			    	EReadingData readingdata = new EReadingData();
 			    	//Loop to access coloum data
 			    	boolean isValidData = true;
+
 			     for (int i = 0; i < sheet.getColumns(); i++) {
 				          Cell cell = sheet.getCell(i, j);
 				          String cellContent = cell.getContents();
@@ -126,12 +128,13 @@ public class ExcelFileReading {
 		          
 		         	}
 		    	  
+			     
 			    	  if(isValidData == false ){
 			    		  continue;
 			    	  	}
 			    	  	//FirstName:William:LastName:Jones:Tel:7135551212:PatientID:2349870101:wjones(username):123456(password):
 			    	  	String tempString ="FirstName:"+readingdata.firstName+":LastName:"+readingdata.lastName+":Tel:"+readingdata.phoneNumber+":PatientId:"+readingdata.patientId+":"+readingdata.userName+":"+readingdata.password+":";
-						
+						System.out.println(tempString);
 			    	  	readingdata.encodeData = encryptScanData(tempString);
 			    	  	// Date format
 			    	  	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -139,15 +142,19 @@ public class ExcelFileReading {
 					   	 Date dateobj = new Date();
 					   	 readingdata.date = dateFormat.format(dateobj);
 					   	 temp.add(readingdata);//passing object data to array list
-					   	
+					   	 
+					   	 int progressVal = ((100*j)/(rows-1)) ;
+					   	 System.out.println(j);
+					   	System.out.println(rows);
+					   	callback.progressupdate(progressVal);
 			
 		    }
 	
 		  	//Creates new workbook file
 		    CreateWorkBook(temp);
 		   // progressupdate();
-		  //Message to user that encoding process is completed
-		    JOptionPane.showMessageDialog(null,"Check output in destination folder");
+		  
+//		    JOptionPane.showMessageDialog(null,"Check output in destination folder");
 			 
 		    } catch (BiffException e) {
 		      e.printStackTrace();
@@ -155,7 +162,7 @@ public class ExcelFileReading {
 				alertFunction(e);
 		    }
 		    
-		    callback.progressupdate(80);
+		    
 
   }
   /* Encrypting  input file data*/

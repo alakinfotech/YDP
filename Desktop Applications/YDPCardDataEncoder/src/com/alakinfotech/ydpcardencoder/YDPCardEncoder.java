@@ -156,7 +156,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 					String fileName = new File(inputpath).getName();//getting input filename
 					String fileNameWithOutExt = FilenameUtils.removeExtension(fileName);//remove extension for file name
 					String outputfile = fileNameWithOutExt + "_Output";//sets output filename
-					String temp = "";	
+					String temp = "";	 
 					int k=0;// k variable for representing filename with number
 					
 					/* Block is used to implement file name with number extension */
@@ -267,26 +267,31 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 						enableAll();//calling enable all function to enable UI elements
 					} else {
 						encodeBtn.setText("Stop Encoding");
-
-						try {
-
+					new Thread(new Runnable() {
+							   public void run() {
+							    
+					try {
+							//calling read function in ExcelReading.java class for reading workbook data
 							excelfilereadingobj.read();	
+							//Message to user that encoding process is completed
+						    JOptionPane.showMessageDialog(contentPane,"Check output in destination folder");
+						    // this method is used to enable all UI elements
+						    enableAll();
+						    //Setting text fields empty
+							inputTxtFld.setText("");
+							outputTxtFld.setText("");
 
-							
 						
 						} catch (IOException | UnsupportedAudioFileException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 							System.out.println("IOEXCEPTION"+e);
-							JOptionPane.showMessageDialog(contentPane,
-									"IO EXCEPTION OCCUR"+ e);
+							JOptionPane.showMessageDialog(contentPane,"IO EXCEPTION OCCUR"+ e);
 						}
 						
+							   }
+						}).start();
 						
-						enableAll();
-						inputTxtFld.setText("");
-						outputTxtFld.setText("");
-
 					}
 				} else {
 					encodeBtn.setText("Start Encoding");
@@ -316,6 +321,8 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	public  void progressupdate(int progress){
 	    progressBar.setVisible(true);
 	     progressBar.setValue(progress);
+	     System.out.println(progress);
+
 	}
 
 }
