@@ -24,7 +24,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
+
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -57,12 +60,15 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	private JButton inputBtn;//open file dialog button
 	private JButton outputBtn;//save dialog button
 	private JButton encodeBtn;//button for encoding
+	private JButton closeBtn;//for closing application
 	static JProgressBar progressBar;// progress bar declaration
 	private ExcelFileReading excelfilereadingobj;
 	
 	boolean isEncodingProgress;// for enabling/disabling UI elements
 	private File newFile;//For crating new file
 	static IYDPCardEncoder callback;
+	
+	private String encodeKey = "Adi&Revanth";
 	/**
 	 * Launch the application.
 	 */
@@ -102,7 +108,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	public YDPCardEncoder() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 729, 452);
+		setBounds(100, 100, 731, 454);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -116,7 +122,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		titleLbl.setIcon(new ImageIcon(
 				"app_icon.png"));//title icon
 		titleLbl.setBackground(new Color(51, 102, 153));
-		titleLbl.setBounds(12, 13, 652, 38);
+		titleLbl.setBounds(30, 13, 652, 38);
 		contentPane.add(titleLbl);
 		
 		//Input text label implementation
@@ -184,7 +190,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		
 		//Output text field implementation
 		outputTxtFld = new JTextField();
-		outputTxtFld.setBounds(168, 192, 406, 22);
+		outputTxtFld.setBounds(164, 192, 406, 22);
 		outputTxtFld.setColumns(10);
 		outputTxtFld.setEditable(false);
 		contentPane.add(outputTxtFld);
@@ -226,11 +232,16 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		
 		
 		//Encoding button  implementation to encode excel data
-		encodeBtn = new JButton("Start Encoding");
+		encodeBtn = new JButton("Start ");
 		encodeBtn.setForeground(Color.WHITE);
 		encodeBtn.setBackground(new Color(51, 102, 153));
-		encodeBtn.setBounds(293, 285, 124, 22);
+		encodeBtn.setBounds(265, 284, 97, 22);
 		contentPane.add(encodeBtn);
+		
+		
+		 
+	    	
+		
 		
 		// Encode button implementation
 		encodeBtn.addActionListener(new ActionListener() {
@@ -247,9 +258,40 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 					/* creating object for reading class to read input and to encode */
 					 excelfilereadingobj = new ExcelFileReading();
 					 excelfilereadingobj.callback = callback;
+					
 					 
+					 Properties prop = new Properties();
+					 try {
+			    		   //load a properties file
+			    		prop.load(new FileInputStream("YDPCardDataEncoder.properties"));
+			    		String fileKey = prop.getProperty("filekey");
+			               //get the property value and print it out
+			               
+			                if(fileKey != null){
+			                	if(fileKey.isEmpty())
+			                	{
+			                		exceptionAlert("Secret key for encoding process is not in  correct format"+"\n"+"Application uses default key for Encoding process");
+			                	
+			                	}
+			                	else{
+			                		encodeKey = fileKey;
+			                	 System.out.println("filekey:"+encodeKey);
+			                	}
+			                	}
+			                else{
+			                	System.out.println("Input file is empty");
+			                }
+			           
+			    		} catch (IOException ex) {
+			    		ex.printStackTrace();
+			    		exceptionAlert("Properties file not found"+"\n"+"Application uses default key for Encoding process");
+			    		//JOptionPane.showConfirmDialog(contentPane,"Properties file not found"+"\n"+"Application uses default key "+JOptionPane.CANCEL_OPTION);
+			    		}
+					 
+					
+					 System.out.println("Encode key"+encodeKey);
 					 //passing secret key to ExcelFileReading class
-					 excelfilereadingobj.setKeyForEncoding("Adi&Revanth");
+					 excelfilereadingobj.setKeyForEncoding(encodeKey);
 					 
 					 //passing input file to ExcelFileReading class
 					 inputpath = inputTxtFld.getText();
@@ -266,15 +308,15 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 								" Warning", JOptionPane.WARNING_MESSAGE);
 						enableAll();//calling enable all function to enable UI elements
 					} else {
-						encodeBtn.setText("Stop Encoding");
+						encodeBtn.setText("Stop");
+						
 					new Thread(new Runnable() {
 							   public void run() {
-							    
+			
 					try {
 							//calling read function in ExcelReading.java class for reading workbook data
 							excelfilereadingobj.read();	
-							//Message to user that encoding process is completed
-						    JOptionPane.showMessageDialog(contentPane,"Check output in destination folder");
+							
 						    // this method is used to enable all UI elements
 						    enableAll();
 						    //Setting text fields empty
@@ -294,8 +336,16 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 						
 					}
 				} else {
-					encodeBtn.setText("Start Encoding");
+					excelfilereadingobj.isStopEncoding = true;
+					
+					
+					encodeBtn.setText("Start");
+					
 					progressBar.setVisible(false);
+					if(excelfilereadingobj.progressVal != 100){
+						messageAlert("Encoding process stopped");	
+					}
+					
 				}
 				isEncodingProgress = !isEncodingProgress;
 
@@ -303,12 +353,23 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 		});
 		
+		/*For closing entire application*/
+		closeBtn = new JButton("Close");
+		closeBtn.setForeground(Color.WHITE);
+		closeBtn.setBackground(new Color(51, 102, 153));
+		closeBtn.setBounds(394, 284, 97, 22);
+		contentPane.add(closeBtn);
+		closeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 
 	}
 	
 	/* This method to enable user interface elements */
 	public void enableAll(){
-		encodeBtn.setText("Start Encoding");
+		encodeBtn.setText("Start");
 
 		isEncodingProgress = true;
 		inputTxtFld.setEnabled(isEncodingProgress);
@@ -324,5 +385,14 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	     System.out.println(progress);
 
 	}
-
+	/*For showing alert message to user*/
+	public void messageAlert(String message){
+		JOptionPane.showMessageDialog(contentPane, message);
+	}
+	/*For showing  Exception alert to user*/
+	@Override
+	public void exceptionAlert(String exception) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(contentPane,exception,"Warning", JOptionPane.ERROR_MESSAGE);
+	}
 }

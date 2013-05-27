@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JOptionPane;
+
 import org.apache.commons.codec.binary.Base64;
 
 
@@ -55,8 +55,9 @@ public class ExcelFileReading {
   byte[] encryptedBytesTest;//for storing bytes data
   String encryptedStringTest;//for storing resultant data
   IYDPCardEncoder callback;
- 
-  
+  int progressVal;
+  int count;
+  boolean isStopEncoding = false;
 /* sets input file*/
   public void setInputFile(String inputFile) {
     this.inputFile = inputFile;
@@ -68,12 +69,19 @@ public class ExcelFileReading {
   /*sets secret key to encode function*/
   public void setKeyForEncoding(String key){
 	  this.key = key;
+	 
   }
   /* Reading  input file data */
   public void read() throws IOException, UnsupportedAudioFileException  {
 		    
 	  		File inputWorkbook = new File(inputFile);
 		    Workbook w;
+		    String fileName = inputWorkbook.getName();
+    	  	// Date format
+    	  	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	  	//get current date time with Date()
+		   	 Date dateobj = new Date();
+		   	 LogFile.getInstance().createLogFile("****"+fileName+"****");
 		    
 		    try {
 		      w = Workbook.getWorkbook(inputWorkbook);
@@ -90,9 +98,16 @@ public class ExcelFileReading {
 			    	boolean isValidData = true;
 
 			     for (int i = 0; i < sheet.getColumns(); i++) {
+			    	 if(isStopEncoding == true){
+			    		 return;
+			    	 }
 				          Cell cell = sheet.getCell(i, j);
 				          String cellContent = cell.getContents();
-				          if(cellContent.isEmpty()){
+				       if(cellContent.isEmpty()){
+				    	   count = count+1;
+				    	  
+				    	   LogFile.getInstance().createLogFile("WARNING:"+dateobj+" "+fileName+" "+"Record no :"+j+" "+"is not encoded,because record data format is incorrect"+"\n");  
+				    	  
 				        	  isValidData = false ;
 				        	  break;
 				          	}
@@ -128,38 +143,55 @@ public class ExcelFileReading {
 		          
 		         	}
 		    	  
-			     
+			     progressVal = ((100*j)/(rows-1)) ;
+			   	 
+				   	
+				   	
+				   	if(progressVal > 98){
+				   		callback.progressupdate(98);
+				   	 }
+				   	else{
+				   		callback.progressupdate(progressVal);
+				   	}
 			    	  if(isValidData == false ){
 			    		  continue;
 			    	  	}
 			    	  	//FirstName:William:LastName:Jones:Tel:7135551212:PatientID:2349870101:wjones(username):123456(password):
 			    	  	String tempString ="FirstName:"+readingdata.firstName+":LastName:"+readingdata.lastName+":Tel:"+readingdata.phoneNumber+":PatientId:"+readingdata.patientId+":"+readingdata.userName+":"+readingdata.password+":";
-						System.out.println(tempString);
+			    	 
 			    	  	readingdata.encodeData = encryptScanData(tempString);
-			    	  	// Date format
-			    	  	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			    	  	//get current date time with Date()
-					   	 Date dateobj = new Date();
+			    	  	 String result = decryptScanData(readingdata.encodeData);
+			    	  	 System.out.println("Decryptdata :"+result);
+
 					   	 readingdata.date = dateFormat.format(dateobj);
 					   	 temp.add(readingdata);//passing object data to array list
-					   	 
-					   	 int progressVal = ((100*j)/(rows-1)) ;
-					   	 System.out.println(j);
-					   	System.out.println(rows);
-					   	callback.progressupdate(progressVal);
+						 
+					   	
+					   	
 			
 		    }
 	
 		  	//Creates new workbook file
 		    CreateWorkBook(temp);
-		   // progressupdate();
-		  
-//		    JOptionPane.showMessageDialog(null,"Check output in destination folder");
+		    
+		   progressVal = 100;
+		   callback.progressupdate(progressVal);
+		   if(count != 0){
+			   int encodedrecords = ((sheet.getRows()-1) - count );
+			   //Message to user that encoding process is completed
+				  callback.messageAlert(encodedrecords+"/"+(sheet.getRows()-1) +" records are encoded sucessfully"+"\n"+"See YDPCardDataEncoder_Log.txt file for more details ");
+		   }
+		   else{
+			   LogFile.getInstance().createLogFile("INFO:"+dateobj+" "+fileName+" "+"All records data encoded successfully");
+			   callback.messageAlert("All records are encoded successfully"+"\n"+"See YDPCardDataEncoder_Log.txt file for more details ");
+		   }
+		 
 			 
 		    } catch (BiffException e) {
 		      e.printStackTrace();
 		    //for displaying alert to user
-				alertFunction(e);
+		      callback.exceptionAlert("Unable to read input file,bad format");
+		     
 		    }
 		    
 		    
@@ -176,8 +208,8 @@ public class ExcelFileReading {
 					} catch (UnsupportedEncodingException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						//for displaying alert to user
-						alertFunction(e);
+						//for displaying exceptionAlert to user
+						callback.exceptionAlert("UnsupportedEncodingException");
 					}
 				byte[] reseltByts = null;
 					  try {
@@ -197,7 +229,7 @@ public class ExcelFileReading {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 								//for displaying alert to user
-								alertFunction(e);
+								callback.exceptionAlert("UnsupportedEncoding Exception");
 								
 							}
 						
@@ -214,7 +246,49 @@ public class ExcelFileReading {
 				
 		}
 	
-		
+	private String decryptScanData(String data){
+	   	Cipher cipher = new Cipher(key);
+	   	byte[] encryptinput=null;
+	   	try {
+		//scanText.trim();
+		byte[] dect=data.getBytes("UTF-8");
+		encryptinput = Base64.decodeBase64(dect);
+	   	} catch (UnsupportedEncodingException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	   	}
+
+		byte[] reseltByts = null;
+
+		try {
+		reseltByts = cipher.decrypt(encryptinput);
+		} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		String resultData = null;
+
+
+		if(reseltByts != null){
+
+
+
+			try {
+		resultData = new String(reseltByts, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		}
+		if(resultData != null)
+		{
+
+		return new String(resultData);
+		}
+		else 
+			{ return null;
+			}
+	}
 		
 						
   
@@ -237,7 +311,7 @@ public class ExcelFileReading {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				//for displaying alert to user
-				alertFunction(e);
+				callback.exceptionAlert("Write exception,Unable to create workbook");
 			}
 		    try {
 		    	createContent( excelSheet, temp);
@@ -246,12 +320,12 @@ public class ExcelFileReading {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				//for displaying alert to user
-				alertFunction(e);
+				callback.exceptionAlert("RowsExceededException araised");
 			} catch (WriteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				//for displaying alert to user
-				alertFunction(e);
+				callback.exceptionAlert("Write exception,Unable to create workbook");
 			}
 
 	    workbook.write();
@@ -262,7 +336,7 @@ public class ExcelFileReading {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			//for displaying alert to user
-			alertFunction(e);
+			callback.exceptionAlert("Write exception,Unable to create workbook");
 		}
 	  }
  /* Creates label in output file */
@@ -336,9 +410,5 @@ private void createLabel(WritableSheet sheet)
 	    sheet.addCell(label);
 	  }
 
-	  public  void alertFunction(Exception e)
-	  {
-	 	 JOptionPane.showMessageDialog(null,e);
-	  }
-
+	
 } 

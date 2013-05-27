@@ -14,6 +14,8 @@ package com.alakinfotech.ydpcardencoder;
  */
 interface IYDPCardEncoder{
 	void progressupdate(int progress);
+	void exceptionAlert(String exception);
+	void messageAlert(String message);
 }
 
 public class EReadingData {
