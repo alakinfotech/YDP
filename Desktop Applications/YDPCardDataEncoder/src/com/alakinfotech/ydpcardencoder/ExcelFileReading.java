@@ -76,22 +76,29 @@ public class ExcelFileReading {
 		    
 	  		File inputWorkbook = new File(inputFile);
 		    Workbook w;
+		    Cell cell;
+		    String cellContent;
 		    String fileName = inputWorkbook.getName();
     	  	// Date format
     	  	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     	  	//get current date time with Date()
 		   	 Date dateobj = new Date();
-		   	 LogFile.getInstance().createLogFile("****"+fileName+"****");
+		   	 LogFile.getInstance().createLogFile("*********"+fileName+"*********");
+		   	 
+		   	 
+		   	 
 		    
 		    try {
 		      w = Workbook.getWorkbook(inputWorkbook);
 		      // Get the first sheet
 		      Sheet sheet = w.getSheet(0);
+		     
+
 		      // Creating array to store elements of excel sheet
 		      ArrayList<EReadingData> temp = new ArrayList<EReadingData>();
 		      //Loop to access row data
 		      int rows = sheet.getRows();
-		      for (int j = 1; j < rows; j++) {
+		      for (int j = 0; j < rows; j++) {
 			    	// creating object for Reading data class			
 			    	EReadingData readingdata = new EReadingData();
 			    	//Loop to access coloum data
@@ -101,11 +108,17 @@ public class ExcelFileReading {
 			    	 if(isStopEncoding == true){
 			    		 return;
 			    	 }
-				          Cell cell = sheet.getCell(i, j);
-				          String cellContent = cell.getContents();
+				          cell = sheet.getCell(i, j);
+				           cellContent = cell.getContents();
+//				         if(j==0){  
+//				           if(!((sheet.getCell(0, 0).getContents().equalsIgnoreCase("FirstName"))&&(sheet.getCell(0, 1).getContents().equalsIgnoreCase("LastName"))&&(sheet.getCell(0,2).getContents().equalsIgnoreCase("PhoneNumber"))&&(sheet.getCell(0,3).getContents().equalsIgnoreCase("PatientId"))&&(sheet.getCell(0,4).getContents().equalsIgnoreCase("UserName"))&&(sheet.getCell(0,5).getContents().equalsIgnoreCase("Password")))){
+//					    		callback.exceptionAlert("file format incorrect");
+//					    		break;
+//					    	}
+//				         }
 				       if(cellContent.isEmpty()){
 				    	   count = count+1;
-				    	  
+				    	   
 				    	   LogFile.getInstance().createLogFile("WARNING:"+dateobj+" "+fileName+" "+"Record no :"+j+" "+"is not encoded,because record data format is incorrect"+"\n");  
 				    	  
 				        	  isValidData = false ;
@@ -143,10 +156,21 @@ public class ExcelFileReading {
 		          
 		         	}
 		    	  
-			     progressVal = ((100*j)/(rows-1)) ;
+//			    if(j==0){
+//			    	
+//			    	if(!((readingdata.firstName=="FirstName")&&(readingdata.lastName=="LastName")&&(readingdata.phoneNumber=="PhoneNumber")&&(readingdata.patientId=="PatientId")&&(readingdata.userName=="UserName")&&(readingdata.password=="Password"))){
+//			    		callback.exceptionAlert("file format incorrect");
+//			    		break;
+//			    	}
+////			    	else{
+////			    		callback.exceptionAlert("file format incorrect");
+////			    		break;
+////			    	}
+//			   
+//			    }
 			   	 
-				   	
-				   	
+//			    else{
+			     progressVal = ((100*j)/(rows-1)) ;
 				   	if(progressVal > 98){
 				   		callback.progressupdate(98);
 				   	 }
@@ -167,9 +191,9 @@ public class ExcelFileReading {
 					   	 temp.add(readingdata);//passing object data to array list
 						 
 					   	
-					   	
+			    }
 			
-		    }
+//		    }
 	
 		  	//Creates new workbook file
 		    CreateWorkBook(temp);

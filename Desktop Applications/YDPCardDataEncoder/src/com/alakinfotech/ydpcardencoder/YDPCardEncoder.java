@@ -36,6 +36,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 
+import jxl.read.biff.BiffException;
+
 import org.apache.commons.io.FilenameUtils;
 
 
@@ -84,7 +86,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 					BufferedImage image = null;// Setting image icon
 					try {
 						File imageFile = new File(
-								"app_icon.png");// Image icon path
+								"D:/ALAK INFO TECH/YDP/Desktop Applications/YDPCardDataEncoder/app_icon.png");// Image icon path
 						image = ImageIO.read(imageFile);// Reading Image icon
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -120,8 +122,8 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		titleLbl.setForeground(new Color(51, 102, 153));
 		titleLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLbl.setIcon(new ImageIcon(
-				"app_icon.png"));//title icon
-		titleLbl.setBackground(new Color(51, 102, 153));
+				"D:/ALAK INFO TECH/YDP/Desktop Applications/YDPCardDataEncoder/app_icon.png"));//title icon
+		titleLbl.setBackground(Color.WHITE);
 		titleLbl.setBounds(30, 13, 652, 38);
 		contentPane.add(titleLbl);
 		
@@ -159,6 +161,14 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 					inputTxtFld.setText(fileopen.getSelectedFile()
 							.getAbsolutePath());
 					String inputpath = inputTxtFld.getText();
+					File f = new File(inputpath);
+					if(!f.exists()){
+						System.out.println("file not exists");
+						messageAlert("Given file name does not exist");
+						outputTxtFld.setText("");
+					}
+					else
+					{
 					String fileName = new File(inputpath).getName();//getting input filename
 					String fileNameWithOutExt = FilenameUtils.removeExtension(fileName);//remove extension for file name
 					String outputfile = fileNameWithOutExt + "_Output";//sets output filename
@@ -177,9 +187,11 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 							break;
 						}
 					}
+					}
+
 					
 				}
-
+						
 			}
 
 		});
@@ -205,17 +217,49 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		//Action for save file box 
 		outputBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileopen = new JFileChooser();
+				JFileChooser filesave = new JFileChooser();
 				FileFilter filter = new FileNameExtensionFilter("xls files",
 						"xls");
-				fileopen.setAcceptAllFileFilterUsed(false);
-				fileopen.addChoosableFileFilter(filter);
-
-				int ret = fileopen.showDialog(contentPane, "Save file");
+				
+				filesave.setAcceptAllFileFilterUsed(false);
+				filesave.addChoosableFileFilter(filter);
+				
+			
+				int ret = filesave.showDialog(contentPane, "Save file");
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					outputTxtFld.setText(fileopen.getSelectedFile()
-							.getAbsolutePath());
+					
+					String filepath = filesave.getSelectedFile().getAbsolutePath();
+					String ext = FilenameUtils.getExtension(filepath);
+					String excel = ".xls";
+					int i=1;
+					//checking weather extension is correct or not 
+					if((ext.isEmpty())||(ext!=excel)){
+
+						filepath = FilenameUtils.removeExtension(filepath)+excel;
+//						String fileName = new File(filepath).getName();
+//						System.out.println(fileName);
+						 File f = new File(filepath);
+						 
+						  if(f.exists()){
+							  String fileName = new File(filepath).getName(); 
+							   f = new File(fileName+i);
+				                try {
+									f.createNewFile();
+								} catch (IOException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+				                i++;
+							  System.out.println("File existed");
+						  }else{
+							  System.out.println("File not found!");
+						  }
+						
+						
+					}
+					
+					outputTxtFld.setText(filepath);
 
 				}
 
@@ -268,28 +312,22 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 			               //get the property value and print it out
 			               
 			                if(fileKey != null){
-			                	if(fileKey.isEmpty())
+			                	if(!fileKey.isEmpty())
 			                	{
-			                		exceptionAlert("Secret key for encoding process is not in  correct format"+"\n"+"Application uses default key for Encoding process");
+			                		encodeKey = fileKey;
+				                	 System.out.println("filekey:"+encodeKey);
 			                	
 			                	}
-			                	else{
-			                		encodeKey = fileKey;
-			                	 System.out.println("filekey:"+encodeKey);
+			                	
 			                	}
-			                	}
-			                else{
-			                	System.out.println("Input file is empty");
-			                }
+			                
 			           
 			    		} catch (IOException ex) {
 			    		ex.printStackTrace();
-			    		exceptionAlert("Properties file not found"+"\n"+"Application uses default key for Encoding process");
-			    		//JOptionPane.showConfirmDialog(contentPane,"Properties file not found"+"\n"+"Application uses default key "+JOptionPane.CANCEL_OPTION);
 			    		}
 					 
 					
-					 System.out.println("Encode key"+encodeKey);
+					 System.out.println("Encode key :"+encodeKey);
 					 //passing secret key to ExcelFileReading class
 					 excelfilereadingobj.setKeyForEncoding(encodeKey);
 					 
@@ -314,7 +352,6 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 							   public void run() {
 			
 					try {
-							//calling read function in ExcelReading.java class for reading workbook data
 							excelfilereadingobj.read();	
 							
 						    // this method is used to enable all UI elements
@@ -328,7 +365,8 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 							System.out.println("IOEXCEPTION"+e);
-							JOptionPane.showMessageDialog(contentPane,"IO EXCEPTION OCCUR"+ e);
+							JOptionPane.showMessageDialog(contentPane,"IO EXCEPTION OCCUR"+"\n"+ "System cannot find th file specified" );
+							enableAll();
 						}
 						
 							   }
