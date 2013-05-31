@@ -12,12 +12,14 @@ package com.alakinfotech.ydpcardencoder;
  * @version 1.0 03 May 2013
  *
  */
+
+/* Creating interface for updating progress value and for showing alerts*/
 interface IYDPCardEncoder{
 	void progressupdate(int progress);
 	void exceptionAlert(String exception);
 	void messageAlert(String message);
 }
-
+/*Creating  a class which is used to store and to retrive excel sheet data*/
 public class EReadingData {
 	
 	String firstName;

@@ -71,19 +71,65 @@ public class ExcelFileReading {
 	  this.key = key;
 	 
   }
-  /* Reading  input file data */
+  /**
+   * Cheaking header of input workbook always input work book in following format only accepted
+   * FirstName LastName PhoneNumber PatientId UserName Password 
+   * */
+  public String testHeaderFormat(){
+	  
+	  File inputWorkbook = new File(inputFile);
+	    Workbook w = null;
+	    String resultStr = null;
+
+
+	    try {
+			w = Workbook.getWorkbook(inputWorkbook);
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			callback.exceptionAlert("Excel File Not Found ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			callback.exceptionAlert("IO Exception, cannot get input workbook file");
+		}
+	      // Get the first sheet
+	      Sheet sheet = w.getSheet(0);
+	      /*Checking no of Rows*/
+	      if(sheet.getRows()>0){
+	    	  /*Checking no of coloumns*/
+	    	  if(sheet.getColumns()==6){
+	    		  /* Checking header*/
+	    		  if((sheet.getCell(0, 0).getContents().equalsIgnoreCase("FirstName"))&&(sheet.getCell(1, 0).getContents().equalsIgnoreCase("LastName"))&&(sheet.getCell(2,0).getContents().equalsIgnoreCase("PhoneNumber"))&&(sheet.getCell(3,0).getContents().equalsIgnoreCase("PatientId"))&&(sheet.getCell(4,0).getContents().equalsIgnoreCase("UserName"))&&(sheet.getCell(5,0).getContents().equalsIgnoreCase("Password"))){
+	    			  resultStr="Success";
+	    		  }else{
+	    			  resultStr="Input Header is not in correct format, it always in following format"+"\n"+"FirstName LastName PhoneNumber PatientId UserName Password";
+	    		  }
+	    		  
+	    	  }else{
+	    		  resultStr="Given input file format is incorrect";
+	    	  }
+	    	  
+	      } else{
+	    	  resultStr = "Empty workbook is passed as Input File";
+	      }
+		
+		return resultStr;
+	  
+  }
+  /* Reading  input file data and calls create method to create new workbook */
   public void read() throws IOException, UnsupportedAudioFileException  {
 		    
 	  		File inputWorkbook = new File(inputFile);
-		    Workbook w;
-		    Cell cell;
-		    String cellContent;
-		    String fileName = inputWorkbook.getName();
+		    Workbook w;//workbook instance
+		    Cell cell;//cell instance
+		    String cellContent;//cellcontent instance
+		    String fileName = inputWorkbook.getName();//For getting file name
     	  	// Date format
     	  	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     	  	//get current date time with Date()
 		   	 Date dateobj = new Date();
-		   	 LogFile.getInstance().createLogFile("*********"+fileName+"*********");
+		   	 LogFile.getInstance().createLogFile("*********"+fileName+"*********");// Header with file name displayed in log file
 		   	 
 		   	 
 		   	 
@@ -110,12 +156,7 @@ public class ExcelFileReading {
 			    	 }
 				          cell = sheet.getCell(i, j);
 				           cellContent = cell.getContents();
-//				         if(j==0){  
-//				           if(!((sheet.getCell(0, 0).getContents().equalsIgnoreCase("FirstName"))&&(sheet.getCell(0, 1).getContents().equalsIgnoreCase("LastName"))&&(sheet.getCell(0,2).getContents().equalsIgnoreCase("PhoneNumber"))&&(sheet.getCell(0,3).getContents().equalsIgnoreCase("PatientId"))&&(sheet.getCell(0,4).getContents().equalsIgnoreCase("UserName"))&&(sheet.getCell(0,5).getContents().equalsIgnoreCase("Password")))){
-//					    		callback.exceptionAlert("file format incorrect");
-//					    		break;
-//					    	}
-//				         }
+
 				       if(cellContent.isEmpty()){
 				    	   count = count+1;
 				    	   
@@ -156,46 +197,29 @@ public class ExcelFileReading {
 		          
 		         	}
 		    	  
-//			    if(j==0){
-//			    	
-//			    	if(!((readingdata.firstName=="FirstName")&&(readingdata.lastName=="LastName")&&(readingdata.phoneNumber=="PhoneNumber")&&(readingdata.patientId=="PatientId")&&(readingdata.userName=="UserName")&&(readingdata.password=="Password"))){
-//			    		callback.exceptionAlert("file format incorrect");
-//			    		break;
-//			    	}
-////			    	else{
-////			    		callback.exceptionAlert("file format incorrect");
-////			    		break;
-////			    	}
-//			   
-//			    }
-			   	 
-//			    else{
-			     progressVal = ((100*j)/(rows-1)) ;
-				   	if(progressVal > 98){
-				   		callback.progressupdate(98);
-				   	 }
-				   	else{
-				   		callback.progressupdate(progressVal);
-				   	}
-			    	  if(isValidData == false ){
+
+			     		progressVal = ((100*j)/(rows-1)) ;//Setting progress value 
+					   	if(progressVal > 98){
+					   		callback.progressupdate(98);
+					   	 }else{
+					   		callback.progressupdate(progressVal);
+					   	}
+					   	if(isValidData == false ){
 			    		  continue;
 			    	  	}
 			    	  	//FirstName:William:LastName:Jones:Tel:7135551212:PatientID:2349870101:wjones(username):123456(password):
 			    	  	String tempString ="FirstName:"+readingdata.firstName+":LastName:"+readingdata.lastName+":Tel:"+readingdata.phoneNumber+":PatientId:"+readingdata.patientId+":"+readingdata.userName+":"+readingdata.password+":";
 			    	 
 			    	  	readingdata.encodeData = encryptScanData(tempString);
-			    	  	 String result = decryptScanData(readingdata.encodeData);
-			    	  	 System.out.println("Decryptdata :"+result);
-
-					   	 readingdata.date = dateFormat.format(dateobj);
+			    	    readingdata.date = dateFormat.format(dateobj);
 					   	 temp.add(readingdata);//passing object data to array list
-						 
-					   	
-			    }
+
+
+			 }
 			
-//		    }
+
 	
-		  	//Creates new workbook file
+		  	//Creates new workbook file,call create workbook method
 		    CreateWorkBook(temp);
 		    
 		   progressVal = 100;
@@ -211,17 +235,17 @@ public class ExcelFileReading {
 		   }
 		 
 			 
-		    } catch (BiffException e) {
+	  } catch (BiffException e) {
 		      e.printStackTrace();
 		    //for displaying alert to user
 		      callback.exceptionAlert("Unable to read input file,bad format");
 		     
-		    }
+	  }
 		    
 		    
 
   }
-  /* Encrypting  input file data*/
+  /* Encrypting  input file data by taking secret key and input file*/
   private String encryptScanData(String data){
 	  			// calling cipher class to encrypt data
 				Cipher cipher = new Cipher(key);
@@ -256,64 +280,16 @@ public class ExcelFileReading {
 								callback.exceptionAlert("UnsupportedEncoding Exception");
 								
 							}
-						
-						
 						encryptedStringTest = resultData; 
-						System.out.println("Encoded data : "+ " \n " + new String(resultData));
 					}
 				if(resultData != null){
 					return new String(resultData);
-				}
-				else {
+				}else {
 					return null;
 				}
 				
 		}
-	
-	private String decryptScanData(String data){
-	   	Cipher cipher = new Cipher(key);
-	   	byte[] encryptinput=null;
-	   	try {
-		//scanText.trim();
-		byte[] dect=data.getBytes("UTF-8");
-		encryptinput = Base64.decodeBase64(dect);
-	   	} catch (UnsupportedEncodingException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	   	}
 
-		byte[] reseltByts = null;
-
-		try {
-		reseltByts = cipher.decrypt(encryptinput);
-		} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
-		String resultData = null;
-
-
-		if(reseltByts != null){
-
-
-
-			try {
-		resultData = new String(reseltByts, "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
-		}
-		if(resultData != null)
-		{
-
-		return new String(resultData);
-		}
-		else 
-			{ return null;
-			}
-	}
-		
 						
   
   
@@ -399,19 +375,20 @@ private void createLabel(WritableSheet sheet)
 		      RowsExceededException {
 		    // Write a few number
 		    for (int i = 0; i <temp.size() ; i++) {
-		      
+		    /*Creating object for EreadingData class for accessing object data*/  
 		   EReadingData readingdataobj = (EReadingData)temp.get(i);
-		   System.out.println(readingdataobj.firstName);
-		      
 		      addNumber(sheet, 0, i+1,i+1);
 		      addLabel(sheet, 1, i+1,readingdataobj.firstName);
 		      addLabel(sheet, 2, i+1,readingdataobj.lastName);
 		      addLabel(sheet, 3, i+1,readingdataobj.encodeData);
-		      addLabel(sheet, 4, i+1,readingdataobj.date);
+		      addLabel(sheet, 4, i+1,readingdataobj.date);		  
+		      
+
 			     
 			     
 		    }
 		  }
+	
 		/*For setting caption format and add caption in output file */
 	  private void addCaption(WritableSheet sheet, int column, int row, String s)
 	      throws RowsExceededException, WriteException {
@@ -419,6 +396,7 @@ private void createLabel(WritableSheet sheet)
 	    label = new Label(column, row, s, timesBoldUnderline);
 	    sheet.addCell(label);
 	  }
+	  
 	  /*For setting nuber format and add number to the  output file */
 	  private void addNumber(WritableSheet sheet, int column, int row,
 	      Integer integer) throws WriteException, RowsExceededException {
@@ -426,6 +404,7 @@ private void createLabel(WritableSheet sheet)
 	    number = new Number(column, row, integer, times);
 	    sheet.addCell(number);
 	  }
+	  
 	  /*For setting content format of content to  output file */
 	  private void addLabel(WritableSheet sheet, int column, int row, String s)
 	      throws WriteException, RowsExceededException {

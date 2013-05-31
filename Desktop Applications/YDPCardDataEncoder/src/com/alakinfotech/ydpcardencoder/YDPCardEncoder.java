@@ -35,8 +35,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
+import javax.swing.UIManager;
 
-import jxl.read.biff.BiffException;
+
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -53,8 +54,9 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 	/* YDPCardEncoder Class is used to create frame and user interface elements are implemented */
 	
-	
-	private static final long serialVersionUID = 1L;//Program generated
+	static IYDPCardEncoder callback;//interface reference
+	static JProgressBar progressBar;// progress bar declaration
+	private static final long serialVersionUID = 1L;//Auto generated
 	
 	private JTextField inputTxtFld;//input text field
 	private JTextField outputTxtFld;//output text field
@@ -63,14 +65,14 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	private JButton outputBtn;//save dialog button
 	private JButton encodeBtn;//button for encoding
 	private JButton closeBtn;//for closing application
-	static JProgressBar progressBar;// progress bar declaration
 	private ExcelFileReading excelfilereadingobj;
-	
-	boolean isEncodingProgress;// for enabling/disabling UI elements
 	private File newFile;//For crating new file
-	static IYDPCardEncoder callback;
+	private String encodeKey = "Adi&Revanth";//Default key for encoding
+	boolean isEncodingProgress;// for enabling/disabling UI elements
 	
-	private String encodeKey = "Adi&Revanth";
+
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -80,6 +82,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 			public void run() {
 				try {
 					YDPCardEncoder frame = new YDPCardEncoder();
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					callback = frame;
 					frame.setTitle("YDP Card Data Encoder"); // Sets title of frame
 					// changing default icon of jframe to custoum image
@@ -105,10 +108,11 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 	/**
 	 * Create the frame.
+	 * With user defined elements
 	 */
-
+	
 	public YDPCardEncoder() {
-
+		//Auto generated
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 731, 454);
 		contentPane = new JPanel();
@@ -116,6 +120,8 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		excelfilereadingobj = new ExcelFileReading();
 		
 		//Title label implementation
 		JLabel titleLbl = new JLabel("YDP Card Data Encoder");
@@ -150,6 +156,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		inputBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
+				/* File chooser for chosing files and file filters*/
 				JFileChooser fileopen = new JFileChooser();
 				FileFilter filter = new FileNameExtensionFilter("xls files","xls");
 				fileopen.setAcceptAllFileFilterUsed(false);
@@ -158,39 +165,54 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 				int ret = fileopen.showDialog(contentPane, "Open file");
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
-					inputTxtFld.setText(fileopen.getSelectedFile()
-							.getAbsolutePath());
-					String inputpath = inputTxtFld.getText();
-					File f = new File(inputpath);
-					if(!f.exists()){
-						System.out.println("file not exists");
-						messageAlert("Given file name does not exist");
-						outputTxtFld.setText("");
-					}
-					else
-					{
-					String fileName = new File(inputpath).getName();//getting input filename
-					String fileNameWithOutExt = FilenameUtils.removeExtension(fileName);//remove extension for file name
-					String outputfile = fileNameWithOutExt + "_Output";//sets output filename
-					String temp = "";	 
-					int k=0;// k variable for representing filename with number
+					inputTxtFld.setText(fileopen.getSelectedFile().getAbsolutePath());//Setting complete path of input file
+//					// creating object for Excel file reading class
+//					if(excelfilereadingobj==null){
+//					excelfilereadingobj = new ExcelFileReading();
+//					}
+					excelfilereadingobj.setInputFile(inputTxtFld.getText());//Passing input file to reading class
+					 String resultStr = excelfilereadingobj.testHeaderFormat();//calling test method to check weather header in correct format or not
+					 	// Resultant of Test header format is correct than process continues
+					 	if(resultStr=="Success"){
 					
-					/* Block is used to implement file name with number extension */
-					for(;;){
-						temp = k!=0?outputfile+"("+k+")":outputfile;
-						String newpath1 = inputpath.replace(fileName, temp+".xls");
-						newFile = new File(newpath1);
-						if(newFile.exists()){
-							k++;
-						}else{
-							outputTxtFld.setText(newpath1);
-							break;
+							encodeBtn.setEnabled(true);
+							String inputpath = inputTxtFld.getText();
+							File f = new File(inputpath);
+							if(!f.exists()){
+								messageAlert("Given file name does not exist");
+								outputTxtFld.setText("");
+							}
+							else
+							{
+							String fileName = new File(inputpath).getName();//getting input filename
+							String fileNameWithOutExt = FilenameUtils.removeExtension(fileName);//remove extension for file name
+							String outputfile = fileNameWithOutExt + "_Output";//sets output filename
+							String temp = "";	 
+							int k=0;// k variable for representing filename with number
+							
+							/* Block is used to implement file name with number extension */
+							for(;;){
+								temp = k!=0?outputfile+"("+k+")":outputfile;
+								String newpath1 = inputpath.replace(fileName, temp+".xls");
+								newFile = new File(newpath1);
+								if(newFile.exists()){
+									k++;
+								}
+								else{
+								outputTxtFld.setText(newpath1);
+								break;
+								}
+							 }
+							}
+	
+						
+						 }
+						 else{
+						 exceptionAlert(resultStr);
+						 encodeBtn.setEnabled(false);
 						}
-					}
-					}
-
-					
 				}
+				
 						
 			}
 
@@ -218,48 +240,52 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		outputBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser filesave = new JFileChooser();
-				FileFilter filter = new FileNameExtensionFilter("xls files",
-						"xls");
-				
+				FileFilter filter = new FileNameExtensionFilter("xls files","xls");
 				filesave.setAcceptAllFileFilterUsed(false);
 				filesave.addChoosableFileFilter(filter);
+				int ret = filesave.showDialog(contentPane, "Save file");
 				
 			
-				int ret = filesave.showDialog(contentPane, "Save file");
+			
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
 					
-					String filepath = filesave.getSelectedFile().getAbsolutePath();
-					String ext = FilenameUtils.getExtension(filepath);
-					String excel = ".xls";
-					int i=1;
-					//checking weather extension is correct or not 
-					if((ext.isEmpty())||(ext!=excel)){
-
-						filepath = FilenameUtils.removeExtension(filepath)+excel;
-//						String fileName = new File(filepath).getName();
-//						System.out.println(fileName);
-						 File f = new File(filepath);
-						 
-						  if(f.exists()){
-							  String fileName = new File(filepath).getName(); 
-							   f = new File(fileName+i);
-				                try {
-									f.createNewFile();
-								} catch (IOException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-				                i++;
-							  System.out.println("File existed");
-						  }else{
-							  System.out.println("File not found!");
-						  }
+						String filepath = filesave.getSelectedFile().getAbsolutePath();
+						String ext = FilenameUtils.getExtension(filepath);
+						String excel = ".xls";
+				
+						//checking weather extension is correct or not 
+						if((ext.isEmpty())||(ext!=excel)){
+							// Replace extension and always place '.xls' only
+							filepath = FilenameUtils.removeExtension(filepath)+excel;
+							File f = new File(filepath);
+							 
+							  if(f.exists()){
+								  String fileNameExt = f.getName(); 
+								  String fileName = FilenameUtils.removeExtension(fileNameExt);
+								  String temp = "";	 
+									int k=0;// k variable for representing filename with number
+									
+									/* Block is used to implement file name with number extension */
+									for(;;){
+										temp = k!=0?fileName+"("+k+")":fileName;
+										String newpath1 = filepath.replace(fileNameExt, temp+excel);
+										newFile = new File(newpath1);
+										if(newFile.exists()){
+											k++;
+										}else{
+											outputTxtFld.setText(newpath1);
+											break;
+										}
+									}
+							  }else{
+								  outputTxtFld.setText(filepath);
+							  }
 						
 						
 					}
 					
-					outputTxtFld.setText(filepath);
+
 
 				}
 
@@ -299,11 +325,14 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 				if (isEncodingProgress == false) {
 					String inputpath, outpath;
-					/* creating object for reading class to read input and to encode */
-					 excelfilereadingobj = new ExcelFileReading();
-					 excelfilereadingobj.callback = callback;
+//					/*If excel object is null then it allocates memory*/
+//					if(excelfilereadingobj==null){
+//					excelfilereadingobj = new ExcelFileReading();
+//					}
+					/* Creating instance for interface */
+					  excelfilereadingobj.callback = callback;
 					
-					 
+					 /*Accessing properties file for setting secrect key to encode */
 					 Properties prop = new Properties();
 					 try {
 			    		   //load a properties file
@@ -315,25 +344,23 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 			                	if(!fileKey.isEmpty())
 			                	{
 			                		encodeKey = fileKey;
-				                	 System.out.println("filekey:"+encodeKey);
-			                	
 			                	}
-			                	
-			                	}
+			                }
 			                
 			           
 			    		} catch (IOException ex) {
 			    		ex.printStackTrace();
+			    		System.out.println("Null pointer exception");
 			    		}
 					 
 					
-					 System.out.println("Encode key :"+encodeKey);
+					
 					 //passing secret key to ExcelFileReading class
 					 excelfilereadingobj.setKeyForEncoding(encodeKey);
 					 
 					 //passing input file to ExcelFileReading class
 					 inputpath = inputTxtFld.getText();
-					 excelfilereadingobj.setInputFile(inputTxtFld.getText());
+					 excelfilereadingobj.setOutputFile(inputTxtFld.getText());
 					
 					 //passing output file to ExcelFileReading class
 					 outpath = outputTxtFld.getText();
@@ -375,10 +402,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 					}
 				} else {
 					excelfilereadingobj.isStopEncoding = true;
-					
-					
-					encodeBtn.setText("Start");
-					
+				    encodeBtn.setText("Start");
 					progressBar.setVisible(false);
 					if(excelfilereadingobj.progressVal != 100){
 						messageAlert("Encoding process stopped");	
@@ -420,7 +444,6 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	public  void progressupdate(int progress){
 	    progressBar.setVisible(true);
 	     progressBar.setValue(progress);
-	     System.out.println(progress);
 
 	}
 	/*For showing alert message to user*/

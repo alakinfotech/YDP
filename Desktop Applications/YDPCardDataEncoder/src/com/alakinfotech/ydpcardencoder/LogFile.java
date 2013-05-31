@@ -1,5 +1,16 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDPCardEncoder is used to encode user data into encode format
+ */
 package com.alakinfotech.ydpcardencoder;
 
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 03 May 2013
+ *
+ */
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

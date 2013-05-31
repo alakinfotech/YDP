@@ -285,3 +285,95 @@ INFO:Wed May 29 13:05:31 IST 2013 Input.xls All records data encoded successfull
 *********Input.xls*********
 WARNING:Wed May 29 13:06:50 IST 2013 Input.xls Record no :2 is not encoded,because record data format is incorrect
 
+*********Input.xls*********
+INFO:Wed May 29 14:56:43 IST 2013 Input.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Wed May 29 14:56:57 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Wed May 29 14:57:22 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Wed May 29 14:57:32 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Wed May 29 14:58:41 IST 2013 perfect.xls All records data encoded successfully
+*********sampl.xls*********
+INFO:Wed May 29 14:59:31 IST 2013 sampl.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Wed May 29 15:00:01 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Wed May 29 15:01:14 IST 2013 perfect.xls All records data encoded successfully
+*********Sample_Input.xls*********
+WARNING:Wed May 29 18:44:01 IST 2013 Sample_Input.xls Record no :1 is not encoded,because record data format is incorrect
+
+WARNING:Wed May 29 18:44:01 IST 2013 Sample_Input.xls Record no :3 is not encoded,because record data format is incorrect
+
+*********Sample_Input.xls*********
+WARNING:Wed May 29 18:46:15 IST 2013 Sample_Input.xls Record no :1 is not encoded,because record data format is incorrect
+
+WARNING:Wed May 29 18:46:15 IST 2013 Sample_Input.xls Record no :3 is not encoded,because record data format is incorrect
+
+*********perfect.xls*********
+INFO:Wed May 29 18:46:30 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 01:09:54 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+*********perfect.xls*********
+INFO:Thu May 30 01:32:59 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 01:34:27 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+*********perfect.xls*********
+INFO:Thu May 30 01:36:21 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 01:44:10 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 01:53:36 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 02:07:44 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 02:27:32 IST 2013 perfect.xls All records data encoded successfully
+*********Input.xls*********
+WARNING:Thu May 30 02:34:52 IST 2013 Input.xls Record no :2 is not encoded,because record data format is incorrect
+
+*********perfect.xls*********
+INFO:Thu May 30 20:32:49 IST 2013 perfect.xls All records data encoded successfully
+*********Input.xls*********
+*********Input.xls*********
+WARNING:Thu May 30 20:33:20 IST 2013 Input.xls Record no :2 is not encoded,because record data format is incorrect
+
+*********Input.xls*********
+WARNING:Thu May 30 20:34:45 IST 2013 Input.xls Record no :2 is not encoded,because record data format is incorrect
+
+*********TestSample.xls*********
+INFO:Thu May 30 20:35:17 IST 2013 TestSample.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 21:21:36 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Thu May 30 21:41:52 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+INFO:Fri May 31 00:02:19 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+*********perfect.xls*********
+*********perfect.xls*********
+*********perfect.xls*********
+INFO:Fri May 31 00:05:39 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+*********perfect.xls*********
+*********perfect.xls*********
+*********TestSample.xls*********
+*********perfect.xls*********
+*********perfect.xls*********
+*********perfect.xls*********
+INFO:Fri May 31 00:25:12 IST 2013 perfect.xls All records data encoded successfully
+*********Input.xls*********
+*********Input.xls*********
+*********Input.xls*********
+*********Input.xls*********
+*********TestSample.xls*********
+*********perfect.xls*********
+INFO:Fri May 31 00:28:12 IST 2013 perfect.xls All records data encoded successfully
+*********perfect.xls*********
+*********TestSample.xls*********
+*********perfect.xls*********
+INFO:Fri May 31 00:29:20 IST 2013 perfect.xls All records data encoded successfully
+*********Input.xls*********
+*********perfect.xls*********
