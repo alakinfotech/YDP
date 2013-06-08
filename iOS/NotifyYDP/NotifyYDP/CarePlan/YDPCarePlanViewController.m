@@ -177,8 +177,12 @@
                 [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:allergiesURL]]];
                 
             }
-            else
+            else{
                 [self Logout:nil];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Invalid Username or Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alert show];
+            }
+            
             
             requestid ++;
         
