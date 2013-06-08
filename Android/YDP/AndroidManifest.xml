@@ -41,5 +41,5 @@
         <activity android:name="com.alakinfotech.ydp.Careplandetailview" 	 android:theme="@style/CustomTheme"  	android:screenOrientation="landscape"></activity>
         
     </application>
-
+  
 </manifest>

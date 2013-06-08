@@ -18,11 +18,14 @@ import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
 
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
 import com.alakinfotech.ydp.R;
 
 
@@ -66,9 +69,18 @@ public class YDPCAREPLAN extends Activity{
 	public String uname,pword;
 	//Boolean false,true;
 	private void fillUserIdAndPasswordWithScanData(String data){
+		Log.d(data, "Scanned data");
 	 String[] scan = data.split(":");
-	    username.setText(scan[8].trim());
-		 password.setText(scan[9].trim());
+	 if(scan.length>=10){  
+		 for(int i=1;(9+i)<scan.length;i++){
+			 scan[9] = scan[9]+":"+scan[9+i];
+		 }
+		    username.setText(scan[8].trim());
+			 password.setText(scan[9].trim()); 		 
+	 }
+	 else{
+		 Toast.makeText(getApplicationContext(), "Invalid UserName and Password",3000).show();
+	 }
 		
 	}
 	
