@@ -156,13 +156,25 @@
     NSArray *array = [[NSArray alloc]init];
     array = [resultText componentsSeparatedByString:@":"];
     
-    if (array.count == 11) {
+    if (array.count >= 11) {
         
-        self.userName.text = [[array objectAtIndex:8] stringByTrimmingCharactersInSet:
-                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        self.password.text = [array objectAtIndex:9];
-        NSLog(@"UserName:%@ Passward:%@",[array objectAtIndex:8],[array objectAtIndex:9]);
-        [self Login];
+        if (([array[0] isEqual:@"FirstName"]) && ([array[2] isEqual: @"LastName"])) {
+        
+            self.userName.text = [[array objectAtIndex:8] stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            
+            self.password.text = [array objectAtIndex:9];
+            int passwordIndex = 10;
+            while (passwordIndex < array.count - 1) {
+                self.password.text = [NSString stringWithFormat:@"%@:%@",self.password.text,[array objectAtIndex:passwordIndex]];
+                passwordIndex++;
+            }
+            
+            
+            NSLog(@"UserName:%@ Passward:%@",[array objectAtIndex:8],self.password.text);
+            [self Login];
+        }
+        
     }
         
 }

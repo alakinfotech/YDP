@@ -8,7 +8,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NotifyYDP/CarePlan/YDPCarePlanViewController.m"
-         timestampString = "388449425.584894"
+         timestampString = "391377116.111446"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "91"
@@ -21,12 +21,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NotifyYDP/CarePlan/YDPCarePlanViewController.m"
-         timestampString = "388449425.584894"
+         timestampString = "392113683.43955"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "125"
          endingLineNumber = "125"
          landmarkName = "-webViewDidFinishLoad:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "NotifyYDP/CarePlan/YDPLogin.m"
+         timestampString = "392138301.558269"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
+         landmarkName = "-readerView:didReadSymbols:fromImage:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
