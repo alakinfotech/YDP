@@ -6,5 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
 	<color name="white">#FFFFFF</color>
+	<string name="proj_name">YOUR DOCTOR PROGRAM</string>
+	<string name="webview_button">Switch to Web View</string>
+	<string name="Logout_button">Logout</string>
+	<string name="Cancel_button">Cancel</string>
 
 </resources>

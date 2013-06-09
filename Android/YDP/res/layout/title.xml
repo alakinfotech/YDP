@@ -25,10 +25,7 @@
             android:id="@+id/ydplogo"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            
-           android:src="@drawable/tab_icon" 
+             android:src="@drawable/tab_icon" 
            android:layout_weight="1" />
 
          <TextView
@@ -41,17 +38,14 @@
              android:textAppearance="?android:attr/textAppearanceMedium"
              android:textColor="#ffffff" />
 
-         <Button
-             android:id="@+id/logoutbutton"
-             android:layout_width="80dp"
-             android:layout_height="25dp"
-             android:layout_marginBottom="8dp"
-             android:layout_marginRight="5dp"
-             android:layout_marginTop="0dp"
-             android:layout_weight="1"
-             android:background="#C8D8ED"
-             android:text="Logout"
-             android:textColor="#566890" />
+         <ImageButton android:id="@+id/settingsButton" 
+             android:layout_width="50dp" 
+             android:layout_height="45dp" 
+             android:layout_marginLeft="92dp" 
+             android:layout_marginTop="1dp" 
+               android:layout_weight="1"
+             android:background="#233869"
+              android:src="@android:drawable/ic_menu_manage"/>
 
     </LinearLayout>
   

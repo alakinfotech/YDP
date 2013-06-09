@@ -16,6 +16,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,34 +27,18 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 	ArrayList<String[]> allergydetail;
 	String allergydetailhname;
 	TextView  titletext;
-	Button logout;
+	ImageButton logout;
 	RelativeLayout titlerlayout2;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.allargiesdetailview);
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
-		titlerlayout2 =(RelativeLayout) findViewById(R.id.RelativeLayout1);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.normaltitlebar);
+		titlerlayout2 =(RelativeLayout) findViewById(R.id.RelativeLayout2);
 		titlerlayout2.setVisibility(RelativeLayout.VISIBLE);
-		titletext = (TextView) findViewById(R.id.titletextview);
-		 logout = (Button) findViewById(R.id.logoutbutton);
-		 logout.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), YDPCAREPLAN.class);
-			       // intent.putExtra("finish", true);
-			        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
-			        startActivity(intent);
-			       finish();
-			}
-		});
-		
-		
-		
-		
+		titletext = (TextView) findViewById(R.id.titletextview2);
+
 		ListView lv = (ListView) findViewById(R.id.alglistView1);
 		allergydetailhname =getIntent().getExtras().getString("userid");
 		

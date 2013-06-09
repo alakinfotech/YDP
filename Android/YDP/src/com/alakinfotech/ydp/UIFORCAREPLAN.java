@@ -15,14 +15,19 @@ import android.R.array;
 import android.R.color;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.Color;
+import android.media.audiofx.BassBoost.Settings;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -125,6 +130,8 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	public static TextView allallergy,titletext;
 	ImageView image;
 	 RelativeLayout rlayout,titlerlayout1;
+	  final Context context = this;
+	  ImageButton setting;
 	 
 	  
 	class Myadapter extends BaseAdapter 
@@ -247,17 +254,13 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
 		titlerlayout1 =(RelativeLayout) findViewById(R.id.RelativeLayout1);
 		 titletext = (TextView) findViewById(R.id.titletextview);
-		 logout = (Button) findViewById(R.id.logoutbutton);
-		 logout.setOnClickListener(new OnClickListener() {
+		 setting = (ImageButton) findViewById(R.id.settingsButton);
+		 setting.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), HOMESCREEN.class);
-		       // intent.putExtra("finish", true);
-		        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
-		        startActivity(intent);
-		       finish();
+				openOptionsMenu();	
 			}
 		});
 		  
@@ -403,7 +406,33 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		});
 		
 	}
-		
+	
+	  @Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			// Inflate the menu; this adds items to the action bar if it is present.
+			getMenuInflater().inflate(R.menu.activity_splashscreen, menu);
+			return true;
+		}
+		public boolean onOptionsItemSelected(MenuItem item) {
+	        switch (item.getItemId()) {
+
+	        case R.id.logoutitem:
+				Intent intent = new Intent(getApplicationContext(), HOMESCREEN.class);
+			        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+			        startActivity(intent);
+			       finish();
+	        return true;
+	        case R.id.webviewitem:
+		        	Toast.makeText(getApplicationContext(), "hii wt do u want", 3000).show();
+		        return true;
+	        case R.id.cancelitem:
+		        return true;
+	        default:
+	        return super.onOptionsItemSelected(item);
+	        }
+	    }
+	  
+	  
 	 public void showAllallergy(){
 
 			  try {
