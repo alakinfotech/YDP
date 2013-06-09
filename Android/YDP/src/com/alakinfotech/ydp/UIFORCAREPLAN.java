@@ -60,15 +60,15 @@ import com.alakinfotech.ydp.R;
      
    public void showCareplaneHTML(String html) 
     { 
-   	
+   	Log.d("data", html);
    	 String[] careplandata = html.split("[$#]+");
    	 
    	// int lenght = careplandata.length;
    	// Toast.makeText(getApplicationContext(), lenght, 3000).show();
    	  
-   	 for( int i=0;(i+9)<=careplandata.length;i+=9)    
+   	 for( int i=0;(i+9)<=careplandata.length;i+=10)    
    	 {
-   		 String url = careplandata[i+2].toString();
+   		 String url = careplandata[i+3].toString();
 			 Log.v("url",url);
 			 String  status = url.substring(url.lastIndexOf('/')+1, url.lastIndexOf('.'));
 			 
@@ -76,7 +76,7 @@ import com.alakinfotech.ydp.R;
 			 
 			 
 			 
-   		 String[] record = {careplandata[i],careplandata[i+1],status,careplandata[i+3],careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8]};
+   		 String[] record = {careplandata[i+1],careplandata[i+2],status,careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8],careplandata[i+9]};
    		 careplanRecords.add( record);
    		 Log.v("in for loop", "data executing");
    	   
@@ -86,7 +86,7 @@ import com.alakinfotech.ydp.R;
     
    public void showAllergiesHTML(String html)  
      {  
-      
+      Log.d("allergies data", html);
    	String[] allergydata = html.split("[$#]+");
 // String allergyvar  = "";
 
