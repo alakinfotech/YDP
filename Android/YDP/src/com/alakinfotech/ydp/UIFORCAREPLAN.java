@@ -13,12 +13,14 @@ import org.apache.commons.lang.ArrayUtils;
 
 import android.R.array;
 import android.R.color;
+import android.R.menu;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Color;
 import android.media.audiofx.BassBoost.Settings;
@@ -122,7 +124,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	WebView wb1;
 	private ProgressDialog progressBar;
 	TextView user,pass;
-	 int loadRequest = 0;
+	 int loadRequest = 0,state;
 	Myadapter adapter;
 	Button logout;
 	MyJavaScriptInterface javeScritpInterfacee;
@@ -132,7 +134,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	 RelativeLayout rlayout,titlerlayout1;
 	  final Context context = this;
 	  ImageButton setting;
-	 
+	 boolean setvisible = false;
 	  
 	class Myadapter extends BaseAdapter 
 	{
@@ -281,9 +283,15 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		wb1.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 		wb1.setScrollbarFadingEnabled(false);
 		
+		
 		progressBar = ProgressDialog.show(UIFORCAREPLAN.this, "YDP page is ", "Loading...");
-
- 	  
+	       // Restore preferences
+//	       SharedPreferences settings = getSharedPreferences("SharedPreferanceFile", 0);
+//	       int statechange = settings.getInt("state", state);
+//	       wb1.setVisibility(statechange);
+	       
+	       
+	       
  	  /* Register a new JavaScript interface called HTMLOUT */  
 		javeScritpInterfacee = new MyJavaScriptInterface();
 		javeScritpInterfacee.careplanRecords = new ArrayList<String[]>();
@@ -348,7 +356,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 //		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'+document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1').innerHTML+'</head>');");
 //		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'"+jScript+"'</head>');");
 //		          //wb1.loadUrl("javascript:("+jScript +")()");
-	         
+	         wb1.loadUrl("https://yourdoctorprogram.com/qhr/Patients/PatientMainForPatient.aspx?logtype=login");
 		          progressBar.dismiss();
 		          titlerlayout1.setVisibility(RelativeLayout.VISIBLE);
 		         rlayout.setVisibility(RelativeLayout.VISIBLE);
@@ -410,29 +418,66 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	  @Override
 		public boolean onCreateOptionsMenu(Menu menu) {
 			// Inflate the menu; this adds items to the action bar if it is present.
-			getMenuInflater().inflate(R.menu.activity_splashscreen, menu);
+//			getMenuInflater().inflate(R.menu.activity_splashscreen, menu);
+//			menu.add(groupId, itemId, order, title);
+			 menu.add(0, 0, 1, "Logout");
+			 if(wb1.getVisibility() == View.VISIBLE){
+				 menu.add(1, 1, 2, "Normal View");
+			 }else{
+				 menu.add(1, 1, 2, "Switch to WebView");
+			 }
+			 menu.add(2, 2, 3, "Cancel");
+//			 menu.add(0,UPDATE_DATA,0,"Update Information");
 			return true;
+			
 		}
+	  
+	  
+
+
 		public boolean onOptionsItemSelected(MenuItem item) {
 	        switch (item.getItemId()) {
 
-	        case R.id.logoutitem:
+	        case 0:
+	        	
 				Intent intent = new Intent(getApplicationContext(), HOMESCREEN.class);
 			        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
 			        startActivity(intent);
 			       finish();
 	        return true;
-	        case R.id.webviewitem:
-		        	Toast.makeText(getApplicationContext(), "hii wt do u want", 3000).show();
+	        case 1:
+
+	        	
+	        	if(wb1.getVisibility()==View.VISIBLE){
+	        		wb1.setVisibility(View.INVISIBLE);
+	        		item.setTitle("Switch to WebView");
+	        	}
+	        	else{
+	        		wb1.setVisibility(View.VISIBLE);
+	        		item.setTitle("Normal View");
+	        		
+	        	}
+
+	        	state = wb1.getVisibility();
+	        	
+//	        	  SharedPreferences settings = getSharedPreferences("SharedPreferanceFile", 0);
+//	        	  SharedPreferences.Editor editor = settings.edit();
+//	              editor.putInt("State",state);
+//
+//	              // Commit the edits!
+//	              editor.commit();
+	        	 
+
+	        		
 		        return true;
-	        case R.id.cancelitem:
+	        case 2:
+	        	
 		        return true;
 	        default:
 	        return super.onOptionsItemSelected(item);
 	        }
 	    }
-	  
-	  
+
 	 public void showAllallergy(){
 
 			  try {

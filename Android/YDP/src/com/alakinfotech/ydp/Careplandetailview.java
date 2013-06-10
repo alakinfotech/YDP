@@ -25,7 +25,7 @@ import com.alakinfotech.ydp.R;
 public class Careplandetailview extends Activity {
 	String careplandetilhname;
 	String[] careplandetail ;
-	String[] names = {"Date","ICD9 Diagnosis","Status","Risk Factors","Assessment/Plan","Goals","Medication","Pracitioner"};
+	String[] names = {"Date:","ICD9 Diagnosis:","Status:","Risk Factors:","Assessment/Plan:","Goals:","Medication:","Pracitioner:"};
 	TextView cp,titletext; 
 	ImageButton logout;
 	RelativeLayout titlerlayout3;
