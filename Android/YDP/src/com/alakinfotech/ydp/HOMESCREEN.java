@@ -22,7 +22,10 @@ public class HOMESCREEN  extends TabActivity{
         //for Tab1        
         spec = tabHost.newTabSpec("Tab1").setIndicator("YDP Care Plan",res.getDrawable(R.drawable.faves))
                           .setContent(new Intent(this,YDPCAREPLAN.class));
+      
+  
         tabHost.addTab(spec);
+        
       
 
         // for Tab2

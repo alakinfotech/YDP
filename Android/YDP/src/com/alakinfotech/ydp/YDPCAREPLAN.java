@@ -221,8 +221,28 @@ public class YDPCAREPLAN extends Activity{
 			}				
 			}
 		});
-		
-		
+
+			 String invalidmsg ;
+			 Bundle getuserID = getIntent().getExtras();
+			 if(getuserID!=null){
+				   		invalidmsg = getuserID.getString("Invalid login message");
+				   		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+						alertDialogBuilder.setTitle("Warning");
+						alertDialogBuilder.setMessage(invalidmsg);
+						alertDialogBuilder.setNegativeButton("ok",new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,int id) {
+								// if this button is clicked, just close
+								// the dialog box and do nothing
+								dialog.cancel();
+							}
+						});
+						// create alert dialog
+						AlertDialog alertDialog = alertDialogBuilder.create();
+		 
+						// show it
+						alertDialog.show();
+			 }
+			
 	}
  	
 

@@ -19,8 +19,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Color;
 import android.media.audiofx.BassBoost.Settings;
@@ -34,6 +36,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
@@ -51,13 +54,13 @@ import com.alakinfotech.ydp.R;
 
  class MyJavaScriptInterface   
 {  
-	 
+	 Context context;
 	 String allergyvar  = "";
 	  String userName = "";
 	 ArrayList<String[]> careplanRecords;
 	  ArrayList<String[]> allergyRecords;
 	  UIFORCAREPLAN uiforcareplan;
-    @SuppressWarnings("unused")  
+  
     
    public void setUserName(String html)  
     {  
@@ -70,9 +73,9 @@ import com.alakinfotech.ydp.R;
    	Log.d("data", html);
    	 String[] careplandata = html.split("[$#]+");
    	 
-   	// int lenght = careplandata.length;
-   	// Toast.makeText(getApplicationContext(), lenght, 3000).show();
-   	  
+ 
+
+    
    	 for( int i=0;(i+9)<=careplandata.length;i+=10)    
    	 {
    		 String url = careplandata[i+3].toString();
@@ -80,14 +83,12 @@ import com.alakinfotech.ydp.R;
 			 String  status = url.substring(url.lastIndexOf('/')+1, url.lastIndexOf('.'));
 			 
 			 Log.v("filename",status);
-			 
-			 
-			 
-   		 String[] record = {careplandata[i+1],careplandata[i+2],status,careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8],careplandata[i+9]};
+		String[] record = {careplandata[i+1],careplandata[i+2],status,careplandata[i+4],careplandata[i+5],careplandata[i+6],careplandata[i+7],careplandata[i+8],careplandata[i+9]};
    		 careplanRecords.add( record);
+   		 
    		 Log.v("in for loop", "data executing");
-   	   
    	 }
+   	 
    	
     }
     
@@ -282,13 +283,13 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		wb1.getSettings().setUseWideViewPort(true);
 		wb1.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 		wb1.setScrollbarFadingEnabled(false);
-		
+
 		
 		progressBar = ProgressDialog.show(UIFORCAREPLAN.this, "YDP page is ", "Loading...");
 	       // Restore preferences
-//	       SharedPreferences settings = getSharedPreferences("SharedPreferanceFile", 0);
-//	       int statechange = settings.getInt("state", state);
-//	       wb1.setVisibility(statechange);
+		 SharedPreferences settings = getApplicationContext().getSharedPreferences("Websettings", MODE_PRIVATE);
+	       int statechange = settings.getInt("Key_state", View.INVISIBLE);
+	       wb1.setVisibility(statechange);
 	       
 	       
 	       
@@ -335,27 +336,16 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 					
 		    	    loadRequest++;
 		    	    wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementById('TitleContent_TitleContent_lblProviderName').childNodes[0].textContent);");
-		    	    //wb1.loadUrl("javascript:window.HTMLOUT.showCareplaneHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
-		    	    
-		    	    //wb1.loadUrl("javascript:window.HTMLOUT.showCareplaneHTML('<head>'+document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView').innerHTML+'</head>');");
 		    	    wb1.loadUrl("javascript:( function () {var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = \"NO\";if(carePlanTable){result = \"\";var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += \"$#\";}else{result += carePlanRow[j].childNodes[1].src;result += \"$#\";}}}}}window.HTMLOUT.showCareplaneHTML( result);}) ()");
-		    	    
-		    	     //wb1.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
-		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setUserName(document.getElementsByTagName('html')[0].innerHTML;);"); 
-		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setCareplan(function getCarePlan(){var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');var result = 'NO'; if(carePlanTable){ result = ''; var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');if(carePlanTable){ var carePlan = carePlanTable.getElementsByTagName('tr');for(var i = 1; i < carePlan.length; i++){var carePlanRow = carePlan[i].getElementsByTagName('td');for(var j = 0; j < carePlanRow.length; j++){var childValue = carePlanRow[j].childNodes[1].textContent;if(childValue){result += childValue;result += ':$#';console.log(childValue);}else{result += carePlanRow[j].childNodes[1].src;result += ':$#';console.log(carePlanRow[j].childNodes[1].src);}}}}}return result;}getCarePlan();");
-		    	     //wb1.loadUrl("javascript:window.HTMLOUT.setCareplan(document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView')[0].innerHTML");
 		    	    wb1.loadUrl("https://yourdoctorprogram.com/qhr/CareDashboard/AllergiesEditorMaster.aspx");
 			       
+
 		            
 		           }
 		    	 
 		    	
 		         else if(loadRequest == 2){
-		          //String jScript = "function getAllergies(){ var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); alert(1); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \":$#\";}}return result;}";
-//		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
-//		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'+document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1').innerHTML+'</head>');");
-//		          //wb1.loadUrl("javascript:window.HTMLOUT.showAllergiesHTML('<head>'"+jScript+"'</head>');");
-//		          //wb1.loadUrl("javascript:("+jScript +")()");
+
 	         wb1.loadUrl("https://yourdoctorprogram.com/qhr/Patients/PatientMainForPatient.aspx?logtype=login");
 		          progressBar.dismiss();
 		          titlerlayout1.setVisibility(RelativeLayout.VISIBLE);
@@ -366,13 +356,28 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 		          
 		          		     
 		          adapter.notifyDataSetChanged();
-			         titletext.setText(javeScritpInterfacee.userName + "'s Careplan");  
-			         showAllallergy();
+		          
+		          if(javeScritpInterfacee.userName.length()==0){
+		        	  
+
+
+		        	  	String invalidLogin = "UserName and Password Incorrect";
+						Intent intent = new Intent(getApplicationContext(), HOMESCREEN.class);
+				        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+				        intent.putExtra("Invalid login message", invalidLogin);
+				        startActivity(intent);
+				       finish();
+	 
+		        	
+		          }
+		          else{
+		        	  titletext.setText(javeScritpInterfacee.userName + "'s Careplan");   
+		          }
+			       
+			      showAllallergy();
 		            	}
 		    	 
-		    	 
-//		    	 adapter.notifyDataSetChanged();
-//		    	   allallergy.setText(allergyvar); 
+ 
 
 		    		    	  
 		   }
@@ -422,12 +427,12 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 //			menu.add(groupId, itemId, order, title);
 			 menu.add(0, 0, 1, "Logout");
 			 if(wb1.getVisibility() == View.VISIBLE){
-				 menu.add(1, 1, 2, "Normal View");
+				 menu.add(1, 1, 2, "Summary");
 			 }else{
-				 menu.add(1, 1, 2, "Switch to WebView");
+				 menu.add(1, 1, 2, "Details");
 			 }
 			 menu.add(2, 2, 3, "Cancel");
-//			 menu.add(0,UPDATE_DATA,0,"Update Information");
+
 			return true;
 			
 		}
@@ -450,22 +455,23 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	        	
 	        	if(wb1.getVisibility()==View.VISIBLE){
 	        		wb1.setVisibility(View.INVISIBLE);
-	        		item.setTitle("Switch to WebView");
+	        		item.setTitle("Details");
 	        	}
 	        	else{
 	        		wb1.setVisibility(View.VISIBLE);
-	        		item.setTitle("Normal View");
+	        		item.setTitle("Summary");
 	        		
 	        	}
 
-	        	state = wb1.getVisibility();
+//	        	state = wb1.getVisibility();
+
 	        	
-//	        	  SharedPreferences settings = getSharedPreferences("SharedPreferanceFile", 0);
-//	        	  SharedPreferences.Editor editor = settings.edit();
-//	              editor.putInt("State",state);
-//
-//	              // Commit the edits!
-//	              editor.commit();
+	        	  SharedPreferences settings = getApplicationContext().getSharedPreferences("Websettings", MODE_PRIVATE);
+	        	  Editor editor = settings.edit();
+	              editor.putInt("Key_state", wb1.getVisibility());
+
+	              // Commit the edits!
+	              editor.commit();
 	        	 
 
 	        		
@@ -477,6 +483,11 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 	        return super.onOptionsItemSelected(item);
 	        }
 	    }
+//    	@Override 
+//    	public void onSaveInstanceState(Bundle outState) {
+//    	  ((WebView)findViewById(R.id.webView1)).saveState(outState);
+//
+//    	}
 
 	 public void showAllallergy(){
 

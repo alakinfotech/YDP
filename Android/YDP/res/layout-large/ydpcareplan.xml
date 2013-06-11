@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cameraPreview"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/cameraPreview"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.55"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:paddingTop="20dp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/login"
+            android:layout_below="@+id/username"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.42"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingTop="20dp" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="#6A8FB0"
+            android:hint="login"
+            android:text="Login"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/cameraPreview"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1.06" >
+    </FrameLayout>
+
+</RelativeLayout>

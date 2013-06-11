@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    android:visibility="gone">
-
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:id="@+id/RelativeLayout2">
 
     <LinearLayout
-
-        android:layout_alignParentLeft="true"
-		 android:layout_width="match_parent"
+         android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#233869"
-        android:weightSum="6">
-
-
+      	android:weightSum="6" >
         
          <ImageView
             android:id="@+id/ydplogo"
@@ -26,8 +19,8 @@
            android:layout_weight="1" />
 
          <TextView
-             android:id="@+id/titletextview"
-             android:layout_width="wrap_content"
+             android:id="@+id/titletextview2"
+              android:layout_width="wrap_content"
              android:layout_height="match_parent"
              android:layout_weight="4"
              android:gravity="center"
@@ -35,15 +28,7 @@
              android:textAppearance="?android:attr/textAppearanceMedium"
              android:textColor="#ffffff" />
 
-         <ImageButton android:id="@+id/settingsButton" 
-             android:layout_width="wrap_content" 
-             android:layout_height="wrap_content" 
-            
-             android:layout_marginTop="1dp" 
-               android:layout_weight="1"
-             android:background="#233869"
-              android:src="@drawable/settings_ldpi"/>
-
     </LinearLayout>
-  
+    
+
 </RelativeLayout>
