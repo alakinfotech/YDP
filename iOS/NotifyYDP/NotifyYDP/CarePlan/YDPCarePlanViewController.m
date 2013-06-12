@@ -11,6 +11,7 @@
 #import "YDPCarePlanDetailViewController.h"
 #import "YDPCarePlanCell.h"
 #import "AllergiesViewController.h"
+#import "YDPReachability.h"
 
 @implementation YDPCarePlanViewController
 @synthesize webView;
@@ -45,7 +46,7 @@
     
     //AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     //[(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
-    self.webView = [[UIWebView alloc]init];
+    //self.webView = [[UIWebView alloc]init];
     [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     
     self.carePlan = [NSMutableDictionary dictionary];
@@ -60,10 +61,13 @@
     self.loadingView.hidden = NO;
     
     webView.scalesPageToFit = YES;
-    webView.autoresizesSubviews = YES;
+    //webView.autoresizesSubviews = YES;
     webView.autoresizingMask=(UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     
     self.webView.delegate = self;
+    
+    bool viewMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"ViewMode"];
+    self.webView.hidden = !viewMode;
     requestid = 0;
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -80,6 +84,28 @@
     // e.g. self.myOutlet = nil;
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    // check for internet connection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    
+    internetReachable = [[YDPReachability reachabilityForInternetConnection] retain];
+    [internetReachable startNotifier];
+    
+    // check if a pathway to a random host exists
+    hostReachable = [[YDPReachability reachabilityWithHostName: @"www.apple.com"] retain];
+    [hostReachable startNotifier];
+    
+    // now patiently wait for the notification
+    
+    
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -88,7 +114,28 @@
 
 - (IBAction)Logout:(id)sender {
     [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
-    [self dismissModalViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
+    
+    UIActionSheet *actionMenu = [[UIActionSheet alloc]
+                             initWithTitle:@"Select Option"
+                             delegate:self
+                             cancelButtonTitle:nil
+                             destructiveButtonTitle:nil
+                             otherButtonTitles:nil];
+    
+    [actionMenu addButtonWithTitle:@"Logout"];
+    if (webView.hidden) {
+        [actionMenu addButtonWithTitle:@"Details"];
+    }
+    else{
+        [actionMenu addButtonWithTitle:@"Summary"];
+    }
+    
+    
+    actionMenu.cancelButtonIndex = [actionMenu addButtonWithTitle: @"Cancel"];
+    
+    [actionMenu showInView:self.view];
+    
 }
 
 
@@ -114,7 +161,12 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 
-    if (requestid == 0) {
+    NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    if(internetStatus == NotReachable){
+        NSLog(@"The internet is down. Yes");
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    else if (requestid == 0) {
         [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate] startSpinningLoaderWithMessage:@"Loading..."];
     }
 
@@ -141,6 +193,8 @@
         }
         else if (requestid == 1) {
             
+            
+            
             NSBundle *thisBundle = [NSBundle mainBundle];
             // Load the JavaScript code from the Resources and inject it into the web page
             NSString *path = [thisBundle  pathForResource:@"YDPWebUtil" ofType:@"js"];
@@ -156,17 +210,17 @@
 
             for (int i =0; i < array.count - 1;i++) {
                 
-                NSString *status = [array objectAtIndex:i+2];
+                NSString *status = [array objectAtIndex:i+3];
                 status = [NSString stringWithFormat:@"%@",[[status lastPathComponent] stringByDeletingPathExtension]];
                 
-                NSArray *carePlanrecord = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],status,[array objectAtIndex:i+3],[array objectAtIndex:i+4],[array objectAtIndex:i+5],[array objectAtIndex:i+6],[array objectAtIndex:i+7],[array objectAtIndex:i+8], nil];
+                NSArray *carePlanrecord = [NSArray arrayWithObjects:[array objectAtIndex:i+1],[array objectAtIndex:i+2],status,[array objectAtIndex:i+4],[array objectAtIndex:i+5],[array objectAtIndex:i+6],[array objectAtIndex:i+7],[array objectAtIndex:i+8], [array objectAtIndex:i +9],nil];
                 
                 if (self.carePlan == nil) {
                     self.carePlan = [NSMutableDictionary dictionary];
                 }
                 [self.carePlan setObject:carePlanrecord forKey:array[i+1]];
                 [self.carePlanRecoed addObject:array[i+1]];
-                i += 8;
+                i += 9;
             }
             if (self.carePlanRecoed.count > 0) {
                 
@@ -178,7 +232,9 @@
                 
             }
             else{
-                [self Logout:nil];
+                
+                [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
+                [self dismissModalViewControllerAnimated:YES];
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Invalid Username or Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                 [alert show];
             }
@@ -225,7 +281,12 @@
              [self.tableView reloadData];
             
             [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
-             
+            
+            NSString *allergiesURL = @"https://yourdoctorprogram.com/qhr/Patients/PatientMainForPatient.aspx?logtype=login";
+            [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:allergiesURL]]];
+            
+            self.webView.delegate = nil;
+            
              
         }
     }
@@ -255,7 +316,7 @@
     UILabel *typeHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(170, 3, 90, 20) WithText:@"Medications"];
     [sectionHeaderImg addSubview:typeHeaderLable];
     
-    UILabel *dateHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(360, 3, 64, 20) WithText:@"Provider"];
+    UILabel *dateHeaderLable = [UIAppDelegate getLabelWithFrame:CGRectMake(360, 3, 90, 20) WithText:@"Practitioner"];
     [sectionHeaderImg addSubview:dateHeaderLable];
     
     return sectionHeaderImg;
@@ -368,5 +429,75 @@
     allergiesViewController.allergiesRecoed = self.allergiesRecoed;
     
     [self.navigationController pushViewController:allergiesViewController animated:YES];
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == 0) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    else if(buttonIndex == 1){
+        webView.hidden = !webView.hidden;
+        [[NSUserDefaults standardUserDefaults] setBool:!webView.hidden forKey:@"ViewMode"];
+    }
+}
+
+-(void) checkNetworkStatus:(NSNotification *)notice
+{
+    // called after network status changes
+    NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    switch (internetStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"The internet is down. Yes");
+            //self.internetActive = NO;
+            [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
+            [self dismissModalViewControllerAnimated:YES];
+            
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            //self.internetActive = YES;
+            
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            //self.internetActive = YES;
+            
+            break;
+        }
+    }
+    
+    NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+    switch (hostStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"A gateway to the host server is down.");
+            //self.hostActive = NO;
+            
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"A gateway to the host server is working via WIFI.");
+            //self.hostActive = YES;
+            
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"A gateway to the host server is working via WWAN.");
+            //self.hostActive = YES;
+            
+            break;
+        }
+    }
 }
 @end

@@ -10,6 +10,7 @@
 #import "NSData+Base64.h"
 #import "YDPCarePlanViewController.h"
 #import "UINavigationController+autorotate.h"
+#import "YDPReachability.h"
 
 @implementation YDPLogin
 @synthesize userName;
@@ -128,6 +129,15 @@
         [alert show];
         return;
     }
+    YDPReachability *internetReachable = [[YDPReachability reachabilityForInternetConnection] retain];
+    NetworkStatus networkStatus = [internetReachable currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"You're not connected to the Internet. Please connect and retry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    
     YDPCarePlanViewController *webViewController = [[YDPCarePlanViewController alloc]init];
     webViewController.userName = self.userName.text;
     webViewController.password = self.password.text;
@@ -158,7 +168,8 @@
     
     if (array.count >= 11) {
         
-        if (([array[0] isEqual:@"FirstName"]) && ([array[2] isEqual: @"LastName"])) {
+        if (([[array[0] stringByTrimmingCharactersInSet:
+               [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@"FirstName"]) && ([[array[2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString: @"LastName"])) {
         
             self.userName.text = [[array objectAtIndex:8] stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]];

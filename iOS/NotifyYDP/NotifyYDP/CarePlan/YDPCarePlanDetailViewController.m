@@ -153,11 +153,11 @@
             lines = 1;
             break;
         case 4:
-            field = @"Goals/Instructions:";
+            field = @"Assessment/Plan:";
             lines = 4;
             break;
         case 5:
-            field = @"Interventions:";
+            field = @"Goals:";
             lines = 3;
             break;
         case 6:
