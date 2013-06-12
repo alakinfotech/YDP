@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2434DE157FD0A700F43B96 /* MessageUI.framework */; };
+		9E3594A01762BC5D006E1D94 /* actions-icn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E35949F1762BC5D006E1D94 /* actions-icn.png */; };
 		9E4ED5B516FE761200594C97 /* loading_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4ED5B416FE761200594C97 /* loading_image.png */; };
 		9E4ED5B716FE788900594C97 /* header_bar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E4ED5B616FE788900594C97 /* header_bar.jpg */; };
 		9E4ED5B916FE7B0000594C97 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4ED5B816FE7B0000594C97 /* button.png */; };
@@ -48,6 +49,8 @@
 		9E63040615D97E8E00E7BC66 /* YDPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303C315D97E8E00E7BC66 /* YDPAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E63040715D97E8E00E7BC66 /* YDPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303C515D97E8E00E7BC66 /* YDPViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E63040815D97E8E00E7BC66 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6303DE15D97E8E00E7BC66 /* libzbar.a */; };
+		9E6E8C681767AB3000670274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6E8C671767AB3000670274 /* SystemConfiguration.framework */; };
+		9E6E8C6B1767AF1200670274 /* YDPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E8C6A1767ABD900670274 /* YDPReachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E7726CB175461B800118126 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7726C91754606800118126 /* Default-568h@2x.png */; };
 		9EA6CDF91607B4C900396518 /* CarePlaneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDF81607B4C900396518 /* CarePlaneModel.m */; };
 		9EA6CDFC1607B52000396518 /* Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6CDFB1607B52000396518 /* Diagnosis.m */; };
@@ -87,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		9E2434DE157FD0A700F43B96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9E35949F1762BC5D006E1D94 /* actions-icn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions-icn.png"; sourceTree = "<group>"; };
 		9E4ED5B416FE761200594C97 /* loading_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_image.png; sourceTree = "<group>"; };
 		9E4ED5B616FE788900594C97 /* header_bar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = header_bar.jpg; sourceTree = "<group>"; };
 		9E4ED5B816FE7B0000594C97 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
@@ -170,6 +174,9 @@
 		9E6303DC15D97E8E00E7BC66 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		9E6303DD15D97E8E00E7BC66 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
 		9E6303DE15D97E8E00E7BC66 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
+		9E6E8C671767AB3000670274 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9E6E8C691767ABD900670274 /* YDPReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDPReachability.h; sourceTree = "<group>"; };
+		9E6E8C6A1767ABD900670274 /* YDPReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDPReachability.m; sourceTree = "<group>"; };
 		9E7726C91754606800118126 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9EA6CDF71607B4C900396518 /* CarePlaneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePlaneModel.h; sourceTree = "<group>"; };
 		9EA6CDF81607B4C900396518 /* CarePlaneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePlaneModel.m; sourceTree = "<group>"; };
@@ -223,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E6E8C681767AB3000670274 /* SystemConfiguration.framework in Frameworks */,
 				9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */,
 				9EE03ADE157E68330000FF3C /* MapKit.framework in Frameworks */,
 				9EE03ADB157E68290000FF3C /* CoreLocation.framework in Frameworks */,
@@ -286,6 +294,7 @@
 		9E63038D15D97E8E00E7BC66 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9E35949F1762BC5D006E1D94 /* actions-icn.png */,
 				9E4ED5B816FE7B0000594C97 /* button.png */,
 				9E4ED5B616FE788900594C97 /* header_bar.jpg */,
 				9E4ED5B416FE761200594C97 /* loading_image.png */,
@@ -333,6 +342,8 @@
 		9E6303AC15D97E8E00E7BC66 /* Utility Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E6E8C691767ABD900670274 /* YDPReachability.h */,
+				9E6E8C6A1767ABD900670274 /* YDPReachability.m */,
 				9EAE896216FB6E9300BF2E5D /* UIViewController+Additions.h */,
 				9EAE896316FB6E9300BF2E5D /* UIViewController+Additions.m */,
 				9E63038115D97E8E00E7BC66 /* MBProgressHUD.h */,
@@ -499,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				9EEF346D157BD49500879458 /* libiconv.dylib */,
+				9E6E8C671767AB3000670274 /* SystemConfiguration.framework */,
 				9E2434DE157FD0A700F43B96 /* MessageUI.framework */,
 				9EE03ADD157E68330000FF3C /* MapKit.framework */,
 				9EE03ADA157E68290000FF3C /* CoreLocation.framework */,
@@ -595,6 +607,7 @@
 				9E4ED5B716FE788900594C97 /* header_bar.jpg in Resources */,
 				9E4ED5B916FE7B0000594C97 /* button.png in Resources */,
 				9E7726CB175461B800118126 /* Default-568h@2x.png in Resources */,
+				9E3594A01762BC5D006E1D94 /* actions-icn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +644,7 @@
 				9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */,
 				9ED250B516ED1D80000DF2EF /* YDPCarePlanDetailViewController.m in Sources */,
 				9E55887D16F76525008396D2 /* UITabBarController+autorotate.m in Sources */,
+				9E6E8C6B1767AF1200670274 /* YDPReachability.m in Sources */,
 				9EAE895916FB380C00BF2E5D /* YDPCarePlanCell.m in Sources */,
 				9EAE896416FB6E9300BF2E5D /* UIViewController+Additions.m in Sources */,
 				9EAE896B16FB70CD00BF2E5D /* YDPCarePlanDetailCell.m in Sources */,
@@ -713,8 +727,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NotifyYDP/NotifyYDP-Prefix.pch";
 				INFOPLIST_FILE = "NotifyYDP/NotifyYDP-Info.plist";
@@ -726,8 +740,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "22B495AA-268D-4BAD-A835-A38849F58115";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22B495AA-268D-4BAD-A835-A38849F58115";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -737,8 +751,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NotifyYDP/NotifyYDP-Prefix.pch";
 				INFOPLIST_FILE = "NotifyYDP/NotifyYDP-Info.plist";
@@ -750,8 +764,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "22B495AA-268D-4BAD-A835-A38849F58115";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22B495AA-268D-4BAD-A835-A38849F58115";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YDPReachability;
 
-@interface YDPCarePlanViewController : UIViewController<UIWebViewDelegate,UITableViewDataSource,UITableViewDelegate>{
-        int requestid;
+@interface YDPCarePlanViewController : UIViewController<UIWebViewDelegate,UITableViewDataSource,UITableViewDelegate, UIActionSheetDelegate>{
+    int requestid;
+    YDPReachability* internetReachable;
+    YDPReachability* hostReachable;
 }
 @property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSMutableDictionary *carePlan;
@@ -29,4 +32,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *allergiesList;
 - (IBAction)onAllergies;
 
+-(void) checkNetworkStatus:(NSNotification *)notice;
 @end
