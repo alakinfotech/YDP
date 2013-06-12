@@ -377,3 +377,6 @@ INFO:Fri May 31 00:28:12 IST 2013 perfect.xls All records data encoded successfu
 INFO:Fri May 31 00:29:20 IST 2013 perfect.xls All records data encoded successfully
 *********Input.xls*********
 *********perfect.xls*********
+*********Input.xls*********
+WARNING:Tue Jun 11 17:15:12 IST 2013 Input.xls Record no :2 is not encoded,because record data format is incorrect
+

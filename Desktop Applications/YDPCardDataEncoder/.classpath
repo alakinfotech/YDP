@@ -2,5 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/bcprov-jdk16-146.jar"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/click-1.5.jar"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/jxl-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/poi-ooxml-3.5-FINAL.jar"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/poi-ooxml-schemas-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="D:/AlT Projects/YDP/Desktop Applications/YDPCardDataEncoder/lib/xmlbeans-2.3.0 (1).jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

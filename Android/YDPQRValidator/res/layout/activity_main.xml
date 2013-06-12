@@ -7,21 +7,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-
-    <FrameLayout
-        android:id="@+id/cameraPreview"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" >
-    </FrameLayout>
+       <FrameLayout
+           android:id="@+id/cameraPreview"
+           android:layout_width="200dp"
+           android:layout_height="150dp"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="30dp" >
+       </FrameLayout>
        <Button
            android:id="@+id/scanButton"
            android:layout_width="match_parent"
            android:layout_height="50dp"
-           android:layout_alignLeft="@+id/scanData"
+           android:layout_alignLeft="@+id/cameraPreview"
            android:layout_alignParentBottom="true"
-           android:layout_alignRight="@+id/scanData"
+           android:layout_alignRight="@+id/cameraPreview"
            android:layout_marginBottom="44dp"
            android:background="#6A8FB0"
            android:text="Reset"
@@ -32,10 +32,14 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_above="@+id/scanButton"
-           android:layout_alignLeft="@+id/cameraPreview"
-           android:layout_alignRight="@+id/cameraPreview"
            android:layout_marginBottom="41dp"
            android:text="Please scan the QR code into the box above using camera"
            android:textAppearance="?android:attr/textAppearanceMedium" />
 
+
+       <WebView
+           android:id="@+id/webView1"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:visibility="invisible"/>
 </RelativeLayout>

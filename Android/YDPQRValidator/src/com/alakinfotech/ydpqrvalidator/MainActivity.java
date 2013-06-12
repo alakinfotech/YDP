@@ -3,9 +3,6 @@ package com.alakinfotech.ydpqrvalidator;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.codec.binary.Base64;
-
-
-
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
@@ -20,14 +17,18 @@ import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -35,19 +36,59 @@ public class MainActivity extends Activity {
 	private Camera mCamera;
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
+    private ProgressDialog progressBar;
+	public static final boolean YDP_WEBVIEW_LOGIN =false;
+	protected static final byte[] NULL = null;
+    private boolean barcodeScanned ;
+    private boolean previewing = true;
 
     String scanText;
+    String userName,passWord;
     Button scanButton;
     TextView scanData;
+    int classCreateStatus;
 
     ImageScanner scanner;
 
-    private boolean barcodeScanned ;
-    private boolean previewing = true;
 
     static {
         System.loadLibrary("iconv");
     } 
+    
+    
+    
+    private void validationChecking(String data){
+		 Log.d(data, "Scanned data");
+		 String[] scan = data.split(":");
+		 if(scan.length>=10){ 
+			 scanData.setText("VALID CARD!");
+			 for(int i=1;(9+i)<scan.length;i++){
+				 scan[9] = scan[9]+":"+scan[9+i];
+			 }
+			    userName=scan[8].trim();
+				 passWord=scan[9].trim(); 
+			    scanData.append("\n"+"Card Belongs to:"+scan[8].trim());
+				  		 
+		 }
+		 else{
+			 Toast.makeText(getApplicationContext(), "Invalid Card",Toast.LENGTH_LONG).show();
+		 }
+		
+	}
+    
+    private void callWebView(){
+    	
+		Intent innt =new Intent(getApplicationContext(),YDPWEBVIEW.class );
+		   innt.putExtra("username",userName);
+		   innt.putExtra("password",passWord);
+		   Log.d("login data", userName);
+	    	onPause();
+			
+	    	FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+	    	preview.removeView(mPreview);
+	    	startActivity(innt);
+		
+    }
     
     private String decryptScanData(String data){
 	   	Cipher cipher = new Cipher("Adi&Revanth");
@@ -183,14 +224,29 @@ public class MainActivity extends Activity {
                     	 scanText = sym.getData();
                          barcodeScanned = true;
                      }
-                   
+                    String decryptData = decryptScanData(scanText);
+                    if(decryptData != null)
+                    {
+                    	validationChecking(decryptData);
+                    	callWebView();
+
+                    }
+                    else{
+                    	   if (barcodeScanned) {
+                               barcodeScanned = false;
+                               mCamera.setPreviewCallback(previewCb);
+                               mCamera.startPreview();
+                               previewing = true;
+                               mCamera.autoFocus(autoFocusCB);
+                           }
+                    }
                      
-                     String decryptData = decryptScanData(scanText);
-                     scanData.setText(decryptData);
+               
                 }
             }
         };
-
+      
+       
     // Mimic continuous auto-focusing
     AutoFocusCallback autoFocusCB = new AutoFocusCallback() {
             public void onAutoFocus(boolean success, Camera camera) {
@@ -198,3 +254,8 @@ public class MainActivity extends Activity {
             }
         };
 }
+
+
+
+
+
