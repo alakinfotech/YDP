@@ -25,7 +25,7 @@ public class Splashscreen extends Activity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(Splashscreen.this,MainActivity.class);
+                Intent mainIntent = new Intent(Splashscreen.this,YDPQrValidator.class);
                 Splashscreen.this.startActivity(mainIntent);
                 Splashscreen.this.finish();
             }
