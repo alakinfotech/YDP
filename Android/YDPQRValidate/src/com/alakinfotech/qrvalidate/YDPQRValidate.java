@@ -13,11 +13,15 @@ import org.apache.commons.codec.binary.Base64;
 
 
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
@@ -290,8 +294,28 @@ public class YDPQRValidate extends Activity {
                  String scanData = decryptScanData(scanText);
                  if(scanData != null)
                  {
-                  validateUserName(scanData);
-                  callWebView();
+                boolean connectionStatus = isNetworkOnline();	
+                if(connectionStatus== true){
+                    validateUserName(scanData);
+                    callWebView();
+                }else{
+                	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+					alertDialogBuilder.setTitle("Warning");
+					alertDialogBuilder.setMessage("You're not connected to the Internet.Please connect and retry");
+					alertDialogBuilder.setNegativeButton("ok",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							// if this button is clicked, just close
+							// the dialog box and do nothing
+							dialog.cancel();
+						}
+					});
+					// create alert dialog
+					AlertDialog alertDialog = alertDialogBuilder.create();
+	 
+					// show it
+					alertDialog.show();
+                }
+
                  
                  }
                  else{
@@ -402,7 +426,25 @@ public class YDPQRValidate extends Activity {
 		});
     }
      
-     
+    public boolean isNetworkOnline() {
+        boolean status=false;
+        try{
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getNetworkInfo(0);
+            if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
+                status= true;
+            }else {
+                netInfo = cm.getNetworkInfo(1);
+                if(netInfo!=null && netInfo.getState()==NetworkInfo.State.CONNECTED)
+                    status= true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();  
+            return false;
+        }
+        return status;
+
+        }     
      
 
  // Mimic continuous auto-focusing
