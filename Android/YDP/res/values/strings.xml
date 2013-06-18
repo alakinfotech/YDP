@@ -10,5 +10,12 @@
 	<string name="webview_button">Switch to Web View</string>
 	<string name="Logout_button">Logout</string>
 	<string name="Cancel_button">Cancel</string>
+	<string name="username">Username</string>
+	<string name="password">Password</string>
+	<string name="login">Login</string>
+	<string name="call_ydp">Call YDP</string>
+	<string name="email_ydp">Email YDP</string>
+	<string name="more_about_ydp">More About YDP</string>
+	<string name="ydp_logo">YDP logo</string>
 
 </resources>

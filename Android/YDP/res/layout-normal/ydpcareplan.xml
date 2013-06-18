@@ -22,7 +22,7 @@
             android:layout_marginTop="30dp"
             android:layout_weight="0.55"
             android:ems="10"
-            android:hint="Username"
+            android:hint="@string/username"
             android:inputType="textPersonName"
             android:paddingTop="20dp" />
 
@@ -35,7 +35,7 @@
             android:layout_marginTop="30dp"
             android:layout_weight="0.42"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:paddingTop="20dp" />
 
@@ -45,8 +45,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:background="#6A8FB0"
-            android:hint="login"
-            android:text="Login"
+            android:hint="@string/login"
+            android:text="@string/login"
             android:textColor="#ffffff" />
 
     </LinearLayout>

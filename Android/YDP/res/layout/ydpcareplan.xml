@@ -17,12 +17,10 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:layout_weight="0.55"
             android:ems="10"
-            android:hint="Username"
+            android:hint="@string/username"
             android:inputType="textPersonName"
             android:paddingTop="20dp" />
 
@@ -30,12 +28,10 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/login"
-            android:layout_below="@+id/username"
             android:layout_marginTop="30dp"
             android:layout_weight="0.42"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:paddingTop="20dp" />
 
@@ -45,9 +41,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:background="#6A8FB0"
-            android:hint="login"
-            android:text="Login"
-            android:textColor="#ffffff" />
+            android:hint="@string/login"
+            android:text="@string/login"
+            android:textColor="#ffffff" /> 
 
     </LinearLayout>
 
@@ -57,8 +53,7 @@
         android:layout_height="150dp"
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1.06" >
+        android:layout_marginTop="30dp">
     </FrameLayout>
 
 </RelativeLayout>

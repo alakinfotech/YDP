@@ -1,22 +1,27 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDP mobile application is used show patient records.
+ */
+
 package com.alakinfotech.QHR;
 
-
-
-
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 
 
 
@@ -48,7 +53,7 @@ public class YDPWEBVIEW extends Activity {
 			wb.getSettings().setUseWideViewPort(true);
 			wb.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 			wb.setScrollbarFadingEnabled(false);
-			final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
 
 			progressBar = ProgressDialog.show(YDPWEBVIEW.this, "YDP page is ", "Loading...");
 			
@@ -70,7 +75,8 @@ public class YDPWEBVIEW extends Activity {
 		   return true;
 		   }
 		   
-		   public void onPageStarted(WebView view, String url) {
+		   @SuppressWarnings("unused")
+		public void onPageStarted(WebView view, String url) {
 		        loadingFinished = false;
 		        
 		    }
@@ -123,9 +129,6 @@ public class YDPWEBVIEW extends Activity {
 	}
 
 	 public void javascriptCallFinish(final String mydata){
-        Log.v("mylog","MyActivity.javascriptCallFinished is called : " + mydata);
-        Toast.makeText(this, "mydata is: " + mydata, 5).show();
-
         // I need to run set operation of UI on the main thread.
         // therefore, the above parameter "val" must be final
         runOnUiThread(new Runnable() {

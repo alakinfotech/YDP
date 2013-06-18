@@ -6,7 +6,12 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 public class HOMESCREEN  extends TabActivity{
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {

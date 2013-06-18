@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDP mobile application is used show patient records.
+ */
 package com.alakinfotech.QHR;
 
 import android.app.Activity;
@@ -8,6 +13,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 
 public class EMAILYDP extends Activity {
 	Button buttonSend;

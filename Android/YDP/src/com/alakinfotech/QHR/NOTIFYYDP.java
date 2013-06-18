@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDP mobile application is used show patient records.
+ */
 package com.alakinfotech.QHR;
 
 import android.app.Activity;
@@ -8,14 +13,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.Button;
 
-
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 
 
 public class NOTIFYYDP  extends Activity{
-	WebView wb;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);

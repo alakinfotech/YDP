@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDP mobile application is used show patient records.
+ */
+
+
 package com.alakinfotech.QHR;
 
 import android.os.Bundle;
@@ -6,7 +13,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Window;
 
-
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 public class Splashscreen extends Activity {
 
 	

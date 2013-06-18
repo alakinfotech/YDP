@@ -1,36 +1,43 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDP mobile application is used show patient records.
+ */
 package com.alakinfotech.QHR;
-
-
-
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 
 
 public class Careplandetailview extends Activity {
+	
 	String careplandetilhname;
 	String[] careplandetail ;
 	String[] names = {"Date:","ICD9 Diagnosis:","Status:","Risk Factors:","Assessment/Plan:","Goals:","Medication:","Pracitioner:"};
-	TextView cp,titletext; 
+	TextView careplantxtview,titletext; 
 	ImageButton logout;
 	RelativeLayout titlerlayout3;
+	ListView careplanlistview;
 	 
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.careplandeatailview);
@@ -38,17 +45,13 @@ public class Careplandetailview extends Activity {
 		titlerlayout3 =(RelativeLayout) findViewById(R.id.RelativeLayout2);
 		titlerlayout3.setVisibility(RelativeLayout.VISIBLE);
 		titletext = (TextView) findViewById(R.id.titletextview2);
-		
-		ListView lv = (ListView) findViewById(R.id.carepalndetaillistView);
-	     lv.setAdapter(new Careplanadapter(this));
-	     careplandetail = getIntent().getExtras().getStringArray("careplanrecord");
-	     careplandetilhname =getIntent().getExtras().getString("userid");
-			
-	     titletext.setText(careplandetilhname + "'s Careplan");  
-	     
-	     
-	     cp =(TextView)findViewById(R.id.cpdetailtextView2);
-	     cp.setText(careplandetail[1]);
+		careplantxtview =(TextView)findViewById(R.id.cpdetailtextView2);
+	    careplanlistview = (ListView) findViewById(R.id.carepalndetaillistView);
+	    careplanlistview.setAdapter(new Careplanadapter(this));
+	    careplandetail = getIntent().getExtras().getStringArray("careplanrecord");
+	    careplandetilhname =getIntent().getExtras().getString("userid");
+		titletext.setText(careplandetilhname + "'s Careplan");  
+	    careplantxtview.setText(careplandetail[1]);
 	     
 	  }  
 	
@@ -78,32 +81,22 @@ public class Careplandetailview extends Activity {
 		}
 
 		@Override
-		public View getView(int position, View v, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			
+		public View getView(int position, View view, ViewGroup parent) {
 
-			
-			
-			
-			
-			LayoutInflater li = getLayoutInflater();
-			v = li.inflate(R.layout.carepalndetaildataview, null);
-			 TextView t1 = (TextView)v.findViewById(R.id.cpdetaildatatextView1);
-			 TextView t2 = (TextView)v.findViewById(R.id.cpdetaildatatextView2);
+			 LayoutInflater layoutinflater = getLayoutInflater();
+			 view = layoutinflater.inflate(R.layout.carepalndetaildataview, null);
+			 TextView cptextview1 = (TextView)view.findViewById(R.id.cpdetaildatatextView1);
+			 TextView cptextview2 = (TextView)view.findViewById(R.id.cpdetaildatatextView2);
 			 
 			 if (position % 2 == 0) {
 				 
-				  v.setBackgroundColor(0x30E6EEF8);
+				  view.setBackgroundColor(0x30E6EEF8);
 				}
-			
-			
-			
 			 
-			 Log.v("careplan[2]", careplandetail[2]);
-			 t1.setText(names[position]);
-			 t2.setText(careplandetail[position]);
+			 cptextview1.setText(names[position]);
+			 cptextview2.setText(careplandetail[position]);
 			 
-					 return v;
+			 return view;
 		}
 		
 

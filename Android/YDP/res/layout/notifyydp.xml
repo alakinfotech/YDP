@@ -18,12 +18,9 @@
             android:id="@+id/callydp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignLeft="@+id/emailydp"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/imageView1"
             android:layout_marginTop="20dp"
             android:background="#6A8FB0"
-            android:text="Call YDP"
+            android:text="@string/call_ydp"
             android:textColor="#ffffff" />
 
         <Button
@@ -32,20 +29,17 @@
             android:layout_height="50dp"
             android:layout_marginTop="48dp"
             android:background="#6A8FB0"
-            android:text="Email YDP"
+            android:text="@string/email_ydp"
             android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/moreaboutydp"
             android:layout_width="197dp"
             android:layout_height="50dp"
-            android:layout_alignLeft="@+id/imageView1"
-            android:layout_alignRight="@+id/imageView1"
-            android:layout_below="@+id/emailydp"
             android:layout_marginTop="50dp"
             android:layout_weight="0.07"
             android:background="#6A8FB0"
-            android:text="More About YDP"
+            android:text="@string/more_about_ydp" 
             android:textColor="#ffffff" />
     </LinearLayout>
 
@@ -57,7 +51,7 @@
         android:layout_alignRight="@+id/linearLayout1"
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="25dp"
-        android:src="@drawable/logo1"
-        android:contentDescription="YDP logo"/>
+        android:src="@drawable/logo1" 
+        android:contentDescription="@string/ydp_logo"/>
 
 </RelativeLayout>

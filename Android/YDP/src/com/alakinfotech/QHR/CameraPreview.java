@@ -1,5 +1,7 @@
 /*
- * Bar code  implementation of displaying camera preview.
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * YDP mobile application is used show patient records.
  */
 package com.alakinfotech.QHR;
 
@@ -12,16 +14,38 @@ import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.AutoFocusCallback;
 
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 Dec 2012
+ *
+ */
 
 
 /** A basic Camera preview class */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
-    private SurfaceHolder mHolder;
-    private Camera mCamera;
-    private PreviewCallback previewCallback;
-    private AutoFocusCallback autoFocusCallback;
+    private SurfaceHolder mHolder;//instance to create surface
+    private Camera mCamera;//instance for camera
+    private PreviewCallback previewCallback;//instance to preview camera
+    private AutoFocusCallback autoFocusCallback;//Instance to call back camera
 
-    public CameraPreview(Context context, Camera camera,
+	 //-----------------------------------------------------------------------
+	 // Function:      CameraPreview(Context context, Camera camera, PreviewCallback previewCb, AutoFocusCallback autoFocusCb)
+	 //
+	 // Parameter:
+	 //      In:        Context context
+	 //                 Camera camera
+     //					PreviewCallback previewCb
+     //                 AutoFocusCallback autoFocusCb
+	 //      Out:       none
+	 //      In/Out:    none
+	 //
+	 // Returns:       none
+	 //
+	 // Desc:          Constructor to stores camera settings
+	 //-----------------------------------------------------------------------
+	@SuppressWarnings("deprecation")
+	public CameraPreview(Context context, Camera camera,
                          PreviewCallback previewCb,
                          AutoFocusCallback autoFocusCb) {
         super(context);
@@ -38,9 +62,20 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         // deprecated setting, but required on Android versions prior to 3.0
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
-
+	 //-----------------------------------------------------------------------
+	 // Function:      surfaceCreated(SurfaceHolder holder)
+	 //
+	 // Parameter:
+	 //      In:        SurfaceHolder holder
+	 //      Out:       none
+	 //      In/Out:    none
+	 //
+	 // Returns:       none
+	 //
+	 // Desc:          The Surface has been created, now tell the camera where to draw the preview.
+	 //-----------------------------------------------------------------------	
     public void surfaceCreated(SurfaceHolder holder) {
-        // The Surface has been created, now tell the camera where to draw the preview.
+        
         try {
             mCamera.setPreviewDisplay(holder);
         } catch (IOException e) {
@@ -48,15 +83,44 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
     }
 
+    
+    
+	 //-----------------------------------------------------------------------
+	 // Function:     surfaceDestroyed(SurfaceHolder holder)
+	 //
+	 // Parameter:
+	 //      In:    SurfaceHolder holder
+	 //      Out:       none
+	 //      In/Out:    none
+	 //
+	 // Returns:       none
+	 //
+	 // Desc:          Camera preview released in activity
+	 //-----------------------------------------------------------------------
     public void surfaceDestroyed(SurfaceHolder holder) {
         // Camera preview released in activity
     }
-
+    
+    
+    
+    
+	 //-----------------------------------------------------------------------
+	 // Function:     surfaceChanged(SurfaceHolder holder, int format, int width, int height)
+	 //
+	 // Parameter:
+	 //      In:        SurfaceHolder holde
+	 //                 int format
+    //					int width
+    //                	int height
+	 //      Out:       none
+	 //      In/Out:    none
+	 //
+	 // Returns:       none
+	 //
+	 // Desc:          If your preview can change or rotate, take care of those events here. Make sure to stop the preview before resizing or reformatting it.
+	 //-----------------------------------------------------------------------
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        /*
-         * If your preview can change or rotate, take care of those events here.
-         * Make sure to stop the preview before resizing or reformatting it.
-         */
+
         if (mHolder.getSurface() == null){
           // preview surface does not exist
           return;
