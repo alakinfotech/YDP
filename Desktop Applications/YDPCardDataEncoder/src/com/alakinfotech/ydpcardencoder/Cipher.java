@@ -25,25 +25,101 @@ import java.io.ByteArrayOutputStream;
  * @version 1.0 03 May 2013
  *
  */
- 
+
+
+
+
+
+
+/***
+ * 
+ * Cipher class used to convert
+ * normal data to encrypt format
+ *
+ ***/
 public class Cipher  {  
   
     @SuppressWarnings("unused")
 	private static final byte[] NULL = null;
 	private final String password;  
-  /* Constructor to store key */
+  
+	
+	//-----------------------------------------------------------------------
+	// Function:      	Cipher(String password)
+	//
+	// Parameter:
+	//	     In:        string password - password as parameters
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	none
+	//
+	// Desc:      		Constructor to store  secret key.
+	//-----------------------------------------------------------------------
     public Cipher(String password) {  
         this.password = password;
       }  
-  /*Encrypt function to encrypt the user data */
+ 
+    
+	//-----------------------------------------------------------------------
+	// Function:      	encrypt(byte[] plainText)
+	//
+	// Parameter:
+	//	     In:       byte[] plainText - plain text is passed as parameter
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	byte[]
+	//
+	// Desc:      		 function to take plain text.
+	//-----------------------------------------------------------------------
     public byte[] encrypt(byte[] plainText) throws Exception {  
         return transform(true, plainText);  
     }  
-    /* Decrypt function to decrypt the user data */
+    
+    
+    
+    
+    
+    
+	//-----------------------------------------------------------------------
+	// Function:      	decrypt(byte[] cipherText)
+	//
+	// Parameter:
+	//	     In:        byte[] cipherText - takes cipher data 
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	byte[]
+	//
+	// Desc:      		Decrypt function to decrypt the user data.
+	//-----------------------------------------------------------------------
     public byte[] decrypt(byte[] cipherText) throws Exception {  
         return transform(false, cipherText);  
     }  
     
+    
+    
+    
+    
+    
+	//-----------------------------------------------------------------------
+	// Function:      	transform(boolean encrypt, byte[] inputBytes)
+	//
+	// Parameter:
+	//	     In:       boolean encrypt
+    //				   byte[] inputBytes
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	byte[]
+	//
+	// Desc:      		Transform plain format to ciper format or cipher to plain text format.
+	//-----------------------------------------------------------------------
     private byte[] transform(boolean encrypt, byte[] inputBytes) throws Exception {  
         byte[] key = DigestUtils.md5(password.getBytes("UTF-8"));  
   

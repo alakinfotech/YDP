@@ -57,7 +57,6 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	static IYDPCardEncoder callback;//interface reference
 	static JProgressBar progressBar;// progress bar declaration
 	private static final long serialVersionUID = 1L;//Auto generated
-	
 	private JTextField inputTxtFld;//input text field
 	private JTextField outputTxtFld;//output text field
 	private JPanel contentPane;//Jpanel for adding ui elements
@@ -72,24 +71,33 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	
 
 	
-	
-	/**
-	 * Launch the application.
-	 */
+	//-----------------------------------------------------------------------
+	// Function:      	Void main()
+	//
+	// Parameter:
+	//	     In:        string[] args - arguments passed as parameters
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	none
+	//
+	// Desc:      		Creates frame and look and feel of frame  design.
+	//-----------------------------------------------------------------------
 	public static void main(String[] args) throws IOException {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+				
+					BufferedImage image = null;// Setting image icon
 					YDPCardEncoder frame = new YDPCardEncoder();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					callback = frame;
 					frame.setTitle("YDP Card Data Encoder"); // Sets title of frame
 					// changing default icon of jframe to custoum image
-					BufferedImage image = null;// Setting image icon
 					try {
-						File imageFile = new File(
-								"D:/ALAK INFO TECH/YDP/Desktop Applications/YDPCardDataEncoder/app_icon.png");// Image icon path
+						File imageFile = new File("app_icon.png");// Image icon path
 						image = ImageIO.read(imageFile);// Reading Image icon
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -106,10 +114,19 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 * With user defined elements
-	 */
+	//-----------------------------------------------------------------------
+	// Function:      YDPCardEncoder()
+	//
+	// Parameter:
+	//		     In:       	none
+	//		               
+	//		     Out:       none
+	//		     In/Out:    none
+	//
+	// Returns:       none
+	//
+	// Desc:      Create's  frame and adds elements to the frame 
+	//-----------------------------------------------------------------------
 	
 	public YDPCardEncoder() {
 		//Auto generated
@@ -127,8 +144,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		JLabel titleLbl = new JLabel("YDP Card Data Encoder");
 		titleLbl.setForeground(new Color(51, 102, 153));
 		titleLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLbl.setIcon(new ImageIcon(
-				"D:/ALAK INFO TECH/YDP/Desktop Applications/YDPCardDataEncoder/app_icon.png"));//title icon
+		titleLbl.setIcon(new ImageIcon("app_icon.png"));//title icon
 		titleLbl.setBackground(Color.WHITE);
 		titleLbl.setBounds(30, 13, 652, 38);
 		contentPane.add(titleLbl);
@@ -166,10 +182,6 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
 					inputTxtFld.setText(fileopen.getSelectedFile().getAbsolutePath());//Setting complete path of input file
-//					// creating object for Excel file reading class
-//					if(excelfilereadingobj==null){
-//					excelfilereadingobj = new ExcelFileReading();
-//					}
 					excelfilereadingobj.setInputFile(inputTxtFld.getText());//Passing input file to reading class
 					 String resultStr = excelfilereadingobj.testHeaderFormat();//calling test method to check weather header in correct format or not
 					 	// Resultant of Test header format is correct than process continues
@@ -325,10 +337,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 				if (isEncodingProgress == false) {
 					String inputpath, outpath;
-//					/*If excel object is null then it allocates memory*/
-//					if(excelfilereadingobj==null){
-//					excelfilereadingobj = new ExcelFileReading();
-//					}
+
 					/* Creating instance for interface */
 					  excelfilereadingobj.callback = callback;
 					
@@ -429,7 +438,20 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 
 	}
 	
-	/* This method to enable user interface elements */
+	
+	
+	//-----------------------------------------------------------------------
+	// Function:       enableAll()
+	//
+	// Parameter:
+	//		In:        none		               
+	//		Out:       none
+	//		In/Out:    none
+	//
+	// Returns:        none
+	//
+	// Desc:           It is used to enable user interface elements
+	//-----------------------------------------------------------------------	
 	public void enableAll(){
 		encodeBtn.setText("Start");
 
@@ -440,17 +462,67 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		outputBtn.setEnabled(isEncodingProgress);
 		progressBar.setVisible(false);
 	}
-	/*For updating progress bar value*/
+	
+	
+	
+	
+	
+	//-----------------------------------------------------------------------
+	// Function:       progressupdate(int progress)
+	//
+	// Parameter:
+	//		In:        Progress- Progress bar value	               
+	//		Out:       none
+	//		In/Out:    none
+	//
+	// Returns:        none
+	//
+	// Desc:           It is used to update value of progress bar
+	//-----------------------------------------------------------------------	
 	public  void progressupdate(int progress){
 	    progressBar.setVisible(true);
 	     progressBar.setValue(progress);
 
 	}
-	/*For showing alert message to user*/
+	
+	
+	
+	
+	
+	
+	//-----------------------------------------------------------------------
+	// Function:       messageAlert(String message)
+	//
+	// Parameter:
+	//		In:        message - message to the user		               
+	//		Out:       none
+	//		In/Out:    none
+	//
+	// Returns:        none
+	//
+	// Desc:          it is used to display normal alerts to the users
+	//-----------------------------------------------------------------------	
 	public void messageAlert(String message){
 		JOptionPane.showMessageDialog(contentPane, message);
 	}
-	/*For showing  Exception alert to user*/
+	
+	
+	
+	
+	
+	
+	//-----------------------------------------------------------------------
+	// Function:       exceptionAlert(String message)
+	//
+	// Parameter:
+	//		In:        message - message to the user		               
+	//		Out:       none
+	//		In/Out:    none
+	//
+	// Returns:        none
+	//
+	// Desc:          it is used to display exception  alerts to the users
+	//-----------------------------------------------------------------------
 	@Override
 	public void exceptionAlert(String exception) {
 		// TODO Auto-generated method stub

@@ -13,23 +13,40 @@ package com.alakinfotech.ydpcardencoder;
  *
  */
 
-/* Creating interface for updating progress value and for showing alerts*/
+
+
+//-----------------------------------------------------------------------
+// Interface:       IYDPCardEncoder
+//
+// Parameter:
+//		In:        none		               
+//		Out:       none
+//		In/Out:    none
+//
+// Returns:        none
+//
+// Desc:          Creating interface for updating progress value and for showing alerts
+//-----------------------------------------------------------------------
+
 interface IYDPCardEncoder{
 	void progressupdate(int progress);
 	void exceptionAlert(String exception);
 	void messageAlert(String message);
 }
-/*Creating  a class which is used to store and to retrive excel sheet data*/
+/**
+ * Creating  a class which is used to store 
+ * and to retrive excel sheet data
+ **/
 public class EReadingData {
 	
-	String firstName;
-	String lastName;
-	String phoneNumber;
-	String patientId;
-	String userName;
-	String password;
-	String encodeData;
-	String  date;
+	String firstName;//reference to firstname
+	String lastName;//reference to lastname
+	String phoneNumber;//reference to phone number
+	String patientId;//reference to patientid
+	String userName;//reference to username
+	String password;//reference to password
+	String encodeData;//reference to encodedate
+	String date;//reference to date
 	
 
 }
