@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * QR Encoder is used to validate QR-image on YDP card
+ */
+
+
+
 package com.alakinfotech.qrvalidate;
 
 import org.apache.commons.codec.digest.DigestUtils;  
@@ -9,24 +17,104 @@ import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;  
 import java.io.ByteArrayInputStream;  
 import java.io.ByteArrayOutputStream;  
+
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 June 2013
+ *
+ */
+
+/***
+ * 
+ * Cipher class used to convert
+ * normal data to encrypt format and
+ * encrypt data to plain format
+ *
+ ***/
+public class Cipher  {  
   
-public class Cipher {  
-  
-    private static final byte[] NULL = null;
+    @SuppressWarnings("unused")
+	private static final byte[] NULL = null;
 	private final String password;  
   
+	
+	//-----------------------------------------------------------------------
+	// Function:      	Cipher(String password)
+	//
+	// Parameter:
+	//	     In:        string password - password as parameters
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	none
+	//
+	// Desc:      		Constructor to store  secret key.
+	//-----------------------------------------------------------------------
     public Cipher(String password) {  
-        this.password = password;  
-    }  
-  
+        this.password = password;
+      }  
+ 
+    
+	//-----------------------------------------------------------------------
+	// Function:      	encrypt(byte[] plainText)
+	//
+	// Parameter:
+	//	     In:       byte[] plainText - plain text is passed as parameter
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	byte[]
+	//
+	// Desc:      		 function to take plain text.
+	//-----------------------------------------------------------------------
     public byte[] encrypt(byte[] plainText) throws Exception {  
         return transform(true, plainText);  
     }  
-  
+    
+    
+    
+    
+    
+    
+	//-----------------------------------------------------------------------
+	// Function:      	decrypt(byte[] cipherText)
+	//
+	// Parameter:
+	//	     In:        byte[] cipherText - takes cipher data 
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	byte[]
+	//
+	// Desc:      		Decrypt function to decrypt the user data.
+	//-----------------------------------------------------------------------
     public byte[] decrypt(byte[] cipherText) throws Exception {  
         return transform(false, cipherText);  
     }  
-  
+    
+    
+    
+    
+    
+    
+	//-----------------------------------------------------------------------
+	// Function:      	transform(boolean encrypt, byte[] inputBytes)
+	//
+	// Parameter:
+	//	     In:       boolean encrypt
+    //				   byte[] inputBytes
+	//	               
+	//	     Out:       none
+	//	     In/Out:    none
+	//
+	// Returns:       	byte[]
+	//
+	// Desc:      		Transform plain format to ciper format or cipher to plain text format.
+	//-----------------------------------------------------------------------
     private byte[] transform(boolean encrypt, byte[] inputBytes) throws Exception {  
         byte[] key = DigestUtils.md5(password.getBytes("UTF-8"));  
   
@@ -60,4 +148,4 @@ public class Cipher {
   
         return output.toByteArray();  
     }  
-}  
+} 

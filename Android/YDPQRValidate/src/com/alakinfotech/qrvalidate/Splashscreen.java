@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) to Alak Info Tech  Inc. All Rights Reserved.
+ * 
+ * QR Encoder is used to validate QR-image on YDP card
+ */
+
+
+
 package com.alakinfotech.qrvalidate;
 
 import android.os.Bundle;
@@ -6,6 +14,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Window;
 
+/**
+ * 
+ * @author Srikanth Gajula
+ * @version 1.0 08 June 2013
+ *
+ */
 
 public class Splashscreen extends Activity {
 
