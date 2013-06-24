@@ -418,27 +418,27 @@ public class YDPQRValidate extends Activity {
 	                 String scanData = decryptScanData(scanText);// Is used to decrypt scan data
 	                 if(scanData != null)
 	                 {
-	                boolean connectionStatus = isNetworkOnline();// Check weather internet is available or not
-	                if(connectionStatus== true){
+//	                boolean connectionStatus = isNetworkOnline();// Check weather internet is available or not
+//	                if(connectionStatus== true){
 	                    validateUserName(scanData);//Check YDP username is valid or not
 	                    callWebView();// Calls YDP web server
-	                }else{
-	                	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-						alertDialogBuilder.setTitle("Warning");
-						alertDialogBuilder.setMessage("You're not connected to the Internet.Please connect and retry");
-						alertDialogBuilder.setNegativeButton("ok",new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int id) {
-								// if this button is clicked, just close
-								// the dialog box and do nothing
-								dialog.cancel();
-							}
-						});
-						// create alert dialog
-						AlertDialog alertDialog = alertDialogBuilder.create();
-		 
-						// show it
-						alertDialog.show();
-	                }
+//	                }else{
+//	                	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+//						alertDialogBuilder.setTitle("Warning");
+//						alertDialogBuilder.setMessage("You're not connected to the Internet.Please connect and retry");
+//						alertDialogBuilder.setNegativeButton("ok",new DialogInterface.OnClickListener() {
+//							public void onClick(DialogInterface dialog,int id) {
+//								// if this button is clicked, just close
+//								// the dialog box and do nothing
+//								dialog.cancel();
+//							}
+//						});
+//						// create alert dialog
+//						AlertDialog alertDialog = alertDialogBuilder.create();
+//		 
+//						// show it
+//						alertDialog.show();
+//	                }
 	
 	                 
 	                 }
@@ -552,38 +552,38 @@ public class YDPQRValidate extends Activity {
 	    }
 	    
 	    
-	    
-		 //-----------------------------------------------------------------------
-		 // Function:     	isNetworkOnline()
-		 //
-		 // Parameter:
-		 //      In:   		none
-		 //      Out:       none
-		 //      In/Out:    none
-		 //
-		 // Returns:       	boolean
-		 //
-		 // Desc:          Check if internet connection is available or not
-		 //-----------------------------------------------------------------------
-    public boolean isNetworkOnline() {
-        boolean status=false;
-        try{
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getNetworkInfo(0);
-            if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
-                status= true;
-            }else {
-                netInfo = cm.getNetworkInfo(1);
-                if(netInfo!=null && netInfo.getState()==NetworkInfo.State.CONNECTED)
-                    status= true;
-            }
-        }catch(Exception e){
-            e.printStackTrace();  
-            return false;
-        }
-        return status;
-
-        }     
+//	    
+//		 //-----------------------------------------------------------------------
+//		 // Function:     	isNetworkOnline()
+//		 //
+//		 // Parameter:
+//		 //      In:   		none
+//		 //      Out:       none
+//		 //      In/Out:    none
+//		 //
+//		 // Returns:       	boolean
+//		 //
+//		 // Desc:          Check if internet connection is available or not
+//		 //-----------------------------------------------------------------------
+//    public boolean isNetworkOnline() {
+//        boolean status=false;
+//        try{
+//            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//            NetworkInfo netInfo = cm.getNetworkInfo(0);
+//            if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
+//                status= true;
+//            }else {
+//                netInfo = cm.getNetworkInfo(1);
+//                if(netInfo!=null && netInfo.getState()==NetworkInfo.State.CONNECTED)
+//                    status= true;
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();  
+//            return false;
+//        }
+//        return status;
+//
+//        }     
      
 	 //-----------------------------------------------------------------------
 	 // Function:     	onAutoFocus(boolean success, Camera camera)

@@ -47,6 +47,11 @@ public class EReadingData {
 	String password;//reference to password
 	String encodeData;//reference to encodedate
 	String date;//reference to date
+	String pcpname;//reference to pcpname
+	String pcpaddress1;//reference to pcpaddress1
+	String pcpaddress2;//reference to pcpaddress2
+	String pcpphonenumber;//reference to pcpphonenumber
+	String pcpemail;//reference to pcpemail
 	
 
 }

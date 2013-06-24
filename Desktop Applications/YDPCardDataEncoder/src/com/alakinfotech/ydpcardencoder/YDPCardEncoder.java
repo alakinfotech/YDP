@@ -35,7 +35,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
-import javax.swing.UIManager;
+
 
 
 
@@ -66,7 +66,9 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	private JButton closeBtn;//for closing application
 	private ExcelFileReading excelfilereadingobj;
 	private File newFile;//For crating new file
-	private String encodeKey = "Adi&Revanth";//Default key for encoding
+	private String encodeKey = "Adi&Revanth";//Default key for encodingString directory
+	String directory = null;
+	File file;
 	boolean isEncodingProgress;// for enabling/disabling UI elements
 	
 
@@ -92,7 +94,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 				
 					BufferedImage image = null;// Setting image icon
 					YDPCardEncoder frame = new YDPCardEncoder();
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
 					callback = frame;
 					frame.setTitle("YDP Card Data Encoder"); // Sets title of frame
 					// changing default icon of jframe to custoum image
@@ -177,14 +179,19 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 				FileFilter filter = new FileNameExtensionFilter("xls files","xls");
 				fileopen.setAcceptAllFileFilterUsed(false);
 				fileopen.addChoosableFileFilter(filter);
-
+				fileopen.setCurrentDirectory(file);//set current directory
 				int ret = fileopen.showDialog(contentPane, "Open file");
 
 				if (ret == JFileChooser.APPROVE_OPTION) {
+				
+					
 					inputTxtFld.setText(fileopen.getSelectedFile().getAbsolutePath());//Setting complete path of input file
+			        file = fileopen.getCurrentDirectory();//get current directory name
 					excelfilereadingobj.setInputFile(inputTxtFld.getText());//Passing input file to reading class
 					 String resultStr = excelfilereadingobj.testHeaderFormat();//calling test method to check weather header in correct format or not
-					 	// Resultant of Test header format is correct than process continues
+					 	
+					 
+					 // Resultant of Test header format is correct than process continues
 					 	if(resultStr=="Success"){
 					
 							encodeBtn.setEnabled(true);
@@ -218,8 +225,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 							}
 	
 						
-						 }
-						 else{
+						 }else{
 						 exceptionAlert(resultStr);
 						 encodeBtn.setEnabled(false);
 						}
@@ -329,11 +335,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 		encodeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
-				// Disabling  all user interface elements 
-				inputTxtFld.setEnabled(isEncodingProgress);
-				outputTxtFld.setEnabled(isEncodingProgress);
-				inputBtn.setEnabled(isEncodingProgress);
-				outputBtn.setEnabled(isEncodingProgress);
+
 
 				if (isEncodingProgress == false) {
 					String inputpath, outpath;
@@ -380,21 +382,22 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 						JOptionPane.showMessageDialog(contentPane,
 								" Input and Output file path should not empty",
 								" Warning", JOptionPane.WARNING_MESSAGE);
+						System.out.println("In the empty error Is Encoding process values is::"+isEncodingProgress);
 						enableAll();//calling enable all function to enable UI elements
 					} else {
 						encodeBtn.setText("Stop");
-						
+						isEncodingProgress = true;
 					new Thread(new Runnable() {
 							   public void run() {
 			
 					try {
+							excelfilereadingobj.isStopEncoding = false;
 							excelfilereadingobj.read();	
 							
 						    // this method is used to enable all UI elements
-						    enableAll();
-						    //Setting text fields empty
-							inputTxtFld.setText("");
-							outputTxtFld.setText("");
+							System.out.println("In the Reading Is Encoding process values is::"+isEncodingProgress);
+							    enableAll();
+
 
 						
 						} catch (IOException | UnsupportedAudioFileException e) {
@@ -402,6 +405,7 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 							e.printStackTrace();
 							System.out.println("IOEXCEPTION"+e);
 							JOptionPane.showMessageDialog(contentPane,"IO EXCEPTION OCCUR"+"\n"+ "System cannot find th file specified" );
+							System.out.println("In the Reading error Is Encoding process values is::"+isEncodingProgress);
 							enableAll();
 						}
 						
@@ -411,15 +415,16 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 					}
 				} else {
 					excelfilereadingobj.isStopEncoding = true;
-				    encodeBtn.setText("Start");
+					isEncodingProgress = false;
+					encodeBtn.setText("Start");
 					progressBar.setVisible(false);
 					if(excelfilereadingobj.progressVal != 100){
 						messageAlert("Encoding process stopped");	
 					}
+					System.out.println("In the stop encoding Is Encoding process values is::"+isEncodingProgress);
 					
 				}
-				isEncodingProgress = !isEncodingProgress;
-
+			
 			}
 
 		});
@@ -454,13 +459,14 @@ public class YDPCardEncoder extends JFrame  implements IYDPCardEncoder{
 	//-----------------------------------------------------------------------	
 	public void enableAll(){
 		encodeBtn.setText("Start");
-
-		isEncodingProgress = true;
-		inputTxtFld.setEnabled(isEncodingProgress);
-		outputTxtFld.setEnabled(isEncodingProgress);
-		inputBtn.setEnabled(isEncodingProgress);
-		outputBtn.setEnabled(isEncodingProgress);
+	    //Setting text fields empty
+		inputTxtFld.setText("");
+		outputTxtFld.setText("");
+		inputBtn.setEnabled(true);
+		outputBtn.setEnabled(true);
 		progressBar.setVisible(false);
+		isEncodingProgress = false;
+		System.out.println("In the Enable all Is Encoding process values is::"+isEncodingProgress);
 	}
 	
 	

@@ -67,7 +67,7 @@ public class ExcelFileReading {
   String encryptedStringTest;//for storing resultant data
   IYDPCardEncoder callback;
   int progressVal;
-  int count;
+  int count=0;
   boolean isStopEncoding = false;
   
 	//-----------------------------------------------------------------------
@@ -168,9 +168,9 @@ public class ExcelFileReading {
 		      /*Checking no of Rows*/
 		      if(sheet.getRows()>0){
 		    	  /*Checking no of coloumns*/
-		    	  if(sheet.getColumns()==6){
+		    	  if(sheet.getColumns()==11){
 		    		  /* Checking header*/
-		    		  if((sheet.getCell(0, 0).getContents().equalsIgnoreCase("FirstName"))&&(sheet.getCell(1, 0).getContents().equalsIgnoreCase("LastName"))&&(sheet.getCell(2,0).getContents().equalsIgnoreCase("PhoneNumber"))&&(sheet.getCell(3,0).getContents().equalsIgnoreCase("PatientId"))&&(sheet.getCell(4,0).getContents().equalsIgnoreCase("UserName"))&&(sheet.getCell(5,0).getContents().equalsIgnoreCase("Password"))){
+		    		  if((sheet.getCell(0, 0).getContents().equalsIgnoreCase("FirstName"))&&(sheet.getCell(1, 0).getContents().equalsIgnoreCase("LastName"))&&(sheet.getCell(2,0).getContents().equalsIgnoreCase("PhoneNumber"))&&(sheet.getCell(3,0).getContents().equalsIgnoreCase("PatientId"))&&(sheet.getCell(4,0).getContents().equalsIgnoreCase("UserName"))&&(sheet.getCell(5,0).getContents().equalsIgnoreCase("Password"))&&(sheet.getCell(6,0).getContents().equalsIgnoreCase("PCPname"))&&(sheet.getCell(7,0).getContents().equalsIgnoreCase("PCPaddress1"))&&(sheet.getCell(8,0).getContents().equalsIgnoreCase("PCPaddress2"))&&(sheet.getCell(9,0).getContents().equalsIgnoreCase("PCPphone"))&&(sheet.getCell(10,0).getContents().equalsIgnoreCase("PCPemail"))){
 		    			  resultStr="Success";
 		    		  }else{
 		    			  resultStr="Input Header is not in correct format, it always in following format"+"\n"+"FirstName LastName PhoneNumber PatientId UserName Password";
@@ -232,9 +232,10 @@ public class ExcelFileReading {
 	
 			      // Creating array to store elements of excel sheet
 			      ArrayList<EReadingData> temp = new ArrayList<EReadingData>();
+			      count=0;
 			      //Loop to access row data
 			      int rows = sheet.getRows();
-			      for (int j = 0; j < rows; j++) {
+			      for (int j = 1; j < rows; j++) {
 				    	// creating object for Reading data class			
 				    	EReadingData readingdata = new EReadingData();
 				    	//Loop to access coloum data
@@ -242,6 +243,7 @@ public class ExcelFileReading {
 	
 				     for (int i = 0; i < sheet.getColumns(); i++) {
 				    	 if(isStopEncoding == true){
+//				    		 isStopEncoding = false;
 				    		 return;
 				    	 }
 					          cell = sheet.getCell(i, j);
@@ -280,6 +282,26 @@ public class ExcelFileReading {
 				          		case 5:
 				          			// For reading sixth cell data of sheet
 									readingdata.password = cellContent;
+								break;
+				          		case 6:
+				          			// For reading seventh cell data of sheet
+									readingdata.pcpname = cellContent;
+								break;
+				          		case 7:
+				          			// For reading eight cell data of sheet
+									readingdata.pcpaddress1 = cellContent;
+								break;
+				          		case 8:
+				          			// For reading ninth cell data of sheet
+									readingdata.pcpaddress2 = cellContent;
+								break;
+				          		case 9:
+				          			// For reading tenth cell data of sheet
+									readingdata.pcpphonenumber = cellContent;
+								break;
+				          		case 10:
+				          			// For reading tenth cell data of sheet
+									readingdata.pcpemail = cellContent;
 								break;
 				          		default:
 				          		break;
@@ -476,7 +498,7 @@ public class ExcelFileReading {
 	 	private void createLabel(WritableSheet sheet)
 		      throws WriteException {
 		    // Lets create a times font
-		    WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
+		    WritableFont times10pt = new WritableFont(WritableFont.TIMES, 15);
 		    // Define the cell format
 		    times = new WritableCellFormat(times10pt);
 		    // Lets automatically wrap the cells
@@ -496,10 +518,15 @@ public class ExcelFileReading {
 	
 		    // Write a few headers
 		    addCaption(sheet, 0, 0, "SNO");
-		    addCaption(sheet, 1, 0,"First Name");
-		    addCaption(sheet, 2, 0,"Last Name");
-		    addCaption(sheet, 3, 0,"Encoded Data ");
-		    addCaption(sheet, 4, 0,"Date And Time");
+		    addCaption(sheet, 1, 0,"FirstName");
+		    addCaption(sheet, 2, 0,"LastName");
+		    addCaption(sheet, 3, 0,"EncodedData ");
+		    addCaption(sheet, 4, 0,"DateAndTime");
+		    addCaption(sheet, 5, 0,"PCPName");
+		    addCaption(sheet, 6, 0,"PCPAddress1");
+		    addCaption(sheet, 7, 0,"PCPAddress2");
+		    addCaption(sheet, 8, 0,"PCPPhoneNumber");
+		    addCaption(sheet, 9, 0,"PCPEmail");
 		    
 	
 		  }
@@ -532,7 +559,12 @@ public class ExcelFileReading {
 			      addLabel(sheet, 1, i+1,readingdataobj.firstName);
 			      addLabel(sheet, 2, i+1,readingdataobj.lastName);
 			      addLabel(sheet, 3, i+1,readingdataobj.encodeData);
-			      addLabel(sheet, 4, i+1,readingdataobj.date);		  
+			      addLabel(sheet, 4, i+1,readingdataobj.date);		
+			      addLabel(sheet, 5, i+1,readingdataobj.pcpname);	
+			      addLabel(sheet, 6, i+1,readingdataobj.pcpaddress1);	
+			      addLabel(sheet, 7, i+1,readingdataobj.pcpaddress2);
+			      addLabel(sheet, 8, i+1,readingdataobj.pcpphonenumber);
+			      addLabel(sheet, 9, i+1,readingdataobj.pcpemail);	
 			  }
 	     }
 		
