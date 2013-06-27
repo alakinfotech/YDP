@@ -66,6 +66,7 @@ import android.widget.TextView;
    	
 	   	 String[] careplandata = html.split("[$#]+");
 	   	 
+	   	 Log.d("caraplan Data",html);
 	   	 for( int i=0;(i+9)<=careplandata.length;i+=10)    
 	   	 {
 	   		 String url = careplandata[i+3].toString();
@@ -82,9 +83,10 @@ import android.widget.TextView;
    {  
      
 	   	String[] allergydata = html.split("[$#]+");
+	   
 	
-	
-	  	 for( int i=0;i<allergydata.length;i+=4)
+	Log.d("allergies data", html);
+	  	 for( int i=0;(i+3)<allergydata.length;i+=4)
 	  	 {
 	  		 if(i!=0)
 	  		 {
@@ -290,7 +292,7 @@ public class UIFORCAREPLAN extends Activity implements OnItemClickListener{
 			          progressBar.dismiss();
 			          titlerlayout1.setVisibility(RelativeLayout.VISIBLE);
 			          rlayout.setVisibility(RelativeLayout.VISIBLE);
-			          webview.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;result += childValue;result += \"$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
+			          webview.loadUrl("javascript:( function () { var allergiesTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_DataList1'); var allergy = allergiesTable.getElementsByTagName('tr');var result = \"\";for(var i = 1; i < allergy.length; i +=3){ var allergyRow = allergy[i].getElementsByTagName('td');for(var j = 0; j < 4; j++){var childValue = allergyRow[j].childNodes[1].textContent;childValue += \" \";result += childValue;result += \"$#\";}}window.HTMLOUT.showAllergiesHTML(result);} ) ()");
 			          loadRequest++;
 			          
 			          		     

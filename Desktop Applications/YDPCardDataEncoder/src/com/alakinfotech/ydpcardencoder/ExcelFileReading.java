@@ -143,7 +143,7 @@ public class ExcelFileReading {
 		// Returns:       	none
 		//
 		// Desc:      		 Cheaking header of input workbook always input work book in following format only accepted
-	    //					 FirstName LastName PhoneNumber PatientId UserName Password .
+	    //					 FirstName LastName PhoneNumber PatientId UserName Password PCPname PCPaddress1 PCPaddress2 PCPphone PCPemail.
 		//-----------------------------------------------------------------------  
 	  public String testHeaderFormat(){
 		  
@@ -498,7 +498,7 @@ public class ExcelFileReading {
 	 	private void createLabel(WritableSheet sheet)
 		      throws WriteException {
 		    // Lets create a times font
-		    WritableFont times10pt = new WritableFont(WritableFont.TIMES, 15);
+		    WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
 		    // Define the cell format
 		    times = new WritableCellFormat(times10pt);
 		    // Lets automatically wrap the cells

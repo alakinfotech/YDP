@@ -102,6 +102,19 @@ public class UIFORALLERGESDETAILVIEW  extends Activity{
 				 
 				  view.setBackgroundColor(0x30E6EEF8);
 				}
+			 
+			 if(allergydata[0].equals("undefined")){
+				 allergydata[0] = " ";
+			 }
+			 if(allergydata[1].equals("undefined")){
+				 allergydata[1] = " ";
+			 }
+			 if(allergydata[2].equals("undefined")){
+				 allergydata[2] = " ";
+			 }
+			 if(allergydata[3].equals("undefined")){
+				 allergydata[3] = " ";
+			 }
 			 if(allergydata[3].equals("Inactive"))
 			 {
 				 allergydetailtview1.setTextColor(0x30141823);

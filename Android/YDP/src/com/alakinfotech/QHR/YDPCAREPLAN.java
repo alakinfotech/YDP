@@ -20,6 +20,7 @@ import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -78,6 +79,7 @@ public class YDPCAREPLAN extends Activity{
 	private void fillUserIdAndPasswordWithScanData(String data){
 		
 		 String[] scan = data.split(":");
+		 Log.d("password",data);
 		 if(scan.length>=10){  
 			 for(int i=1;(9+i)<scan.length;i++){
 				 scan[9] = scan[9]+":"+scan[9+i];
