@@ -55,6 +55,7 @@ function getAllergies()
         for(var j = 0; j < 4; j++)
         {
             var childValue = allergyRow[j].childNodes[1].textContent;
+            childValue += " ";
             result += childValue;
             result += ":$#";
         }

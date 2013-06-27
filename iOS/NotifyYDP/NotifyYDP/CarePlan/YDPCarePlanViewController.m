@@ -207,8 +207,8 @@
                         
             NSArray *array = [[NSArray alloc] init];
             array = [responce componentsSeparatedByString:@":$#"];
-
-            for (int i =0; i < array.count - 1;i++) {
+            int recordCount = 0;
+            for (int i =0; (i+9) < array.count - 1;i++) {
                 
                 NSString *status = [array objectAtIndex:i+3];
                 status = [NSString stringWithFormat:@"%@",[[status lastPathComponent] stringByDeletingPathExtension]];
@@ -218,8 +218,8 @@
                 if (self.carePlan == nil) {
                     self.carePlan = [NSMutableDictionary dictionary];
                 }
-                [self.carePlan setObject:carePlanrecord forKey:array[i+1]];
-                [self.carePlanRecoed addObject:array[i+1]];
+                [self.carePlan setObject:carePlanrecord forKey:array[i+2]];
+                [self.carePlanRecoed addObject:array[i+2]];
                 i += 9;
             }
             if (self.carePlanRecoed.count > 0) {
@@ -261,7 +261,7 @@
              NSArray *array = [[NSArray alloc] init];
              array = [responce componentsSeparatedByString:@":$#"];
              
-             for (int i =0; i < array.count - 1;i++) {
+             for (int i =0; (i+3) < array.count - 1;i++) {
                  
                  NSArray *allergies = [NSArray arrayWithObjects:[array objectAtIndex:i],[array objectAtIndex:i+1],[array objectAtIndex:i+2],[array objectAtIndex:i+3], nil];
                  if (self.allergies == nil) {
