@@ -40,6 +40,8 @@
 		9E63040615D97E8E00E7BC66 /* YDPQRValidateDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6303C315D97E8E00E7BC66 /* YDPQRValidateDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E63040815D97E8E00E7BC66 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6303DE15D97E8E00E7BC66 /* libzbar.a */; };
 		9E7726CB175461B800118126 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7726C91754606800118126 /* Default-568h@2x.png */; };
+		9E99F9E7176A371900296A21 /* YDPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E99F9E6176A371900296A21 /* YDPReachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9E99F9E9176A37F700296A21 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E99F9E8176A37F700296A21 /* SystemConfiguration.framework */; };
 		9EAE895E16FB3B7D00BF2E5D /* snippet_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */; };
 		9EAE895F16FB3B7D00BF2E5D /* snippet_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */; };
 		9EAE896816FB6FBB00BF2E5D /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EAE896716FB6FBB00BF2E5D /* back_button.png */; };
@@ -127,6 +129,9 @@
 		9E6303DD15D97E8E00E7BC66 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
 		9E6303DE15D97E8E00E7BC66 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		9E7726C91754606800118126 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9E99F9E5176A371900296A21 /* YDPReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDPReachability.h; sourceTree = "<group>"; };
+		9E99F9E6176A371900296A21 /* YDPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDPReachability.m; sourceTree = "<group>"; };
+		9E99F9E8176A37F700296A21 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9EAE895C16FB3B7D00BF2E5D /* snippet_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snippet_2.jpg; sourceTree = "<group>"; };
 		9EAE895D16FB3B7D00BF2E5D /* snippet_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snippet_3.jpg; sourceTree = "<group>"; };
 		9EAE896716FB6FBB00BF2E5D /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E99F9E9176A37F700296A21 /* SystemConfiguration.framework in Frameworks */,
 				9E2434DF157FD0A700F43B96 /* MessageUI.framework in Frameworks */,
 				9EE03ADE157E68330000FF3C /* MapKit.framework in Frameworks */,
 				9EE03ADB157E68290000FF3C /* CoreLocation.framework in Frameworks */,
@@ -229,6 +235,8 @@
 		9E6303AC15D97E8E00E7BC66 /* Utility Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E99F9E5176A371900296A21 /* YDPReachability.h */,
+				9E99F9E6176A371900296A21 /* YDPReachability.m */,
 				9E3594A61763A497006E1D94 /* MBProgressHUD.h */,
 				9E3594A71763A497006E1D94 /* MBProgressHUD.m */,
 				9E6303AD15D97E8E00E7BC66 /* AES256 */,
@@ -359,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				9EEF346D157BD49500879458 /* libiconv.dylib */,
+				9E99F9E8176A37F700296A21 /* SystemConfiguration.framework */,
 				9E2434DE157FD0A700F43B96 /* MessageUI.framework */,
 				9EE03ADD157E68330000FF3C /* MapKit.framework */,
 				9EE03ADA157E68290000FF3C /* CoreLocation.framework */,
@@ -471,6 +480,7 @@
 				9EC143AD16EC9AC5003F1166 /* YDPWebUtil.js in Sources */,
 				9E3594A41763A48C006E1D94 /* YDPLogin.m in Sources */,
 				9E3594A81763A497006E1D94 /* MBProgressHUD.m in Sources */,
+				9E99F9E7176A371900296A21 /* YDPReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,8 +562,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = YDPQRValidate;
-				PROVISIONING_PROFILE = "22B495AA-268D-4BAD-A835-A38849F58115";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22B495AA-268D-4BAD-A835-A38849F58115";
+				PROVISIONING_PROFILE = "C359191E-41A0-4AAA-867B-0DDB50FC5830";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C359191E-41A0-4AAA-867B-0DDB50FC5830";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -576,8 +586,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = YDPQRValidate;
-				PROVISIONING_PROFILE = "22B495AA-268D-4BAD-A835-A38849F58115";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22B495AA-268D-4BAD-A835-A38849F58115";
+				PROVISIONING_PROFILE = "C359191E-41A0-4AAA-867B-0DDB50FC5830";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C359191E-41A0-4AAA-867B-0DDB50FC5830";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

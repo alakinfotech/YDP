@@ -8,6 +8,7 @@
 
 #import "YDPLogin.h"
 #import "NSData+Base64.h"
+#import "YDPReachability.h"
 
 @implementation YDPLogin
 @synthesize scanView;
@@ -140,7 +141,7 @@
         
         if (([[array[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@"FirstName"]) && ([[array[2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]isEqualToString: @"LastName"])) {
         
-            NSString *userName = [[array objectAtIndex:8] stringByTrimmingCharactersInSet:
+            NSString *userID = [[array objectAtIndex:8] stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *password = [array objectAtIndex:9];
@@ -149,11 +150,14 @@
                 password = [NSString stringWithFormat:@"%@:%@",password,[array objectAtIndex:passwordIndex]];
                 passwordIndex++;
             }
+            
+            self.userName = [NSString stringWithFormat:@"%@ %@",array[1], array[3]];
 
             //self.reselt.text = resultText;
-            self.reselt.text = [NSString stringWithFormat:@"VALID CARD!\n Card belongs to:%@",userName];
-            NSLog(@"UserName:%@ Passward:%@",userName,password);
-            [self loginWithUserName:userName password:password];
+            self.reselt.text = [NSString stringWithFormat:@"VALID CARD!\n Card belongs to:%@",self.userName];
+            NSLog(@"UserName:%@ Passward:%@",userID,password);
+            
+            [self loginWithUserID:userID password:password];
         }
         
     }
@@ -163,16 +167,24 @@
         
 }
 
-- (void)loginWithUserName:(NSString *) userName  password:(NSString *) password {
+- (void)loginWithUserID:(NSString *) userID  password:(NSString *) password {
     
 
-    if ([userName isEqualToString:@""] || [password isEqualToString:@""]) {
+    if ([userID isEqualToString:@""] || [password isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please check the Username and Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
+
+    YDPReachability *internetReachable = [YDPReachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [internetReachable currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"You're not connected to the Internet. Please connect and retry" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     
-    self.userName = userName;
+    self.userID = userID;
     self.password = password;
     requestid = 0;
     
@@ -207,11 +219,11 @@
 
         if (requestid == 0) {
             
-            NSString *setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='%@';",self.userName];
+            NSString *setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_UserName').value='%@';",self.userID];
             [self.webView stringByEvaluatingJavaScriptFromString:setqrcode];
             
             setqrcode = nil;
-            setqrcode = [[NSString alloc]initWithFormat:@"document.getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='%@';",self.password];
+            setqrcode = [[NSString alloc]initWithFormat:@"document. getElementById('ContentPlaceHolder_ContentPlaceHolder1_txt_Password').value='%@';",self.password];
             
             [self.webView stringByEvaluatingJavaScriptFromString:setqrcode];
             

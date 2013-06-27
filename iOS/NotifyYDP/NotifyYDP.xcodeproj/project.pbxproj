@@ -727,8 +727,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Adinarayana Kadapa";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adinarayana Kadapa";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NotifyYDP/NotifyYDP-Prefix.pch";
 				INFOPLIST_FILE = "NotifyYDP/NotifyYDP-Info.plist";
@@ -740,8 +740,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22B495AA-268D-4BAD-A835-A38849F58115";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22B495AA-268D-4BAD-A835-A38849F58115";
+				PROVISIONING_PROFILE = "97E56D0B-EB15-4D1A-BCB9-1FCF026FBFC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "97E56D0B-EB15-4D1A-BCB9-1FCF026FBFC4";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -751,8 +751,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adinarayana Kadapa (EG7HNGY35M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Adinarayana Kadapa";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Adinarayana Kadapa";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NotifyYDP/NotifyYDP-Prefix.pch";
 				INFOPLIST_FILE = "NotifyYDP/NotifyYDP-Info.plist";
@@ -764,8 +764,8 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22B495AA-268D-4BAD-A835-A38849F58115";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22B495AA-268D-4BAD-A835-A38849F58115";
+				PROVISIONING_PROFILE = "97E56D0B-EB15-4D1A-BCB9-1FCF026FBFC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "97E56D0B-EB15-4D1A-BCB9-1FCF026FBFC4";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

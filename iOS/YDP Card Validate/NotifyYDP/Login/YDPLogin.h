@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *password;
 
 
