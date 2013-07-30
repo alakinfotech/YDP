@@ -31,3 +31,4 @@
 .leaves { position: absolute; top: 270px; left: -64px; z-index: 1000; }
 
 .carousel_data { display: none; }
+.footer{ position:fixed;left:410px;bottom:0px;height:40px;width:50%;background:#365323;text-align:center;text-decoration:none;color:#fff;}
