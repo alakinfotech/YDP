@@ -8,7 +8,7 @@
 	width: 760px;
 	margin: 0px;
 	background-color: #FFF;
-	margin: 30px auto 20px auto;
+	margin: 30px auto 50px auto;
 }
 
 .carousel_container {
@@ -24,11 +24,12 @@
 .nextItem { position: absolute; top: 230px; left: 0px; z-index: 1001; cursor: pointer; }
 .prevItem { position: absolute; top: 230px; right: 0px; z-index: 1002; cursor: pointer; }
 
-.caption_container { width: 760px; border-left: 3px solid #713e1b; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 20px; }
+.caption_container { width: 730px; border-left: 3px solid #713e1b; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 20px; }
 #captions h2 { font-family: Georgia; font-size: 32px; font-weight: normal; margin: 0px 0px 5px 0px; color: #6d8824; }
-#captions p { font-family: Arial; font-size: 14px; color: #444; margin: 0px 0px 0px 3px; }
+#captions p { text-align:justify;font-family: Arial; font-size: 14px; color: #444; margin: 0px 0px 0px 3px; }
 
 .leaves { position: absolute; top: 270px; left: -64px; z-index: 1000; }
 
 .carousel_data { display: none; }
-.footer{ position:fixed;left:410px;bottom:0px;height:40px;width:50%;background:#365323;text-align:center;text-decoration:none;color:#fff;}
+.footer{ bottom:0px;height:40px;width:765px;background:#365323;color:#fff}
+.footer h6 { padding-top:15px;text-align:right;}
