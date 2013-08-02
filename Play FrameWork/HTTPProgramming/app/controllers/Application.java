@@ -10,8 +10,8 @@ public class Application extends Controller {
     public static Result index() {
         return ok("hi hello");
     }
-    public static Result output(){
-        return ok("Got request " + request() + "!");
+    public static Result output(String name){
+        return ok("Got request Your name is: " + name );
     }
   
 }
