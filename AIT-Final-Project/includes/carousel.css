@@ -2,14 +2,20 @@
 
 @charset "UTF-8";
 
+.banner{
+	position: relative;
+	width: 760px;
+	margin: 0px;
+	margin: 0px auto 0px auto;
+}
+.banner_image { position: absolute; top: 0px; left: 0px; z-index: 1; }
 .my_carousel {
 	position: relative;
 	width: 760px;
 	margin: 0px;
 	background-color: #FFF;
-	margin: 20px auto 50px auto;
+	margin: 0px auto 0px auto;
 }
-
 .carousel_container {
 	height: 340px;
 	margin: 0px;
@@ -32,5 +38,19 @@
 .leaves { position: absolute; top: 255px; left: -64px; z-index: 1000; }
 
 .carousel_data { display: none; }
-.footer{ font-family: Arial;bottom:0px;height:40px;width:765px;background:#509551;color:#fff}
-.footer h6 { font-family: Arial;padding-top:15px;text-align:right;}
+.footer{
+	font-family: Arial
+    display:block;
+    position: absolute;
+    bottom:1;
+    height:100px;
+    width:760px;
+    background: url(../images/footer.png);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+	text-align: left;
+	font-size:80%;
+	padding:12px;
+}
+
+#copyright{font-family: Arial}
