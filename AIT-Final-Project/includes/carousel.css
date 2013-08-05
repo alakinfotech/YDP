@@ -12,7 +12,7 @@
 
 .carousel_container {
 	height: 340px;
-	margin: 0px auto 17px auto;
+	margin: 0px;
 	background-color: #a00;
 	background-image: url(../images/background.jpg);
 	background-repeat: no-repeat;
