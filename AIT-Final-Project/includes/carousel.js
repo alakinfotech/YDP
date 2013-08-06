@@ -37,7 +37,9 @@ function createCustomButtons(){
 	});
 	
 	$('div#carousel img').click(function(){
-		hideCaption();
+		var childInFocus = $('div#carousel').data('roundabout').childInFocus
+		if(startingItem != childInFocus)
+			hideCaption();
 	});
 }
 
@@ -53,6 +55,6 @@ function showCaption(){
 	$('.caption_container').animate({'height':newHeight}, 500, function(){
 		$('#captions').animate({'opacity':1}, 250);	
 	});
-	
+	startingItem = childInFocus;
 }
 
