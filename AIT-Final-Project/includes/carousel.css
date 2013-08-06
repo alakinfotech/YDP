@@ -29,10 +29,10 @@
 .nextItem { position: absolute; top: 230px; left: 0px; z-index: 1001; cursor: pointer; }
 .prevItem { position: absolute; top: 230px; right: 0px; z-index: 1002; cursor: pointer; }
 
-.caption_container { width: 730px; border-left: 3px solid #509551; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 20px; }
-#captions h2 { font-family: Arial; font-size: 32px; font-weight: normal; margin: 0px 0px 5px 0px; color: #6d8824; }
+.caption_container { width: 730px; border-left: 3px solid #448145; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 20px; }
+#captions h2 { font-family: Arial; font-size: 32px; font-weight: normal; margin: 0px 0px 5px 0px; color: #448145; }
 #captions p { text-align:justify;font-family: Arial; font-size: 14px; color: #444; margin: 0px 0px 0px 3px; }
-#captions h3 { font-family: Arial; color: #444;}
+#captions h3 { font-family: Arial; color: #444;font-weight: normal;}
 #captions li { font-family: Arial; font-size: 14px;padding-left: 14px; color: #444; font-weight: normal; margin: 5px 0px 5px 0px;}
 
 .leaves { position: absolute; top: 255px; left: -64px; z-index: 1000; }
@@ -50,6 +50,7 @@
     background-repeat: no-repeat;
 	text-align: left;
 	font-size:80%;
+	color: #8f8f8f;
 	padding:12px;
 }
 
