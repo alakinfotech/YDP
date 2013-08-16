@@ -204,10 +204,25 @@
             //Grabbing the data from the page
             NSString *responce = [webView stringByEvaluatingJavaScriptFromString:@"getCarePlan()"];
             
-                        
+            if ([responce isEqualToString:@"NO"]) {
+                [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
+                [self dismissModalViewControllerAnimated:YES];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Invalid Patient Username or Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+
+            }
+            else if ([responce isEqualToString:@"YES"]){
+                NSString *title = [NSString stringWithFormat:@"%@’s Careplan",[webView stringByEvaluatingJavaScriptFromString:@"getYDPUserName()"]];
+                self.userID.text = title;
+                
+                NSString *allergiesURL = @"https://yourdoctorprogram.com/qhr/CareDashboard/AllergiesEditorMaster.aspx";
+                [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:allergiesURL]]];
+                requestid ++;
+                return;
+            }
             NSArray *array = [[NSArray alloc] init];
             array = [responce componentsSeparatedByString:@":$#"];
-            int recordCount = 0;
             for (int i =0; (i+9) < array.count - 1;i++) {
                 
                 NSString *status = [array objectAtIndex:i+3];
@@ -232,13 +247,11 @@
                 
             }
             else{
-                
                 [(YDPAppDelegate*)[[UIApplication sharedApplication] delegate]  stopSpinningLoader];
                 [self dismissModalViewControllerAnimated:YES];
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Invalid Username or Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Invalid Patient Username or Password" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                 [alert show];
             }
-            
             
             requestid ++;
         

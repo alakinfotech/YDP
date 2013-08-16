@@ -8,38 +8,46 @@ function getYDPUserName()
 
 function getCarePlan()
 {
-    var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');
     var result = "NO";
-    if(carePlanTable)
+    var carePlanAvalible = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlan');
+    
+    if(carePlanAvalible)
     {
-        result = "";
+        result = "YES";
         var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');
+        
         if(carePlanTable)
         {
-            var carePlan = carePlanTable.getElementsByTagName('tr');
-            for(var i = 1; i < carePlan.length; i++)
+            var carePlanTable = document.getElementById('ContentPlaceHolder_MainContent_MainContent_CarePlanGridView');
+            if(carePlanTable)
             {
-                var carePlanRow = carePlan[i].getElementsByTagName('td');
-                for(var j = 0; j < carePlanRow.length; j++)
+                var carePlan = carePlanTable.getElementsByTagName('tr');
+                result = "";
+                for(var i = 1; i < carePlan.length; i++)
                 {
-                    var childValue = carePlanRow[j].childNodes[1].textContent;
-                    if(childValue)
+                    var carePlanRow = carePlan[i].getElementsByTagName('td');
+                    for(var j = 0; j < carePlanRow.length; j++)
                     {
-                        
-                        result += childValue;
-                        result += ":$#";
-                    }
-                    else
-                    {
-                        
-                        result += carePlanRow[j].childNodes[1].src;
-                        result += ":$#";
+                        var childValue = carePlanRow[j].childNodes[1].textContent;
+                        if(childValue)
+                        {
+                            
+                            result += childValue;
+                            result += ":$#";
+                        }
+                        else
+                        {
+                            
+                            result += carePlanRow[j].childNodes[1].src;
+                            result += ":$#";
+                        }
                     }
                 }
             }
         }
     }
-
+    if(result == "")
+        result = "YES";
 	return result;
 }
 
